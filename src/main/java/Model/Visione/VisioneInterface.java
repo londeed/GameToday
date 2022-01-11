@@ -1,4 +1,9 @@
 package Model.Visione;
 
-public interface VisioneInterface {
+import java.sql.SQLException;
+import java.util.List;
+
+public interface VisioneInterface
+{
+    List<Visione> doRetrieveByAutoreasTitolo(String auNickname, String titolo) throws SQLException;
 }
