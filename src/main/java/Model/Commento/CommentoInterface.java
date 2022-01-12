@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface CommentoInterface
 {
-    Commento doRetrieveByCodice(int codice) throws SQLException;
+    Commento doRetrieveByCodice(String codice) throws SQLException;
     Boolean insertCommento(Commento commento) throws SQLException;
-    Boolean updateCommento(Commento commento, int comCodice) throws SQLException;
-    Boolean deleteCommento(int comCodice) throws SQLException;
+    Boolean updateCommento(Commento commento, String comCodice) throws SQLException;
+    Boolean deleteCommento(String comCodice) throws SQLException;
     int countAll() throws SQLException;
 }

@@ -1,41 +1,41 @@
 package Model.Commento;
 
 public class Commento {
-    private int comCodice;
-    private int codice;
-    private boolean dislike;
-    private boolean like;
+    private String comCodice;
+    private String codice;
+    private int dislike;
+    private int like;
     private String testo;
 
-    public int getComCodice() {
+    public String getComCodice() {
         return comCodice;
     }
 
-    public void setComCodice(int comCodice) {
+    public void setComCodice(String comCodice) {
         this.comCodice = comCodice;
     }
 
-    public int getCodice() {
+    public String getCodice() {
         return codice;
     }
 
-    public void setCodice(int codice) {
+    public void setCodice(String codice) {
         this.codice = codice;
     }
 
-    public boolean isDislike() {
+    public int getDislike() {
         return dislike;
     }
 
-    public void setDislike(boolean dislike) {
+    public void setDislike(int dislike) {
         this.dislike = dislike;
     }
 
-    public boolean isLike() {
+    public int getLike() {
         return like;
     }
 
-    public void setLike(boolean like) {
+    public void setLike(int like) {
         this.like = like;
     }
 
