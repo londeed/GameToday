@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface AutoreInterface
 {
-    List<Autore> doRetrieveAll() throws SQLException;
+    List<Autore> doRetrieveAutoreAll() throws SQLException;
     Boolean createAutore(Autore autore) throws SQLException;
     Boolean updateAutore(Autore autore) throws SQLException;
     Boolean deleteAutore(int auNickname) throws SQLException;
     Autore loginAutore(String email, String password) throws SQLException;
     int countAll() throws SQLException;
-    Autore doRetrieveByEmail(String email) throws SQLException;
+    Autore doRetrieveAutoreByEmail(String email) throws SQLException;
 }

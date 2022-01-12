@@ -8,11 +8,11 @@ import java.util.Optional;
 
 public interface AmministratoreInterface
 {
-    List<Amministratore> doRetrieveAll() throws SQLException;
+    List<Amministratore> doRetrieveAllAmministratore() throws SQLException;
     Boolean createAmministratore(Amministratore amministratore) throws SQLException;
     Boolean updateAmministratore(Amministratore amministratore) throws SQLException;
     Boolean deleteAmministratore(int amNickname) throws SQLException;
     Amministratore loginAmministratore(String email, String password) throws SQLException;
     int countAll() throws SQLException;
-    Amministratore doRetrieveByEmail(String email) throws SQLException;
+    Amministratore doRetrieveAmministratoreByEmail(String email) throws SQLException;
 }

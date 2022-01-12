@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface UtenteInterface
 {
-    List<Utente> doRetrieveAll() throws SQLException;
+    List<Utente> doRetrieveUtenteAll() throws SQLException;
     Boolean createUtente(Utente utente) throws SQLException;
     Boolean updateUtente(Utente utente) throws SQLException;
     Boolean deleteUtente(int utNickname) throws SQLException;
     Utente loginUtente(String email, String password) throws SQLException;
     int countAll() throws SQLException;
-    Utente doRetrieveByEmail(String email) throws SQLException;
+    Utente doRetrieveUtenteByEmail(String email) throws SQLException;
 }
