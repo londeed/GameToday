@@ -9,8 +9,8 @@ import java.util.Date;
 public class RecensioneExtraction {
     public Recensione mapping(ResultSet rs) throws SQLException {
         Recensione recensione = new Recensione();
-        recensione.setCodice(rs.getInt(1));
-        recensione.setAutore(rs.getString(2));
+        recensione.setCodice(rs.getString(1));
+        recensione.setAuNome(rs.getString(2));
         recensione.setData(rs.getDate(3));
         recensione.setTesto(rs.getString(4));
         recensione.setAuNickname(rs.getString(5));

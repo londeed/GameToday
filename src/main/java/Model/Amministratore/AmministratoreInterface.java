@@ -10,8 +10,8 @@ public interface AmministratoreInterface
 {
     List<Amministratore> doRetrieveAllAmministratore() throws SQLException;
     Boolean createAmministratore(Amministratore amministratore) throws SQLException;
-    Boolean updateAmministratore(Amministratore amministratore) throws SQLException;
-    Boolean deleteAmministratore(int amNickname) throws SQLException;
+    Boolean updateAmministratore(Amministratore amministratore, String amNickname) throws SQLException;
+    Boolean deleteAmministratore(String amNickname) throws SQLException;
     Amministratore loginAmministratore(String email, String password) throws SQLException;
     int countAll() throws SQLException;
     Amministratore doRetrieveAmministratoreByEmail(String email) throws SQLException;

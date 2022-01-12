@@ -10,6 +10,7 @@ public class Videogioco {
     private double mediaValutazioni;
     private String piattaforma;
     private Date dataPubblicazione;
+    private String tipologia;
 
     public String getTitolo() {
         return titolo;
@@ -65,5 +66,13 @@ public class Videogioco {
 
     public void setDataPubblicazione(Date dataPubblicazione) {
         this.dataPubblicazione = dataPubblicazione;
+    }
+
+    public String getTipologia() {
+        return tipologia;
+    }
+
+    public void setTipologia(String tipologia) {
+        this.tipologia = tipologia;
     }
 }

@@ -1,29 +1,29 @@
 package Model.Recensione;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Recensione {
-    private int codice;
-    private String autore;
+    private String codice;
+    private String auNome;
     private Date data;
     private String testo;
     private String auNickname;
     private String titolo;
 
-    public int getCodice() {
+    public String getCodice() {
         return codice;
     }
 
-    public void setCodice(int codice) {
+    public void setCodice(String codice) {
         this.codice = codice;
     }
 
-    public String getAutore() {
-        return autore;
+    public String getAuNome() {
+        return auNome;
     }
 
-    public void setAutore(String autore) {
-        this.autore = autore;
+    public void setAuNome(String auNome) {
+        this.auNome = auNome;
     }
 
     public Date getData() {

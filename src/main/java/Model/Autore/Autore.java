@@ -1,6 +1,6 @@
 package Model.Autore;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Autore {
     private String auNickname;
@@ -10,7 +10,7 @@ public class Autore {
     private String email;
     private String password;
     private int recEffettuate;
-    private int recCommissionate;
+    private String recCommissionate;
     private Date scadenza;
     private int like;
     private int dislike;
@@ -71,11 +71,11 @@ public class Autore {
         this.recEffettuate = recEffettuate;
     }
 
-    public int getRecCommissionate() {
+    public String getRecCommissionate() {
         return recCommissionate;
     }
 
-    public void setRecCommissionate(int recCommissionate) {
+    public void setRecCommissionate(String recCommissionate) {
         this.recCommissionate = recCommissionate;
     }
 

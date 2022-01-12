@@ -9,8 +9,8 @@ public interface AutoreInterface
 {
     List<Autore> doRetrieveAutoreAll() throws SQLException;
     Boolean createAutore(Autore autore) throws SQLException;
-    Boolean updateAutore(Autore autore) throws SQLException;
-    Boolean deleteAutore(int auNickname) throws SQLException;
+    Boolean updateAutore(Autore autore, String auNickname) throws SQLException;
+    Boolean deleteAutore(String auNickname) throws SQLException;
     Autore loginAutore(String email, String password) throws SQLException;
     int countAll() throws SQLException;
     Autore doRetrieveAutoreByEmail(String email) throws SQLException;

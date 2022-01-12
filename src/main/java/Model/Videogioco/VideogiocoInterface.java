@@ -10,7 +10,7 @@ public interface VideogiocoInterface
 {
     Videogioco doRetrieveByTitolo(String titolo) throws SQLException;
     List<Videogioco> doRetriveBymediaValutazioni(double mediaValutazioni) throws SQLException;
-    List<Videogioco> doRetriveBymediaCasaProduttrice(String casaProduttrice) throws SQLException;
+    List<Videogioco> doRetriveByCasaProduttrice(String casaProduttrice) throws SQLException;
     List<Videogioco> doRetriveByPiattaforma(String piattaforma) throws SQLException;
     Boolean insertVideogioco(Videogioco videogioco) throws SQLException;
     Boolean updateVideogioco(Videogioco videogioco, String titolo) throws SQLException;

@@ -15,7 +15,7 @@ public class UtenteDAO
     {
         try(Connection connection= ConPool.getConnection())
         {
-            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM Utente")){
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM utente")){
                 ResultSet rs= ps.executeQuery();
                 List<Utente> utente=new ArrayList<>();
                 UtenteExtraction utenteExtraction=new UtenteExtraction();
@@ -34,16 +34,16 @@ public class UtenteDAO
     public Boolean createUtente(Utente utente) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
-            try(PreparedStatement ps = connection.prepareStatement("INSERT INTO Utente(UtNickname, UtPW, UtNome, UtLike, UtDislike, UtEmail, UtCognome, ValEffettuate, UtAvatar) VALUES (?,?,?,?,?,?,?,?,?);")){
+            try(PreparedStatement ps = connection.prepareStatement("INSERT INTO utente(UtNickname, UtNome, UtCognome, ValEffettuate, UtEmail, UtPW, UtLike, UtDislike, UtAvatar) VALUES (?,?,?,?,?,?,?,?,?);")){
                 ps.setString(1,utente.getUtNickname());
-                ps.setString(2, utente.getPassword());
-                ps.setString(3, utente.getNome());
-                ps.setInt(4, utente.getLike());
-                ps.setInt(5, utente.getDislike());
+                ps.setString(2, utente.getNome());
+                ps.setString(3, utente.getCognome());
+                ps.setInt(4, utente.getValEffettuate());
                 ps.setString(5, utente.getEmail());
-                ps.setString(6, utente.getCognome());
-                ps.setInt(7, utente.getValEffettuate());
-                ps.setInt(8, utente.getAvatar());
+                ps.setString(6, utente.getPassword());
+                ps.setInt(7, utente.getLike());
+                ps.setInt(8, utente.getDislike());
+                ps.setInt(9, utente.getAvatar());
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }
@@ -51,19 +51,20 @@ public class UtenteDAO
         }
     }
 
-    public Boolean updateUtente(Utente utente) throws SQLException
+    public Boolean updateUtente(Utente utente, String utNickname) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
-            try(PreparedStatement ps = connection.prepareStatement("UPDATE Utente SET UtNickname=?, UtPW=?, UtNome=?, UtLike=?, UtDislike=?, UtEmail=?, UtCognome=?, ValEffettuate=?, UtAvatar=?")){
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE Utente SET UtNickname=?, UtNome=?, UtCognome=?, ValEffettuate=?, UtEmail=?, UtPW=?, UtLike=?, UtDislike=?, UtAvatar=? WHERE UtNickname = ?")){
                 ps.setString(1,utente.getUtNickname());
-                ps.setString(2, utente.getPassword());
-                ps.setString(3, utente.getNome());
-                ps.setInt(4, utente.getLike());
-                ps.setInt(5, utente.getDislike());
+                ps.setString(2, utente.getNome());
+                ps.setString(3, utente.getCognome());
+                ps.setInt(4, utente.getValEffettuate());
                 ps.setString(5, utente.getEmail());
-                ps.setString(6, utente.getCognome());
-                ps.setInt(7, utente.getValEffettuate());
-                ps.setInt(8, utente.getAvatar());
+                ps.setString(6, utente.getPassword());
+                ps.setInt(7, utente.getLike());
+                ps.setInt(8, utente.getDislike());
+                ps.setInt(9, utente.getAvatar());
+                ps.setString(10, utNickname);
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }
@@ -71,11 +72,11 @@ public class UtenteDAO
         }
     }
 
-    public Boolean deleteUtente(int utNickname) throws SQLException
+    public Boolean deleteUtente(String utNickname) throws SQLException
     {
         try(Connection con = ConPool.getConnection()) {
-            try(PreparedStatement ps = con.prepareStatement("DELETE FROM Utente WHERE UtNickname = ?")){
-                ps.setInt(1, utNickname);
+            try(PreparedStatement ps = con.prepareStatement("DELETE FROM utente WHERE UtNickname = ?")){
+                ps.setString(1, utNickname);
                 int rows = ps.executeUpdate();
                 return rows == 1;
             } catch (SQLException e) {
@@ -88,7 +89,7 @@ public class UtenteDAO
     {
         Utente utente=new Utente();
         try(Connection con = ConPool.getConnection()) {
-            try(PreparedStatement ps = con.prepareStatement("SELECT *  FROM Utente WHERE UtEmail=? AND UtPW=?")){
+            try(PreparedStatement ps = con.prepareStatement("SELECT *  FROM utente WHERE UtEmail=? AND UtPW=?")){
                 ps.setString(1, email);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
@@ -104,7 +105,7 @@ public class UtenteDAO
     public int countAll() throws SQLException
     {
         try(Connection con = ConPool.getConnection()){
-            try(PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM Utente")){
+            try(PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM utente")){
                 ResultSet rs = ps.executeQuery();
                 int size = 0;
                 if(rs.next()){
@@ -119,7 +120,7 @@ public class UtenteDAO
     {
         try(Connection connection= ConPool.getConnection())
         {
-            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM Utente WHERE UtEmail = ?")){
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM utente WHERE UtEmail = ?")){
                 ps.setString(1, email);
                 ResultSet rs= ps.executeQuery();
                 Utente utente=new Utente();

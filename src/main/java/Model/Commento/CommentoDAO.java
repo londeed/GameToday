@@ -12,7 +12,7 @@ public class CommentoDAO
     {
         try(Connection connection= ConPool.getConnection())
         {
-            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM Commento WHERE CommentoCod = ?")){
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM commento WHERE CommentoCod = ?")){
                 ps.setString(1, codice);
                 ResultSet rs= ps.executeQuery();
                 Commento commento=new Commento();
@@ -31,7 +31,7 @@ public class CommentoDAO
     public Boolean insertCommento(Commento commento) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
-            try(PreparedStatement ps = connection.prepareStatement("INSERT INTO Commento(CommentoCod, Codice, CLike, CDislike, CTesto) VALUES (?,?,?,?,?);")){
+            try(PreparedStatement ps = connection.prepareStatement("INSERT INTO commento(CommentoCod, Codice, CLike, CDislike, CTesto) VALUES (?,?,?,?,?);")){
                 ps.setString(1, commento.getComCodice());
                 ps.setString(2, commento.getCodice());
                 ps.setInt(3, commento.getLike());
@@ -46,7 +46,7 @@ public class CommentoDAO
     public Boolean updateCommento(Commento commento, String comCodice) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
-            try(PreparedStatement ps = connection.prepareStatement("UPDATE Commento SET CommentoCod=?, Codice=?, CLike=?, CDislike=?, CTesto=? WHERE CommentoCod=?")){
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE commento SET CommentoCod=?, Codice=?, CLike=?, CDislike=?, CTesto=? WHERE CommentoCod=?")){
                 ps.setString(1, commento.getComCodice());
                 ps.setString(2, commento.getCodice());
                 ps.setInt(3, commento.getLike());
@@ -62,7 +62,7 @@ public class CommentoDAO
     public Boolean deleteCommento(String comCodice) throws SQLException
     {
         try(Connection con = ConPool.getConnection()) {
-            try(PreparedStatement ps = con.prepareStatement("DELETE FROM Commento WHERE CommentoCod = ?")){
+            try(PreparedStatement ps = con.prepareStatement("DELETE FROM commento WHERE CommentoCod = ?")){
                 ps.setString(1, comCodice);
                 int rows = ps.executeUpdate();
                 return rows == 1;
@@ -75,7 +75,7 @@ public class CommentoDAO
     public int countAll() throws SQLException
     {
         try(Connection con = ConPool.getConnection()){
-            try(PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM Commento")){
+            try(PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM commento")){
                 ResultSet rs = ps.executeQuery();
                 int size = 0;
                 if(rs.next()){

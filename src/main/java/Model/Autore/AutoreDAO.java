@@ -14,7 +14,7 @@ public class AutoreDAO
     {
         try(Connection connection= ConPool.getConnection())
         {
-            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM Autore")){
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM autore")){
                 ResultSet rs= ps.executeQuery();
                 List<Autore> autore=new ArrayList<>();
                 AutoreExtraction autoreExtraction= new AutoreExtraction();
@@ -33,18 +33,18 @@ public class AutoreDAO
     public Boolean createAutore(Autore autore) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
-            try(PreparedStatement ps = connection.prepareStatement("INSERT INTO Autore(AuNickname, AuPW, AuNome, AuLike, AuDislike, AuEmail, AuCognome, REffettuate, RCommissionate, AuAvatar, Scadenza) VALUES (?,?,?,?,?,?,?,?,?,?,?);")){
+            try(PreparedStatement ps = connection.prepareStatement("INSERT INTO autore(AuNickname, AuNome, AuCognome, AuAvatar, REffettuate, RCommisionate, AuEmail, Scadenza, AuPW, AuLike, AuDislike) VALUES (?,?,?,?,?,?,?,?,?,?,?);")){
                 ps.setString(1,autore.getAuNickname());
-                ps.setString(2, autore.getPassword());
-                ps.setString(3, autore.getNome());
-                ps.setInt(4, autore.getLike());
-                ps.setInt(5, autore.getDislike());
-                ps.setString(5, autore.getEmail());
-                ps.setString(6, autore.getCognome());
-                ps.setInt(7, autore.getRecEffettuate());
-                ps.setInt(8, autore.getRecCommissionate());
-                ps.setInt(9, autore.getAvatar());
-                ps.setDate(10, (Date) autore.getScadenza());
+                ps.setString(2, autore.getNome());
+                ps.setString(3, autore.getCognome());
+                ps.setInt(4, autore.getAvatar());
+                ps.setInt(5, autore.getRecEffettuate());
+                ps.setString(5, autore.getRecCommissionate());
+                ps.setString(6, autore.getEmail());
+                ps.setDate(7, autore.getScadenza());
+                ps.setString(8, autore.getPassword());
+                ps.setInt(9, autore.getLike());
+                ps.setInt(10, autore.getDislike());
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }
@@ -52,21 +52,22 @@ public class AutoreDAO
         }
     }
 
-    public Boolean updateAutore(Autore autore) throws SQLException
+    public Boolean updateAutore(Autore autore,String auNickname) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
-            try(PreparedStatement ps = connection.prepareStatement("UPDATE Autore SET AuNickname=?, AuPW=?, AuNome=?, AuLike=?, AuDislike=?, AuEmail=?, AuCognome=?, REffettuate=?, RCommissionate=?, AuAvatar=?, Scadenza=? WHERE AuNickname=?")){
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE autore SET AuNickname=?, AuNome=?, AuCognome=?, AuAvatar=?, REffettuate=?, RCommisionate=?, AuEmail=?, Scadenza=?, AuPW=?, AuLike=?, AuDislike=? WHERE AuNickname=?")){
                 ps.setString(1,autore.getAuNickname());
-                ps.setString(2, autore.getPassword());
-                ps.setString(3, autore.getNome());
-                ps.setInt(4, autore.getLike());
-                ps.setInt(5, autore.getDislike());
-                ps.setString(5, autore.getEmail());
-                ps.setString(6, autore.getCognome());
-                ps.setInt(7, autore.getRecEffettuate());
-                ps.setInt(8, autore.getRecCommissionate());
-                ps.setInt(9, autore.getAvatar());
-                ps.setDate(10, (Date) autore.getScadenza());
+                ps.setString(2, autore.getNome());
+                ps.setString(3, autore.getCognome());
+                ps.setInt(4, autore.getAvatar());
+                ps.setInt(5, autore.getRecEffettuate());
+                ps.setString(5, autore.getRecCommissionate());
+                ps.setString(6, autore.getEmail());
+                ps.setDate(7, autore.getScadenza());
+                ps.setString(8, autore.getPassword());
+                ps.setInt(9, autore.getLike());
+                ps.setInt(10, autore.getDislike());
+                ps.setString(11,auNickname);
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }
@@ -74,11 +75,11 @@ public class AutoreDAO
         }
     }
 
-    public Boolean deleteAutore(int auNickname) throws SQLException
+    public Boolean deleteAutore(String auNickname) throws SQLException
     {
         try(Connection con = ConPool.getConnection()) {
-            try(PreparedStatement ps = con.prepareStatement("DELETE FROM Autore WHERE AuNickname = ?")){
-                ps.setInt(1, auNickname);
+            try(PreparedStatement ps = con.prepareStatement("DELETE FROM autore WHERE AuNickname = ?")){
+                ps.setString(1, auNickname);
                 int rows = ps.executeUpdate();
                 return rows == 1;
             } catch (SQLException e) {
@@ -91,7 +92,7 @@ public class AutoreDAO
     {
         Autore autore=new Autore();
         try(Connection con = ConPool.getConnection()) {
-            try(PreparedStatement ps = con.prepareStatement("SELECT *  FROM Autore WHERE AuEmail=? AND AuPW=?")){
+            try(PreparedStatement ps = con.prepareStatement("SELECT *  FROM autore WHERE AuEmail=? AND AuPW=?")){
                 ps.setString(1, email);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
@@ -107,7 +108,7 @@ public class AutoreDAO
     public int countAll() throws SQLException
     {
         try(Connection con = ConPool.getConnection()){
-            try(PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM Autore")){
+            try(PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM autore")){
                 ResultSet rs = ps.executeQuery();
                 int size = 0;
                 if(rs.next()){
@@ -122,7 +123,7 @@ public class AutoreDAO
     {
         try(Connection connection= ConPool.getConnection())
         {
-            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM Autore WHERE AuEmail = ?")){
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM autore WHERE AuEmail = ?")){
                 ps.setString(1, email);
                 ResultSet rs= ps.executeQuery();
                 Autore autore=new Autore();
