@@ -1,14 +1,16 @@
 package Model.InterazioneAu;
 
 public class InterazioneAu {
-    private int comCodice;
+    private String comCodice;
     private String auNickname;
+    private boolean aul;
+    private boolean aud;
 
-    public int getComCodice() {
+    public String getComCodice() {
         return comCodice;
     }
 
-    public void setComCodice(int comCodice) {
+    public void setComCodice(String comCodice) {
         this.comCodice = comCodice;
     }
 
@@ -18,5 +20,21 @@ public class InterazioneAu {
 
     public void setAuNickname(String auNickname) {
         this.auNickname = auNickname;
+    }
+
+    public boolean isAul() {
+        return aul;
+    }
+
+    public void setAul(boolean aul) {
+        this.aul = aul;
+    }
+
+    public boolean isAud() {
+        return aud;
+    }
+
+    public void setAud(boolean aud) {
+        this.aud = aud;
     }
 }

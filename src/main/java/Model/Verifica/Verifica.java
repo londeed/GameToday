@@ -1,14 +1,14 @@
 package Model.Verifica;
 
 public class Verifica {
-    private int comCodice;
+    private String comCodice;
     private String amNickname;
 
-    public int getComCodice() {
+    public String getComCodice() {
         return comCodice;
     }
 
-    public void setComCodice(int comCodice) {
+    public void setComCodice(String comCodice) {
         this.comCodice = comCodice;
     }
 

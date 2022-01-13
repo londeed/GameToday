@@ -81,7 +81,6 @@ public class AmministratoreDAO {
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }
-
         }
     }
 

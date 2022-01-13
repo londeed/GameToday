@@ -2,7 +2,7 @@ package Model.Supervisione;
 
 public class Supervisione {
     private String amNickname;
-    private int codice;
+    private String codice;
 
     public String getAmNickname() {
         return amNickname;
@@ -12,11 +12,11 @@ public class Supervisione {
         this.amNickname = amNickname;
     }
 
-    public int getCodice() {
+    public String getCodice() {
         return codice;
     }
 
-    public void setCodice(int codice) {
+    public void setCodice(String codice) {
         this.codice = codice;
     }
 }

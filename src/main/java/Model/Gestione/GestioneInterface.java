@@ -5,5 +5,7 @@ import java.util.List;
 
 public interface GestioneInterface
 {
-    List<Gestione> doRetrieveGameAsTitle(String amNickname, String titolo) throws SQLException;
+    List<Gestione> doRetrieveGamebyAdmin(String amNickname) throws SQLException;
+    Gestione doRetrieveGameAsTitle(String titolo) throws SQLException;
+    Boolean insertGestione(String amNickname, String titolo) throws SQLException;
 }

@@ -6,8 +6,11 @@ import Model.InterazioneAu.InterazioneAu;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface InterazioneUtInterface
-{
-    List<InterazioneUt> doRetrieveGameAsTitle(int comCodice, String utNickname) throws SQLException;
-    List<Commento> doRetrieveAllByUtente(int comCodice, String utNickname) throws SQLException;
+public interface InterazioneUtInterface {
+
+    InterazioneAu doRetrieveInterazioneUtByCodice(String comCodice) throws SQLException;
+    List<InterazioneAu> doRetrieveInterazioneUtByNickname(String utNickname) throws SQLException;
+    Commento doRetrieveCommentoUtByCodice(String comCodice) throws SQLException;
+    List<Commento> doRetrieveCommentoUtByNickname(String utNickname) throws SQLException;
+    Boolean insertByUtente(String comCodice, String utNickname, Boolean utl, Boolean utd) throws SQLException;
 }

@@ -9,8 +9,7 @@ public class SupervisioneExtraction {
     public Supervisione mapping(ResultSet rs) throws SQLException {
         Supervisione supervisione = new Supervisione();
         supervisione.setAmNickname(rs.getString(1));
-        supervisione.setCodice(rs.getInt(2));
-
+        supervisione.setCodice(rs.getString(2));
         return supervisione;
     }
 }
