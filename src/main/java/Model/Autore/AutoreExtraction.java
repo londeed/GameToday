@@ -17,7 +17,7 @@ public class AutoreExtraction {
         autore.setEmail(rs.getString(5));
         autore.setPassword(rs.getString(6));
         autore.setRecEffettuate(rs.getInt(7));
-        autore.setRecCommissionate(rs.getInt(8));
+        autore.setRecCommissionate(rs.getString(8));
         autore.setScadenza(rs.getDate(9));
         autore.setLike(rs.getInt(10));
         autore.setDislike(rs.getInt(11));
