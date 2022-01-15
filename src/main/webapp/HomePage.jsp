@@ -3,7 +3,7 @@
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
         <jsp:param name="title" value="HomePage"/>
-        <jsp:param name="style" value="reset,libraryCustomer"/>
+        <jsp:param name="style" value="reset,bodyStyle"/>
         <jsp:param name="script" value=""/>
     </jsp:include>
     <!-- <meta name="viewport" content="width=device-width, user-scalable=no">-->
@@ -13,50 +13,81 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Link</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search">
-                <button class="btn btn-primary" type="button">Search</button>
-            </form>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="./Avatar/2.jpg" alt="Logo" width="32" height="32" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Link</a></li>
-                    <li><a class="dropdown-item" href="#">Another link</a></li>
-                    <li><a class="dropdown-item" href="#">A third link</a></li>
-                </ul>
-            </li>
-             <!---   <a class="navbar-brand" href="#">
-               //     <img src="img_avatar1.png" alt="Logo" style="width:40px;" class="rounded-pill">
-                </a>
-                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>--->
+
+<header>
+    <%@include file="WEB-INF/views/partials/headerCustomer.jsp"%>
+</header>
+
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="./img/download1.jpg" alt="Los Angeles" class="d-block" style="height: 200px; width:100%">
+            <div class="carousel-caption">
+                <h3>Los Angeles</h3>
+                <p>We had such a great time in LA!</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/download.jpg" alt="Chicago" class="d-block" style="height: 200px; width:100%">
+            <div class="carousel-caption">
+                <h3>Chicago</h3>
+                <p>Thank you, Chicago!</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/download3.jpg" alt="New York" class="d-block" style="height: 200px; width:100%">
+            <div class="carousel-caption">
+                <h3>New York</h3>
+                <p>We love the Big Apple!</p>
+            </div>
         </div>
     </div>
-</nav>
-<div class="container-fluid mt-3">
-    <h3>Navbar Forms</h3>
-    <p>You can also include forms inside the navigation bar.</p>
+
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
 </div>
+
+<div class="row" style="width: 100%">
+    <div class="col-sm-4" style="text-align: center">
+        <h3>RECENSIONE PIU' COMMENTATA</h3>
+        <div class="container mt-3">
+            <img src="./img/download1.jpg" class="img-fluid" alt="">
+            <p>OKI</p>
+        </div>
+    </div>
+    <div class="col-sm-4" style="text-align: center">
+        <h3>RECENSIONE PIU' COMMENTATA</h3>
+        <div class="container mt-3">
+            <img src="./img/download.jpg" class="img-fluid" alt="">
+            <p>OKI</p>
+        </div>
+    </div>
+    <div class="col-sm-4" style="text-align: center">
+        <h3>RECENSIONE PIU' COMMENTATA</h3>
+        <div class="container mt-3">
+            <img src="./img/download3.jpg" class="img-fluid" alt="">
+            <p>OKI</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <%@include file="WEB-INF/views/partials/footerCustomer.jsp"%>
+</footer>
+
 </body>
 </html>

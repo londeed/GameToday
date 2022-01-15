@@ -14,7 +14,7 @@
 <link rel="apple-touch-startup-image" href="Images/LOGO.jpg">
 <meta name="theme-color" content="#808080">
 <!--<link href="${context}/css/reset.css" rel="stylesheet">-->
-<link href="${context}/css/library.css" rel="stylesheet">
+<link href="${context}/css/bodyStyle.css" rel="stylesheet">
 <link href="${context}/css/crm.css" rel="stylesheet">
 <link href="${context}/css/dashboard.css" rel="stylesheet">
 <link href="${context}/css/libraryCustomer.css" rel="stylesheet">
