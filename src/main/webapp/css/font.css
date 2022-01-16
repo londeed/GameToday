@@ -1,0 +1,270 @@
+@font-face {
+    font-family:'AlumniSans-Italic-VariableFont_wght' ;
+    font-style: italic;
+    font-weight: auto ;
+    src: url("../fonts/Alumni sans/AlumniSans-Italic-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-VariableFont_wght' ;
+    font-style: normal;
+    font-weight: auto ;
+    src: url("../fonts/Alumni sans/AlumniSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-Black' ;
+    font-style: normal;
+    font-weight: bold;
+    src: url("../fonts/Alumni sans/static/AlumniSans-Black.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-BlackItalic' ;
+    font-style: italic;
+    font-weight: bold;
+    src: url("../fonts/Alumni sans/static/AlumniSans-BlackItalic.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-Bold' ;
+    font-style: normal;
+    font-weight: bold;
+    src: url("../fonts/Alumni sans/static/AlumniSans-Bold.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-BoldItalic' ;
+    font-style: italic;
+    font-weight: bold;
+    src: url("../fonts/Alumni sans/static/AlumniSans-BoldItalic.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-ExtraBold' ;
+    font-style: normal;
+    font-weight: bold;
+    src: url("../fonts/Alumni sans/static/AlumniSans-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-ExtraBoldItalic' ;
+    font-style: italic;
+    font-weight: bold;
+    src: url("../fonts/Alumni sans/static/AlumniSans-ExtraBoldItalic.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-ExtraLight' ;
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/Alumni sans/static/AlumniSans-ExtraLight.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-ExtraLightItalic' ;
+    font-style: italic;
+    font-weight: normal;
+    src: url("../fonts/Alumni sans/static/AlumniSans-ExtraLightItalic.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-Italic' ;
+    font-style: italic;
+    font-weight: normal;
+    src: url("../fonts/Alumni sans/static/AlumniSans-Italic.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-Light' ;
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/Alumni sans/static/AlumniSans-Light.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-LightItalic' ;
+    font-style: italic;
+    font-weight: normal;
+    src: url("../fonts/Alumni sans/static/AlumniSans-LightItalic.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-Medium' ;
+    font-style: normal;
+    font-weight: auto;
+    src: url("../fonts/Alumni sans/static/AlumniSans-Medium.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-MediumItalic' ;
+    font-style: italic;
+    font-weight: auto;
+    src: url("../fonts/Alumni sans/static/AlumniSans-MediumItalic.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-Regular' ;
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/Alumni sans/static/AlumniSans-Regular.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-SemiBold' ;
+    font-style: normal;
+    font-weight: bold;
+    src: url("../fonts/Alumni sans/static/AlumniSans-SemiBold.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-SemiBoldItalic' ;
+    font-style: italic;
+    font-weight: bold;
+    src: url("../fonts/Alumni sans/static/AlumniSans-SemiBoldItalic.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-Thin' ;
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/Alumni sans/static/AlumniSans-Thin.ttf");
+}
+
+@font-face {
+    font-family:'AlumniSans-ThinItalic' ;
+    font-style: italic;
+    font-weight: normal;
+    src: url("../fonts/Alumni sans/static/AlumniSans-ThinItalic.ttf");
+}
+
+@font-face {
+    font-family:'Bangers-Regular' ;
+    font-style: oblique;
+    font-weight: auto;
+    src: url("../fonts/Bangers/Bangers-Regular.ttf");
+}
+
+@font-face {
+    font-family:'prstart' ;
+    font-style: auto;
+    font-weight: auto;
+    src: url("../fonts/Press start/prstart.ttf");
+}
+
+@font-face {
+    font-family:'prstartk' ;
+    font-style: auto;
+    font-weight: auto;
+    src: url("../fonts/Press start/prstartk.ttf");
+}
+
+@font-face {
+    font-family:'RampartOne-Regular' ;
+    font-style: auto;
+    font-weight: auto;
+    src: url("../fonts/Rampart one/RampartOne-Regular.ttf");
+}
+
+:root{
+    font-family: 'Merriweather', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: clamp(16px, 2vw, 24px);
+    --white: #ffffff;
+    --beige: #e9e9c3;
+    --lightblue: #99cbff;
+    --red: #ff0000;
+    --black: #000000;
+    --error: #EE4037;
+    --success: #89C540
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.hide{
+    display: none !important;
+}
+
+.grid-x{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.grid-y{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.grid-inline{
+    display: inline-flex;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.cell{
+    flex-basis: 100%;
+}
+
+.field{
+    display: inline-flex;
+    align-items: center;
+}
+
+.field > input, .field > select, .field >text{
+    width: 100%;
+}
+
+.field > input[disabled], .field > select[disabled], .field > textarea[disabled]{
+    background-color: var(--beige);
+}
+
+.notification{
+    position: relative;
+    color: var(--white);
+    border-radius: 10px;
+    padding: .2rem;
+    margin-bottom: .2rem;
+}
+
+.notification.succes{
+    background-color: var(--success);
+}
+
+.notification.error{
+    background-color: var(--error);
+}
+
+.notification.close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    fill: var(--white);
+}
+
+.paginator{
+    list-style-type: none;
+}
+
+.paginator > li {
+    border: 1px solid var(--white);
+    padding: .5rem;
+    background-color: var(--beige);
+}
+
+.paginator > li > a{
+    text-decoration: none;
+    color: var(--white);
+}
+
+.paginator > li > a:hover{
+    filter: brightness(110%);
+}

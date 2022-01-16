@@ -14,20 +14,21 @@
 <link rel="apple-touch-startup-image" href="Images/LOGO.jpg">
 <meta name="theme-color" content="#808080">
 <!--<link href="${context}/css/reset.css" rel="stylesheet">-->
-<link href="${context}/css/bodyStyle.css" rel="stylesheet">
-<link href="${context}/css/crm.css" rel="stylesheet">
-<link href="${context}/css/dashboard.css" rel="stylesheet">
-<link href="${context}/css/libraryCustomer.css" rel="stylesheet">
+<link href="${context}/css_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.css" rel="stylesheet">
+<!--<link href="/css/crm.css" rel="stylesheet">
+<link href="/css/dashboard.css" rel="stylesheet">
+<link href="/css/libraryCustomer.css" rel="stylesheet">-->
 <c:if test="${not empty param.style}">
     <c:forTokens items="${param.styles}" delims="," var="style">
-        <link rel="stylesheet" href="${context}/css/${style}.css">
+        <link rel="stylesheet" href="${context}/css_bootstrap/bootstrap-5.1.3-dist/css/${style}.css">
     </c:forTokens>
 </c:if>
-
+<!--
 <script src="${context}/javascript/library.js" defer></script>
-
+-->
 <c:if test="${not empty param.script}">
     <c:forTokens items="${param.script}" delims="," var="script">
         <script src="${context}/javascript/${script}.js" defer></script>
     </c:forTokens>
 </c:if>
+<script src="https://kit.fontawesome.com/62da24ef45.js" crossorigin="anonymous"></script>

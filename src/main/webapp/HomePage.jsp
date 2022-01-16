@@ -3,7 +3,7 @@
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
         <jsp:param name="title" value="HomePage"/>
-        <jsp:param name="style" value="reset,bodyStyle"/>
+        <jsp:param name="style" value="bootstrap"/>
         <jsp:param name="script" value=""/>
     </jsp:include>
     <!-- <meta name="viewport" content="width=device-width, user-scalable=no">-->
@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
+<body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 
 <header>
     <%@include file="WEB-INF/views/partials/headerCustomer.jsp"%>
@@ -60,8 +60,9 @@
         <span class="carousel-control-next-icon"></span>
     </button>
 </div>
-
-<div class="row" style="width: 100%">
+<br>
+<br>
+<div class="row" style="width: 100%;">
     <div class="col-sm-4" style="text-align: center">
         <h3>RECENSIONE PIU' COMMENTATA</h3>
         <div class="container mt-3">
