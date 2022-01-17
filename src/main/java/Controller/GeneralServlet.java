@@ -11,19 +11,27 @@ public class GeneralServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String logoToHome = request.getParameter("logoToHome");
-            if(logoToHome != null) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/HomePage.jsp");
-                dispatcher.forward(request, response);
-            }
+       String features = request.getParameter("features");
+       String aboutUs = request.getParameter("aboutUs");
+       if(features!= null){
+           RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/features.jsp");
+           dispatcher.forward(request,response);
+       }
+       if(aboutUs!= null) {
+           RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/aboutUs.jsp");
+           dispatcher.forward(request, response);
+       }
+
+
+
+
+
                 /*authorize(request.getSession(false));
-                case "/goHome":
                 case "/piattaforma":
                 case "/recensione":
                 case "/videogioco":
                 case "/extraPage":
                 case "/ricerca":*/
-
             }
 
 
@@ -36,7 +44,6 @@ public class GeneralServlet extends HttpServlet {
                         case "/create":
                             break;
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -1,17 +1,19 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="General" >Logo</a>
+        <a class="navbar-brand" href="HomePage.jsp" >Logo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon" id="logoToHome" name="logoToHome"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item dropdown dropdown-hover" id="piattaforma">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" >Piattaforma</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">PC</a></li>
-                        <li><a class="dropdown-item" href="#">PlayStation</a></li>
-                        <li><a class="dropdown-item" href="#">Xbox</a></li>
+                        <form action="${pageContext.request.contextPath}/General" method="get">
+                            <li><button class="dropdown-item" id="PC" name="PC">PC</button></li>
+                            <li><button class="dropdown-item" id="Playstation" name="Playstation">Playstation</button></li>
+                            <li><button class="dropdown-item" id="Xbox" name="Xbox">Xbox</button></li>
+                        </form>
                     </ul>
                 </li>
                 <li class="nav-item">
