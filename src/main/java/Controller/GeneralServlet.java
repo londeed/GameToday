@@ -1,27 +1,45 @@
 package Controller;
 
 import java.io.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet(name = "GeneralServlet", value = "/General")
 public class GeneralServlet extends HttpServlet {
-    private String message;
 
-    public void init() {
-        message = "Hello World!";
-    }
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String logoToHome = request.getParameter("logoToHome");
+            if(logoToHome != null) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/HomePage.jsp");
+                dispatcher.forward(request, response);
+            }
+                /*authorize(request.getSession(false));
+                case "/goHome":
+                case "/piattaforma":
+                case "/recensione":
+                case "/videogioco":
+                case "/extraPage":
+                case "/ricerca":*/
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
+            }
 
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
-    }
 
-    public void destroy() {
-    }
+  /*  @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+            {
+                try {
+                    String path = getPath(request);
+                    switch (path) {
+                        case "/create":
+                            break;
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }*/
 }

@@ -1,0 +1,1 @@
+$('#piattaforma').on('hover', function (e) {e.preventDefault()$(this).tab('show')})
