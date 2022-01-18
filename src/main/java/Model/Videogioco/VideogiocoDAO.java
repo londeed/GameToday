@@ -74,7 +74,7 @@ public class VideogiocoDAO {
                 ResultSet rs= ps.executeQuery();
                 List<Videogioco> videogioco=new ArrayList<>();
                 VideogiocoExtraction videogiocoExtraction=new VideogiocoExtraction();
-                if(rs.next()){
+                while(rs.next()){
                     videogioco.add(videogiocoExtraction.mapping(rs));
                 }
                 rs.close();
