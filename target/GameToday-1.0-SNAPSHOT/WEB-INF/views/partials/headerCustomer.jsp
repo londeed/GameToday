@@ -9,10 +9,10 @@
                 <li class="nav-item dropdown dropdown-hover" id="piattaforma">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" >Piattaforma</a>
                     <ul class="dropdown-menu">
-                        <form action="${pageContext.request.contextPath}/General" method="get">
-                            <li><button class="dropdown-item" id="PC" name="PC">PC</button></li>
-                            <li><button class="dropdown-item" id="Playstation" name="Playstation">Playstation</button></li>
-                            <li><button class="dropdown-item" id="Xbox" name="Xbox">Xbox</button></li>
+                        <form action="${pageContext.request.contextPath}/Catalogo" method="get">
+                            <li><button class="dropdown-item" id="PC" name="piattaforma" value="PC">PC</button></li>
+                            <li><button class="dropdown-item" id="Playstation" name="piattaforma" value="Playstation 4">Playstation</button></li>
+                            <li><button class="dropdown-item" id="Xbox" name="piattaforma" value="Xbox One">Xbox</button></li>
                         </form>
                     </ul>
                 </li>

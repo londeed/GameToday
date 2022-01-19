@@ -19,7 +19,6 @@ public class CatalogoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String inputRicerca = request.getParameter("piattaforma");
-            System.out.println(inputRicerca);
             switch (inputRicerca) {
                 case "PC":
                     List<Videogioco> videogiocoList = new ArrayList<Videogioco>();
@@ -33,9 +32,6 @@ public class CatalogoServlet extends HttpServlet {
                     List<Videogioco> videogiocoList1 = new ArrayList<Videogioco>();
                     VideogiocoDAO videogiocoDAO1 = new VideogiocoDAO();
                     videogiocoList1 = videogiocoDAO1.doRetriveByPiattaforma(inputRicerca);
-                    for(Videogioco V : videogiocoList1){
-                        System.out.println(V.getTitolo());
-                    }
                     request.setAttribute("lista", videogiocoList1);
                     RequestDispatcher dispatcher1 = request.getRequestDispatcher("/WEB-INF/views/catalogo/catalogo.jsp");
                     dispatcher1.forward(request, response);
@@ -58,3 +54,4 @@ public class CatalogoServlet extends HttpServlet {
         }
     }
 }
+
