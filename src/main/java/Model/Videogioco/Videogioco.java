@@ -75,4 +75,5 @@ public class Videogioco {
     public void setTipologia(String tipologia) {
         this.tipologia = tipologia;
     }
+
 }
