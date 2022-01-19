@@ -1,6 +1,8 @@
 package Model.Recensione;
 
 import Model.Connessione.ConPool;
+import Model.Videogioco.Videogioco;
+import Model.Videogioco.VideogiocoExtraction;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -98,6 +100,25 @@ public class RecensioneDAO {
                     size = rs.getInt(1);
                 }
                 return  size;
+            }
+        }
+    }
+
+    public List<Recensione> doRetrieveAllByDataPubblicazione() throws SQLException{
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM recensione ORDER BY RData desc")){
+                ResultSet rs= ps.executeQuery();
+                List<Recensione> recensione = new ArrayList<>();
+                RecensioneExtraction recensioneExtraction = new RecensioneExtraction();
+                while(rs.next())
+                {
+                    recensione.add(recensioneExtraction.mapping(rs));
+                }
+                rs.close();
+                return recensione;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
             }
         }
     }

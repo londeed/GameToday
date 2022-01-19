@@ -17,10 +17,14 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Videogioco</a>
+                    <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
+                        <button class="nav-link" style="background-color: transparent" id="videogioco" name="videogioco" value="videogioco">Videogiochi</button>
+                    </form>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Recensioni</a>
+                    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
+                         <button class="nav-link" style="background-color: transparent" id="recensione" name="recensione" value="recensione">Recensioni</button>
+                    </form>
                 </li>
             </ul>
             <div class="nav-item dropdown">

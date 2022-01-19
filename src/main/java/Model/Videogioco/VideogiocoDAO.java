@@ -3,6 +3,8 @@ package Model.Videogioco;
 import Model.Connessione.ConPool;
 import Model.Recensione.Recensione;
 import Model.Recensione.RecensioneExtraction;
+import Model.Utente.Utente;
+import Model.Utente.UtenteExtraction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -140,6 +142,26 @@ public class VideogiocoDAO {
                     size = rs.getInt(1);
                 }
                 return  size;
+            }
+        }
+    }
+
+    public List<Videogioco> doRetrieveAllByTitolo() throws SQLException
+    {
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM videogioco ORDER BY Titolo")){
+                ResultSet rs= ps.executeQuery();
+                List<Videogioco> videogioco=new ArrayList<>();
+                VideogiocoExtraction videogiocoExtraction=new VideogiocoExtraction();
+                while(rs.next())
+                {
+                    videogioco.add(videogiocoExtraction.mapping(rs));
+                }
+                rs.close();
+                return videogioco;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
             }
         }
     }
