@@ -23,17 +23,17 @@
     <%@include file="../partials/headerCustomer.jsp"%>
 </header>
 
-<div class="album py-5 bg-light" style="background-color: #141414">
-    <div class="container mb-0">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<div class="album py-5" style="background-color: #141414">
+    <div class="container" style="background-color: #141414">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="background-color: #141414">
             <% for(Videogioco generale: videogioco){
                 if (generale != null ){
                     if (generale.getTitolo().contains(":")) {
                         String[] parts = generale.getTitolo().split(Pattern.quote(":"));
             %>
-            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
-                <button>
-                    <div class="col">
+            <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
+                <button style="padding: 0px">
+                    <div class="col" style="width: 350px;height: 299px">
                         <div class="card shadow-sm">
                             <img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
                             <rect width="100%" height="100%" fill="#55595c"></rect>
@@ -45,14 +45,14 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">
+                    <input type="hidden" id="dettaglioVideogioco" name="dettaglioVideogioco" value="<%=generale.getTitolo()%>">
                 </button>
             </form>
             <%   }else{
             %>
-            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
-                <button>
-                    <div class="col">
+            <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
+                <button style="padding: 0px">
+                    <div class="col" style="width: 350px;height: 299px">
                         <div class="card shadow-sm">
                             <img src="./img/<%=generale.getTitolo()%>/<%=generale.getTitolo()%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
                             <rect width="100%" height="100%" fill="#55595c"></rect>
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">
+                    <input type="hidden" id="dettaglioVideogioco1" name="dettaglioVideogioco" value="<%=generale.getTitolo()%>">
                 </button>
             </form>
             <%}%>

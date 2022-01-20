@@ -17,23 +17,22 @@
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 <%
     List<Recensione> recensione = (List<Recensione>) request.getAttribute("recensione");
-    String recensioneS= (String) request.getSession().getAttribute("recensioneS");
 %>
 
 <header>
     <%@include file="../partials/headerCustomer.jsp"%>
 </header>
 
-<div class="album py-5 bg-light" style="background-color: #141414">
-    <div class="container mb-0">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<div class="album py-5" style="background-color: #141414">
+    <div class="container" style="background-color: #141414">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="background-color: #141414">
             <% for(Recensione generale: recensione){
                 if (generale != null ){
                     if (generale.getTitolo().contains(":")) {
                         String[] parts = generale.getTitolo().split(Pattern.quote(":"));
             %>
-            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
-                <button>
+            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get" style="background-color: #141414">
+                <button style="padding: 0px">
             <div class="col">
                 <div class="card shadow-sm">
                     <img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
@@ -47,15 +46,12 @@
                 </div>
             </div>
                     <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">
-                    <%recensioneS=generale.getTitolo();
-                        request.getSession().setAttribute("recensioneS", recensioneS);
-                    %>
                 </button>
             </form>
             <%   }else{
             %>
-            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
-                <button>
+            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get" style="background-color: #141414">
+                <button style="padding: 0px">
                     <div class="col">
                         <div class="card shadow-sm">
                             <img src="./img/<%=generale.getTitolo()%>/<%=generale.getTitolo()%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
@@ -68,10 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">
-                    <%recensioneS=generale.getTitolo();
-                    request.getSession().setAttribute("recensioneS", recensioneS);
-                    %>
+                    <input type="hidden" id="dettaglioRecensione1" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">
                 </button>
             </form>
             <%}%>

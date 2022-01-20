@@ -18,12 +18,12 @@
                 </li>
                 <li class="nav-item">
                     <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
-                        <button class="nav-link" style="background-color: transparent" id="videogioco" name="videogioco" value="videogioco">Videogiochi</button>
+                        <button class="nav-link" style="background-color: transparent;border: 0px" id="videogioco" name="videogioco" value="videogioco">Videogiochi</button>
                     </form>
                 </li>
                 <li class="nav-item">
                     <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
-                         <button class="nav-link" style="background-color: transparent" id="recensione" name="recensione" value="recensione">Recensioni</button>
+                         <button class="nav-link" style="background-color: transparent;border: 0px" id="recensione" name="recensione" value="recensione">Recensioni</button>
                     </form>
                 </li>
             </ul>
