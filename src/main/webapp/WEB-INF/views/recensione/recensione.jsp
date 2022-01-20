@@ -15,7 +15,7 @@
 </head>
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
     <%
-    Recensione recensione = (Recensione) request.getAttribute("recensione");
+    Recensione recensione = (Recensione) request.getAttribute("dettaglioRecensione");
 %>
 
 <header>

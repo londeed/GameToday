@@ -26,17 +26,18 @@ public class RecensioneServlet extends HttpServlet {
             if (recensione == null) {
                 while (count <= recuperaRecensioni.size()) {
                     String s = recuperaRecensioni.get(count).getTitolo();
-                    String dettaglioRecensione = request.getParameter(s);
-                    System.out.println(dettaglioRecensione);
+                    String dettaglioRecensione = request.getParameter("dettaglioRecensione");
                     if (dettaglioRecensione != null) {
                         Recensione recensione1 = new Recensione();
-                        recensione1 = recensioneDAO.doRetrieveByCodice(dettaglioRecensione);
+                        recensione1 = recensioneDAO.doRetrieveByTitolo(dettaglioRecensione);
                         request.setAttribute("dettaglioRecensione", recensione1);
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/recensione/recensione.jsp");
                         dispatcher.forward(request, response);
                         break;
                     }
                     count++;
+
+
                 }
             } else {
                 List<Recensione> recensioneList = new ArrayList<>();

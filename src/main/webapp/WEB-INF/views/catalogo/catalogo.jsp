@@ -40,10 +40,13 @@
                             <p class="card-text"><%=generale.getTitolo()%></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">Info</button>
+                                    </form>
+                                    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">Recensione</button>
+                                    </form>
                                 </div>
-                                <small class="text-muted">9 mins</small>
                             </div>
                         </div>
                     </div>
@@ -60,10 +63,15 @@
                             <p class="card-text"><%=generale.getTitolo()%></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Info</button>
+                                        <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">
+                                    </form>
+                                    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Recensione</button>
+                                        <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">
+                                    </form>
                                 </div>
-                                <small class="text-muted">9 mins</small>
                             </div>
                         </div>
                     </div>

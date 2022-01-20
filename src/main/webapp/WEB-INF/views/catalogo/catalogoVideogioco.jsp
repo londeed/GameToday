@@ -23,55 +23,53 @@
     <%@include file="../partials/headerCustomer.jsp"%>
 </header>
 
-<div class="album py-5 bg-light">
+<div class="album py-5 bg-light" style="background-color: #141414">
     <div class="container mb-0">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-<% for(Videogioco generale: videogioco){
-    if (generale != null ){
-        if (generale.getTitolo().contains(":")) {
-            String[] parts = generale.getTitolo().split(Pattern.quote(":"));
-%>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#55595c"></rect>
-                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                    </img>
-                    <div class="card-body">
-                        <p class="card-text"><%=generale.getTitolo()%></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            <% for(Videogioco generale: videogioco){
+                if (generale != null ){
+                    if (generale.getTitolo().contains(":")) {
+                        String[] parts = generale.getTitolo().split(Pattern.quote(":"));
+            %>
+            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
+                <button>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#55595c"></rect>
+                            </img>
+                            <div class="card-body" style="background-color: turquoise">
+                                <p class="card-text" style="color: black"><%=generale.getTitolo()%></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                </div>
                             </div>
-                            <small class="text-muted">9 mins</small>
                         </div>
                     </div>
-                </div>
-            </div>
-<%   }else{
-%>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="./img/<%=generale.getTitolo()%>/<%=generale.getTitolo()%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#55595c"></rect>
-                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                    </img>
-                    <div class="card-body">
-                        <p class="card-text"><%=generale.getTitolo()%></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">
+                </button>
+            </form>
+            <%   }else{
+            %>
+            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
+                <button>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="./img/<%=generale.getTitolo()%>/<%=generale.getTitolo()%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#55595c"></rect>
+                            </img>
+                            <div class="card-body" style="background-color: turquoise">
+                                <p class="card-text" style="color: black"><%=generale.getTitolo()%></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                </div>
                             </div>
-                            <small class="text-muted">9 mins</small>
                         </div>
                     </div>
-                </div>
-            </div>
-<%}%>
-<%}%>
-<%}%>
+                    <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=generale.getTitolo()%>">
+                </button>
+            </form>
+            <%}%>
+            <%}%>
+            <%}%>
         </div>
     </div>
 </div>

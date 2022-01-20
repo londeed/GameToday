@@ -51,6 +51,24 @@ public class VideogiocoDAO {
         }
     }
 
+    public List<Videogioco> doRetriveAll() throws SQLException{
+        try(Connection connection= ConPool.getConnection()) {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM videogioco")){
+                ResultSet rs= ps.executeQuery();
+                List<Videogioco> videogioco=new ArrayList<>();
+                VideogiocoExtraction videogiocoExtraction=new VideogiocoExtraction();
+                while (rs.next()){
+                    videogioco.add(videogiocoExtraction.mapping(rs));
+                }
+                rs.close();
+                return videogioco;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
     public List<Videogioco> doRetriveByCasaProduttrice(String casaProduttrice) throws SQLException{
         try(Connection connection= ConPool.getConnection()) {
             try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM videogioco WHERE CasaProduttrice = ?")){

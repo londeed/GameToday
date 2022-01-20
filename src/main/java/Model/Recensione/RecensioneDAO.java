@@ -29,6 +29,25 @@ public class RecensioneDAO {
          }
      }
 
+    public Recensione doRetrieveByTitolo(String titolo) throws SQLException{
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM recensione WHERE Titolo = ?")){
+                ps.setString(1, titolo);
+                ResultSet rs= ps.executeQuery();
+                Recensione recensione=new Recensione();
+                RecensioneExtraction recensioneExtraction=new RecensioneExtraction();
+                if(rs.next()){
+                    recensione = recensioneExtraction.mapping(rs);
+                }
+                rs.close();
+                return recensione;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     public List<Recensione> doRetrieveByAutore(String AuNickname) throws SQLException{
         try(Connection connection= ConPool.getConnection()) {
             try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM recensione WHERE AuNickname = ?")){

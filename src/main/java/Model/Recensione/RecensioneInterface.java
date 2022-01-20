@@ -9,6 +9,7 @@ import java.util.List;
 public interface RecensioneInterface
 {
     Recensione doRetrieveByCodice(int codice) throws SQLException;
+    Recensione doRetrieveByTitolo(String titolo) throws SQLException;
     List<Recensione> doRetrieveByAutore(String autore) throws SQLException;
     Boolean insertRecensione(Recensione recensione) throws SQLException;
     Boolean updateRecensione(Recensione recensione, int codice) throws SQLException;
