@@ -21,17 +21,87 @@
 <header>
     <%@include file="../partials/headerCustomer.jsp"%>
 </header>
-    <h1><%=recensione.getTitolo()%></h1>
+    <h1 style="text-align: center; padding: 10px"><%=recensione.getTitolo()%></h1>
     <% if (recensione != null ){
             if (recensione.getTitolo().contains(":")) {
                 String[] parts = recensione.getTitolo().split(Pattern.quote(":"));
     %>
+    <div class="card shadow-sm mx-auto" style="width: 50%; height: 35%">
     <img class="img-responsive" src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg" alt="immagineDivertente">
-    <%   }else{
+    </div>
+            <%   }else{
     %>
+    <div class="card shadow-sm mx-auto" style="width: 50%; height: 35%" >
     <img class="img-responsive" src="./img/<%=recensione.getTitolo()%>/<%=recensione.getTitolo()%>-1.jpg" alt="immagineDivertente">
+    </div>
     <%}%>
     <%}%>
+    <div class="container" style="padding: 30px 50px">
+        <p style="text-align: center"><%=recensione.getTesto()%></p>
+        <blockquote class="blockquote-footer">
+            <p><%=recensione.getAuNickname()%></p>
+        </blockquote>
+    </div>
+    <!--<div class="container mx-auto" style="padding: 30px 50px">
+        <div id="carouselExampleIndicators" class="carousel slide mx-auto" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./img/download1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/download.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/download3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>-->
+
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./img/download1.jpg" alt="Los Angeles" class="d-block" style="height: 200px; width:100%">
+            </div>
+            <div class="carousel-item">
+                <img src="./img/download.jpg" alt="Chicago" class="d-block" style="height: 200px; width:100%">
+            </div>
+            <div class="carousel-item">
+                <img src="./img/download3.jpg" alt="New York" class="d-block" style="height: 200px; width:100%">
+            </div>
+        </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
     <footer>
         <%@include file="../partials/footerCustomer.jsp"%>
     </footer>

@@ -33,7 +33,7 @@
             %>
             <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
                 <button style="padding: 0px">
-                    <div class="col" style="width: 350px;height: 299px">
+                    <div class="col">
                         <div class="card shadow-sm">
                             <img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
                             <rect width="100%" height="100%" fill="#55595c"></rect>
@@ -52,7 +52,7 @@
             %>
             <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
                 <button style="padding: 0px">
-                    <div class="col" style="width: 350px;height: 299px">
+                    <div class="col">
                         <div class="card shadow-sm">
                             <img src="./img/<%=generale.getTitolo()%>/<%=generale.getTitolo()%>-1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
                             <rect width="100%" height="100%" fill="#55595c"></rect>

@@ -23,32 +23,37 @@
     <%@include file="../partials/headerCustomer.jsp"%>
 </header>
 <div class="row">
-    <div class="col">
+    <div class="g col-6" style="padding-top: 50px; padding-left: 50px">
 <% if (videogioco != null ){
     if (videogioco.getTitolo().contains(":")) {
         String[] parts = videogioco.getTitolo().split(Pattern.quote(":"));
 %>
-        <div class="card shadow-sm" style="padding-top: 50px">
+        <div class="card shadow-sm">
 <img class="img-responsive" src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg"  alt="immagineDivertente">
         </div>
 <%   }else{
 %>
-        <div class="card shadow-sm" style="padding-top: 50px">
-<img class="img-responsive" src="./img/<%=videogioco.getTitolo()%>/<%=videogioco.getTitolo()%>-1.jpg"  alt="immagineDivertente">
+        <div class="card shadow-sm">
+<img class="img-responsive" src="./img/<%=videogioco.getTitolo()%>/<%=videogioco.getTitolo()%>-1.jpg" alt="immagineDivertente">
         </div>
             <%}%>
 <%}%>
     </div>
-    <div class="col">
+    <div class="col" style="padding-top: 50px">
 <ul>
     <h1><%=videogioco.getTitolo()%></h1>
-    <p><%=videogioco.getCasaProduttrice()%></p>
-    <p><%=videogioco.getPegi()%></p>
-    <p><%=videogioco.getTipologia()%></p>
-    <p><%=videogioco.getTotaleVoti()%></p>
-    <p><%=videogioco.getPiattaforma()%></p>
-    <p><%=videogioco.getDataPubblicazione()%></p>
+    <p>Casa Produttrice: <%=videogioco.getCasaProduttrice()%></p>
+    <p>Pegi: <%=videogioco.getPegi()%></p>
+    <p>Tipologia: <%=videogioco.getTipologia()%></p>
+    <p>Totale voti: <%=videogioco.getTotaleVoti()%></p>
+    <p>Piattaforma: <%=videogioco.getPiattaforma()%></p>
+    <p>Data Pubblicazione: <%=videogioco.getDataPubblicazione()%></p>
 </ul>
+        <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
+            <button class="btn btn-link" style="border: 0px">Vai alla recensione
+                <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=videogioco.getTitolo()%>">
+            </button>
+        </form>
     </div>
 </div>
 <footer>

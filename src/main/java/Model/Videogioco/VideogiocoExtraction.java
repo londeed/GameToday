@@ -16,6 +16,7 @@ public class VideogiocoExtraction {
         videogioco.setMediaValutazioni(rs.getDouble(5));
         videogioco.setPiattaforma(rs.getString(6));
         videogioco.setDataPubblicazione(rs.getDate(7));
+        videogioco.setTipologia(rs.getString(8));
 
         return videogioco;
     }
