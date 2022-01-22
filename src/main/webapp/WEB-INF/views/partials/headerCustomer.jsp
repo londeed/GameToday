@@ -38,11 +38,10 @@
                     <li><a class="dropdown-item" href="#">A third link</a></li>
                 </ul>
             </div>
-            <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search">
-                <button class="btn" style="background-color: turquoise" type="button">Search</button>
+            <form class="d-flex" action="${pageContext.request.contextPath}/ResearchServlet" method="get">
+                <input class="form-control me-2" type="text" placeholder="Search" id="result" name="result">
+                <button class="btn" style="background-color: turquoise" type="submit">Search</button>
             </form>
-
             <!---   <a class="navbar-brand" href="#">
               //     <img src="img_avatar1.png" alt="Logo" style="width:40px;" class="rounded-pill">
                </a>

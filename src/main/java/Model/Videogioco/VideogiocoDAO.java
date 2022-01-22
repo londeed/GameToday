@@ -183,6 +183,30 @@ public class VideogiocoDAO {
             }
         }
     }
+
+
+    public List<Videogioco> doRetrieveAllByTitoloSearch(String s) throws SQLException
+    {
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM videogioco WHERE Titolo LIKE ?")){
+                ps.setString(1, s);
+                ResultSet rs= ps.executeQuery();
+                List<Videogioco> videogioco=new ArrayList<>();
+                VideogiocoExtraction videogiocoExtraction=new VideogiocoExtraction();
+                while(rs.next())
+                {
+                    videogioco.add(videogiocoExtraction.mapping(rs));
+                }
+                rs.close();
+                return videogioco;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
 }
 
 

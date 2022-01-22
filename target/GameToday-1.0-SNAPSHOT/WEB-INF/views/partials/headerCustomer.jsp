@@ -18,12 +18,12 @@
                 </li>
                 <li class="nav-item">
                     <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
-                        <button class="nav-link" style="background-color: transparent" id="videogioco" name="videogioco" value="videogioco">Videogiochi</button>
+                        <button class="nav-link" style="background-color: transparent;border: 0px" id="videogioco" name="videogioco" value="videogioco">Videogiochi</button>
                     </form>
                 </li>
                 <li class="nav-item">
                     <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
-                         <button class="nav-link" style="background-color: transparent" id="recensione" name="recensione" value="recensione">Recensioni</button>
+                         <button class="nav-link" style="background-color: transparent;border: 0px" id="recensione" name="recensione" value="recensione">Recensioni</button>
                     </form>
                 </li>
             </ul>
@@ -38,11 +38,10 @@
                     <li><a class="dropdown-item" href="#">A third link</a></li>
                 </ul>
             </div>
-            <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search">
-                <button class="btn" style="background-color: turquoise" type="button">Search</button>
+            <form class="d-flex" action="${pageContext.request.contextPath}/ResearchServlet" method="get">
+                <input class="form-control me-2" type="text" placeholder="Search" id="ciao" name="ciao">
+                <button class="btn" style="background-color: turquoise" type="submit">Search</button>
             </form>
-
             <!---   <a class="navbar-brand" href="#">
               //     <img src="img_avatar1.png" alt="Logo" style="width:40px;" class="rounded-pill">
                </a>
