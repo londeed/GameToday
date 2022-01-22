@@ -23,9 +23,9 @@
         <link rel="stylesheet" href="${context}/css_bootstrap/bootstrap-5.1.3-dist/css/${style}.css">
     </c:forTokens>
 </c:if>
-<!--
-<script src="${context}/javascript/library.js" defer></script>
--->
+
+<script src="${context}/javascript/aggiungiCommento.js" defer></script>
+
 <c:if test="${not empty param.script}">
     <c:forTokens items="${param.script}" delims="," var="script">
         <script src="${context}/javascript/${script}.js" defer></script>
