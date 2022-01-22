@@ -9,14 +9,16 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 @WebServlet(name = "CommentoServlet", value = "/CommentoServlet")
 public class CommentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //try {
+        try {
          //   String path = getPath(request);
            // switch (path) {
              //   case "/aggiungi":
@@ -33,13 +35,33 @@ public class CommentoServlet extends HttpServlet {
         CommentoDAO commentoDao = new CommentoDAO();
         commento.setLike(0);
         commento.setDislike(0);
+        commento.setCodice(codici.get(0));
+        commento.setTesto(codici.get(1));
         GeneratoreCodici gc = new GeneratoreCodici();
         String s = gc.GeneraCodice(5,true,true,"#");
         System.out.println("codice commento:"+s);
+
+        List<String> codCommenti = new ArrayList<>();
+        codCommenti = commentoDao.doRetrieveAllCodiciCommenti();
+        int count = 0;
+            for (String cod:codCommenti) {
+                if(!s.equals(cod)) {
+                    count ++;
+                }
+            }
+            System.out.println(count);
+        if (codCommenti.size() < count) {
+            commento.setComCodice(s);
+        }
+
+        commentoDao.insertCommento(commento);
                          //   break;
+        } catch (SQLException ex){
+            log(ex.getMessage());
+        }
+
 
             }
-            // like, dislike e commentoCod bisogna crearli sul momento.
             // aggiungere anche commentoCod e il nickname dell'utente/autore su interazioneAutore e interazioneUtente
 
 

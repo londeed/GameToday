@@ -3,8 +3,12 @@ package Model.Commento;
 import Model.Autore.Autore;
 import Model.Autore.AutoreExtraction;
 import Model.Connessione.ConPool;
+import Model.Recensione.Recensione;
+import Model.Recensione.RecensioneExtraction;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CommentoDAO
 {
@@ -82,6 +86,25 @@ public class CommentoDAO
                     size = rs.getInt(1);
                 }
                 return  size;
+            }
+        }
+    }
+
+    public List<String> doRetrieveAllCodiciCommenti() throws SQLException
+    {
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT CommentoCod FROM commento")){
+                ResultSet rs= ps.executeQuery();
+                List<String> codiceCom = new ArrayList<>();
+                while(rs.next())
+                {
+                    codiceCom.add(rs.getString(1));
+                }
+                rs.close();
+                return codiceCom;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
             }
         }
     }
