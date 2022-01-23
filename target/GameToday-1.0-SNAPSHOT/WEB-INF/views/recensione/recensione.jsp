@@ -1,5 +1,7 @@
 <%@ page import="Model.Recensione.Recensione" %>
 <%@ page import="java.util.regex.Pattern" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Model.Commento.Commento" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -17,7 +19,8 @@
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
     <%
     Recensione recensione = (Recensione) request.getAttribute("dettaglioRecensione");
-%>
+    List<Commento> commentoList = (List<Commento>) request.getAttribute("commenti");
+    %>
 
 <header>
     <%@include file="../partials/headerCustomer.jsp"%>
@@ -74,7 +77,7 @@
         </button>
     </div>
 <div>
-    <div class="container" style="padding: 30px 50px ">
+    <div class="container" style="padding: 30px 50px">
       <h3><br><br>Sezione commenti:</h3><br>
         <div class="mb-3" style= "width:50%" >
              <label for="textarea" class="form-label">Scrivi ciò che pensi:</label>
@@ -82,6 +85,24 @@
              <button type="button" onclick="aggiungiCommento('<%= recensione.getCodice()%>')">Inserisci il commento</button>
          </div>
     </div>
+    <div id="commentoUtente">
+
+    </div>
+    <%for(Commento commento: commentoList) {%>
+    <div class="container" style="padding: 30px 50px">
+        <h4></h4>
+        <input class="form-control" type="text" value="<%=commento.getTesto()%>" aria-label="Disabled input example" disabled readonly>
+        <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right">
+            <div class="col-12">
+                <i class="far fa-thumbs-up"></i><p><%=commento.getLike()%></p>
+            </div>
+            <div class="col-12">
+                <i class="far fa-thumbs-down"></i><p><%=commento.getDislike()%></p>
+            </div>
+        </div>
+    </div>
+
+    <%}%>
 </div>
     <footer>
         <%@include file="../partials/footerCustomer.jsp"%>

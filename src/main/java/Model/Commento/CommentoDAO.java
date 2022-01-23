@@ -108,4 +108,25 @@ public class CommentoDAO
             }
         }
     }
+
+    public List<Commento> doRetrieveAllCommentiByCodice(String codice) throws SQLException
+    {
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM commento WHERE Codice = ?")){
+                ps.setString(1, codice);
+                ResultSet rs= ps.executeQuery();
+                List<Commento> commentiList = new ArrayList<>();
+                CommentoExtraction commentoExtraction = new CommentoExtraction();
+                while(rs.next())
+                {
+                    commentiList.add(commentoExtraction.mapping(rs));
+                }
+                rs.close();
+                return commentiList;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

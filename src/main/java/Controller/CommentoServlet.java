@@ -3,6 +3,9 @@ package Controller;
 import Model.Commento.Commento;
 import Model.Commento.CommentoDAO;
 import Model.Connessione.GeneratoreCodici;
+import Model.Recensione.Recensione;
+import Model.Recensione.RecensioneDAO;
+import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import javax.servlet.*;
@@ -35,8 +38,8 @@ public class CommentoServlet extends HttpServlet {
         CommentoDAO commentoDao = new CommentoDAO();
         commento.setLike(0);
         commento.setDislike(0);
-        commento.setCodice(codici.get(0));
-        commento.setTesto(codici.get(1));
+        commento.setCodice(codici.get(1));
+        commento.setTesto(codici.get(0));
         GeneratoreCodici gc = new GeneratoreCodici();
         String s = gc.GeneraCodice(5,true,true,"#");
         System.out.println("codice commento:"+s);
@@ -44,17 +47,44 @@ public class CommentoServlet extends HttpServlet {
         List<String> codCommenti = new ArrayList<>();
         codCommenti = commentoDao.doRetrieveAllCodiciCommenti();
         int count = 0;
+        Boolean flag = false;
+        while (!flag) {
             for (String cod:codCommenti) {
                 if(!s.equals(cod)) {
                     count ++;
                 }
             }
-            System.out.println(count);
-        if (codCommenti.size() < count) {
-            commento.setComCodice(s);
+            if (codCommenti.size() <= count) {
+                commento.setComCodice(s);
+                flag = true;
+            } else {
+                s = gc.GeneraCodice(5,true,true,"#");
+                count = 0;
+            }
         }
-
         commentoDao.insertCommento(commento);
+            /*Recensione recensione1 = new Recensione();
+            RecensioneDAO recensioneDAO = new RecensioneDAO();
+            recensione1 = recensioneDAO.doRetrieveByCodice(codici.get(1));
+            List<Commento> commentoList = new ArrayList<>();
+            CommentoDAO commentoDAO = new CommentoDAO();
+            commentoList = commentoDAO.doRetrieveAllCommentiByCodice(recensione1.getCodice());
+            request.setAttribute("dettaglioRecensione", recensione1);
+            request.setAttribute("commenti", commentoList);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/recensione/recensione.jsp");
+            dispatcher.forward(request, response);*/
+            String l = ""+commento.getLike();
+            String d = ""+commento.getDislike();
+            List<String> list = new ArrayList<>();
+            list.add(commento.getTesto());
+            list.add(l);
+            list.add(d);
+            /*String prova = "{\"testo\":\""+list.get(0)+"\",\"like\":\""+list.get(1)+"\",\"dislike\":\""+list.get(2)+"\"}";
+            JSONObject g = new JSONObject(prova);*/
+            String json = new Gson().toJson(list);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json);
                          //   break;
         } catch (SQLException ex){
             log(ex.getMessage());

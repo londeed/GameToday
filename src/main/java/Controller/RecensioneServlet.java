@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.Commento.Commento;
+import Model.Commento.CommentoDAO;
 import Model.Recensione.Recensione;
 import Model.Recensione.RecensioneDAO;
 import Model.Videogioco.Videogioco;
@@ -30,7 +32,11 @@ public class RecensioneServlet extends HttpServlet {
                     if (dettaglioRecensione != null) {
                         Recensione recensione1 = new Recensione();
                         recensione1 = recensioneDAO.doRetrieveByTitolo(dettaglioRecensione);
+                        List<Commento> commentoList = new ArrayList<>();
+                        CommentoDAO commentoDAO = new CommentoDAO();
+                        commentoList = commentoDAO.doRetrieveAllCommentiByCodice(recensione1.getCodice());
                         request.setAttribute("dettaglioRecensione", recensione1);
+                        request.setAttribute("commenti", commentoList);
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/recensione/recensione.jsp");
                         dispatcher.forward(request, response);
                         break;

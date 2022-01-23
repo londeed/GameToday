@@ -11,4 +11,5 @@ public interface CommentoInterface
     Boolean deleteCommento(String comCodice) throws SQLException;
     int countAll() throws SQLException;
     List<String> doRetrieveAllCodiciCommenti() throws SQLException;
+    List<Commento> doRetrieveAllCommentiByCodice(String codice) throws SQLException;
 }

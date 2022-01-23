@@ -11,6 +11,14 @@ function aggiungiCommento(codice){
         data:{ codici: JSON.stringify(codici)},
         success: function(response) {
             alert("Commento correttamente aggiunto!")
+            //$("#commentoUtente").html(response);
+            let gg = JSON.parse(response);
+            $.get("/CommentoServlet", function (gg) {
+                var $ul = $("<ul>").appendTo($("#commentoUtente"));
+                // $.each(gg,function (index,item){
+                $("<li>").text(gg).appendTo($ul);
+                //});
+            });
         },
         error: function(response) {
             alert('Commento non aggiunto!');
