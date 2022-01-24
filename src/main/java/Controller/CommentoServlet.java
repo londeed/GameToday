@@ -17,14 +17,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@WebServlet(name = "CommentoServlet", value = "/CommentoServlet")
-public class CommentoServlet extends HttpServlet {
+@WebServlet(name = "CommentoServlet", value = "/CommentoServlet/*")
+public class CommentoServlet extends Controllo {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String codiceRec = "";
         try {
-         //   String path = getPath(request);
-           // switch (path) {
-             //   case "/aggiungi":
+          String path = getPath(request);
+            switch (path) {
+               case "/aggiungi":
         JSONObject jObjecto = new JSONObject(request.getParameter("codici"));
         Iterator itero = jObjecto.keys(); //gets all the keys
         ArrayList<String> codici = new ArrayList<>();
@@ -63,6 +64,7 @@ public class CommentoServlet extends HttpServlet {
             }
         }
         commentoDao.insertCommento(commento);
+        codiceRec = commento.getComCodice();
             /*Recensione recensione1 = new Recensione();
             RecensioneDAO recensioneDAO = new RecensioneDAO();
             recensione1 = recensioneDAO.doRetrieveByCodice(codici.get(1));
@@ -73,19 +75,35 @@ public class CommentoServlet extends HttpServlet {
             request.setAttribute("commenti", commentoList);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/recensione/recensione.jsp");
             dispatcher.forward(request, response);*/
-            String l = ""+commento.getLike();
-            String d = ""+commento.getDislike();
-            List<String> list = new ArrayList<>();
-            list.add(commento.getTesto());
-            list.add(l);
-            list.add(d);
-            /*String prova = "{\"testo\":\""+list.get(0)+"\",\"like\":\""+list.get(1)+"\",\"dislike\":\""+list.get(2)+"\"}";
-            JSONObject g = new JSONObject(prova);*/
-            String json = new Gson().toJson(list);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(json);
-                         //   break;
+                   break;
+                case "/aggiungiCommento":
+                    CommentoDAO commentoDAO = new CommentoDAO();
+                    Commento commento1 = new Commento();
+                    commento1 = commentoDAO.doRetrieveByCodice(codiceRec);
+                    String l = "" + commento1.getLike();
+                    String d = "" + commento1.getDislike();
+                    /*List<String> list = new ArrayList<>();
+                    list.add(commento.getTesto());
+                    list.add(l);
+                    list.add(d);
+                    /*String prova = "{\"testo\":\""+list.get(0)+"\",\"like\":\""+list.get(1)+"\",\"dislike\":\""+list.get(2)+"\"}";
+                    JSONObject g = new JSONObject(prova);
+                    String json = new Gson().toJson(list);
+                    response.setContentType("application/json");
+                    response.setCharacterEncoding("UTF-8");
+                    response.getWriter().write(json);*/
+
+                    List<String> list = new ArrayList<>();
+                    list.add(commento1.getTesto());
+                    list.add(l);
+                    list.add(d);
+                    String json = new Gson().toJson(list);
+
+                    response.setContentType("application/json");
+                    response.setCharacterEncoding("UTF-8");
+                    response.getWriter().write(json);
+                    break;
+            }
         } catch (SQLException ex){
             log(ex.getMessage());
         }

@@ -82,17 +82,26 @@
         <div class="mb-3" style= "width:50%" >
              <label for="textarea" class="form-label">Scrivi ciò che pensi:</label>
              <textarea class="form-control" id="textarea" rows="3" maxlength="1500"></textarea><br>
-             <button type="button" onclick="aggiungiCommento('<%= recensione.getCodice()%>')">Inserisci il commento</button>
+             <button type="button" onclick="aggiungiCommento('<%= recensione.getCodice()%>');appariNuovoCommento('marioBros','0','0')" id="bottoneCommento">Inserisci il commento</button>
          </div>
     </div>
-    <div id="commentoUtente">
-
+    <div class="container" style="padding: 30px 50px" id="commentoUtente"style="color: turquoise">
+        <!--<h4 id="utnome"></h4>
+        <input class="form-control" type="text" id="utCommento" aria-label="Disabled input example" disabled readonly>
+        <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right">
+            <div class="col-12">
+                <i class="far fa-thumbs-up"></i><p id="utLike"></p>
+            </div>
+            <div class="col-12">
+                <i class="far fa-thumbs-down"></i><p id="utDislike"></p>
+            </div>
+        </div>-->
     </div>
     <%for(Commento commento: commentoList) {%>
     <div class="container" style="padding: 30px 50px">
         <h4></h4>
         <input class="form-control" type="text" value="<%=commento.getTesto()%>" aria-label="Disabled input example" disabled readonly>
-        <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right">
+        <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
             <div class="col-12">
                 <i class="far fa-thumbs-up"></i><p><%=commento.getLike()%></p>
             </div>
