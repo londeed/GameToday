@@ -40,26 +40,77 @@ function appariNuovoCommento(nome,like,dislike){
     document.querySelector('#utNome'+numero).innerHTML = nom;
     var input = $("<input class=\"form-control\" type=\"text\" id=\"utCommento\" aria-label=\"Disabled input example\" disabled readonly >").appendTo($("#commentoUtente"));
     document.querySelector('#utCommento').setAttribute("id","utCommento"+numero)
+    var commentoNumero = "utCommento"+numero;
     let testo  = $("#textarea").val();
     document.querySelector('#utCommento'+numero).setAttribute("value",""+testo)
     var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"float: right; padding-top: 10px\" id=\"div\" >").appendTo($("#commentoUtente"));
     document.querySelector('#div').setAttribute("id","div"+numero)
     var div2 = $("<div class=\"col-12\" id=\"div2\" >").appendTo($('#div'+numero));
     document.querySelector('#div2').setAttribute("id","div2"+numero)
-    var i = $("<i class=\"far fa-thumbs-up\" id=\"i\">").appendTo($('#div2'+numero));
+    var button1 = $("<button id=\"button1\" onclick='salvaInterazione(\"true\",\"UtCommento\"+numero)'>").appendTo($('#div2'+numero));
+    document.querySelector('#button1').setAttribute("id","button1"+numero)
+    var i = $("<i class=\"far fa-thumbs-up\" id=\"i\">").appendTo($('#button1'+numero));
     document.querySelector('#i').setAttribute("id","i"+numero)
     var p = $("<p id=\"utLike\">").appendTo($('#i'+numero));
     document.querySelector('#utLike').setAttribute("id","utLike"+numero)
     document.querySelector('#utLike'+numero).innerHTML = lik
     var div3 = $("<div class=\"col-12\" id=\"div3\" >").appendTo($('#div'+numero));
     document.querySelector('#div3').setAttribute("id","div3"+numero)
-    var i2 = $("<i class=\"far fa-thumbs-down\" id=\"i2\">").appendTo($('#div3'+numero));
+    var button2 = $("<button id=\"button2\" onclick='salvaInterazione(\"false\", \"UtCommento\"+numero)'>").appendTo($('#div3'+numero));
+    document.querySelector('#button2').setAttribute("id","button2"+numero)
+    var i2 = $("<i class=\"far fa-thumbs-down\" id=\"i2\">").appendTo($('#button2'+numero));
     document.querySelector('#i2').setAttribute("id","i2"+numero)
     var p2 = $("<p id=\"utDislike\">").appendTo($('#i2'+numero));
     document.querySelector('#utDislike').setAttribute("id","utDislike"+numero)
     document.querySelector('#utDislike'+numero).innerHTML = dislik
+    $.ajax({
+        type: "get",
+        url: "http://localhost:8080/GameToday_war/CommentoServlet/salva#Commenti",
+        contentType: "JSON", // NOT dataType!
+        data:{ commentoNumero: JSON.stringify(commentoNumero)},
+        success: function(response) {
+            alert("Salvataggio avvenuto correttamente!");
+        },
+        error: function(response) {
+            alert('Salvataggio non avvenuto!');
+        }
+    });
 }
 
+function salvaInterazione(valore,numeroCommento){
+    alert("i topi non avevano capone")
+    var v = valore;
+    var n = numeroCommento;
+    var a;
+    var b;
+
+    if(v==="true"){
+         a = "1";
+         b = "0";
+    }else{
+         a = "0";
+         b = "1";
+    }
+    var interazione = {like: a, dislike: b, num: n};
+    alert("i topi non avevano nipoti")
+    $.ajax({
+        type: "get",
+        url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazione",
+        contentType: "JSON", // NOT dataType!
+        data:{ interazione: JSON.stringify(interazione)},
+        success: function(response) {
+            alert("Like o dislike correttamente aggiunto!");
+        },
+        error: function(response) {
+            alert('Like o dislike non aggiunto!');
+        }
+    });
+}
+// far aumentare dinamicamente il numero nel db
+// aggiungere nickname e avatar dell'utente del commento
+// aggiustare il testo del commento
+// interazione con commento sotto al commento (?)
+//
 
 
 
