@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class AdminServlet extends Controllo {
 
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
