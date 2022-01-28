@@ -6,13 +6,23 @@
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item dropdown dropdown-hover" id="piattaforma">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" >Piattaforma</a>
+                <li class="nav-item dropdown dropdown-hover" id="gestioneAutori">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" >Gestione Autori</a>
                     <ul class="dropdown-menu">
                         <form action="${pageContext.request.contextPath}/Catalogo" method="get">
-                            <li><button class="dropdown-item" id="PC" name="piattaforma" value="PC">PC</button></li>
-                            <li><button class="dropdown-item" id="Playstation" name="piattaforma" value="Playstation 4">Playstation</button></li>
-                            <li><button class="dropdown-item" id="Xbox" name="piattaforma" value="Xbox One">Xbox</button></li>
+                            <li><button class="dropdown-item" id="inserisciAutore" name="gestioneAutori" value="inserisciAutore">Inserisci Autori</button></li>
+                            <li><button class="dropdown-item" id="eliminaAutore" name="gestioneAutori" value="eliminaAutore">Elimina Autori</button></li>
+                            <li><button class="dropdown-item" id="visualizzaAutore" name="gestioneAutori" value="visualizzaAutore">Visualizza Autori</button></li>
+                        </form>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown dropdown-hover" id="gestioneVideogiochi">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" >Gestione Videogiochi</a>
+                    <ul class="dropdown-menu">
+                        <form action="${pageContext.request.contextPath}/Catalogo" method="get">
+                            <li><button class="dropdown-item" id="inserisci" name="gestioneVideogiochi" value="inserisci">Inserisci Videogioco</button></li>
+                            <li><button class="dropdown-item" id="modifica" name="gestioneVideogiochi" value="modifica">Modifica Videogioco</button></li>
+                            <li><button class="dropdown-item" id="elimina" name="gestioneVideogiochi" value="elimina">Elimina Videogioco</button></li>
                         </form>
                     </ul>
                 </li>
@@ -33,9 +43,10 @@
                     <i class="fas fa-user-circle" style="font-size:26px; color: turquoise"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Link</a></li>
-                    <li><a class="dropdown-item" href="#">Another link</a></li>
-                    <li><a class="dropdown-item" href="#">A third link</a></li>
+                    <li><a class="dropdown-item" href="#">Gestione Profilo</a></li>
+                    <li><a class="dropdown-item" href="#">Elimina Profilo</a></li>
+                    <li><a class="dropdown-item" href="#">Modifica Profilo</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
             </div>
             <form class="d-flex" action="${pageContext.request.contextPath}/ResearchServlet" method="get">
