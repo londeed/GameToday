@@ -58,15 +58,30 @@
 
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
+                <%if (recensione.getTitolo().contains(":")) {
+                    String[] parts = recensione.getTitolo().split(Pattern.quote(":"));
+                %>
             <div class="carousel-item active">
-                <img src="./img/download1.jpg" alt="Los Angeles" class="d-block"  style="width:100%; height: 400%">
+                <img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-2.jpg" alt="Pic not found" class="d-block"  style="width:100%; height: 400%">
             </div>
             <div class="carousel-item">
-                <img src="./img/download.jpg" alt="Chicago" class="d-block"  style="width:100%; height: 400%">
+                <img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-3.jpg" alt="Pic not found" class="d-block"  style="width:100%; height: 400%">
             </div>
             <div class="carousel-item">
-                <img src="./img/download3.jpg" alt="New York" class="d-block"  style="width:100%; height: 400%">
+                <img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-4.jpg" alt="Pic not found" class="d-block"  style="width:100%; height: 400%">
             </div>
+           <%}else{
+                    %>
+            <div class="carousel-item active">
+            <img src="./img/<%=recensione.getTitolo()%>/<%=recensione.getTitolo()%>-2.jpg" alt="Pic not found" class="d-block"  style="width:100%; height: 400%">
+        </div>
+        <div class="carousel-item">
+            <img src="./img/<%=recensione.getTitolo()%>/<%=recensione.getTitolo()%>-3.jpg" alt="Pic not found" class="d-block"  style="width:100%; height: 400%">
+        </div>
+        <div class="carousel-item">
+            <img src="./img/<%=recensione.getTitolo()%>/<%=recensione.getTitolo()%>-4.jpg" alt="Pic not found" class="d-block"  style="width:100%; height: 400%">
+        </div>
+           <%}%>
         </div>
         <!-- Left and right controls/icons -->
         <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
