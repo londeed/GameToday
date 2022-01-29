@@ -33,18 +33,18 @@ public class AutoreDAO
     public Boolean createAutore(Autore autore) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
-            try(PreparedStatement ps = connection.prepareStatement("INSERT INTO autore(AuNickname, AuNome, AuCognome, AuAvatar, REffettuate, RCommisionate, AuEmail, Scadenza, AuPW, AuLike, AuDislike) VALUES (?,?,?,?,?,?,?,?,?,?,?);")){
+            try(PreparedStatement ps = connection.prepareStatement("INSERT INTO autore(AuNickname, AuNome, AuCognome, AuAvatar, REffettuate, RCommissionate, AuEmail, Scadenza, AuPW, AuLike, AuDislike) VALUES (?,?,?,?,?,?,?,?,?,?,?)")){
                 ps.setString(1,autore.getAuNickname());
                 ps.setString(2, autore.getNome());
                 ps.setString(3, autore.getCognome());
                 ps.setInt(4, autore.getAvatar());
                 ps.setInt(5, autore.getRecEffettuate());
-                ps.setString(5, autore.getRecCommissionate());
-                ps.setString(6, autore.getEmail());
-                ps.setDate(7, autore.getScadenza());
-                ps.setString(8, autore.getPassword());
-                ps.setInt(9, autore.getLike());
-                ps.setInt(10, autore.getDislike());
+                ps.setString(6, autore.getRecCommissionate());
+                ps.setString(7, autore.getEmail());
+                ps.setDate(8, autore.getScadenza());
+                ps.setString(9, autore.getPassword());
+                ps.setInt(10, autore.getLike());
+                ps.setInt(11, autore.getDislike());
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }
@@ -55,19 +55,19 @@ public class AutoreDAO
     public Boolean updateAutore(Autore autore,String auNickname) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
-            try(PreparedStatement ps = connection.prepareStatement("UPDATE autore SET AuNickname=?, AuNome=?, AuCognome=?, AuAvatar=?, REffettuate=?, RCommisionate=?, AuEmail=?, Scadenza=?, AuPW=?, AuLike=?, AuDislike=? WHERE AuNickname=?")){
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE autore SET AuNickname=?, AuNome=?, AuCognome=?, AuAvatar=?, REffettuate=?, RCommissionate=?, AuEmail=?, Scadenza=?, AuPW=?, AuLike=?, AuDislike=? WHERE AuNickname=?")){
                 ps.setString(1,autore.getAuNickname());
                 ps.setString(2, autore.getNome());
                 ps.setString(3, autore.getCognome());
                 ps.setInt(4, autore.getAvatar());
                 ps.setInt(5, autore.getRecEffettuate());
-                ps.setString(5, autore.getRecCommissionate());
-                ps.setString(6, autore.getEmail());
-                ps.setDate(7, autore.getScadenza());
-                ps.setString(8, autore.getPassword());
-                ps.setInt(9, autore.getLike());
-                ps.setInt(10, autore.getDislike());
-                ps.setString(11,auNickname);
+                ps.setString(6, autore.getRecCommissionate());
+                ps.setString(7, autore.getEmail());
+                ps.setDate(8, autore.getScadenza());
+                ps.setString(9, autore.getPassword());
+                ps.setInt(10, autore.getLike());
+                ps.setInt(11, autore.getDislike());
+                ps.setString(12,auNickname);
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }

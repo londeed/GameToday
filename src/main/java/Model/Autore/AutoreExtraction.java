@@ -14,11 +14,11 @@ public class AutoreExtraction {
         autore.setNome(rs.getString(2));
         autore.setCognome(rs.getString(3));
         autore.setAvatar(rs.getInt(4));
-        autore.setEmail(rs.getString(5));
-        autore.setPassword(rs.getString(6));
-        autore.setRecEffettuate(rs.getInt(7));
-        autore.setRecCommissionate(rs.getString(8));
-        autore.setScadenza(rs.getDate(9));
+        autore.setRecEffettuate(rs.getInt(5));
+        autore.setRecCommissionate(rs.getString(6));
+        autore.setEmail(rs.getString(7));
+        autore.setScadenza(rs.getDate(8));
+        autore.setPassword(rs.getString(9));
         autore.setLike(rs.getInt(10));
         autore.setDislike(rs.getInt(11));
 

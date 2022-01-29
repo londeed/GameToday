@@ -9,6 +9,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "AdminOpServlet", value = "/adminOp/*")
 public class AdminOpServlet extends Controllo {
@@ -26,6 +28,10 @@ public class AdminOpServlet extends Controllo {
                     dispatcher2.forward(request, response);
                     break;
                 case "visualizzaAutore":
+                    List<Autore> autoreList=new ArrayList<>();
+                    AutoreDAO autoreDAO=new AutoreDAO();
+                    autoreList=autoreDAO.doRetrieveAutoreAll();
+                    request.setAttribute("autori", autoreList);
                     RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/views/admin/visualizzaAutore.jsp");
                     dispatcher3.forward(request, response);
                     break;
@@ -33,7 +39,7 @@ public class AdminOpServlet extends Controllo {
                     break;
             }
 
-        } catch (ServletException e) {
+        } catch (ServletException | SQLException e) {
             e.printStackTrace();
         }
 /*catch (SQLException throwables) {
@@ -61,12 +67,14 @@ public class AdminOpServlet extends Controllo {
                     autore.setPassword(request.getParameter("AuPW"));
                     autore.setLike(Integer.parseInt(request.getParameter("AuLike")));
                     autore.setDislike(Integer.parseInt(request.getParameter("AuDislike")));
-
                     AutoreDAO autoreDAO = new AutoreDAO();
                     autoreDAO.createAutore(autore);
-
                     request.getRequestDispatcher("/WEB-INF/views/admin/resultInsert.jsp").forward(request, response);
                     break;
+                case "/elimina":
+                    AutoreDAO autoreDAO1=new AutoreDAO();
+                    autoreDAO1.deleteAutore(request.getParameter("AuNickname"));
+                    request.getRequestDispatcher("/WEB-INF/views/admin/resultElimina.jsp").forward(request, response);
                 default:
                     break;
             }
