@@ -11,10 +11,9 @@ public class CommentoExtraction {
         Commento commento= new Commento();
         commento.setComCodice(rs.getString(1));
         commento.setCodice(rs.getString(2));
-        commento.setDislike(rs.getInt(3));
-        commento.setLike(rs.getInt(4));
+        commento.setLike(rs.getInt(3));
+        commento.setDislike(rs.getInt(4));
         commento.setTesto(rs.getString(5));
-
         return commento;
     }
 }

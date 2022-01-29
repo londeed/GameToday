@@ -23,66 +23,77 @@ public class CommentoServlet extends Controllo {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String codiceRec = "";
-        ArrayList <String> codComm = new ArrayList<>();
-       request.getSession().setAttribute("codiceCommento", codComm);
+        List<String> codComm = new ArrayList<>();
+        if(request.getSession(false).getAttribute("codiceCommento")==null){
+            System.out.println("pppopopopo");
+            request.getSession().setAttribute("codiceCommento", codComm);
+            System.out.println("oppp");
+        }
+        System.out.println("errr");
         try {
           String path = getPath(request);
             switch (path) {
                case "/aggiungi":
-        JSONObject jObjecto = new JSONObject(request.getParameter("codici"));
-        Iterator itero = jObjecto.keys(); //gets all the keys
-        ArrayList<String> codici = new ArrayList<>();
-        while (itero.hasNext()) {
-            String key = (String) itero.next(); // get key
-            Object o = jObjecto.get(key); // get value
-            codici.add((String) o);
-            System.out.println(key + " : " + o); // print the key and value
-        }
-        Commento commento = new Commento();
-        CommentoDAO commentoDao = new CommentoDAO();
-        commento.setLike(0);
-        commento.setDislike(0);
-        commento.setCodice(codici.get(1));
-        commento.setTesto(codici.get(0));
-        GeneratoreCodici gc = new GeneratoreCodici();
-        String s = gc.GeneraCodice(5,true,true,"#");
-        System.out.println("codice commento:"+s);
+                   System.out.println("trtrt");
+                    JSONObject jObjecto = new JSONObject(request.getParameter("codici"));
+                    Iterator itero = jObjecto.keys(); //gets all the keys
+                    ArrayList<String> codici = new ArrayList<>();
+                    while (itero.hasNext()) {
+                        String key = (String) itero.next(); // get key
+                        Object o = jObjecto.get(key); // get value
+                        codici.add((String) o);
+                        System.out.println(key + " : " + o); // print the key and value
+                    }
+                   System.out.println("kkukuukuk");
+                    Commento commento = new Commento();
+                    CommentoDAO commentoDao = new CommentoDAO();
+                    commento.setLike(0);
+                    commento.setDislike(0);
+                    commento.setCodice(codici.get(1));
+                    commento.setTesto(codici.get(0));
+                    GeneratoreCodici gc = new GeneratoreCodici();
+                    String s = gc.GeneraCodice(5,true,true,"#");
+                    System.out.println("codice commento:"+s);
 
-        List<String> codCommenti = new ArrayList<>();
-        codCommenti = commentoDao.doRetrieveAllCodiciCommenti();
-        int count = 0;
-        Boolean flag = false;
-        while (!flag) {
-            for (String cod:codCommenti) {
-                if(!s.equals(cod)) {
-                    count ++;
-                }
-            }
-            if (codCommenti.size() <= count) {
-                commento.setComCodice(s);
-                ArrayList <String> arrayList = (ArrayList<String>) request.getSession().getAttribute("codiceCommento");
-                arrayList.add(commento.getComCodice());
-                request.getSession().setAttribute("codiceCommento", arrayList);
-                flag = true;
-            }else {
-                s = gc.GeneraCodice(5,true,true,"#");
-                count = 0;
-            }
-        }
+                    List<String> codCommenti = new ArrayList<>();
+                    codCommenti = commentoDao.doRetrieveAllCodiciCommenti();
+                    int count = 0;
+                    Boolean flag = false;
+                    while (!flag) {
+                        for (String cod:codCommenti) {
+                            if(!s.equals(cod)) {
+                                count ++;
+                            }
+                        }
+                        if (codCommenti.size() <= count) {
+                            commento.setComCodice(s);
+                            List <String> arrayList = (List<String>) request.getSession().getAttribute("codiceCommento");
+                            arrayList.add(commento.getComCodice());
+                            for(int i = 0;arrayList.size()<=i;i++){
+                                System.out.println(arrayList.get(i));
+                                System.out.println("rekekeke");
+                            }
+                            request.getSession().setAttribute("codiceCommento", arrayList);
+                            flag = true;
+                        }else {
+                            s = gc.GeneraCodice(5,true,true,"#");
+                            count = 0;
+                        }
+                    }
 
-        commentoDao.insertCommento(commento);
-        codiceRec = commento.getComCodice();
-            /*Recensione recensione1 = new Recensione();
-            RecensioneDAO recensioneDAO = new RecensioneDAO();
-            recensione1 = recensioneDAO.doRetrieveByCodice(codici.get(1));
-            List<Commento> commentoList = new ArrayList<>();
-            CommentoDAO commentoDAO = new CommentoDAO();
-            commentoList = commentoDAO.doRetrieveAllCommentiByCodice(recensione1.getCodice());
-            request.setAttribute("dettaglioRecensione", recensione1);
-            request.setAttribute("commenti", commentoList);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/recensione/recensione.jsp");
-            dispatcher.forward(request, response);*/
-                   break;
+                    commentoDao.insertCommento(commento);
+                    codiceRec = commento.getComCodice();
+                        /*Recensione recensione1 = new Recensione();
+                        RecensioneDAO recensioneDAO = new RecensioneDAO();
+                        recensione1 = recensioneDAO.doRetrieveByCodice(codici.get(1));
+                        List<Commento> commentoList = new ArrayList<>();
+                        CommentoDAO commentoDAO = new CommentoDAO();
+                        commentoList = commentoDAO.doRetrieveAllCommentiByCodice(recensione1.getCodice());
+                        request.setAttribute("dettaglioRecensione", recensione1);
+                        request.setAttribute("commenti", commentoList);
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/recensione/recensione.jsp");
+                        dispatcher.forward(request, response);*/
+                               break;
               /*  case "/aggiungiCommento":
                     CommentoDAO commentoDAO = new CommentoDAO();
                     Commento commento1 = new Commento();
@@ -110,25 +121,29 @@ public class CommentoServlet extends Controllo {
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(json);
                     break; */
-                case "/salva#Commenti":
-                    System.out.println ("i topi non avevano ma che cazzo ne so1");
-                    JSONObject jObjecto2 = new JSONObject(request.getParameter("interazione"));
-                    System.out.println ("i topi non avevano ma che cazzo ne so2");
+                case "/salvaNumCommenti":
+                    System.out.println ("1");
+                    JSONObject jObjecto2 = new JSONObject(request.getParameter("numeroCommento"));
+                    System.out.println ("2");
                     Iterator itero2 = jObjecto2.keys(); //gets all the keys
                     ArrayList<String> interazione = new ArrayList<>();
-                    System.out.println ("i topi non avevano ma che cazzo ne so3");
+                    System.out.println ("3");
                     while (itero2.hasNext()) {
-                        System.out.println ("i topi non avevano ma che cazzo ne so4");
+                        System.out.println ("4");
                         String key = (String) itero2.next(); // get key
                         Object o = jObjecto2.get(key); // get value
-                        System.out.println ("i topi non avevano ma che cazzo ne so5");
+                        System.out.println ("5");
                         interazione.add((String) o);
-                        System.out.println ("i topi non avevano ma che cazzo ne so6");
+                        System.out.println ("6");
                         System.out.println(key + " : " + o); // print the key and value
                     }
-                    ArrayList <String> salvataggio = new ArrayList<>();
-                    salvataggio = (ArrayList<String>) request.getSession().getAttribute("codiceCommento");
+                    List<String> salvataggio = new ArrayList<>();
+                    salvataggio = (List<String>) request.getSession().getAttribute("codiceCommento");
+                    System.out.println(interazione.get(0));
                     salvataggio.add(interazione.get(0));
+                    for(String prova : salvataggio){
+                        System.out.println(prova);
+                    }
                     request.getSession().setAttribute("codiceCommento", salvataggio);
                     break;
 
@@ -150,14 +165,23 @@ public class CommentoServlet extends Controllo {
                         System.out.println(key + " : " + o); // print the key and value
                     }
                     System.out.println("YOYOYO");
-                    if (interazione2.get(0).equals("1")){
+                    if (interazione2.get(1).equals("1")){
                         CommentoDAO commentoDao2 = new CommentoDAO();
-                        ArrayList<String> al = new ArrayList<>();
-                        al = (ArrayList<String>) request.getSession().getAttribute("codiceCommento");
+                        List<String> al = new ArrayList<>();
+                        System.out.println("etjjeej");
+                        al = (List<String>) request.getSession().getAttribute("codiceCommento");
+                        for(String a : al){
+                            System.out.println(a);
+                        }
+                        System.out.println("heheh");
                         int count2 = 1;
-                        while(al.size()<=count2){
-                            if(al.get(count2).equals(interazione2.get(2))){
-                                commentoDao2.updateInterazione(al.get(count2-1), "0");
+                        System.out.println(al.size());
+                        while(al.size()>=count2){
+                            System.out.println(al.get(1));
+                            System.out.println(interazione2.get(2));
+                            if(al.get(count2).equals(interazione2.get(0))){
+                                commentoDao2.updateInterazione(al.get(count2-1), "1");
+                                System.out.println("flwwf");
                                 break;
                             }
                             count2 += 2;
@@ -165,12 +189,66 @@ public class CommentoServlet extends Controllo {
                         System.out.println("AAAAA");
                     }else{
                         CommentoDAO commentoDao2 = new CommentoDAO();
-                        ArrayList<String> al = new ArrayList<>();
-                        al = (ArrayList<String>) request.getSession().getAttribute("codiceCommento");
+                        List<String> al = new ArrayList<>();
+                        al = (List<String>) request.getSession().getAttribute("codiceCommento");
                         int count2 = 1;
-                        while(al.size()<=count2){
-                            if(al.get(count2).equals(interazione2.get(2))){
+                        while(al.size()>=count2){
+                            if(al.get(count2).equals(interazione2.get(0))){
+                                commentoDao2.updateInterazione(al.get(count2-1), "0");
+                                break;
+                            }
+                            count2 += 2;
+                        }
+                        System.out.println("BIBBIENA");
+                    }
+                    break;
+                case "/aggiungiInterazioneEsistente":
+                    System.out.println ("so1");
+                    JSONObject jObjecto4 = new JSONObject(request.getParameter("interazione"));
+                    System.out.println ("so2");
+                    Iterator itero4 = jObjecto4.keys(); //gets all the keys
+                    ArrayList<String> interazione3 = new ArrayList<>();
+                    System.out.println ("so3");
+                    while (itero4.hasNext()) {
+                        System.out.println ("so4");
+                        String key = (String) itero4.next(); // get key
+                        Object o = jObjecto4.get(key); // get value
+                        System.out.println ("so5");
+                        interazione3.add((String) o);
+                        System.out.println ("so6");
+                        System.out.println(key + " : " + o); // print the key and value
+                    }
+                    System.out.println("YOlo");
+                    if (interazione3.get(1).equals("1")){
+                        CommentoDAO commentoDao2 = new CommentoDAO();
+                        List<String> al = new ArrayList<>();
+                        System.out.println("etjjeej");
+                        al = (List<String>) request.getSession().getAttribute("codiceCommento");
+                        for(String a : al){
+                            System.out.println(a);
+                        }
+                        System.out.println("heheh");
+                        int count2 = 1;
+                        System.out.println(al.size());
+                        while(al.size()>=count2){
+                            System.out.println(al.get(1));
+                            System.out.println(interazione3.get(2));
+                            if(al.get(count2).equals(interazione3.get(0))){
                                 commentoDao2.updateInterazione(al.get(count2-1), "1");
+                                System.out.println("flwwf");
+                                break;
+                            }
+                            count2 += 2;
+                        }
+                        System.out.println("AAAAA");
+                    }else{
+                        CommentoDAO commentoDao2 = new CommentoDAO();
+                        List<String> al = new ArrayList<>();
+                        al = (List<String>) request.getSession().getAttribute("codiceCommento");
+                        int count2 = 1;
+                        while(al.size()>=count2){
+                            if(al.get(count2).equals(interazione3.get(0))){
+                                commentoDao2.updateInterazione(al.get(count2-1), "0");
                                 break;
                             }
                             count2 += 2;

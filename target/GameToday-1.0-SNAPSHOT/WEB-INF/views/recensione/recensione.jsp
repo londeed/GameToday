@@ -82,7 +82,9 @@
         <div class="mb-3" style= "width:50%" >
              <label for="textarea" class="form-label">Scrivi ciò che pensi:</label>
              <textarea class="form-control" id="textarea" rows="3" maxlength="1500"></textarea><br>
-             <button type="button" onclick="aggiungiCommento('<%= recensione.getCodice()%>');appariNuovoCommento('marioBros','0','0')" id="bottoneCommento">Inserisci il commento</button>
+            <%String x = ""+recensione.getCodice()+",MarioBros,0,0";%>
+             <button type="button" onclick="aggiungiCommento('<%=x%>'); appariNuovoCommento()" id="bottoneCommento">Inserisci il commento</button>
+        <!--aggiungiCommento(' recensione.getCodice()');appariNuovoCommento('marioBros','0','0')-->
          </div>
     </div>
     <div class="container" style="padding: 30px 50px" id="commentoUtente"style="color: turquoise">
@@ -103,15 +105,22 @@
         <input class="form-control" type="text" value="<%=commento.getTesto()%>" aria-label="Disabled input example" disabled readonly>
         <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
             <div class="col-12">
-                <i class="far fa-thumbs-up"></i><p><%=commento.getLike()%></p>
+                <%String like = "true"+","+commento.getComCodice()+","+commento.getLike();%>
+                <button id="button<%=commento.getComCodice()%>" onclick="CommentoEsistente(<%=like%>)">
+                    <i class="far fa-thumbs-up" id="i<%=commento.getComCodice()%>"><p id="p<%=commento.getComCodice()%>"><%=commento.getLike()%></p></i>
+                </button>
             </div>
             <div class="col-12">
-                <i class="far fa-thumbs-down"></i><p><%=commento.getDislike()%></p>
+                <%String dislike = "false"+","+commento.getComCodice()+","+commento.getDislike();%>
+                <button id="button2<%=commento.getComCodice()%>" onclick="CommentoEsistente(<%=dislike%>)">
+                    <i class="far fa-thumbs-down" id="i2<%=commento.getComCodice()%>"><p id="p2<%=commento.getComCodice()%>"><%=commento.getDislike()%></p></i>
+                </button>
             </div>
         </div>
     </div>
 
     <%}%>
+    <button id="buttongg" onclick="CommentoEsistente('ok')"></button>
 </div>
     <footer>
         <%@include file="../partials/footerCustomer.jsp"%>
