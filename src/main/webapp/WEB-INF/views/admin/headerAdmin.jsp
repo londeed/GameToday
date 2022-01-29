@@ -9,7 +9,7 @@
                 <li class="nav-item dropdown dropdown-hover" id="gestioneAutori">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" >Gestione Autori</a>
                     <ul class="dropdown-menu">
-                        <form action="${pageContext.request.contextPath}/Catalogo" method="get">
+                        <form action="${pageContext.request.contextPath}/adminOp" method="get">
                             <li><button class="dropdown-item" id="inserisciAutore" name="gestioneAutori" value="inserisciAutore">Inserisci Autori</button></li>
                             <li><button class="dropdown-item" id="eliminaAutore" name="gestioneAutori" value="eliminaAutore">Elimina Autori</button></li>
                             <li><button class="dropdown-item" id="visualizzaAutore" name="gestioneAutori" value="visualizzaAutore">Visualizza Autori</button></li>
