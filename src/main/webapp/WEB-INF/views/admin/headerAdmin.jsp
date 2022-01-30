@@ -19,7 +19,7 @@
                 <li class="nav-item dropdown dropdown-hover" id="gestioneVideogiochi">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" >Gestione Videogiochi</a>
                     <ul class="dropdown-menu">
-                        <form action="${pageContext.request.contextPath}/Catalogo" method="get">
+                        <form action="${pageContext.request.contextPath}/adminGame/" method="get">
                             <li><button class="dropdown-item" id="inserisci" name="gestioneVideogiochi" value="inserisci">Inserisci Videogioco</button></li>
                             <li><button class="dropdown-item" id="modifica" name="gestioneVideogiochi" value="modifica">Modifica Videogioco</button></li>
                             <li><button class="dropdown-item" id="elimina" name="gestioneVideogiochi" value="elimina">Elimina Videogioco</button></li>
