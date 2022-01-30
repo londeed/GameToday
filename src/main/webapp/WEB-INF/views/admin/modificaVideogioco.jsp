@@ -1,4 +1,4 @@
-a<%@ page import="Model.Amministratore.Amministratore" %>
+<%@ page import="Model.Amministratore.Amministratore" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>

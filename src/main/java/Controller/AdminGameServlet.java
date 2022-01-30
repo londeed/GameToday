@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "AdminOpServlet", value = "/adminGame/*")
+@WebServlet(name = "AdminGameServlet", value = "/adminGame/*")
 public class AdminGameServlet extends Controllo {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
