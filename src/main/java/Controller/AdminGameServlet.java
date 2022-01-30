@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "AdminOpServlet", value = "/adminGame/*")
+@WebServlet(name = "AdminGameServlet", value = "/adminGame/*")
 public class AdminGameServlet extends Controllo {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,18 +30,14 @@ public class AdminGameServlet extends Controllo {
                     dispatcher2.forward(request, response);
                     break;
                 case "modifica":
-                    List<Autore> autoreList=new ArrayList<>();
-                    AutoreDAO autoreDAO=new AutoreDAO();
-                    autoreList=autoreDAO.doRetrieveAutoreAll();
-                    request.setAttribute("autori", autoreList);
-                    RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/views/admin/visualizzaAutore.jsp");
+                    RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/views/admin/modificaVideogioco.jsp");
                     dispatcher3.forward(request, response);
                     break;
                 default:
                     break;
             }
 
-        } catch (ServletException | SQLException e) {
+        } catch (ServletException e) {
             e.printStackTrace();
         }
 /*catch (SQLException throwables) {
@@ -74,6 +70,21 @@ public class AdminGameServlet extends Controllo {
                     VideogiocoDAO videogiocoDAO1=new VideogiocoDAO();
                     videogiocoDAO1.deleteVideogico(request.getParameter("Titolo"));
                     request.getRequestDispatcher("/WEB-INF/views/admin/resultElimina.jsp").forward(request, response);
+                    break;
+                case "/modifica":
+                    Videogioco videogioco2=new Videogioco();
+                    VideogiocoDAO videogiocoDAO2=new VideogiocoDAO();
+                    videogioco2.setTitolo(request.getParameter("Titolo"));
+                    videogioco2.setPegi(Integer.parseInt(request.getParameter("Pegi")));
+                    videogioco2.setTotaleVoti(Integer.parseInt(request.getParameter("TotaleVoti")));
+                    videogioco2.setCasaProduttrice(request.getParameter("CasaProduttrice"));
+                    videogioco2.setMediaValutazioni(Double.parseDouble(request.getParameter("MediaValutazioni")));
+                    videogioco2.setPiattaforma(request.getParameter("Piattaforma"));
+                    videogioco2.setDataPubblicazione(Date.valueOf(request.getParameter("DataPubblicazione")));
+                    videogioco2.setTipologia(request.getParameter("Tipologia"));
+                    videogiocoDAO2.updateVideogioco(videogioco2, videogioco2.getTitolo());
+                    request.getRequestDispatcher("/WEB-INF/views/admin/resultInsert.jsp").forward(request, response);
+                    break;
                 default:
                     break;
             }
