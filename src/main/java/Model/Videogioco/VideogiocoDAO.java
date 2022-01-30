@@ -132,7 +132,8 @@ public class VideogiocoDAO {
                 ps.setDouble(5, videogioco.getMediaValutazioni());
                 ps.setString(6, videogioco.getPiattaforma());
                 ps.setDate(7, videogioco.getDataPubblicazione());
-                ps.setString(8, titolo);
+                ps.setString(8, videogioco.getTipologia());
+                ps.setString(9, titolo);
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }
