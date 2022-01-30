@@ -138,4 +138,25 @@ public class AutoreDAO
             }
         }
     }
+
+
+    public Autore doRetrieveAutoreByNickname(String auNickname) throws SQLException{
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM autore WHERE AuNickname = ?")){
+                ps.setString(1,auNickname);
+                ResultSet rs= ps.executeQuery();
+                Autore autore=new Autore();
+                AutoreExtraction autoreExtraction= new AutoreExtraction();
+                if(rs.next())
+                {
+                    autore = autoreExtraction.mapping(rs);
+                }
+                rs.close();
+                return autore;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

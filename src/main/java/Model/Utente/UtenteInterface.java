@@ -1,6 +1,7 @@
 package Model.Utente;
 
 import Model.Amministratore.Amministratore;
+import Model.Autore.Autore;
 import Model.Videogioco.Videogioco;
 
 import java.sql.SQLException;
@@ -15,4 +16,5 @@ public interface UtenteInterface
     Utente loginUtente(String email, String password) throws SQLException;
     int countAll() throws SQLException;
     Utente doRetrieveUtenteByEmail(String email) throws SQLException;
+    Utente doRetrieveUtenteByNickname(String utNickname) throws SQLException;
 }

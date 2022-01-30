@@ -182,12 +182,6 @@ function salvaInterazione(valore){
 }
 
 function CommentoEsistente(stringa){
-
-    document.$each("button"+flag).addEventListener("click",function (CommentoEsistente){
-
-    })
-
-
     alert("siamo dentro")
     const array = stringa.split(",")
     var v = array[0];

@@ -14,4 +14,5 @@ public interface AutoreInterface
     Autore loginAutore(String email, String password) throws SQLException;
     int countAll() throws SQLException;
     Autore doRetrieveAutoreByEmail(String email) throws SQLException;
+    Autore doRetrieveAutoreByNickname(String auNickname) throws SQLException;
 }

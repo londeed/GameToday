@@ -136,7 +136,6 @@ public class CommentoDAO
                 try (PreparedStatement ps = connection.prepareStatement("UPDATE commento SET CLike=Clike+1 WHERE CommentoCod =?")) {
                     ps.setString(1, comCodice);
                     int rows = ps.executeUpdate();
-                    System.out.println("ieie");
                     System.out.println(comCodice);
                     return rows == 1;
                 }
@@ -144,7 +143,6 @@ public class CommentoDAO
                 try (PreparedStatement ps = connection.prepareStatement("UPDATE commento SET CDislike=CDislike+1 WHERE CommentoCod =?")) {
                     ps.setString(1, comCodice);
                     int rows = ps.executeUpdate();
-                    System.out.println("asaas");
                     System.out.println(comCodice);
                     return rows == 1;
                 }
