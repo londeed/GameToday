@@ -13,4 +13,7 @@ public interface InterazioneUtInterface {
     Commento doRetrieveCommentoUtByCodice(String comCodice) throws SQLException;
     List<Commento> doRetrieveCommentoUtByNickname(String utNickname) throws SQLException;
     Boolean insertByUtente(String comCodice, String utNickname, Boolean utl, Boolean utd) throws SQLException;
+    List<String> doRetrieveNicknameUtByComCodice(String comCodice) throws SQLException;
+    String doRetrieveByCreazioneCommento(String comCodice) throws SQLException;
+    InterazioneUt doRetrieveInterazioneCreazioneCommento(String comCodice)throws SQLException;
 }

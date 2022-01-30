@@ -3,6 +3,8 @@ package Model.InterazioneAu;
 import Model.Commento.Commento;
 import Model.Commento.CommentoExtraction;
 import Model.Connessione.ConPool;
+import Model.InterazioneUt.InterazioneUt;
+import Model.InterazioneUt.InterazioneUtExtraction;
 import Model.Recensione.Recensione;
 import Model.Recensione.RecensioneExtraction;
 
@@ -103,5 +105,60 @@ public class InterazioneAuDAO {
             }
         }
         return rows == 1;
+    }
+
+
+    public List<String> doRetrieveNicknameAuByComCodice(String comCodice) throws SQLException{
+        try (Connection connection = ConPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement("SELECT AuNickname FROM interazioneAutore WHERE CommentoCod = ?")) {
+                ps.setString(1,comCodice);
+                ResultSet rs = ps.executeQuery();
+                List<String> nickname = new ArrayList();
+                if (rs.next()) {
+                    nickname.add(rs.getString(1));
+                }
+                rs.close();
+                return nickname;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public String doRetrieveByCreazioneCommento(String comCodice) throws SQLException{
+        try(Connection connection = ConPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement("SELECT AuNickname FROM interazioneAutore WHERE CommentoCod = ? AND AUL = 'false' AND AUD = 'false'")){
+                ps.setString(1,comCodice);
+                ResultSet rs = ps.executeQuery();
+                String interazioneAu = "";
+                if (rs.next()) {
+                    interazioneAu = rs.getString(1);
+                }
+                rs.close();
+                return interazioneAu;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public InterazioneAu doRetrieveInterazioneCreazioneCommento(String comCodice)throws SQLException{
+        try(Connection connection = ConPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement("SELECT * FROM interazioneAutore WHERE CommentoCod = ? AND AUL = 'false' AND AUD = 'false'")){
+                ps.setString(1,comCodice);
+                ResultSet rs = ps.executeQuery();
+                InterazioneAu interazioneAu = new InterazioneAu();
+                InterazioneAuExtraction interazioneAuExtraction = new InterazioneAuExtraction();
+                if (rs.next()) {
+                    interazioneAu = interazioneAuExtraction.mapping(rs);
+                }
+                rs.close();
+                return interazioneAu;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

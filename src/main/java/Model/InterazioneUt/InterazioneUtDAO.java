@@ -107,4 +107,60 @@ public class InterazioneUtDAO {
         }
         return rows == 1;
     }
+
+
+    public List<String> doRetrieveNicknameUtByComCodice(String comCodice) throws SQLException{
+        try (Connection connection = ConPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement("SELECT UtNickname FROM interazioneUtente WHERE CommentoCod = ?")) {
+                ps.setString(1,comCodice);
+                ResultSet rs = ps.executeQuery();
+                List<String> nickname = new ArrayList();
+                while (rs.next()) {
+                    nickname.add(rs.getString(1));
+                }
+                rs.close();
+                return nickname;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public String doRetrieveByCreazioneCommento(String comCodice) throws SQLException{
+        try(Connection connection = ConPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement("SELECT UtNickname FROM interazioneUtente WHERE CommentoCod = ? AND UTL = 'false' AND UTD = 'false'")){
+                ps.setString(1,comCodice);
+                ResultSet rs = ps.executeQuery();
+                String interazioneUt = "";
+                if (rs.next()) {
+                    interazioneUt = rs.getString(1);
+                    System.out.println(interazioneUt);
+                }
+                rs.close();
+                return interazioneUt;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public InterazioneUt doRetrieveInterazioneCreazioneCommento(String comCodice)throws SQLException{
+        try(Connection connection = ConPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement("SELECT * FROM interazioneUtente WHERE CommentoCod = ? AND UTL = 'false' AND UTD = 'false'")){
+                ps.setString(1,comCodice);
+                ResultSet rs = ps.executeQuery();
+                InterazioneUt interazioneUt = new InterazioneUt();
+                InterazioneUtExtraction interazioneUtExtraction = new InterazioneUtExtraction();
+                if (rs.next()) {
+                    interazioneUt = interazioneUtExtraction.mapping(rs);
+                }
+                rs.close();
+                return interazioneUt;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

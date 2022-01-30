@@ -135,4 +135,25 @@ public class UtenteDAO
             }
         }
     }
+
+
+    public Utente doRetrieveUtenteByNickname(String utNickname) throws SQLException{
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM utente WHERE UtNickname = ?")){
+                ps.setString(1,utNickname);
+                ResultSet rs= ps.executeQuery();
+                Utente utente=new Utente();
+                UtenteExtraction utenteExtraction= new UtenteExtraction();
+                if(rs.next())
+                {
+                    utente = utenteExtraction.mapping(rs);
+                }
+                rs.close();
+                return utente;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }
