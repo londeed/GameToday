@@ -43,10 +43,10 @@
                     <i class="fas fa-user-circle" style="font-size:26px; color: turquoise"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Gestione Profilo</a></li>
-                    <li><a class="dropdown-item" href="#">Elimina Profilo</a></li>
-                    <li><a class="dropdown-item" href="#">Modifica Profilo</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <form action="${pageContext.request.contextPath}/adminProfile/" method="get">
+                        <li><button class="dropdown-item" id="gestioneProfilo" name="gestioneAmministratore" value="gestioneProfilo">Gestione Profilo</button></li>
+                        <li><button class="dropdown-item" id="logout" name="gestioneAmministratore" value="logout">Logout</button></li>
+                    </form>
                 </ul>
             </div>
             <form class="d-flex" action="${pageContext.request.contextPath}/ResearchServlet" method="get">

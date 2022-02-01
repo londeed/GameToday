@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -41,6 +42,12 @@ public class AdminServlet extends Controllo {
                     Amministratore amministratore = new Amministratore();
                     AmministratoreDAO amministratoreDAO = new AmministratoreDAO();
                     amministratore = amministratoreDAO.loginAmministratore(request.getParameter("email"), request.getParameter("password"));
+                    amministratore.setEmail(request.getParameter("email"));
+                    HttpSession session = request.getSession(true);
+                    Amministratore amministratore1 = (Amministratore) session.getAttribute("amministatore");
+                    session.setAttribute("amministratore", amministratore);
+                    //session.setAttribute("amministratoreSession", amministratore);
+                    //request.getSession(true).setAttribute("amministratoreSession", amministratore);
                     request.setAttribute("amministratore", amministratore);
                     request.getRequestDispatcher("/WEB-INF/views/admin/HomePageAdmin.jsp").forward(request, response);
                     break;
