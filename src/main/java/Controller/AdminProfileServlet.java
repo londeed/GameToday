@@ -46,8 +46,26 @@ public class AdminProfileServlet extends Controllo {
                     dispatcher3.forward(request, response);
                     break;
                 case "logout":
-                    RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/views/admin/eliminaVideogioco.jsp");
+                    HttpSession session = request.getSession(false);
+                    Amministratore amministratore4 = (Amministratore) session.getAttribute("amministratore");
+                    session.removeAttribute("amministratore");
+                    RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/views/admin/secret.jsp");
                     dispatcher4.forward(request, response);
+
+                    /*HttpSession session = request.getSession(false);
+                    authenticate(session);
+                    UtenteSession utenteSession = (UtenteSession) session.getAttribute("accountSession");
+                    String redirect = utenteSession.isAdmin() ? "/WEB-INF/views/crm/secret.jsp" : "/WEB-INF/views/customer/user.jsp";
+                    session.removeAttribute("accountSession");
+                    session.removeAttribute("preferiti");
+                    session.removeAttribute("carrello");
+                    //session.invalidate();
+                    PreferitiSession preferitiGuests = new PreferitiSession(0,0);
+                    request.getSession(true).setAttribute("preferiti", preferitiGuests);
+                    CarrelloSession carrelloGuests = new CarrelloSession(0,0);
+                    request.getSession(true).setAttribute("carrello", carrelloGuests);
+                    request.getRequestDispatcher(redirect).forward(request, response);
+                    */
                     break;
                 default:
                     break;

@@ -60,13 +60,13 @@ public class AdminOpServlet extends Controllo {
                     autore.setNome(request.getParameter("AuNome"));
                     autore.setCognome(request.getParameter("AuCognome"));
                     autore.setAvatar(Integer.parseInt(request.getParameter("AuAvatar")));
-                    autore.setRecEffettuate(Integer.parseInt(request.getParameter("REffettuate")));
-                    autore.setRecCommissionate(request.getParameter("RCommissionate"));
+                    autore.setRecEffettuate(0);
+                    autore.setRecCommissionate(request.getParameter("RecCommissionate"));
                     autore.setEmail(request.getParameter("AuEmail"));
                     autore.setScadenza(Date.valueOf(request.getParameter("Scadenza")));
                     autore.setPassword(request.getParameter("AuPW"));
-                    autore.setLike(Integer.parseInt(request.getParameter("AuLike")));
-                    autore.setDislike(Integer.parseInt(request.getParameter("AuDislike")));
+                    autore.setLike(0);
+                    autore.setDislike(0);
                     AutoreDAO autoreDAO = new AutoreDAO();
                     autoreDAO.createAutore(autore);
                     request.getRequestDispatcher("/WEB-INF/views/admin/resultInsert.jsp").forward(request, response);

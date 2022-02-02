@@ -9,7 +9,7 @@
         }
     </style>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="HomePage"/>
+        <jsp:param name="title" value="HomePageAdmin"/>
         <jsp:param name="style" value="bootstrap"/>
         <jsp:param name="script" value=""/>
     </jsp:include>
@@ -21,15 +21,22 @@
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 <%
     Amministratore amministratore = (Amministratore) request.getAttribute("amministratore");
+    String avatar = String.valueOf(amministratore.getAvatar());
+    String stringImg = "avatar" + avatar + ".png";
 %>
 
 <header>
     <%@include file="/WEB-INF/views/admin/headerAdmin.jsp"%>
 </header>
 
-<div class="container-fluid bg-1 text-center">
-    <h3>Benvenuto <%= amministratore.getAmNickname()%></h3>
-    <img src="${pageContext.request.contextPath}/img/download.jpg" alt="Admin">
+<div class="container-fluid bg-1 text-center" style="height: 1000px">
+    <br>
+    <br>
+    <h1 style="color: #141414">Benvenuto/a <%= amministratore.getNome()%></h1>
+    <br>
+    <br>
+    <br>
+    <img src="${pageContext.request.contextPath}/img/Avatar/<%=stringImg%>" class="img-circle" alt="Admin">
 </div>
 
 <footer>

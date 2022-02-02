@@ -1,4 +1,4 @@
-<%@ page import="Model.Amministratore.Amministratore" %>
+a<%@ page import="Model.Amministratore.Amministratore" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -9,7 +9,7 @@
         }
     </style>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="inserisciAutore"/>
+        <jsp:param name="title" value="inserisciVideogioco"/>
         <jsp:param name="style" value="bootstrap"/>
         <jsp:param name="script" value=""/>
     </jsp:include>
