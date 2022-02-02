@@ -6,6 +6,7 @@
 <%@ page import="Model.Utente.Utente" %>
 <%@ page import="Model.InterazioneAu.InterazioneAu" %>
 <%@ page import="Model.InterazioneUt.InterazioneUt" %>
+<%@ page import="java.util.Objects" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -28,6 +29,8 @@
     List<Utente> utenteList = (List<Utente>) request.getAttribute("utenteList");
     List<InterazioneAu> interazioneAuList = (List<InterazioneAu>) request.getAttribute("interazioneAutore");
     List<InterazioneUt> interazioneUtList = (List<InterazioneUt>) request.getAttribute("interazioneUtente");
+    Autore autoreLogin = (Autore) request.getSession(false).getAttribute("userAu");
+    Utente utenteLogin = (Utente) request.getSession(false).getAttribute("userUt");
     %>
 
 <header>
@@ -105,29 +108,39 @@
         <div class="mb-3" style= "width:50%" >
              <label for="textarea" class="form-label">Scrivi ciò che pensi:</label>
              <textarea class="form-control" id="textarea" rows="3" maxlength="1500"></textarea><br>
-            <%String x = ""+recensione.getCodice()+",MarioBros,0,0";%>
+            <%String x = "";
+            boolean flag = false;
+                System.out.println("prima");
+            if(!Objects.isNull(utenteLogin)) {
+                flag = true;
+                x = "" + recensione.getCodice() + "," + utenteLogin.getUtNickname() + ",0,0,true,utente,"+utenteLogin.getAvatar();
+                System.out.println("utente");
+            }
+            if(!Objects.isNull(autoreLogin)){
+                flag = true;
+                x = "" + recensione.getCodice() + "," + autoreLogin.getAuNickname() + ",0,0,true,autore,"+autoreLogin.getAvatar();
+                System.out.println("autore");
+            }
+            if(Objects.isNull(utenteLogin) && Objects.isNull(autoreLogin)){
+                System.out.println("nessuno");
+                x = "n,n,0,0,false,niente,0";
+            }%>
              <button type="button" onclick="aggiungiCommento('<%=x%>'); appariNuovoCommento()" id="bottoneCommento">Inserisci il commento</button>
-        <!--aggiungiCommento(' recensione.getCodice()');appariNuovoCommento('marioBros','0','0')-->
          </div>
     </div>
     <div class="container" style="padding: 30px 50px" id="commentoUtente"style="color: turquoise">
     </div>
     <%for(Commento commento: commentoList) {
-        System.out.println("stampa");
         if(interazioneUtList != null && utenteList != null){
-            System.out.println("dentro");
             for(InterazioneUt interazioneUt: interazioneUtList){
-                System.out.println("quasi");
                 if(interazioneUt.getUtNickname()!=null){
                     if(interazioneUt.getComCodice().equals(commento.getComCodice())){
-                        System.out.println("fatto");
                         for(Utente utente: utenteList){
-                            System.out.println("menomale");
                             if(utente.getUtNickname().equals(interazioneUt.getUtNickname())){
-                                System.out.println("daje");%>
+                                %>
                             <div class="container" style="padding: 30px 50px">
         <h4><img src="./img/Avatar/avatar<%=utente.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=utente.getUtNickname()%></h4>
-        <input class="form-control" type="text" value="<%=commento.getTesto()%>" aria-label="Disabled input example" disabled readonly>
+    <textarea class="form-control" type="text" aria-label="Disabled input example" style="resize: none" disabled readonly><%=commento.getTesto()%></textarea>
     <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
         <div class="col-12">
             <%String like = "true"+","+commento.getComCodice()+","+commento.getLike();%>
@@ -135,14 +148,12 @@
                 <i class="far fa-thumbs-up" id="i<%=commento.getComCodice()%>"><p id="p<%=commento.getComCodice()%>"><%=commento.getLike()%></p></i>
             </button>
             <script>document.getElementById("button<%=commento.getComCodice()%>").addEventListener("click",function (){
-                alert("siamo dentro")
                 var stringa ="<%=like%>";
                 const array = stringa.split(",")
                 var v = array[0];
                 var c = array[1];
                 var i = array[2];
                 var interazione = {interazione: v , cCod: c , cInterazione: i};
-                alert("ci siamo")
                 $.ajax({
                     type: "get",
                     url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
@@ -164,14 +175,12 @@
             </button>
         </div>
         <script>document.getElementById("button2<%=commento.getComCodice()%>").addEventListener("click",function (){
-            alert("siamo dentro")
             var stringa ="<%=dislike%>";
             const array = stringa.split(",")
             var v = array[0];
             var c = array[1];
             var i = array[2];
             var interazione = {interazione: v , cCod: c , cInterazione: i};
-            alert("ci siamo")
             $.ajax({
                 type: "get",
                 url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
@@ -187,27 +196,25 @@
         })</script>
     </div>
 </div>
-                     <%   break;}
+                     <% break;
+                            }
                     }
-               break; }
+               break;
+                    }
             }
                      }
         }
         if(interazioneAuList != null && autoreList != null){
-            System.out.println("susu");
              for(InterazioneAu interazioneAu: interazioneAuList){
-                 System.out.println("vicino");
                  if(interazioneAu.getAuNickname()!=null){
                      if(interazioneAu.getComCodice().equals(commento.getComCodice())){
-                         System.out.println("lili");
                          for(Autore autore: autoreList){
-                             System.out.println("yeee");
                              if(autore.getAuNickname().equals(interazioneAu.getAuNickname())){
-                                 System.out.println("godo");%>
+                                 %>
 
     <div class="container" style="padding: 30px 50px">
         <h4><img src="./img/Avatar/avatar<%=autore.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=autore.getAuNickname()%></h4>
-        <input class="form-control" type="text" value="<%=commento.getTesto()%>" aria-label="Disabled input example" disabled readonly>
+        <textarea class="form-control" type="text" aria-label="Disabled input example" style="resize: none" disabled readonly><%=commento.getTesto()%></textarea>
         <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
             <div class="col-12">
                 <%String like = "true"+","+commento.getComCodice()+","+commento.getLike();%>
@@ -215,14 +222,12 @@
                     <i class="far fa-thumbs-up" id="i<%=commento.getComCodice()%>"><p id="p<%=commento.getComCodice()%>"><%=commento.getLike()%></p></i>
                 </button>
                 <script>document.getElementById("button<%=commento.getComCodice()%>").addEventListener("click",function (){
-                    alert("siamo dentro")
                     var stringa ="<%=like%>";
                     const array = stringa.split(",")
                     var v = array[0];
                     var c = array[1];
                     var i = array[2];
                     var interazione = {interazione: v , cCod: c , cInterazione: i};
-                    alert("ci siamo")
                     $.ajax({
                         type: "get",
                         url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
@@ -244,14 +249,12 @@
                 </button>
             </div>
             <script>document.getElementById("button2<%=commento.getComCodice()%>").addEventListener("click",function (){
-                alert("siamo dentro")
                 var stringa ="<%=dislike%>";
                 const array = stringa.split(",")
                 var v = array[0];
                 var c = array[1];
                 var i = array[2];
                 var interazione = {interazione: v , cCod: c , cInterazione: i};
-                alert("ci siamo")
                 $.ajax({
                     type: "get",
                     url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
@@ -267,9 +270,11 @@
             })</script>
         </div>
     </div>
-    <%break;}
+    <%break;
+         }
     }
-        break;}
+        break;
+                     }
     }
     }
     }

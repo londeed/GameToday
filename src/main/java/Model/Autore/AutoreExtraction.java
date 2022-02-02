@@ -21,7 +21,6 @@ public class AutoreExtraction {
         autore.setPassword(rs.getString(9));
         autore.setLike(rs.getInt(10));
         autore.setDislike(rs.getInt(11));
-
         return autore;
     }
 

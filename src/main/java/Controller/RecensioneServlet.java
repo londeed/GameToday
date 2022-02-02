@@ -84,8 +84,6 @@ public class RecensioneServlet extends HttpServlet {
                         break;
                     }
                     count++;
-
-
                 }
             } else {
                 List<Recensione> recensioneList = new ArrayList<>();

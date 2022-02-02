@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item dropdown dropdown-hover" id="piattaforma">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" >Piattaforma</a>
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Piattaforma</a>
                     <ul class="dropdown-menu">
                         <form action="${pageContext.request.contextPath}/Catalogo" method="get">
                             <li><button class="dropdown-item" id="PC" name="piattaforma" value="PC">PC</button></li>
@@ -33,7 +33,7 @@
                     <i class="fas fa-user-circle" style="font-size:26px; color: turquoise"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Link</a></li>
+                    <li><button class="dropdown-item" id="Login" name="Login" value="Login" onclick="login()">Login</button></li>
                     <li><a class="dropdown-item" href="#">Another link</a></li>
                     <li><a class="dropdown-item" href="#">A third link</a></li>
                 </ul>

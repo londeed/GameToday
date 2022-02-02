@@ -6,6 +6,7 @@
 <%@ page import="Model.Utente.Utente" %>
 <%@ page import="Model.InterazioneAu.InterazioneAu" %>
 <%@ page import="Model.InterazioneUt.InterazioneUt" %>
+<%@ page import="java.util.Objects" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -28,6 +29,8 @@
     List<Utente> utenteList = (List<Utente>) request.getAttribute("utenteList");
     List<InterazioneAu> interazioneAuList = (List<InterazioneAu>) request.getAttribute("interazioneAutore");
     List<InterazioneUt> interazioneUtList = (List<InterazioneUt>) request.getAttribute("interazioneUtente");
+    Autore autoreLogin = (Autore) request.getSession(false).getAttribute("userAu");
+    Utente utenteLogin = (Utente) request.getSession(false).getAttribute("userUt");
     %>
 
 <header>
@@ -105,7 +108,23 @@
         <div class="mb-3" style= "width:50%" >
              <label for="textarea" class="form-label">Scrivi ciò che pensi:</label>
              <textarea class="form-control" id="textarea" rows="3" maxlength="1500"></textarea><br>
-            <%String x = ""+recensione.getCodice()+",MarioBros,0,0";%>
+            <%String x = "";
+            boolean flag = false;
+                System.out.println("prima");
+            if(!Objects.isNull(utenteLogin)) {
+                flag = true;
+                x = "" + recensione.getCodice() + "," + utenteLogin.getUtNickname() + ",0,0,true,utente,"+utenteLogin.getAvatar();
+                System.out.println("utente");
+            }
+            if(!Objects.isNull(autoreLogin)){
+                flag = true;
+                x = "" + recensione.getCodice() + "," + autoreLogin.getAuNickname() + ",0,0,true,autore,"+autoreLogin.getAvatar();
+                System.out.println("autore");
+            }
+            if(Objects.isNull(utenteLogin) && Objects.isNull(autoreLogin)){
+                System.out.println("nessuno");
+                x = "n,n,0,0,false,niente,0";
+            }%>
              <button type="button" onclick="aggiungiCommento('<%=x%>'); appariNuovoCommento()" id="bottoneCommento">Inserisci il commento</button>
          </div>
     </div>
@@ -121,7 +140,7 @@
                                 %>
                             <div class="container" style="padding: 30px 50px">
         <h4><img src="./img/Avatar/avatar<%=utente.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=utente.getUtNickname()%></h4>
-        <input class="form-control" type="text" value="<%=commento.getTesto()%>" aria-label="Disabled input example" disabled readonly>
+    <textarea class="form-control" type="text" aria-label="Disabled input example" style="resize: none" disabled readonly><%=commento.getTesto()%></textarea>
     <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
         <div class="col-12">
             <%String like = "true"+","+commento.getComCodice()+","+commento.getLike();%>
@@ -177,9 +196,11 @@
         })</script>
     </div>
 </div>
-                     <%   break;}
+                     <% break;
+                            }
                     }
-               break; }
+               break;
+                    }
             }
                      }
         }
@@ -193,7 +214,7 @@
 
     <div class="container" style="padding: 30px 50px">
         <h4><img src="./img/Avatar/avatar<%=autore.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=autore.getAuNickname()%></h4>
-        <input class="form-control" type="text" value="<%=commento.getTesto()%>" aria-label="Disabled input example" disabled readonly>
+        <textarea class="form-control" type="text" aria-label="Disabled input example" style="resize: none" disabled readonly><%=commento.getTesto()%></textarea>
         <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
             <div class="col-12">
                 <%String like = "true"+","+commento.getComCodice()+","+commento.getLike();%>
@@ -249,9 +270,11 @@
             })</script>
         </div>
     </div>
-    <%break;}
+    <%break;
+         }
     }
-        break;}
+        break;
+                     }
     }
     }
     }
