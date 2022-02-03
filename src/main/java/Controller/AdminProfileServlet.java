@@ -96,7 +96,7 @@ public class AdminProfileServlet extends Controllo {
                 amministratore.setAvatar(Integer.parseInt(request.getParameter("AmAvatar")));
                 amministratore.setEmail(request.getParameter("AmEmail"));
                 amministratore.setPassword(request.getParameter("AmPW"));
-                amministratore.setVideogiochiInseriti(Integer.parseInt(request.getParameter("VideogiochiInseriti")));
+                amministratore.setVideogiochiInseriti(amministratoreTmp.getVideogiochiInseriti());
                 amministratoreDAO.updateAmministratore(amministratore, amministratoreTmp.getAmNickname());
                 Amministratore amministratore1 = new Amministratore();
                 amministratore1 = amministratoreDAO.doRetrieveAmministratoreByEmail(amministratore.getEmail());

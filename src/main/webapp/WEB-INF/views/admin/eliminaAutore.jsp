@@ -28,14 +28,20 @@
     <%@include file="/WEB-INF/views/admin/headerAdmin.jsp"%>
 </header>
 
-<section class="field">
+<div class="container mt-3">
+    <br>
+    <h2>Inserisci il nickname dell'autore da eliminare</h2>
+    <br>
     <form action="${pageContext.request.contextPath}/adminOp/elimina" method="post">
-        <label for="AuNickname">
-            <input type="text" name="AuNickname" id="AuNickname" placeholder="Nickname">
-        </label>
-        <button class="premi">Inserisci</button>
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="AuNickname" name="AuNickname" placeholder="Nickname">
+            <label for="AuNickname">Nickname</label>
+        </div>
+        <br>
+        <button class="btn" style="background-color: turquoise">Elimina autore</button>
+
     </form>
-</section>
+</div>
 
 
 <footer>

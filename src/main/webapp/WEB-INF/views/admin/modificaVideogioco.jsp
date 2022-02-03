@@ -20,15 +20,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
-<%
-    Amministratore amministratore = (Amministratore) request.getAttribute("amministratore");
-%>
 
 <header>
     <%@include file="/WEB-INF/views/admin/headerAdmin.jsp"%>
 </header>
 
-<section class="field">
+<div class="container mt-3">
+    <br>
+    <h2>Modifica le informazioni</h2>
+    <br>
+    <form action="${pageContext.request.contextPath}/adminGame/modifica" method="post">
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="Titolo" name="Titolo" placeholder="Titolo">
+            <label for="Titolo">Titolo</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="number" id="Pegi" name="Pegi" placeholder="Pegi">
+            <label for="Pegi">Pegi</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="CasaProduttrice" name="CasaProduttrice" placeholder="Casa Produttrice">
+            <label for="CasaProduttrice">Casa Produttrice</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="Piattaforma" name="Piattaforma" placeholder="Piattaforma">
+            <label for="Piattaforma">Piattaforma</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="Tipologia" name="Tipologia" placeholder="Tipologia">
+            <label for="Tipologia">Tipologia</label>
+        </div>
+
+        <button class="btn" style="background-color: turquoise">Modifica videogioco</button>
+
+    </form>
+</div>
+
+<!-- <section class="field">
     <form action="${pageContext.request.contextPath}/adminGame/modifica" method="post">
         <label for="Titolo">
             <input type="text" name="Titolo" id="Titolo" placeholder="Titolo">
@@ -56,7 +88,7 @@
         </label>
         <button class="premi">Modifica</button>
     </form>
-</section>
+</section> -->
 
 
 <footer>

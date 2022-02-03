@@ -28,14 +28,19 @@
     <%@include file="/WEB-INF/views/admin/headerAdmin.jsp"%>
 </header>
 
-<section class="field">
+<div class="container mt-3">
+    <br>
+    <h2>Inserisci il titolo del videogioco da eliminare</h2>
+    <br>
     <form action="${pageContext.request.contextPath}/adminGame/elimina" method="post">
-        <label for="Titolo">
-            <input type="text" name="Titolo" id="Titolo" placeholder="Titolo">
-        </label>
-        <button class="premi">Inserisci</button>
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="Titolo" name="Titolo" placeholder="Titolo">
+            <label for="Titolo">Titolo</label>
+        </div>
+        <br>
+        <button class="btn" style="background-color: turquoise">Elimina videogioco</button>
     </form>
-</section>
+</div>
 
 
 <footer>

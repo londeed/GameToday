@@ -20,41 +20,50 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
-<%
-    Amministratore amministratore = (Amministratore) request.getAttribute("amministratore");
-%>
 
 <header>
     <%@include file="/WEB-INF/views/admin/headerAdmin.jsp"%>
 </header>
 
-<section class="field">
+<div class="container mt-3">
+    <br>
+    <h2>Modifica le informazioni</h2>
+    <br>
     <form action="${pageContext.request.contextPath}/adminProfile/modifica" method="post">
-        <label for="AmNickname">
-            <input type="text" name="AmNickname" id="AmNickname" placeholder="Nickname">
-        </label>
-        <label for="AmNome">
-            <input type="text" name="AmNome" id="AmNome" placeholder="Nome">
-        </label>
-        <label for="AmCognome">
-            <input type="text" name="AmCognome" id="AmCognome" placeholder="Cognome">
-        </label>
-        <label for="AmAvatar">
-            <input type="number" name="AmAvatar" id="AmAvatar" placeholder="Avatar">
-        </label>
-        <label for="AmEmail">
-            <input type="text" name="AmEmail" id="AmEmail" placeholder="Email">
-        </label>
-        <label for="AmPW">
-            <input type="text" name="AmPW" id="AmPW" placeholder="Password">
-        </label>
-        <label for="VideogiochiInseriti">
-            <input type="number" name="VideogiochiInseriti" id="VideogiochiInseriti" placeholder="Videogiochi Inseriti">
-        </label>
-        <button class="premi">Modifica</button>
-    </form>
-</section>
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="AmNickname" name="AmNickname" placeholder="Nickname">
+            <label for="AmNickname">Nickname</label>
+        </div>
 
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="AmNome" name="AmNome" placeholder="Nome">
+            <label for="AmNome">Nome</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="AmCognome" name="AmCognome" placeholder="Cognome">
+            <label for="AmCognome">Cognome</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="number" id="AmAvatar" name="AmAvatar" placeholder="Avatar">
+            <label for="AmAvatar">Avatar</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="AmEmail" name="AmEmail" placeholder="Email">
+            <label for="AmEmail">Email</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="AmPW" name="AmPW" placeholder="Password">
+            <label for="AmPW">Password</label>
+        </div>
+
+        <button class="btn" style="background-color: turquoise">Modifica profilo</button>
+
+    </form>
+</div>
 
 <footer>
     <%@include file="/WEB-INF/views/admin/footerAdmin.jsp"%>

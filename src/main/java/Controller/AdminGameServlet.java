@@ -57,9 +57,9 @@ public class AdminGameServlet extends Controllo {
                     VideogiocoDAO videogiocoDAO=new VideogiocoDAO();
                     videogioco.setTitolo(request.getParameter("Titolo"));
                     videogioco.setPegi(Integer.parseInt(request.getParameter("Pegi")));
-                    videogioco.setTotaleVoti(Integer.parseInt(request.getParameter("TotaleVoti")));
+                    videogioco.setTotaleVoti(0);
                     videogioco.setCasaProduttrice(request.getParameter("CasaProduttrice"));
-                    videogioco.setMediaValutazioni(Double.parseDouble(request.getParameter("MediaValutazioni")));
+                    videogioco.setMediaValutazioni(0);
                     videogioco.setPiattaforma(request.getParameter("Piattaforma"));
                     videogioco.setDataPubblicazione(Date.valueOf(request.getParameter("DataPubblicazione")));
                     videogioco.setTipologia(request.getParameter("Tipologia"));
@@ -72,15 +72,18 @@ public class AdminGameServlet extends Controllo {
                     request.getRequestDispatcher("/WEB-INF/views/admin/resultElimina.jsp").forward(request, response);
                     break;
                 case "/modifica":
+                    String s = request.getParameter("Titolo");
                     Videogioco videogioco2=new Videogioco();
                     VideogiocoDAO videogiocoDAO2=new VideogiocoDAO();
+                    Videogioco videogiocoTmp = new Videogioco();
+                    videogiocoTmp = videogiocoDAO2.doRetrieveByTitolo(s);
                     videogioco2.setTitolo(request.getParameter("Titolo"));
                     videogioco2.setPegi(Integer.parseInt(request.getParameter("Pegi")));
-                    videogioco2.setTotaleVoti(Integer.parseInt(request.getParameter("TotaleVoti")));
+                    videogioco2.setTotaleVoti(videogiocoTmp.getTotaleVoti());
                     videogioco2.setCasaProduttrice(request.getParameter("CasaProduttrice"));
-                    videogioco2.setMediaValutazioni(Double.parseDouble(request.getParameter("MediaValutazioni")));
+                    videogioco2.setMediaValutazioni(videogiocoTmp.getMediaValutazioni());
                     videogioco2.setPiattaforma(request.getParameter("Piattaforma"));
-                    videogioco2.setDataPubblicazione(Date.valueOf(request.getParameter("DataPubblicazione")));
+                    videogioco2.setDataPubblicazione(videogiocoTmp.getDataPubblicazione());
                     videogioco2.setTipologia(request.getParameter("Tipologia"));
                     videogiocoDAO2.updateVideogioco(videogioco2, videogioco2.getTitolo());
                     request.getRequestDispatcher("/WEB-INF/views/admin/resultInsert.jsp").forward(request, response);
