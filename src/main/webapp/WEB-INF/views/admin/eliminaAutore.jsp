@@ -35,9 +35,9 @@
     <br>
     <form action="${pageContext.request.contextPath}/adminOp/elimina" method="post">
 
-        <div class="form-select form-select-lg">
+        <div style="background-color: #141414; color:white">
             <!-- <h6>Scegli il titolo del videogioco da modificare:</h6> -->
-            <select class="form-select form-select-lg" id="AuNickname" name="AuNickname">
+            <select style="background-color: #141414; color:white" class="form-select form-select-lg" id="AuNickname" name="AuNickname">
 
                 <%
                     int i=0;

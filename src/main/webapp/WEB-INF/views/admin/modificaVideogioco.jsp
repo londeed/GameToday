@@ -36,7 +36,7 @@
     <br>
     <form action="${pageContext.request.contextPath}/adminGame/modifica" method="post">
 
-        <div class="form-select form-select-lg">
+        <div style="background-color: #141414; color:white">
             <!-- <h6>Scegli il titolo del videogioco da modificare:</h6> -->
             <select style="background-color: #141414; color:white" class="form-select form-select-lg" id="Titolo" name="Titolo">
 
