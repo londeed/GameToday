@@ -21,11 +21,22 @@
 </head>
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 
+
+<header>
+    <%@include file="/WEB-INF/views/admin/headerAdmin.jsp"%>
+</header>
+
 <div class="container mt-3">
     <br>
-    <h2>Eliminazione effettuata con successo</h2>
+    <h2>Operazione effettuata con successo</h2>
     <br>
+    <form action="${pageContext.request.contextPath}/admin/home" method="post">
+        <button class="btn" style="background-color: turquoise">Ritorna alla Home</button>
+    </form>
 </div>
 
+<footer>
+    <%@include file="/WEB-INF/views/admin/footerAdmin.jsp"%>
+</footer>
 </body>
 </html>

@@ -14,6 +14,7 @@
 </head>
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 <br>
+<!--
 <form class="d-flex" action="${pageContext.request.contextPath}/admin/login" method="post" onsubmit="event.preventDefault(); validateForm(this)">
     <fieldset>
         <h2>Login Admin</h2>
@@ -27,7 +28,28 @@
         </label>
         <button class="btn" style="background-color: turquoise" type="submit">Accedi</button>
     </fieldset>
-</form>
+</form>-->
+
+<div class="container mt-3">
+    <br>
+    <h2>Inserisci le tue credenziali</h2>
+    <br>
+    <form action="${pageContext.request.contextPath}/admin/login" method="post">
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="email" name="email" placeholder="Email">
+            <label for="email">Email</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input style="background-color: #141414; color:white" class="form-control" type="text" id="password" name="password" placeholder="Password">
+            <label for="password">Password</label>
+        </div>
+
+        <button class="btn" style="background-color: turquoise">Accedi</button>
+    </form>
+</div>
+
+
 </body>
 </html>
 

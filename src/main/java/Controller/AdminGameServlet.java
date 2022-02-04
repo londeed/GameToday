@@ -64,12 +64,12 @@ public class AdminGameServlet extends Controllo {
                     videogioco.setDataPubblicazione(Date.valueOf(request.getParameter("DataPubblicazione")));
                     videogioco.setTipologia(request.getParameter("Tipologia"));
                     videogiocoDAO.insertVideogioco(videogioco);
-                    request.getRequestDispatcher("/WEB-INF/views/admin/resultInsert.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
                     break;
                 case "/elimina":
                     VideogiocoDAO videogiocoDAO1=new VideogiocoDAO();
                     videogiocoDAO1.deleteVideogico(request.getParameter("Titolo"));
-                    request.getRequestDispatcher("/WEB-INF/views/admin/resultElimina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
                     break;
                 case "/modifica":
                     String s = request.getParameter("Titolo");
@@ -86,7 +86,7 @@ public class AdminGameServlet extends Controllo {
                     videogioco2.setDataPubblicazione(videogiocoTmp.getDataPubblicazione());
                     videogioco2.setTipologia(request.getParameter("Tipologia"));
                     videogiocoDAO2.updateVideogioco(videogioco2, videogioco2.getTitolo());
-                    request.getRequestDispatcher("/WEB-INF/views/admin/resultInsert.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
                     break;
                 default:
                     break;

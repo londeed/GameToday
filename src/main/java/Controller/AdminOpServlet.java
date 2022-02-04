@@ -69,12 +69,12 @@ public class AdminOpServlet extends Controllo {
                     autore.setDislike(0);
                     AutoreDAO autoreDAO = new AutoreDAO();
                     autoreDAO.createAutore(autore);
-                    request.getRequestDispatcher("/WEB-INF/views/admin/resultInsert.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
                     break;
                 case "/elimina":
                     AutoreDAO autoreDAO1=new AutoreDAO();
                     autoreDAO1.deleteAutore(request.getParameter("AuNickname"));
-                    request.getRequestDispatcher("/WEB-INF/views/admin/resultElimina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
                 default:
                     break;
             }

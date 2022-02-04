@@ -51,6 +51,15 @@ public class AdminServlet extends Controllo {
                     request.setAttribute("amministratore", amministratore);
                     request.getRequestDispatcher("/WEB-INF/views/admin/HomePageAdmin.jsp").forward(request, response);
                     break;
+                case "/home":
+                    String id = request.getSession(false).getId();
+                    Amministratore amministratoreSessione = new Amministratore();
+                    amministratoreSessione = (Amministratore) request.getSession().getAttribute("amministratore");
+                    AmministratoreDAO amministratoreSessioneDAO = new AmministratoreDAO();
+                    Amministratore amministratoreTmp = new Amministratore();
+                    amministratoreTmp = amministratoreSessioneDAO.doRetrieveAmministratoreByEmail(amministratoreSessione.getEmail());
+                    request.setAttribute("amministratore", amministratoreTmp);
+                    request.getRequestDispatcher("/WEB-INF/views/admin/HomePageAdmin.jsp").forward(request, response);
                 default:
                     break;
             }

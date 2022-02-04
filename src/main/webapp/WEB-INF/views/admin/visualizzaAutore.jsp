@@ -25,21 +25,24 @@
     <%@include file="/WEB-INF/views/admin/headerAdmin.jsp"%>
 </header>
 
-<table>
-    <caption>Dettaglio Autori</caption>
+
+<div class="container mt-3">
+    <h2>Dettaglio Autori</h2>
+    <br>
+<table class="table table-dark">
     <thead>
     <tr>
         <th>Nickname</th>
         <th>Nome</th>
         <th>Cognome</th>
         <th>Avatar</th>
-        <th>Recensioni Effettuate</th>
-        <th>Recensioni Commissionate</th>
+        <th>Rec. Effettuate</th>
+        <th>Rec. Commissionate</th>
         <th>Email</th>
         <th>Scadenza</th>
         <th>Password</th>
-        <th>Numero di Like</th>
-        <th>Numero di Dislike</th>
+        <th>N. Like</th>
+        <th>N. Dislike</th>
     </tr>
     </thead>
     <tbody>
@@ -63,6 +66,7 @@
     <%i++;}%>
     </tbody>
 </table>
+</div>
 
 <footer>
     <%@include file="/WEB-INF/views/admin/footerAdmin.jsp"%>

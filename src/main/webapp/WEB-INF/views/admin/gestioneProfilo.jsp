@@ -25,8 +25,11 @@
     <%@include file="/WEB-INF/views/admin/headerAdmin.jsp"%>
 </header>
 
-<table>
-    <caption>Dettaglio Amministratore</caption>
+
+<div class="container mt-3">
+    <h2>Dettaglio Profilo</h2>
+    <br>
+    <table class="table table-dark">
     <thead>
     <tr>
         <th>Nickname</th>
@@ -52,9 +55,12 @@
 </table>
 
 <form action="${pageContext.request.contextPath}/adminProfile/" method="get">
-    <li><button class="btn" style="background-color: turquoise" type="submit" id="modificaProfilo" name="gestioneAmministratore" value="modificaProfilo">Modifica Profilo</button></li>
-    <li><button class="btn" style="background-color: turquoise" type="submit" id="eliminaProfilo" name="gestioneAmministratore" value="eliminaProfilo">Elimina Profilo</button></li>
+    <button class="btn" style="background-color: turquoise" type="submit" id="modificaProfilo" name="gestioneAmministratore" value="modificaProfilo">Modifica Profilo</button>
+    <button class="btn" style="background-color: turquoise" type="submit" id="eliminaProfilo" name="gestioneAmministratore" value="eliminaProfilo">Elimina Profilo</button>
 </form>
+
+
+
 
 <footer>
     <%@include file="/WEB-INF/views/admin/footerAdmin.jsp"%>

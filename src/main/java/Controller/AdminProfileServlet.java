@@ -35,13 +35,14 @@ public class AdminProfileServlet extends Controllo {
                     dispatcher2.forward(request, response);
                     break;
                 case "eliminaProfilo":
-                    String id1 = request.getSession(false).getId();
+                    HttpSession session2 = request.getSession(false);
                     Amministratore amministratore2 = new Amministratore();
                     amministratore = (Amministratore) request.getSession().getAttribute("amministratore");
                     AmministratoreDAO amministratoreDAO1 = new AmministratoreDAO();
                     Amministratore amministratore3 = new Amministratore();
                     amministratore3 = amministratoreDAO1.doRetrieveAmministratoreByEmail(amministratore.getEmail());
                     amministratoreDAO1.deleteAmministratore(amministratore3.getAmNickname());
+                    session2.removeAttribute("amministratore");
                     RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/views/admin/resultElimina.jsp");
                     dispatcher3.forward(request, response);
                     break;
