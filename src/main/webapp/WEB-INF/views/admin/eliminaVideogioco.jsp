@@ -1,4 +1,5 @@
 <%@ page import="Model.Amministratore.Amministratore" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -9,7 +10,7 @@
         }
     </style>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="eliminaVideogioco"/>
+        <jsp:param name="title" value="Elimina Videogioco"/>
         <jsp:param name="style" value="bootstrap"/>
         <jsp:param name="script" value=""/>
     </jsp:include>
@@ -21,7 +22,7 @@
 </head>
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 <%
-    Amministratore amministratore = (Amministratore) request.getAttribute("amministratore");
+    List<String> stringList = (List<String>) request.getAttribute("titoli");
 %>
 
 <header>
@@ -33,10 +34,27 @@
     <h2>Inserisci il titolo del videogioco da eliminare</h2>
     <br>
     <form action="${pageContext.request.contextPath}/adminGame/elimina" method="post">
-        <div class="form-floating mb-3 mt-3">
+
+        <div class="form-select form-select-lg">
+            <!-- <h6>Scegli il titolo del videogioco da modificare:</h6> -->
+            <select class="form-select form-select-lg" id="Titolo" name="Titolo">
+
+                <%
+                    int i=0;
+                    for(String list : stringList){
+                %>
+
+                <option><%= stringList.get(i)%></option>
+
+                <%i++;}%>
+            </select>
+
+        </div>
+
+       <!-- <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="Titolo" name="Titolo" placeholder="Titolo">
             <label for="Titolo">Titolo</label>
-        </div>
+        </div> -->
         <br>
         <button class="btn" style="background-color: turquoise">Elimina videogioco</button>
     </form>

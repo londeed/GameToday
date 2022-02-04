@@ -2,6 +2,8 @@ package Controller;
 
 import Model.Autore.Autore;
 import Model.Autore.AutoreDAO;
+import Model.Videogioco.Videogioco;
+import Model.Videogioco.VideogiocoDAO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -24,6 +26,14 @@ public class AdminOpServlet extends Controllo {
                     dispatcher1.forward(request, response);
                     break;
                 case "eliminaAutore":
+                    List<Autore> autoreList1 = new ArrayList<>();
+                    AutoreDAO autoreDAO1 = new AutoreDAO();
+                    autoreList1 = autoreDAO1.doRetrieveAutoreAll();
+                    List<String> nickname = new ArrayList<>();
+                    for (int i=0; i<autoreList1.size(); i++) {
+                        nickname.add(autoreList1.get(i).getAuNickname());
+                    }
+                    request.setAttribute("nickname", nickname);
                     RequestDispatcher dispatcher2 = request.getRequestDispatcher("/WEB-INF/views/admin/eliminaAutore.jsp");
                     dispatcher2.forward(request, response);
                     break;

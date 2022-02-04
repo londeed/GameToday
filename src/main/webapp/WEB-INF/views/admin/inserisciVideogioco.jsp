@@ -9,7 +9,7 @@
         }
     </style>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="inserisciVideogioco"/>
+        <jsp:param name="title" value="Inserisci Videogioco"/>
         <jsp:param name="style" value="bootstrap"/>
         <jsp:param name="script" value=""/>
     </jsp:include>

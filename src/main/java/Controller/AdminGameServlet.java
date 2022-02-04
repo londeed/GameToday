@@ -26,10 +26,26 @@ public class AdminGameServlet extends Controllo {
                     dispatcher1.forward(request, response);
                     break;
                 case "elimina":
+                    List<Videogioco> videogiocoList1 = new ArrayList<>();
+                    VideogiocoDAO videogiocoDAO1 = new VideogiocoDAO();
+                    videogiocoList1 = videogiocoDAO1.doRetriveAll();
+                    List<String> titoli1 = new ArrayList<>();
+                    for (int i=0; i<videogiocoList1.size(); i++) {
+                        titoli1.add(videogiocoList1.get(i).getTitolo());
+                    }
+                    request.setAttribute("titoli", titoli1);
                     RequestDispatcher dispatcher2 = request.getRequestDispatcher("/WEB-INF/views/admin/eliminaVideogioco.jsp");
                     dispatcher2.forward(request, response);
                     break;
                 case "modifica":
+                    List<Videogioco> videogiocoList = new ArrayList<>();
+                    VideogiocoDAO videogiocoDAO = new VideogiocoDAO();
+                    videogiocoList = videogiocoDAO.doRetriveAll();
+                    List<String> titoli = new ArrayList<>();
+                    for (int i=0; i<videogiocoList.size(); i++) {
+                        titoli.add(videogiocoList.get(i).getTitolo());
+                    }
+                    request.setAttribute("titoli", titoli);
                     RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/views/admin/modificaVideogioco.jsp");
                     dispatcher3.forward(request, response);
                     break;
@@ -37,7 +53,7 @@ public class AdminGameServlet extends Controllo {
                     break;
             }
 
-        } catch (ServletException e) {
+        } catch (ServletException | SQLException e) {
             e.printStackTrace();
         }
 /*catch (SQLException throwables) {
@@ -85,7 +101,7 @@ public class AdminGameServlet extends Controllo {
                     videogioco2.setPiattaforma(request.getParameter("Piattaforma"));
                     videogioco2.setDataPubblicazione(videogiocoTmp.getDataPubblicazione());
                     videogioco2.setTipologia(request.getParameter("Tipologia"));
-                    videogiocoDAO2.updateVideogioco(videogioco2, videogioco2.getTitolo());
+                    videogiocoDAO2.updateVideogioco(videogioco2, s);
                     request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
                     break;
                 default:
