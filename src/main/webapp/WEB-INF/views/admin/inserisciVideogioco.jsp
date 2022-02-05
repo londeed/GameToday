@@ -29,7 +29,7 @@
     <br>
     <h2>Inserisci le credenziali del nuovo videogioco</h2>
     <br>
-    <form action="${pageContext.request.contextPath}/adminGame/create" method="post">
+    <form action="${pageContext.request.contextPath}/adminGame/create" enctype=multipart/form-data method="post">
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="Titolo" name="Titolo" placeholder="Titolo">
             <label for="Titolo">Titolo</label>
@@ -60,6 +60,16 @@
             <label for="DataPubblicazione">Data Pubblicazione</label>
         </div>
 
+        <h5>Inserisci un immagine di copertina</h5>
+        <div>
+            <input style="background-color: #141414; color:white" class="form-control" type="file" id="Img" name="Img" placeholder="Immagine">
+        </div>
+        <br>
+        <!--
+        <label for="upImg">
+            <input type="file" name="upImg" id="upImg">
+        </label>
+        -->
         <button class="btn" style="background-color: turquoise">Inserisci</button>
 
     </form>

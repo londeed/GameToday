@@ -1,3 +1,11 @@
+<%
+    HttpSession sessionHeader = request.getSession(false);
+    Amministratore amministratoreHeader = new Amministratore();
+    amministratoreHeader = (Amministratore) request.getSession().getAttribute("amministratore");
+    String avatarTmpHeader= String.valueOf(amministratoreHeader.getAvatar());
+    String avatarHeader= "avatar"+avatarTmpHeader+".png";
+%>
+
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="HomePage.jsp" >Logo</a>
@@ -39,8 +47,8 @@
             </ul>
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: turquoise">
-                    <!--<img src="./img/download.jpg" alt="Logo" width="32" height="32" class="rounded-circle">-->
-                    <i class="fas fa-user-circle" style="font-size:26px; color: turquoise"></i>
+                    <img src="${pageContext.request.contextPath}/img/Avatar/<%=avatarHeader%>" alt="Logo" width="32" height="32" class="rounded-circle">
+                    <!--<i class="fas fa-user-circle" style="font-size:26px; color: turquoise"></i>-->
                 </a>
                 <ul class="dropdown-menu">
                     <form action="${pageContext.request.contextPath}/adminProfile/" method="get">
