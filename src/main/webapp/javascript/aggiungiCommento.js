@@ -2,29 +2,8 @@
 var nome ;
 var like ;
 var dislike;
-var numero;
 var verifica;
 var avatar;
-/*function controllaLogin(verifica,codice) {
-    var ver = verifica;
-    var code = codice;
-    if (!ver) {
-        var cod = {codiceCommento: code};
-        $.ajax({
-            type: "get",
-            url: "http://localhost:8080/GameToday_war/CommentoServlet/rimuovi",
-            contentType: "JSON", // NOT dataType!
-            data: {cod: JSON.stringify(cod)},
-            success: function (response) {
-                //location.reload();
-                alert("Commento correttamente aggiunto!");
-            },
-            error: function (response) {
-                alert('Commento non aggiunto!');
-            }
-        });
-    }
-}*/
 
  function aggiungiCommento(x){
 //codice,nome,like,dislike
@@ -41,8 +20,36 @@ var avatar;
     // var a  = codice;
     var c = $("#textarea").val();
     //const array=s.split(",")
-    var codici = {codiceRecensione: array[0], commentoRecensione: c, user: nome, tipologia: selettore};
-     if(verifica === "true"){
+     if(verifica === "true") {
+         var numero = uniqid();
+         var nom = nome;
+         var lik = like;
+         var dislik = dislike;
+         var rand = Math.random();
+         var involucro = $("<div class='container' id='commento'>").appendTo($("#commentoUtente"));
+         document.querySelector('#commento').setAttribute("id", "commento" + numero)
+         var h4 = $("<h4 id=\"utNome\" style=\"padding-top: 70px\">").appendTo($("#commento"+numero));
+         var image = new Image();
+         image.src = "./img/Avatar/avatar"+avatar+".png";
+         document.querySelector('#utNome').innerHTML += '<img src="'+image.src+'" alt="Pic not found" class="d-block"  style="width:5%; height: 5%" />';
+         document.querySelector('#utNome').setAttribute("id", "utNome" + numero)
+         document.querySelector('#utNome' + numero).innerHTML += nom;
+         var input = $("<textarea class=\"form-control\" type=\"text\" id=\"utCommento\" aria-label=\"Disabled input example\" style=\"resize: none\" disabled readonly >").appendTo($("#commentoUtente"));
+         document.querySelector('#utCommento').setAttribute("id", "utCommento" + numero)
+         var commentoNumero = "utCommento" + numero;
+         let testo = $("#textarea").val();
+         document.querySelector('#utCommento' + numero).innerHTML = testo;
+         var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"padding-top: 10px\" id=\"div\" >").appendTo($("#commentoUtente"));
+         document.querySelector('#div').setAttribute("id", "div" + numero)
+         //var div2 = $("<div class=\"col-12\" id=\"div2\" >").appendTo($('#div' + numero));
+         //document.querySelector('#div2').setAttribute("id", "div2" + numero)
+         var elimina = $("<button id=\"eliminaBottone\" type='button' onclick='elimina()'>").appendTo($("#div"+numero));
+         document.querySelector("#eliminaBottone").setAttribute("onclick", 'elimina("'+"utCommento"+numero+'")')
+         document.querySelector("#eliminaBottone").setAttribute("id", "eliminaBottone" + numero)
+         document.querySelector("#eliminaBottone"+numero).innerHTML = "Elimina"
+         //var numeroCommento = {numeroCom: commentoNumero};
+        var codici = {numeroCom: commentoNumero, codiceRecensione: array[0], commentoRecensione: c, user: nome, tipologia: selettore};
+    // if(verifica === "true"){
          $.ajax({
              type: "get",
              url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungi",
@@ -50,6 +57,7 @@ var avatar;
              data: {codici: JSON.stringify(codici)},
              success: function (response) {
                  //location.reload();
+                 document.querySelector("#textarea").value = "";
                  alert("Commento correttamente aggiunto!");
              },
              error: function (response) {
@@ -62,7 +70,7 @@ var avatar;
 
 }
 
-  function appariNuovoCommento(){
+  /*function appariNuovoCommento(){
         //nome,like,dislike
         if(verifica === "true") {
             numero = uniqid();
@@ -70,7 +78,9 @@ var avatar;
             var lik = like;
             var dislik = dislike;
             var rand = Math.random();
-            var h4 = $("<h4 id=\"utNome\" style=\"padding-top: 70px\">").appendTo($("#commentoUtente"));
+            var involucro = $("<div class='container' id='commento'>").appendTo($("#commentoUtente"));
+            document.querySelector('#commento').setAttribute("id", "commento" + numero)
+            var h4 = $("<h4 id=\"utNome\" style=\"padding-top: 70px\">").appendTo($("#commento"+numero));
             var image = new Image();
             image.src = "./img/Avatar/avatar"+avatar+".png";
             document.querySelector('#utNome').innerHTML += '<img src="'+image.src+'" alt="Pic not found" class="d-block"  style="width:5%; height: 5%" />';
@@ -81,11 +91,13 @@ var avatar;
             var commentoNumero = "utCommento" + numero;
             let testo = $("#textarea").val();
             document.querySelector('#utCommento' + numero).innerHTML = testo;
-            var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"float: right; padding-top: 10px\" id=\"div\" >").appendTo($("#commentoUtente"));
+            var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"padding-top: 10px\" id=\"div\" >").appendTo($("#commentoUtente"));
             document.querySelector('#div').setAttribute("id", "div" + numero)
-            var div2 = $("<div class=\"col-12\" id=\"div2\" >").appendTo($('#div' + numero));
-            document.querySelector('#div2').setAttribute("id", "div2" + numero)
-            var elimina = $("<button id=\"eliminaBottone\" type='button'>").appendTo($("#utCommento"+numero));
+            //var div2 = $("<div class=\"col-12\" id=\"div2\" >").appendTo($('#div' + numero));
+            //document.querySelector('#div2').setAttribute("id", "div2" + numero)
+            var elimina = $("<button id=\"eliminaBottone\" type='button' onclick='elimina(\"utCommento\" + numero)'>").appendTo($("#div"+numero));
+            document.querySelector("#eliminaBottone").setAttribute("id", "eliminaBottone" + numero)
+            document.querySelector("#eliminaBottone"+numero).innerHTML = "Elimina"
             //document.querySelector('#button1').setAttribute("id", "button1" + numero)
             //var i = $("<i class=\"far fa-thumbs-up\" id=\"i\">").appendTo($('#button1' + numero));
             //document.querySelector('#i').setAttribute("id", "i" + numero)
@@ -117,7 +129,7 @@ var avatar;
                 }
             });
         }
-}
+}*/
 
 
 function getRandomInt(min, max) {
@@ -130,57 +142,6 @@ function uniqid() {
     var id = getRandomInt(0, Date.now());
     return id;
 }
-
-/*function appariNuovoCommento(nome,like,dislike){
-    numero = uniqid();
-    var nom = nome;
-    var lik = like;
-    var dislik = dislike;
-    var rand = Math.random();
-    var h4 = $("<h4 id=\"utNome\" style=\"padding-top: 70px\">").appendTo($("#commentoUtente"));
-   // var numero = uniqid();
-    document.querySelector('#utNome').setAttribute("id","utNome"+numero)
-    document.querySelector('#utNome'+numero).innerHTML = nom;
-    var input = $("<input class=\"form-control\" type=\"text\" id=\"utCommento\" aria-label=\"Disabled input example\" disabled readonly >").appendTo($("#commentoUtente"));
-    document.querySelector('#utCommento').setAttribute("id","utCommento"+numero)
-    var commentoNumero = "utCommento"+numero;
-    let testo  = $("#textarea").val();
-    document.querySelector('#utCommento'+numero).setAttribute("value",""+testo)
-    var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"float: right; padding-top: 10px\" id=\"div\" >").appendTo($("#commentoUtente"));
-    document.querySelector('#div').setAttribute("id","div"+numero)
-    var div2 = $("<div class=\"col-12\" id=\"div2\" >").appendTo($('#div'+numero));
-    document.querySelector('#div2').setAttribute("id","div2"+numero)
-    var button1 = $("<button id=\"button1\" onclick='salvaInterazione(\"true\")'>").appendTo($('#div2'+numero));
-    document.querySelector('#button1').setAttribute("id","button1"+numero)
-    var i = $("<i class=\"far fa-thumbs-up\" id=\"i\">").appendTo($('#button1'+numero));
-    document.querySelector('#i').setAttribute("id","i"+numero)
-    var p = $("<p id=\"utLike\">").appendTo($('#i'+numero));
-    document.querySelector('#utLike').setAttribute("id","utLike"+numero)
-    document.querySelector('#utLike'+numero).innerHTML = lik
-    var div3 = $("<div class=\"col-12\" id=\"div3\" >").appendTo($('#div'+numero));
-    document.querySelector('#div3').setAttribute("id","div3"+numero)
-    var button2 = $("<button id=\"button2\" onclick='salvaInterazione(\"false\")'>").appendTo($('#div3'+numero));
-    document.querySelector('#button2').setAttribute("id","button2"+numero)
-    //document.querySelector('#button2'+numero).setAttribute("name","button2"+numero)
-    var i2 = $("<i class=\"far fa-thumbs-down\" id=\"i2\">").appendTo($('#button2'+numero));
-    document.querySelector('#i2').setAttribute("id","i2"+numero)
-    var p2 = $("<p id=\"utDislike\">").appendTo($('#i2'+numero));
-    document.querySelector('#utDislike').setAttribute("id","utDislike"+numero)
-    document.querySelector('#utDislike'+numero).innerHTML = dislik
-    alert(commentoNumero)
-    $.ajax({
-        type: "get",
-        url: "http://localhost:8080/GameToday_war/CommentoServlet/salva#Commenti",
-        contentType: "JSON", // NOT dataType!
-        data:{ commentoNumero: JSON.stringify(commentoNumero)},
-        success: function(response) {
-            alert("Salvataggio avvenuto correttamente!");
-        },
-        error: function(response) {
-            alert('Salvataggio non avvenuto!');
-        }
-    });
-}*/
 
 function salvaInterazione(valore,x){
     var verifica = x;
@@ -237,59 +198,71 @@ function CommentoEsistente(stringa){
         }
     });
 }
-// aggiungere nickname e avatar dell'utente del commento
 // aggiustare il testo del commento
 // interazione con commento sotto al commento (?)
 
-
-/*$(document).on("click", "#bottoneCommento", function() {
-    $("#commentoUtente").html(response);
-    let gg = JSON.parse(response);
-    $.get("/CommentoServlet/aggiungiCommento", function (responseJson) {
-        var $ul = $("<ul>").appendTo($("#commentoUtente"));
-        $.each(responseJson,function (index,item){
-            $("<li>").text(gg).appendTo($ul);
-            alert("siuum")
-            $.getJSON("http://localhost:8080/GameToday_war/CommentoServlet/aggiungiCommento", function (responseJson) {
-                var $ul = $("<ul>").appendTo($("#commentoUtente"));
-                const obj = JSON.parse(responseJson);
-                alert("cod")
-                $("#utCommento").innerHTML(obj.list(0));
-                $.each(obj, function (index, item) {
-                    $("#utCommento").innerHTML(0, item);
-                    $("#utLike").innerHTML(1, item);
-                    $("#utDislike").innerHTML(2, item);
-                    $("<li>").text(item).appendTo($ul);
-                });
-            });
-//});*/
-
-function elimina(){
-
-
-
-
-
+function elimina(numeroCommento){
+    var num = numeroCommento
+    var code = {numCom: num};
     $.ajax({
         type: "get",
-        url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
+        url: "http://localhost:8080/GameToday_war/CommentoServlet/elimina",
         contentType: "JSON", // NOT dataType!
-        data:{ interazione: JSON.stringify(interazione)},
+        data:{ code: JSON.stringify(code)},
         success: function(response) {
-            alert("Like o dislike correttamente aggiunto!");
+            alert("Eliminazione riuscita");
         },
         error: function(response) {
-            alert('Like o dislike non aggiunto!');
+            alert('Errore in fase di eliminazione');
         }
     });
 }
 
-function modifica(){
+function modifica(cod){
+    var h = cod
+    var x = $("#ModificaBottone2"+h).html()
+    if(x ==="Modifica") {
+let testo = $("#textarea"+h).val();
+var v = document.getElementById('ajax'+h)
+var z = document.getElementById('ajax2'+h)
+if(v.style.display === "none"){
+    v.style.display = "block";
+    z.style.display = "none";
+}else{
+    v.style.display = "none";
+    z.style.display = "block";
+}
+//document.getElementById("textarea2"+h).setAttribute("value","what");
+$("#textarea2"+h).val("niente").trigger('change');
 
+$("#ModificaBottone2"+h).text("Conferma Modifiche")
+}else{
+    let test = $("#textarea2"+h).val();
+    alert(test)
+    $("#ModificaBottone2"+h).text("Modifica")
+    var v = document.getElementById('ajax'+h)
+var z = document.getElementById('ajax2'+h)
+if(v.style.display === "block"){
+        v.style.display = "none";
+        z.style.display = "block";
+    }else{
+        v.style.display = "block";
+        z.style.display = "none";
+    }
+    alert(testo)
+        document.querySelector("#textarea"+h).innerHTML = test
+}
+}
 
-
-
-    $.ajax({
+function confermaModifica(cod){
+        var q = cod
+        document.getElementById("textarea"+q).disabled = true;
+        document.getElementById("textarea"+q).readonly = true;
+        //document.getElementById("textarea<%=commento.getComCodice()%>").setAttribute("disabled","disabled");
+        //document.getElementById("textarea<%=commento.getComCodice()%>").setAttribute("readonly","readonly");
+        document.getElementById("ConfermaModifica2"+q).innerHTML = "Modifica";
+        document.getElementById("ConfermaModifica2"+q).setAttribute("id", "ModificaBottone2"+q)
+    /*$.ajax({
         type: "get",
         url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
         contentType: "JSON", // NOT dataType!
@@ -300,5 +273,5 @@ function modifica(){
         error: function(response) {
             alert('Like o dislike non aggiunto!');
         }
-    });
+    });*/
 }

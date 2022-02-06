@@ -161,4 +161,20 @@ public class InterazioneAuDAO {
             }
         }
     }
+
+
+    public Boolean delete(String comCodice,String nickname,boolean like,boolean dislike)throws SQLException{
+        try(Connection con = ConPool.getConnection()) {
+            try(PreparedStatement ps = con.prepareStatement("DELETE FROM interazioneAutore WHERE CommentoCod = ? AND AuNickname = ? AND AUL = ? AND AUD = ?")){
+                ps.setString(1, comCodice);
+                ps.setString(2, nickname);
+                ps.setBoolean(3, like);
+                ps.setBoolean(4, dislike);
+                int rows = ps.executeUpdate();
+                return rows == 1;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

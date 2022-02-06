@@ -20,4 +20,5 @@ public interface InterazioneAuInterface {
     List<String> doRetrieveNicknameAuByComCodice(String comCodice) throws SQLException;
     String doRetrieveByCreazioneCommento(String comCodice) throws SQLException;
     InterazioneAu doRetrieveInterazioneCreazioneCommento(String comCodice)throws SQLException;
+    Boolean delete(String comCodice,String nickname,boolean like,boolean dislike)throws SQLException;
 }
