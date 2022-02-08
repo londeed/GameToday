@@ -315,7 +315,7 @@
                 String eliminazione = ""+commento.getComCodice()+","+autore.getAuNickname();%>
             <div class="container" style="float: left">
                 <button id="ModificaBottone2<%=commento.getComCodice()%>" type='button'>Modifica</button>
-                <script>
+                <script defer>
                         $("#ModificaBottone2<%=commento.getComCodice()%>").bind("click", function(){
                         modifica("<%=commento.getComCodice()%>")
                     })
@@ -323,7 +323,7 @@
             </div>
             <div class="container" style="float: left">
                 <button id="eliminaBottone2<%=commento.getComCodice()%>" type='button'>Elimina</button>
-                <script>
+                <script defer>
                     document.getElementById("eliminaBottone2<%=commento.getComCodice()%>").addEventListener("click",function (){
                         var codiceCom = "<%=eliminazione%>";
                         const array = codiceCom.split(",")
@@ -352,7 +352,7 @@
                 <button id="button<%=commento.getComCodice()%>" >
                     <i class="far fa-thumbs-up" id="i<%=commento.getComCodice()%>"><p id="p<%=commento.getComCodice()%>"><%=commento.getLike()%></p></i>
                 </button>
-                <script>document.getElementById("button<%=commento.getComCodice()%>").addEventListener("click",function (){
+                <script defer>document.getElementById("button<%=commento.getComCodice()%>").addEventListener("click",function (){
                     var stringa ="<%=like%>";
                     const array = stringa.split(",")
                     var v = array[0];
@@ -379,7 +379,7 @@
                     <i class="far fa-thumbs-down" id="i2<%=commento.getComCodice()%>"><p id="p2<%=commento.getComCodice()%>"><%=commento.getDislike()%></p></i>
                 </button>
             </div>
-            <script>document.getElementById("button2<%=commento.getComCodice()%>").addEventListener("click",function (){
+            <script defer>document.getElementById("button2<%=commento.getComCodice()%>").addEventListener("click",function (){
                 var stringa ="<%=dislike%>";
                 const array = stringa.split(",")
                 var v = array[0];

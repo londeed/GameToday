@@ -48,7 +48,6 @@
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: turquoise">
                     <img src="${pageContext.request.contextPath}/img/Avatar/<%=avatarHeader%>" alt="Logo" width="32" height="32" class="rounded-circle">
-                    <!--<i class="fas fa-user-circle" style="font-size:26px; color: turquoise"></i>-->
                 </a>
                 <ul class="dropdown-menu">
                     <form action="${pageContext.request.contextPath}/adminProfile/" method="get">
@@ -61,12 +60,6 @@
                 <input class="form-control me-2" type="text" placeholder="Search" id="result" name="result">
                 <button class="btn" style="background-color: turquoise" type="submit">Search</button>
             </form>
-            <!---   <a class="navbar-brand" href="#">
-              //     <img src="img_avatar1.png" alt="Logo" style="width:40px;" class="rounded-pill">
-               </a>
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-           <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-         </a>--->
         </div>
     </div>
 </nav>

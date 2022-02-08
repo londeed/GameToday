@@ -88,21 +88,21 @@
     <!-- The slideshow/carousel -->
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="./img/download1.jpg" alt="Los Angeles" class="d-block" style="height: 200px; width:100%">
+            <img src="img/download1.jpg" alt="Los Angeles" class="d-block" style="height: 200px; width:100%">
             <div class="carousel-caption">
                 <h3>Los Angeles</h3>
                 <p>We had such a great time in LA!</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./img/download.jpg" alt="Chicago" class="d-block" style="height: 200px; width:100%">
+            <img src="img/download.jpg" alt="Chicago" class="d-block" style="height: 200px; width:100%">
             <div class="carousel-caption">
                 <h3>Chicago</h3>
                 <p>Thank you, Chicago!</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./img/download3.jpg" alt="New York" class="d-block" style="height: 200px; width:100%">
+            <img src="img/download3.jpg" alt="New York" class="d-block" style="height: 200px; width:100%">
             <div class="carousel-caption">
                 <h3>New York</h3>
                 <p>We love the Big Apple!</p>
@@ -158,21 +158,21 @@
     <div class="col-sm-4" style="text-align: center">
         <h3>RECENSIONE PIU' COMMENTATA</h3>
         <div class="container mt-3">
-            <img src="./img/download1.jpg" class="img-fluid" alt="">
+            <img src="img/download1.jpg" class="img-fluid" alt="">
             <p>OKI</p>
         </div>
     </div>
     <div class="col-sm-4" style="text-align: center">
         <h3>RECENSIONE PIU' COMMENTATA</h3>
         <div class="container mt-3">
-            <img src="./img/download.jpg" class="img-fluid" alt="">
+            <img src="img/download.jpg" class="img-fluid" alt="">
             <p>OKI</p>
         </div>
     </div>
     <div class="col-sm-4" style="text-align: center">
         <h3>RECENSIONE PIU' COMMENTATA</h3>
         <div class="container mt-3">
-            <img src="./img/download3.jpg" class="img-fluid" alt="">
+            <img src="img/download3.jpg" class="img-fluid" alt="">
             <p>OKI</p>
         </div>
     </div>

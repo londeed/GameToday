@@ -34,8 +34,11 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><button class="dropdown-item" id="Login" name="Login" value="Login" onclick="login()">Login</button></li>
-                    <li><a class="dropdown-item" href="#">Another link</a></li>
-                    <li><a class="dropdown-item" href="#">A third link</a></li>
+
+                    <form action="${pageContext.request.contextPath}/utenteProfile/" method="get">
+                        <li><button class="dropdown-item" id="gestioneProfilo" name="gestioneUtente" value="gestioneProfilo">Gestione Profilo</button></li>
+                        <li><button class="dropdown-item" id="logout" name="gestioneUtente" value="logout">Logout</button></li>
+                    </form>
                 </ul>
             </div>
             <form class="d-flex" action="${pageContext.request.contextPath}/ResearchServlet" method="get">
@@ -51,3 +54,16 @@
         </div>
     </div>
 </nav>
+
+
+<!--
+        <img src="${pageContext.request.contextPath}/img/Avatar/" alt="Logo" width="32" height="32" class="rounded-circle">
+
+    <ul class="dropdown-menu">
+        <form action="${pageContext.request.contextPath}/adminProfile/" method="get">
+            <li><button class="dropdown-item" id="gestioneProfilo" name="gestioneAmministratore" value="gestioneProfilo">Gestione Profilo</button></li>
+            <li><button class="dropdown-item" id="logout" name="gestioneAmministratore" value="logout">Logout</button></li>
+        </form>
+    </ul>
+</div>
+-->
