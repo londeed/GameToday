@@ -18,12 +18,13 @@ public class AutoreProfileServlet extends Controllo {
         try {
             String inputRicerca = request.getParameter("gestioneAutore");
             switch (inputRicerca) {
-                case "gestioneProfilo":
+                case "gestioneProfiloAutore":
                     String id = request.getSession(false).getId();
                     Autore autore = new Autore();
                     autore = (Autore) request.getSession().getAttribute("userAu");
                     AutoreDAO autoreDAO = new AutoreDAO();
                     request.setAttribute("autore", autore);
+                    System.out.println("okokok");
                     RequestDispatcher dispatcher1 = request.getRequestDispatcher("/WEB-INF/views/autore/gestioneProfilo.jsp");
                     dispatcher1.forward(request, response);
                     break;
@@ -41,7 +42,7 @@ public class AutoreProfileServlet extends Controllo {
                     RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
                     dispatcher3.forward(request, response);
                     break;
-                case "logout":
+                case "logoutAutore":
                     HttpSession session = request.getSession(false);
                     Autore autore2 = (Autore) session.getAttribute("userAu");
                     session.removeAttribute("userAu");

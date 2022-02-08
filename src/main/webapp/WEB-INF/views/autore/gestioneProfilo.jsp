@@ -17,7 +17,7 @@
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 
 <%
-    Autore autore = (Autore) request.getAttribute("autore");
+    Autore autoreLoggato = (Autore) request.getAttribute("autore");
 %>
 
 <header>
@@ -44,16 +44,16 @@
         </thead>
         <tbody>
         <tr>
-            <td data-head="Nickname"><%=autore.getAuNickname()%></td>
-            <td data-head="Nome"><%=autore.getNome()%></td>
-            <td data-head="Cognome"><%=autore.getCognome()%></td>
-            <td data-head="Avatar"><%=autore.getAvatar()%></td>
-            <td data-head="Avatar"><%=autore.getRecEffettuate()%></td>
-            <td data-head="Avatar"><%=autore.getRecCommissionate()%></td>
-            <td data-head="Email"><%=autore.getEmail()%></td>
-            <td data-head="Avatar"><%=autore.getScadenza()%></td>
-            <td data-head="Password"><%=autore.getLike()%></td>
-            <td data-head="Videogiochi inserti"><%=autore.getDislike()%></td>
+            <td data-head="Nickname"><%=autoreLoggato.getAuNickname()%></td>
+            <td data-head="Nome"><%=autoreLoggato.getNome()%></td>
+            <td data-head="Cognome"><%=autoreLoggato.getCognome()%></td>
+            <td data-head="Avatar"><%=autoreLoggato.getAvatar()%></td>
+            <td data-head="Avatar"><%=autoreLoggato.getRecEffettuate()%></td>
+            <td data-head="Avatar"><%=autoreLoggato.getRecCommissionate()%></td>
+            <td data-head="Email"><%=autoreLoggato.getEmail()%></td>
+            <td data-head="Avatar"><%=autoreLoggato.getScadenza()%></td>
+            <td data-head="Password"><%=autoreLoggato.getLike()%></td>
+            <td data-head="Videogiochi inserti"><%=autoreLoggato.getDislike()%></td>
         </tr>
         </tbody>
     </table>

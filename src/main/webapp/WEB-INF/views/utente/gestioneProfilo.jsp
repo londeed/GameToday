@@ -16,7 +16,7 @@
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 
 <%
-    Utente utente = (Utente) request.getAttribute("utente");
+    Utente utenteLoggato = (Utente) request.getAttribute("utente");
 %>
 
 <header>
@@ -41,14 +41,14 @@
         </thead>
         <tbody>
         <tr>
-            <td data-head="Nickname"><%=utente.getUtNickname()%></td>
-            <td data-head="Nome"><%=utente.getNome()%></td>
-            <td data-head="Cognome"><%=utente.getCognome()%></td>
-            <td data-head="Avatar"><%=utente.getValEffettuate()%></td>
-            <td data-head="Email"><%=utente.getEmail()%></td>
-            <td data-head="Password"><%=utente.getLike()%></td>
-            <td data-head="Videogiochi inserti"><%=utente.getDislike()%></td>
-            <td data-head="Avatar"><%=utente.getAvatar()%></td>
+            <td data-head="Nickname"><%=utenteLoggato.getUtNickname()%></td>
+            <td data-head="Nome"><%=utenteLoggato.getNome()%></td>
+            <td data-head="Cognome"><%=utenteLoggato.getCognome()%></td>
+            <td data-head="Avatar"><%=utenteLoggato.getValEffettuate()%></td>
+            <td data-head="Email"><%=utenteLoggato.getEmail()%></td>
+            <td data-head="Password"><%=utenteLoggato.getLike()%></td>
+            <td data-head="Videogiochi inserti"><%=utenteLoggato.getDislike()%></td>
+            <td data-head="Avatar"><%=utenteLoggato.getAvatar()%></td>
         </tr>
         </tbody>
     </table>

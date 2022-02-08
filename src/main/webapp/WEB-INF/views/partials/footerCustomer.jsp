@@ -9,11 +9,11 @@
         </a>
 
         <ul class="nav col-md-4 justify-content-end">
-            <!--<form method="get" action="${pageContext.request.contextPath}/General">-->
-                <li class="nav-item"><a href="HomePage.jsp" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="features.jsp" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="aboutUs.jsp" class="nav-link px-2 text-muted">About us</a></li>
-            <!--</form>-->
+            <form method="get" action="${pageContext.request.contextPath}/General">
+                <li class="nav-item" style="float: right"><button type="submit" id="home" name="home" value="home" class="btn nav-link px-2 text-muted">Home</button></li>
+                <li class="nav-item" style="float: right"><button type="submit" id="features" name="features" value="features" class="btn nav-link px-2 text-muted">Features</button></li>
+                <li class="nav-item" style="float: right"><button type="submit" id="aboutus" value="aboutus" name="aboutus" class="btn nav-link px-2 text-muted">About us</button></li>
+            </form>
         </ul>
     </footer>
 </div>

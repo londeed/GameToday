@@ -16,7 +16,7 @@ public class UtenteProfileServlet extends Controllo {
         try {
             String inputRicerca = request.getParameter("gestioneUtente");
             switch (inputRicerca) {
-                case "gestioneProfilo":
+                case "gestioneProfiloUtente":
                     String id = request.getSession(false).getId();
                     Utente utente = new Utente();
                     utente = (Utente) request.getSession().getAttribute("userUt");
@@ -29,6 +29,11 @@ public class UtenteProfileServlet extends Controllo {
                     RequestDispatcher dispatcher2 = request.getRequestDispatcher("/WEB-INF/views/utente/modifica.jsp");
                     dispatcher2.forward(request, response);
                     break;
+                case "registrazione" :
+                    System.out.println("quiquqiqu");
+                    RequestDispatcher dispatcher5 = request.getRequestDispatcher("/WEB-INF/views/partials/registrazione.jsp");
+                    dispatcher5.forward(request, response);
+                    break;
                 case "eliminaProfilo":
                     HttpSession session2 = request.getSession(false);
                     Utente utente1 = new Utente();
@@ -39,7 +44,7 @@ public class UtenteProfileServlet extends Controllo {
                     RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
                     dispatcher3.forward(request, response);
                     break;
-                case "logout":
+                case "logoutUtente":
                     HttpSession session = request.getSession(false);
                     Utente utente2 = (Utente) session.getAttribute("userUt");
                     session.removeAttribute("userUt");
@@ -65,7 +70,6 @@ public class UtenteProfileServlet extends Controllo {
                     Utente utenteSessione = new Utente();
                     utenteSessione = (Utente) request.getSession().getAttribute("userUt");
                     UtenteDAO utenteDAO = new UtenteDAO();
-
                     Utente utente = new Utente();
                     utente.setUtNickname(request.getParameter("UtNickname"));
                     utente.setNome(request.getParameter("UtNome"));
@@ -81,6 +85,22 @@ public class UtenteProfileServlet extends Controllo {
                     utente1 = utenteDAO.doRetrieveUtenteByEmail(utente.getEmail());
                     request.setAttribute("utente", utente1);
                     request.getRequestDispatcher("/WEB-INF/views/utente/gestioneProfilo.jsp").forward(request, response);
+                    break;
+                case "/registrazione" :
+                    Utente utenteRegistrazione = new Utente();
+                    utenteRegistrazione.setUtNickname(request.getParameter("UtNickname"));
+                    utenteRegistrazione.setNome(request.getParameter("UtNome"));
+                    utenteRegistrazione.setCognome(request.getParameter("UtCognome"));
+                    utenteRegistrazione.setAvatar(Integer.parseInt(request.getParameter("UtAvatar")));
+                    utenteRegistrazione.setEmail(request.getParameter("UtEmail"));
+                    utenteRegistrazione.setPassword(request.getParameter("UtPW"));
+                    utenteRegistrazione.setValEffettuate(0);
+                    utenteRegistrazione.setLike(0);
+                    utenteRegistrazione.setDislike(0);
+                    UtenteDAO utenteDAO1 = new UtenteDAO();
+                    utenteDAO1.createUtente(utenteRegistrazione);
+                    request.getSession(true).setAttribute("userUt",utenteRegistrazione);
+                    request.getRequestDispatcher("/WEB-INF/redirect.jsp").forward(request, response);
                     break;
                 default:
                     break;

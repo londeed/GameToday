@@ -20,28 +20,9 @@ public class UserServlet extends Controllo {
         try {
             String path = getPath(request);
             switch (path) {
-                case "/login":
-                    JSONObject jObjecto = new JSONObject(request.getParameter("credenziali"));
-                    Iterator itero = jObjecto.keys(); //gets all the keys
-                    ArrayList<String> credenziali = new ArrayList<>();
-                    while (itero.hasNext()) {
-                        String key = (String) itero.next(); // get key
-                        Object o = jObjecto.get(key); // get value
-                        credenziali.add((String) o);
-                        System.out.println(key + " : " + o); // print the key and value
-                    }
-                    String email = credenziali.get(0);
-                    String password = credenziali.get(1);
-                    UtenteDAO utenteDAO = new UtenteDAO();
-                    AutoreDAO autoreDAO = new AutoreDAO();
-                    Utente utente = utenteDAO.loginUtente(email,password);
-                    Autore autore = autoreDAO.loginAutore(email,password);
-                    if(utente != null && utente.getUtNickname()!=null) {
-                        request.getSession(true).setAttribute("userUt",utente);
-                    }
-                    if(autore != null && autore.getAuNickname()!=null) {
-                        request.getSession(true).setAttribute("userAu",autore);
-                    }
+                case "/toLogin":
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/partials/login.jsp");
+                    dispatcher.forward(request, response);
                     break;
             }
         } catch (Exception e) {
@@ -55,17 +36,8 @@ public class UserServlet extends Controllo {
             String path = getPath(request);
             switch (path) {
                 case "/login":
-                    JSONObject jObjecto = new JSONObject(request.getParameter("credenziali"));
-                    Iterator itero = jObjecto.keys(); //gets all the keys
-                    ArrayList<String> credenziali = new ArrayList<>();
-                    while (itero.hasNext()) {
-                        String key = (String) itero.next(); // get key
-                        Object o = jObjecto.get(key); // get value
-                        credenziali.add((String) o);
-                        System.out.println(key + " : " + o); // print the key and value
-                    }
-                    String email = credenziali.get(0);
-                    String password = credenziali.get(1);
+                    String email = request.getParameter("email");
+                    String password = request.getParameter("password");
                     UtenteDAO utenteDAO = new UtenteDAO();
                     AutoreDAO autoreDAO = new AutoreDAO();
                     Utente utente = utenteDAO.loginUtente(email,password);
@@ -76,6 +48,8 @@ public class UserServlet extends Controllo {
                     if(autore != null && autore.getAuNickname()!=null) {
                         request.getSession(true).setAttribute("userAu",autore);
                     }
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
+                    dispatcher.forward(request, response);
                     break;
             }
         } catch (Exception e) {

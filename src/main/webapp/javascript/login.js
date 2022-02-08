@@ -1,4 +1,4 @@
-/*$(document).ready(function(){ $("login").click(function(){ $("#modalSignin").hide(); }); });*/
+/*
 function login(){
     var x = document.getElementById("appareLogin");
     if (x.style.display === "none") {
@@ -18,10 +18,10 @@ function login(){
         x.style.display = "none";
         $("#oscura").hide();
     }
-}
+}*/
 
 
-function validateForm()
+function validateForm(form)
 {
     //let email = document.getElementById('email').value;
     let email = $("#email").val();
@@ -41,15 +41,14 @@ function validateForm()
         alert("Dati email errati");
         return false;
     }
-    alert("tutto apposto")
     alert(email)
     alert(password)
-    //form.submit();
-    //}
+    form.submit();
+}
 
-//function invia(){
+/*function invia(){
     /*var email = $("#floatingInput").val();
-    var password = $("#floatingPassword").val();*/
+    var password = $("#floatingPassword").val();
     var credenziali = {Email: email, Password: password};
     alert(credenziali)
     $.ajax({
@@ -65,4 +64,4 @@ function validateForm()
             alert('Errore in fase di login!');
         }
     });
-}
+}*/

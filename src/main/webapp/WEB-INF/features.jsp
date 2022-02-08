@@ -13,11 +13,11 @@
 </head>
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 <header>
-    <%@include file="WEB-INF/views/partials/headerCustomer.jsp"%>
+    <%@include file="/WEB-INF/views/partials/headerCustomer.jsp"%>
 </header>
 Prova di About Us
 <footer>
-    <%@include file="WEB-INF/views/partials/footerCustomer.jsp"%>
+    <%@include file="/WEB-INF/views/partials/footerCustomer.jsp"%>
 </footer>
 </body>
 </html>
