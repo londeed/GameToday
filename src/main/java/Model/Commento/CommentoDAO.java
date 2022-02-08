@@ -136,16 +136,26 @@ public class CommentoDAO
                 try (PreparedStatement ps = connection.prepareStatement("UPDATE commento SET CLike=Clike+1 WHERE CommentoCod =?")) {
                     ps.setString(1, comCodice);
                     int rows = ps.executeUpdate();
-                    System.out.println(comCodice);
                     return rows == 1;
                 }
             } else {
                 try (PreparedStatement ps = connection.prepareStatement("UPDATE commento SET CDislike=CDislike+1 WHERE CommentoCod =?")) {
                     ps.setString(1, comCodice);
                     int rows = ps.executeUpdate();
-                    System.out.println(comCodice);
                     return rows == 1;
                 }
+            }
+        }
+    }
+
+
+    public Boolean updateTesto(String testo, String comCodice) throws SQLException{
+        try (Connection connection = ConPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement("UPDATE commento SET CTesto=? WHERE CommentoCod =?")) {
+                ps.setString(1, testo);
+                ps.setString(2, comCodice);
+                int rows = ps.executeUpdate();
+                return rows == 1;
             }
         }
     }

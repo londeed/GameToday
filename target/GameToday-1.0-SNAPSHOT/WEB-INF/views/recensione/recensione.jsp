@@ -23,6 +23,55 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+
+
+
+
+
+
 </head>
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
     <%
@@ -130,6 +179,15 @@
     </div>
     <div class="container" style="padding: 30px 50px" id="commentoUtente"style="color: turquoise">
     </div>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <textarea id="modificatore" style="resize: none"></textarea>
+            <button class="btn" id="salvaModifica" type="button">Salva modifica</button>
+        </div>
+
+    </div>
     <%for(Commento commento: commentoList) {
         if(interazioneUtList != null && utenteList != null){
             for(InterazioneUt interazioneUt: interazioneUtList){
@@ -147,34 +205,11 @@
                 String eliminazione = ""+commento.getComCodice()+","+utente.getUtNickname();%>
         <div class="container" style="float: left">
             <button id="ModificaBottone<%=commento.getComCodice()%>" type='button'>Modifica</button>
-            <script>
-                var el = document.getElementById("textarea<%=commento.getComCodice()%>");
-                if(el) {
-                   // document.getElementById("ModificaBottone<%=commento.getComCodice()%>").addEventListener("click", function () {
-                        $("#textarea<%=commento.getComCodice()%>").addEventListener("click",function () {
-                        //document.getElementById("textarea<%=commento.getComCodice()%>").disabled = false;
-                        //document.getElementById("textarea<%=commento.getComCodice()%>").readonly = false;
-                        document.getElementById("textarea<%=commento.getComCodice()%>").removeAttribute("disabled");
-                        document.getElementById("textarea<%=commento.getComCodice()%>").removeAttribute("readonly");
-                        document.getElementById("ModificaBottone<%=commento.getComCodice()%>").innerHTML = "Conferma Modifiche";
-                        document.getElementById("ModificaBottone<%=commento.getComCodice()%>").setAttribute("id", "ConfermaModifica<%=commento.getComCodice()%>")
+                <script>
+                    $("#ModificaBottone<%=commento.getComCodice()%>").bind("click", function(){
+                        modifica("<%=commento.getComCodice()%>")
                     })
-                }
-                var el2 = document.getElementById("ConfermaModifica<%=commento.getComCodice()%>");
-                if(el2) {
-                    //document.getElementById("ConfermaModifica<%=commento.getComCodice()%>").addEventListener("click",function (){
-                        $("#textarea<%=commento.getComCodice()%>").addEventListener("click",function () {
-                            //document.getElementById("textarea<%=commento.getComCodice()%>").disabled = true;
-                            //document.getElementById("textarea<%=commento.getComCodice()%>").readonly = true;
-                            document.getElementById("textarea<%=commento.getComCodice()%>").setAttribute("disabled", "disabled");
-                            document.getElementById("textarea<%=commento.getComCodice()%>").setAttribute("readonly", "readonly");
-                            $("#textarea<%=commento.getComCodice()%>").addEventListener("click", function () {
-                                document.getElementById("ConfermaModifica<%=commento.getComCodice()%>").innerHTML = "Modifica";
-                                document.getElementById("ConfermaModifica<%=commento.getComCodice()%>").setAttribute("id", "ModificaBottone<%=commento.getComCodice()%>")
-                            })
-                        })
-                }
-            </script>
+                </script>
         </div>
         <div class="container" style="float: left">
             <button id="eliminaBottone<%=commento.getComCodice()%>" type='button'>Elimina</button>
@@ -271,122 +306,19 @@
                          for(Autore autore: autoreList){
                              if(autore.getAuNickname().equals(interazioneAu.getAuNickname())){
                                  %>
-<script>sessionStorage.setItem('testo',"ok");</script>
     <div id="div<%=commento.getComCodice()%>" class="container" style="padding: 30px 50px">
         <h4 id="h4<%=commento.getComCodice()%>"><img src="./img/Avatar/avatar<%=autore.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=autore.getAuNickname()%></h4>
-        <div>
-            <div id="ajax<%=commento.getComCodice()%>" style="display: none">
-                <textarea class="form-control" type="text" id="#textarea2<%=commento.getComCodice()%>" name="#textarea2<%=commento.getComCodice()%>" aria-label="Disabled input example" style="resize: none" ></textarea>
-            </div>
-            <div id="ajax2<%=commento.getComCodice()%>">
-                <textarea class="form-control" type="text" id="#textarea<%=commento.getComCodice()%>" name="#textarea<%=commento.getComCodice()%>" aria-label="Disabled input example" style="resize: none" disabled="disabled" readonly="readonly"><%=commento.getTesto()%></textarea>
-            </div>
-        </div>
+            <div id="ajax2<%=commento.getComCodice()%>" style="border:solid turquoise;border-radius: 10px;padding: 2%"><%=commento.getTesto()%></div>
         <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
             <%if(!Objects.isNull(autoreLogin)){
                 if(autoreLogin.getAuNickname().equals(autore.getAuNickname())){
                 String eliminazione = ""+commento.getComCodice()+","+autore.getAuNickname();%>
             <div class="container" style="float: left">
                 <button id="ModificaBottone2<%=commento.getComCodice()%>" type='button'>Modifica</button>
-                <script defer>
-                    var el3 = document.getElementById("ModificaBottone2<%=commento.getComCodice()%>");
-                    var el2 = document.getElementById("ConfermaModifica2<%=commento.getComCodice()%>");
-                    //el3.addEventListener("click", function () {
+                <script>
                         $("#ModificaBottone2<%=commento.getComCodice()%>").bind("click", function(){
                         modifica("<%=commento.getComCodice()%>")
                     })
-
-                            /*var x = $("#ModificaBottone2<%=commento.getComCodice()%>").html()
-                            if(x ==="Modifica") {
-                                //document.getElementById("textarea<%=commento.getComCodice()%>").disabled = false;
-                                //document.getElementById("textarea<%=commento.getComCodice()%>").readonly = false;
-                                //document.getElementById("textarea<%=commento.getComCodice()%>").removeAttribute("disabled");
-                                //document.getElementById("textarea<%=commento.getComCodice()%>").removeAttribute("readonly");
-                                //$("#textarea<%=commento.getComCodice()%>").remove();
-                                <%
-                                String testo = commento.getTesto();
-                                request.getSession().setAttribute("commentoTesto",testo);
-                                %>
-                                /*$.ajax({
-                                    type: "get",
-                                    url: "http://localhost:8080/GameToday_war/textarea.jsp",
-                                    dataType: "html",
-                                    success: function(output) {
-                                        $("#ajax<%=commento.getComCodice()%>").html(output)
-                                    },
-                                    error: function (output){
-                                        alert("Non riuscito")
-                                    }
-                                });
-                                let testo = $("#textarea<%=commento.getComCodice()%>").val();
-                                var v = document.getElementById('ajax<%=commento.getComCodice()%>')
-                                var z = document.getElementById('ajax2<%=commento.getComCodice()%>')
-                                if(v.style.display === "none"){
-                                    v.style.display = "block";
-                                    z.style.display = "none";
-                                }else{
-                                    v.style.display = "none";
-                                    z.style.display = "block";
-                                }
-                                document.querySelector("textarea2<%=commento.getComCodice()%>").innerHTML = sessionStorage.getItem('testo')
-                               // $("#textarea2<%=commento.getComCodice()%>").val(sessionStorage.getItem('testo'))
-                                //$("#textarea").attr("id","#textarea<%=commento.getComCodice()%>");
-                                //$("#textarea<%=commento.getComCodice()%>").removeAttr("disabled");
-                                //$("#textarea<%=commento.getComCodice()%>").removeAttr("readonly");
-                                //$("#textarea<%=commento.getComCodice()%>").prop("disabled", false);
-                                //$("#textarea<%=commento.getComCodice()%>").prop("readonly", false);
-                                //$("#textareaMod").prop("id","#textarea<%=commento.getComCodice()%>")
-                                $("#ModificaBottone2<%=commento.getComCodice()%>").text("Conferma Modifiche")
-                                //$("#ModificaBottone2<%=commento.getComCodice()%>").attr({id: "ConfermaModifica2<%=commento.getComCodice()%>"});
-                                //document.getElementById("ModificaBottone2<%=commento.getComCodice()%>").innerHTML = "Conferma Modifiche";
-                                //document.getElementById("ModificaBottone2<%=commento.getComCodice()%>").setAttribute("id", "ConfermaModifica2<%=commento.getComCodice()%>")
-                            }else{
-                                let testo = $("#textarea2<%=commento.getComCodice()%>").val();
-                                alert(testo)
-                                sessionStorage.setItem('testo',<%=commento.getComCodice()%>);
-                                alert(sessionStorage.getItem('lastname'));
-                                $("#ModificaBottone2<%=commento.getComCodice()%>").text("Modifica")
-                               $.ajax({
-                                    type: "get",
-                                    url: "http://localhost:8080/GameToday_war/textareaDisabilitata.jsp",
-                                    dataType: "html",
-                                    success: function(output) {
-                                        $("#ajax<%=commento.getComCodice()%>").html(output)
-                                    },
-                                    error: function (output){
-                                        alert("Non riuscito")
-                                    }
-                                });
-                                var v = document.getElementById('ajax<%=commento.getComCodice()%>')
-                                var z = document.getElementById('ajax2<%=commento.getComCodice()%>')
-                                if(v.style.display === "block"){
-                                    v.style.display = "none";
-                                    z.style.display = "block";
-                                }else{
-                                    v.style.display = "block";
-                                    z.style.display = "none";
-                                }
-                                alert(testo)
-                                $("#textarea<%=commento.getComCodice()%>").val("ok")
-                                //$("#textareaMod").prop("id","#textarea<%=commento.getComCodice()%>")
-                                //$("#textarea<%=commento.getComCodice()%>").text(testo);
-                                //$("#textarea<%=commento.getComCodice()%>").attr({"disabled": "disabled"});
-                                //$("#textarea<%=commento.getComCodice()%>").attr({"readonly": "readonly"});
-                            }
-                        })*/
-                    /*el2.addEventListener("click", function () {
-                        $("#ModificaBottone2<%=commento.getComCodice()%>").bind("click", function () {
-                            //document.getElementById("textarea<%=commento.getComCodice()%>").disabled = true;
-                            //document.getElementById("textarea<%=commento.getComCodice()%>").readonly = true;
-                            //document.getElementById("textarea<%=commento.getComCodice()%>").setAttribute("disabled","disabled");
-                            //document.getElementById("textarea<%=commento.getComCodice()%>").setAttribute("readonly","readonly");
-                            $("#ModificaBottone2<%=commento.getComCodice()%>").text("Modifica")
-                            // $("#ConfermaModifica2<%=commento.getComCodice()%>").attr({id: "ModificaBottone2<%=commento.getComCodice()%>"});
-                            $("#textarea<%=commento.getComCodice()%>").prop("disabled", true);
-                            $("#textarea<%=commento.getComCodice()%>").prop("readonly", true);
-                            //document.getElementById("ConfermaModifica2<%=commento.getComCodice()%>").innerHTML = "Modifica";
-                            //document.getElementById("ConfermaModifica2<%=commento.getComCodice()%>").setAttribute("id", "ModificaBottone2<%=commento.getComCodice()%>")
-                        })*/
                 </script>
             </div>
             <div class="container" style="float: left">

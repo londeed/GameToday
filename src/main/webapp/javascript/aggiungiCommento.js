@@ -4,6 +4,8 @@ var like ;
 var dislike;
 var verifica;
 var avatar;
+var text = [];
+var n = 0;
 
  function aggiungiCommento(x){
 //codice,nome,like,dislike
@@ -34,15 +36,25 @@ var avatar;
          document.querySelector('#utNome').innerHTML += '<img src="'+image.src+'" alt="Pic not found" class="d-block"  style="width:5%; height: 5%" />';
          document.querySelector('#utNome').setAttribute("id", "utNome" + numero)
          document.querySelector('#utNome' + numero).innerHTML += nom;
-         var input = $("<textarea class=\"form-control\" type=\"text\" id=\"utCommento\" aria-label=\"Disabled input example\" style=\"resize: none\" disabled readonly >").appendTo($("#commentoUtente"));
+         //var input = $("<textarea class=\"form-control\" type=\"text\" id=\"utCommento\" aria-label=\"Disabled input example\" style=\"resize: none\" disabled readonly >").appendTo($("#commentoUtente"));
+         //document.querySelector('#utCommento').setAttribute("id", "utCommento" + numero)
+         var input = $("<div id=\"utCommento\" style=\"border:solid turquoise;border-radius: 10px;padding: 2%\">").appendTo($("#commentoUtente"));
          document.querySelector('#utCommento').setAttribute("id", "utCommento" + numero)
          var commentoNumero = "utCommento" + numero;
          let testo = $("#textarea").val();
+         text[n] = testo;
+         n += 1;
+         text[n] = commentoNumero;
+         n += 1;
          document.querySelector('#utCommento' + numero).innerHTML = testo;
-         var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"padding-top: 10px\" id=\"div\" >").appendTo($("#commentoUtente"));
+         var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"padding-top: 10px\;float: left\" id=\"div\" >").appendTo($("#commentoUtente"));
          document.querySelector('#div').setAttribute("id", "div" + numero)
          //var div2 = $("<div class=\"col-12\" id=\"div2\" >").appendTo($('#div' + numero));
          //document.querySelector('#div2').setAttribute("id", "div2" + numero)
+         var modifica = $("<button id=\"ModificaBottone\" type='button' onclick='modificaCreati()'>").appendTo($("#div"+numero));
+         document.querySelector("#ModificaBottone").setAttribute("onclick", 'modificaCreati("'+"utCommento"+numero+'")')
+         document.querySelector("#ModificaBottone").setAttribute("id", "ModificaBottone" + numero)
+         document.querySelector("#ModificaBottone"+numero).innerHTML = "Modifica"
          var elimina = $("<button id=\"eliminaBottone\" type='button' onclick='elimina()'>").appendTo($("#div"+numero));
          document.querySelector("#eliminaBottone").setAttribute("onclick", 'elimina("'+"utCommento"+numero+'")')
          document.querySelector("#eliminaBottone").setAttribute("id", "eliminaBottone" + numero)
@@ -69,68 +81,6 @@ var avatar;
      }
 
 }
-
-  /*function appariNuovoCommento(){
-        //nome,like,dislike
-        if(verifica === "true") {
-            numero = uniqid();
-            var nom = nome;
-            var lik = like;
-            var dislik = dislike;
-            var rand = Math.random();
-            var involucro = $("<div class='container' id='commento'>").appendTo($("#commentoUtente"));
-            document.querySelector('#commento').setAttribute("id", "commento" + numero)
-            var h4 = $("<h4 id=\"utNome\" style=\"padding-top: 70px\">").appendTo($("#commento"+numero));
-            var image = new Image();
-            image.src = "./img/Avatar/avatar"+avatar+".png";
-            document.querySelector('#utNome').innerHTML += '<img src="'+image.src+'" alt="Pic not found" class="d-block"  style="width:5%; height: 5%" />';
-            document.querySelector('#utNome').setAttribute("id", "utNome" + numero)
-            document.querySelector('#utNome' + numero).innerHTML += nom;
-            var input = $("<textarea class=\"form-control\" type=\"text\" id=\"utCommento\" aria-label=\"Disabled input example\" style=\"resize: none\" disabled readonly >").appendTo($("#commentoUtente"));
-            document.querySelector('#utCommento').setAttribute("id", "utCommento" + numero)
-            var commentoNumero = "utCommento" + numero;
-            let testo = $("#textarea").val();
-            document.querySelector('#utCommento' + numero).innerHTML = testo;
-            var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"padding-top: 10px\" id=\"div\" >").appendTo($("#commentoUtente"));
-            document.querySelector('#div').setAttribute("id", "div" + numero)
-            //var div2 = $("<div class=\"col-12\" id=\"div2\" >").appendTo($('#div' + numero));
-            //document.querySelector('#div2').setAttribute("id", "div2" + numero)
-            var elimina = $("<button id=\"eliminaBottone\" type='button' onclick='elimina(\"utCommento\" + numero)'>").appendTo($("#div"+numero));
-            document.querySelector("#eliminaBottone").setAttribute("id", "eliminaBottone" + numero)
-            document.querySelector("#eliminaBottone"+numero).innerHTML = "Elimina"
-            //document.querySelector('#button1').setAttribute("id", "button1" + numero)
-            //var i = $("<i class=\"far fa-thumbs-up\" id=\"i\">").appendTo($('#button1' + numero));
-            //document.querySelector('#i').setAttribute("id", "i" + numero)
-            //var p = $("<p id=\"utLike\">").appendTo($('#i' + numero));
-            //document.querySelector('#utLike').setAttribute("id", "utLike" + numero)
-            //document.querySelector('#utLike' + numero).innerHTML = lik
-            //var div3 = $("<div class=\"col-12\" id=\"div3\" >").appendTo($('#div' + numero));
-            //document.querySelector('#div3').setAttribute("id", "div3" + numero)
-            //var button2 = $("<button id=\"button2\" onclick='salvaInterazione(\"false\")'>").appendTo($('#div3' + numero));
-            //document.querySelector('#button2').setAttribute("id", "button2" + numero)
-            //document.querySelector('#button2'+numero).setAttribute("name","button2"+numero)
-            //var i2 = $("<i class=\"far fa-thumbs-down\" id=\"i2\">").appendTo($('#button2' + numero));
-            //document.querySelector('#i2').setAttribute("id", "i2" + numero)
-            //var p2 = $("<p id=\"utDislike\">").appendTo($('#i2' + numero));
-            //document.querySelector('#utDislike').setAttribute("id", "utDislike" + numero)
-            //document.querySelector('#utDislike' + numero).innerHTML = dislik
-            var numeroCommento = {numeroCom: commentoNumero};
-            $.ajax({
-                type: "get",
-                url: "http://localhost:8080/GameToday_war/CommentoServlet/salvaNumCommenti",
-                contentType: "JSON", // NOT dataType!
-                data: {numeroCommento: JSON.stringify(numeroCommento)},
-                success: function (response) {
-                    document.querySelector("#textarea").value = "";
-                    alert("Salvataggio avvenuto correttamente!");
-                },
-                error: function (response) {
-                    alert('Salvataggio non avvenuto!');
-                }
-            });
-        }
-}*/
-
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -198,8 +148,6 @@ function CommentoEsistente(stringa){
         }
     });
 }
-// aggiustare il testo del commento
-// interazione con commento sotto al commento (?)
 
 function elimina(numeroCommento){
     var num = numeroCommento
@@ -218,40 +166,125 @@ function elimina(numeroCommento){
     });
 }
 
+function modificaCreati(numeroCommento){
+    var num = numeroCommento
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+    var btn = document.getElementById("ModificaBottone"+num);
+
+// Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+    //btn.onclick = function() {
+    var length = text.length;
+    var test;
+    var v;
+    for (var i = 1; i <= length; i++) {
+        console.log(text[i]);
+        if(text[i] === num){
+            test = text[--i]
+            v = i;
+            alert(i)
+            ++i;
+            alert(i)
+        }
+        i++;
+    }
+        //let test = $("#utCommento"+num).html()
+        $("#modificatore").val(test);
+        modal.style.display = "block";
+    //}
+
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    var btnMod = document.getElementById("salvaModifica");
+    var testo;
+    btnMod.onclick = function() {
+        testo = $("#modificatore").val();
+        text[v] = testo
+        $("#" + num).html(testo)
+        var code = {numCom: num, testo: testo};
+        $.ajax({
+            type: "get",
+            url: "http://localhost:8080/GameToday_war/CommentoServlet/modificaCreati",
+            contentType: "JSON", // NOT dataType!
+            data: {code: JSON.stringify(code)},
+            success: function (response) {
+                alert("Modifica riuscita");
+            },
+            error: function (response) {
+                alert('Errore, modifica non riuscita');
+            }
+        });
+        modal.style.display = "none";
+    }
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+}
+
 function modifica(cod){
     var h = cod
-    var x = $("#ModificaBottone2"+h).html()
-    if(x ==="Modifica") {
-let testo = $("#textarea"+h).val();
-var v = document.getElementById('ajax'+h)
-var z = document.getElementById('ajax2'+h)
-if(v.style.display === "none"){
-    v.style.display = "block";
-    z.style.display = "none";
-}else{
-    v.style.display = "none";
-    z.style.display = "block";
-}
-//document.getElementById("textarea2"+h).setAttribute("value","what");
-$("#textarea2"+h).val("niente").trigger('change');
+    // Get the modal
+    var modal = document.getElementById("myModal");
 
-$("#ModificaBottone2"+h).text("Conferma Modifiche")
-}else{
-    let test = $("#textarea2"+h).val();
-    alert(test)
-    $("#ModificaBottone2"+h).text("Modifica")
-    var v = document.getElementById('ajax'+h)
-var z = document.getElementById('ajax2'+h)
-if(v.style.display === "block"){
-        v.style.display = "none";
-        z.style.display = "block";
-    }else{
-        v.style.display = "block";
-        z.style.display = "none";
+// Get the button that opens the modal
+    var btn = document.getElementById("ModificaBottone2"+h);
+
+// Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+    btn.onclick = function() {
+        let test = $("#ajax2"+h).html()
+        $("#modificatore").val(test);
+        modal.style.display = "block";
     }
-    alert(testo)
-        document.querySelector("#textarea"+h).innerHTML = test
-}
+
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    var btnMod = document.getElementById("salvaModifica");
+    var testo;
+
+    btnMod.onclick = function() {
+        testo = $("#modificatore").val();
+        $("#ajax2"+h).html(testo)
+        var modificato = {testo: testo,codideComm: cod};
+        $.ajax({
+            type: "get",
+            url: "http://localhost:8080/GameToday_war/CommentoServlet/modifica",
+            contentType: "JSON", // NOT dataType!
+            data:{ modificato: JSON.stringify(modificato)},
+            success: function(response) {
+                alert("Modifica riuscita");
+            },
+            error: function(response) {
+                alert('Errore, modifica non riuscita');
+            }
+        });
+        modal.style.display = "none";
+    }
+
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }
 
 function confermaModifica(cod){
