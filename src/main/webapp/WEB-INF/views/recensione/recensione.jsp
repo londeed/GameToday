@@ -193,16 +193,16 @@
             for(InterazioneUt interazioneUt: interazioneUtList){
                 if(interazioneUt.getUtNickname()!=null){
                     if(interazioneUt.getComCodice().equals(commento.getComCodice())){
-                        for(Utente utente: utenteList){
-                            if(utente.getUtNickname().equals(interazioneUt.getUtNickname())){
+                        for(Utente utenteRecensione: utenteList){
+                            if(utenteRecensione.getUtNickname().equals(interazioneUt.getUtNickname())){
                                 %>
                             <div class="container" style="padding: 30px 50px">
-        <h4><img src="./img/Avatar/avatar<%=utente.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=utente.getUtNickname()%></h4>
+        <h4><img src="./img/Avatar/avatar<%=utenteRecensione.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=utenteRecensione.getUtNickname()%></h4>
     <textarea class="form-control" type="text" id="textarea<%=commento.getComCodice()%>" aria-label="Disabled input example" style="resize: none" disabled readonly><%=commento.getTesto()%></textarea>
     <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
         <%if(!Objects.isNull(utenteLogin)){
-            if(utenteLogin.getUtNickname().equals(utente.getUtNickname())){
-                String eliminazione = ""+commento.getComCodice()+","+utente.getUtNickname();%>
+            if(utenteLogin.getUtNickname().equals(utenteRecensione.getUtNickname())){
+                String eliminazione = ""+commento.getComCodice()+","+utenteRecensione.getUtNickname();%>
         <div class="container" style="float: left">
             <button id="ModificaBottone<%=commento.getComCodice()%>" type='button'>Modifica</button>
                 <script>
@@ -303,16 +303,16 @@
              for(InterazioneAu interazioneAu: interazioneAuList){
                  if(interazioneAu.getAuNickname()!=null){
                      if(interazioneAu.getComCodice().equals(commento.getComCodice())){
-                         for(Autore autore: autoreList){
-                             if(autore.getAuNickname().equals(interazioneAu.getAuNickname())){
+                         for(Autore autoreRecensione: autoreList){
+                             if(autoreRecensione.getAuNickname().equals(interazioneAu.getAuNickname())){
                                  %>
     <div id="div<%=commento.getComCodice()%>" class="container" style="padding: 30px 50px">
-        <h4 id="h4<%=commento.getComCodice()%>"><img src="./img/Avatar/avatar<%=autore.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=autore.getAuNickname()%></h4>
+        <h4 id="h4<%=commento.getComCodice()%>"><img src="./img/Avatar/avatar<%=autoreRecensione.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=autoreRecensione.getAuNickname()%></h4>
             <div id="ajax2<%=commento.getComCodice()%>" style="border:solid turquoise;border-radius: 10px;padding: 2%"><%=commento.getTesto()%></div>
         <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
             <%if(!Objects.isNull(autoreLogin)){
-                if(autoreLogin.getAuNickname().equals(autore.getAuNickname())){
-                String eliminazione = ""+commento.getComCodice()+","+autore.getAuNickname();%>
+                if(autoreLogin.getAuNickname().equals(autoreRecensione.getAuNickname())){
+                String eliminazione = ""+commento.getComCodice()+","+autoreRecensione.getAuNickname();%>
             <div class="container" style="float: left">
                 <button id="ModificaBottone2<%=commento.getComCodice()%>" type='button'>Modifica</button>
                 <script defer>

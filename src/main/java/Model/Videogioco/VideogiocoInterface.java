@@ -17,4 +17,5 @@ public interface VideogiocoInterface
     Boolean deleteVideogico(String titolo) throws SQLException;
     int countAll() throws SQLException;
     List<Videogioco> doRetrieveAll() throws SQLException;
+    List<Videogioco> doRetrieveByNull() throws SQLException;
 }

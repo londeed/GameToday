@@ -5,7 +5,9 @@ import Model.Videogioco.Videogioco;
 import Model.Videogioco.VideogiocoExtraction;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class RecensioneDAO {
@@ -92,6 +94,32 @@ public class RecensioneDAO {
                 ps.setString(5, recensione.getAuNome());
                 ps.setString(6, recensione.getTitolo());
                 ps.setString(7, recensione.getCodice());
+                int rows = ps.executeUpdate();
+                return rows == 1;
+            }
+        }
+    }
+
+    public Boolean updateRecensioneText(String recensione, String codice) throws SQLException{
+        try(Connection connection = ConPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE recensione SET RTesto=? WHERE Codice=?")){
+                ps.setString(1, recensione);
+                ps.setString(2, codice);
+                int rows = ps.executeUpdate();
+                return rows == 1;
+            }
+        }
+    }
+
+    public Boolean updateRecensioneTextbis(String recensione, String titolo) throws SQLException{
+        try(Connection connection = ConPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE recensione SET RTesto=?, RData=? WHERE Titolo=?")){
+                System.out.println(titolo);
+                System.out.println(recensione);
+                ps.setString(1, recensione);
+                LocalDate todaysDate = LocalDate.now();
+                ps.setObject(2, todaysDate);
+                ps.setString(3, titolo);
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }

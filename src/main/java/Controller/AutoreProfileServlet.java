@@ -24,7 +24,6 @@ public class AutoreProfileServlet extends Controllo {
                     autore = (Autore) request.getSession().getAttribute("userAu");
                     AutoreDAO autoreDAO = new AutoreDAO();
                     request.setAttribute("autore", autore);
-                    System.out.println("okokok");
                     RequestDispatcher dispatcher1 = request.getRequestDispatcher("/WEB-INF/views/autore/gestioneProfilo.jsp");
                     dispatcher1.forward(request, response);
                     break;

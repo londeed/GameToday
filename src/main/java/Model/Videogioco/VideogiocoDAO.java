@@ -207,6 +207,25 @@ public class VideogiocoDAO {
         }
     }
 
+    public List<Videogioco> doRetrieveByNull() throws SQLException
+    {
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("select * from videogioco where not exists ( select recensione.titolo from recensione where videogioco.titolo=recensione.titolo)")){
+                ResultSet rs= ps.executeQuery();
+                List<Videogioco> videogioco=new ArrayList<>();
+                VideogiocoExtraction videogiocoExtraction=new VideogiocoExtraction();
+                while(rs.next())
+                {
+                    videogioco.add(videogiocoExtraction.mapping(rs));
+                }
+                rs.close();
+                return videogioco;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
 }
 

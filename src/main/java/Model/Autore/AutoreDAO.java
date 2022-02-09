@@ -159,4 +159,27 @@ public class AutoreDAO
             }
         }
     }
+
+    public Boolean updateAutoreRecCommissionate(String auNickname, String titolo)throws SQLException{
+        try(Connection connection = ConPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE autore SET RCommissionate=? WHERE AuNickname=?")){
+                ps.setString(1,titolo);
+                ps.setString(2, auNickname);
+                int rows = ps.executeUpdate();
+                return rows == 1;
+            }
+        }
+    }
+
+    public Boolean updateAutoreRecCommissionateBis(String auNickname)throws SQLException{
+        try(Connection connection = ConPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE autore SET RCommissionate=?, REffettuate=REffettuate+1 WHERE AuNickname=?")){
+                String s="";
+                ps.setString(1, s);
+                ps.setString(2, auNickname);
+                int rows = ps.executeUpdate();
+                return rows == 1;
+            }
+        }
+    }
 }

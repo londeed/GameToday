@@ -60,6 +60,10 @@
                     <img src="${pageContext.request.contextPath}/img/Avatar/avatar<%=autore.getAvatar()%>.png" alt="Logo" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu">
+                    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="post">
+                        <li><button class="dropdown-item" id="visualizzaRecensioni" name="gestioneRecensioni" value="visualizzaRecensioni">Visualizza Recensioni</button></li>
+                        <li><button class="dropdown-item" id="selezionaRecensioni" name="gestioneRecensioni" value="selezionaRecensioni">Seleziona/Inserisci Recensione</button></li>
+                    </form>
                     <form action="${pageContext.request.contextPath}/autoreProfile/" method="get">
                         <li><button class="dropdown-item" id="gestioneProfiloAutore" name="gestioneAutore" value="gestioneProfiloAutore">Gestione Profilo</button></li>
                         <li><button class="dropdown-item" id="logoutAutore" name="gestioneAutore" value="logoutAutore">Logout</button></li>

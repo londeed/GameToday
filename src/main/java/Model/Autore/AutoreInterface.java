@@ -15,4 +15,6 @@ public interface AutoreInterface
     int countAll() throws SQLException;
     Autore doRetrieveAutoreByEmail(String email) throws SQLException;
     Autore doRetrieveAutoreByNickname(String auNickname) throws SQLException;
+    Boolean updateAutoreRecCommissionate(String auNickname, String titolo)throws SQLException;
+    Boolean updateAutoreRecCommissionateBis(String auNickname)throws SQLException;
 }
