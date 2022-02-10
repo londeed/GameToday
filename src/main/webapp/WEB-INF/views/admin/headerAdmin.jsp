@@ -34,6 +34,15 @@
                         </form>
                     </ul>
                 </li>
+                <li class="nav-item dropdown dropdown-hover" id="gestioneControllo">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" >Controllo</a>
+                    <ul class="dropdown-menu">
+                        <form action="${pageContext.request.contextPath}/adminGame/" method="get">
+                            <li><button class="dropdown-item" id="controlloRecensione" name="gestioneVideogiochi" value="controlloRecensione">Controlla Recensione</button></li>
+                            <li><button class="dropdown-item" id="controlloCommento" name="gestioneVideogiochi" value="controlloCommento">Controlla Commento</button></li>
+                        </form>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
                         <button class="nav-link" style="background-color: transparent;border: 0px" id="videogioco" name="videogioco" value="videogioco">Videogiochi</button>

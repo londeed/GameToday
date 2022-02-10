@@ -159,4 +159,45 @@ public class CommentoDAO
             }
         }
     }
+
+
+    public List<Commento> doRetrieveAllCommentinotVerfied() throws SQLException
+    {
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("select * from commento where not exists (select * from verifica where commento.CommentoCod=verifica.CommentoCod)")){
+                ResultSet rs= ps.executeQuery();
+                List<Commento> commentiList = new ArrayList<>();
+                CommentoExtraction commentoExtraction = new CommentoExtraction();
+                while(rs.next())
+                {
+                    commentiList.add(commentoExtraction.mapping(rs));
+                }
+                rs.close();
+                return commentiList;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public List<Commento> doRetrieveAll() throws SQLException
+    {
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("select * from commento")){
+                ResultSet rs= ps.executeQuery();
+                List<Commento> commentiList = new ArrayList<>();
+                CommentoExtraction commentoExtraction = new CommentoExtraction();
+                while(rs.next())
+                {
+                    commentiList.add(commentoExtraction.mapping(rs));
+                }
+                rs.close();
+                return commentiList;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

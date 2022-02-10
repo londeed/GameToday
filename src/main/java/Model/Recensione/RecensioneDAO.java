@@ -126,6 +126,18 @@ public class RecensioneDAO {
         }
     }
 
+    public Boolean updateRecensioneApprovata(String titolo) throws SQLException{
+        try(Connection connection = ConPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE recensione SET RData=? WHERE Titolo=?")){
+                LocalDate todaysDate = LocalDate.now();
+                ps.setObject(1, todaysDate);
+                ps.setString(2, titolo);
+                int rows = ps.executeUpdate();
+                return rows == 1;
+            }
+        }
+    }
+
     public Boolean deleterecensione(String codice) throws SQLException{
         try(Connection con = ConPool.getConnection()) {
             try(PreparedStatement ps = con.prepareStatement("DELETE FROM recensione WHERE Codice = ?")){
@@ -155,6 +167,25 @@ public class RecensioneDAO {
         try(Connection connection= ConPool.getConnection())
         {
             try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM recensione ORDER BY RData desc")){
+                ResultSet rs= ps.executeQuery();
+                List<Recensione> recensione = new ArrayList<>();
+                RecensioneExtraction recensioneExtraction = new RecensioneExtraction();
+                while(rs.next())
+                {
+                    recensione.add(recensioneExtraction.mapping(rs));
+                }
+                rs.close();
+                return recensione;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public List<Recensione> doRetrieveAllByDataisNull() throws SQLException{
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("select * from recensione where RData is null")){
                 ResultSet rs= ps.executeQuery();
                 List<Recensione> recensione = new ArrayList<>();
                 RecensioneExtraction recensioneExtraction = new RecensioneExtraction();

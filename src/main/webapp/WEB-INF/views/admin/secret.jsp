@@ -1,55 +1,143 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="it" xmlns="http://www.w3.org/1999/html">
+<html lang="it">
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="AdminPage"/>
-        <jsp:param name="style" value="bootstrap"/>
-        <jsp:param name="script" value="loginValidator"/>
+        <jsp:param name="title" value="Login Admin"/>
+        <jsp:param name="style" value=""/>
+        <jsp:param name="script" value="login"/>
     </jsp:include>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+
+
+
+
+        .main-head{
+            height: 150px;
+            background: #FFF;
+
+        }
+
+
+
+        .sidenav {
+            height: 100%;
+            background-color: #000;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+
+
+
+        .main {
+            padding: 0px 10px;
+        }
+
+
+
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+        }
+
+
+
+        @media screen and (max-width: 450px) {
+            .login-form{
+                margin-top: 10%;
+            }
+
+
+
+            .register-form{
+                margin-top: 10%;
+            }
+        }
+
+
+
+        @media screen and (min-width: 768px){
+            .main{
+                margin-left: 40%;
+            }
+
+
+
+            .sidenav{
+                width: 40%;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+            }
+
+
+
+            .login-form{
+                margin-top: 80%;
+            }
+
+
+
+            .register-form{
+                margin-top: 20%;
+            }
+        }
+
+
+
+
+        .login-main-text{
+            margin-top: 20%;
+            padding: 60px;
+            color: #fff;
+        }
+
+
+
+        .login-main-text h2{
+            font-weight: 300;
+        }
+
+
+
+        .btn-black{
+            background-color: #000 !important;
+            color: #fff;
+        }
+    </style>
 </head>
-<body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
-<br>
-<!--
-<form class="d-flex" action="${pageContext.request.contextPath}/admin/login" method="post" onsubmit="event.preventDefault(); validateForm(this)">
-    <fieldset>
+<body Style="background-color: #141414;color: white;" >
+<div class="sidenav" style="background-color: turquoise" >
+    <div class="login-main-text">
         <h2>Login Admin</h2>
-        <span>Email</span>
-        <label for="email">
-            <input type="email" name="email" id="email" placeholder="Email">
-        </label>
-        <span>Password</span>
-        <label for="password">
-            <input type="password" name="password" id="password" placeholder="Password">
-        </label>
-        <button class="btn" style="background-color: turquoise" type="submit">Accedi</button>
-    </fieldset>
-</form>-->
-
-<div class="container mt-3">
-    <br>
-    <h2>Inserisci le tue credenziali</h2>
-    <br>
-    <form action="${pageContext.request.contextPath}/admin/login" method="post">
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="text" id="email" name="email" placeholder="Email">
-            <label for="email">Email</label>
-        </div>
-
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="text" id="password" name="password" placeholder="Password">
-            <label for="password">Password</label>
-        </div>
-
-        <button class="btn" style="background-color: turquoise">Accedi</button>
-    </form>
+    </div>
 </div>
-
-
+<div class="main" id="sezioneLogin" Style="background-color: #141414;color: white;">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            <form action="${pageContext.request.contextPath}/admin/login" onsubmit="event.preventDefault();validateForm(this)" method="post">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input id="email" type="email" name="email" class="form-control" placeholder="nome@esempio.it">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input id="password" type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-black">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+
 

@@ -2,6 +2,10 @@ package Controller;
 
 import Model.Autore.Autore;
 import Model.Autore.AutoreDAO;
+import Model.Commento.Commento;
+import Model.Commento.CommentoDAO;
+import Model.Recensione.Recensione;
+import Model.Recensione.RecensioneDAO;
 import Model.Videogioco.Videogioco;
 import Model.Videogioco.VideogiocoDAO;
 
@@ -15,6 +19,7 @@ import java.nio.file.Path;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @WebServlet(name = "AdminGameServlet", value = "/adminGame/*")
@@ -52,6 +57,22 @@ public class AdminGameServlet extends Controllo {
                     request.setAttribute("titoli", titoli);
                     RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/views/admin/modificaVideogioco.jsp");
                     dispatcher3.forward(request, response);
+                    break;
+                case "controlloRecensione":
+                    List<Recensione> recensioneList=new ArrayList<>();
+                    RecensioneDAO recensioneDAO=new RecensioneDAO();
+                    recensioneList=recensioneDAO.doRetrieveAllByDataisNull();
+                    request.setAttribute("lista", recensioneList);
+                    RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/views/admin/controlloRecensione.jsp");
+                    dispatcher4.forward(request, response);
+                    break;
+                case "controlloCommento":
+                    List<Commento> commentoList=new ArrayList<>();
+                    CommentoDAO commentoDAO=new CommentoDAO();
+                    commentoList=commentoDAO.doRetrieveAll();
+                    request.setAttribute("lista", commentoList);
+                    RequestDispatcher dispatcher5 = request.getRequestDispatcher("/WEB-INF/views/admin/controlloCommento.jsp");
+                    dispatcher5.forward(request, response);
                     break;
                 default:
                     break;
@@ -129,6 +150,37 @@ public class AdminGameServlet extends Controllo {
                     videogioco2.setTipologia(request.getParameter("Tipologia"));
                     videogiocoDAO2.updateVideogioco(videogioco2, s);
                     request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
+                    break;
+                case "/approvaRec":
+                    String titolo=request.getParameter("codiceApprova");
+                    RecensioneDAO recensioneDAO7=new RecensioneDAO();
+                    recensioneDAO7.updateRecensioneApprovata(titolo);
+                    List<Recensione> recensioneList=new ArrayList<>();
+                    RecensioneDAO recensioneDAO=new RecensioneDAO();
+                    recensioneList=recensioneDAO.doRetrieveAllByDataisNull();
+                    request.setAttribute("lista", recensioneList);
+                    RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/views/admin/controlloRecensione.jsp");
+                    dispatcher4.forward(request, response);
+                    break;
+                case"/eliminaRec":
+                    String titoloElimina=request.getParameter("codiceElimina");
+                    RecensioneDAO recensioneDAO2=new RecensioneDAO();
+                    recensioneDAO2.deleterecensione(titoloElimina);
+                    List<Recensione> recensioneList2=new ArrayList<>();
+                    recensioneList2=recensioneDAO2.doRetrieveAllByDataisNull();
+                    request.setAttribute("lista", recensioneList2);
+                    RequestDispatcher dispatcher5 = request.getRequestDispatcher("/WEB-INF/views/admin/controlloRecensione.jsp");
+                    dispatcher5.forward(request, response);
+                    break;
+                case"/eliminaCom":
+                    String codComm=request.getParameter("codiceElimina");
+                    CommentoDAO commentoDAO=new CommentoDAO();
+                    commentoDAO.deleteCommento(codComm);
+                    List<Commento> commentoList=new ArrayList<>();
+                    commentoList=commentoDAO.doRetrieveAll();
+                    request.setAttribute("lista", commentoList);
+                    RequestDispatcher dispatcher6 = request.getRequestDispatcher("/WEB-INF/views/admin/controlloCommento.jsp");
+                    dispatcher6.forward(request, response);
                     break;
                 default:
                     break;

@@ -18,4 +18,6 @@ public interface RecensioneInterface
     Boolean deleterecensione(String codice) throws SQLException;
     int countAll() throws SQLException;
     List<Recensione> doRetrieveAllByDataPubblicazione() throws SQLException;
+    List<Recensione> doRetrieveAllByDataisNull() throws SQLException;
+    Boolean updateRecensioneApprovata(String titolo) throws SQLException;
 }
