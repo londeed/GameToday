@@ -46,10 +46,38 @@
             <label for="AuCognome">Cognome</label>
         </div>
 
+
+        <div style="background-color: #141414; color:white">
+            <select style="background-color: #141414; color:white" class="form-select form-select-lg" id="AuAvatar" name="AuAvatar" >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+            </select>
+
+        </div>
+
+        <!--
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="number" id="AuAvatar" name="AuAvatar" placeholder="Avatar">
             <label for="AuAvatar">Avatar</label>
-        </div>
+        </div>-->
 
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="AuEmail" name="AuEmail" placeholder="Email">
@@ -60,7 +88,7 @@
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="AuPW" name="AuPW" placeholder="Password">
             <label for="AuPW">Password</label>
         </div>
-
+        <!--
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="RecCommissionate" name="RecCommissionate" placeholder="Recensioni Commissionate">
             <label for="RecCommissionate">Recensioni Commissionate</label>
@@ -70,7 +98,7 @@
             <input style="background-color: #141414; color:white" class="form-control" type="date" name="Scadenza" id="Scadenza" placeholder="Scadenza">
             <label for="Scadenza">Scadenza</label>
         </div>
-
+        -->
         <button class="btn" style="background-color: turquoise">Inserisci</button>
 
     </form>

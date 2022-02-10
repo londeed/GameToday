@@ -71,9 +71,9 @@ public class AdminOpServlet extends Controllo {
                     autore.setCognome(request.getParameter("AuCognome"));
                     autore.setAvatar(Integer.parseInt(request.getParameter("AuAvatar")));
                     autore.setRecEffettuate(0);
-                    autore.setRecCommissionate(request.getParameter("RecCommissionate"));
+                    autore.setRecCommissionate("");
                     autore.setEmail(request.getParameter("AuEmail"));
-                    autore.setScadenza(Date.valueOf(request.getParameter("Scadenza")));
+                    autore.setScadenza(null);
                     autore.setPassword(request.getParameter("AuPW"));
                     autore.setLike(0);
                     autore.setDislike(0);

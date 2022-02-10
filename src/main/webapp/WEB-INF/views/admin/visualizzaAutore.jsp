@@ -39,8 +39,6 @@
         <th>Rec. Effettuate</th>
         <th>Rec. Commissionate</th>
         <th>Email</th>
-        <th>Scadenza</th>
-        <th>Password</th>
         <th>N. Like</th>
         <th>N. Dislike</th>
     </tr>
@@ -58,8 +56,6 @@
         <td data-head="Recensioni Effettuate"><%=list.getRecEffettuate()%></td>
         <td data-head="Recensioni Commissionate"><%=list.getRecCommissionate()%></td>
         <td data-head="Email"><%=list.getEmail()%></td>
-        <td data-head="Scadenza"><%=list.getScadenza()%></td>
-        <td data-head="Password"><%=list.getPassword()%></td>
         <td data-head="Numero di Like"><%=list.getLike()%></td>
         <td data-head="Numero di Dislike"><%=list.getDislike()%></td>
     </tr>

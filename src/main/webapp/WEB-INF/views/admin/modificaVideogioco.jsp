@@ -57,21 +57,41 @@
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="Titolo" name="Titolo" placeholder="Titolo">
             <label for="Titolo">Titolo</label>
         </div> -->
+        <br>
+        <div style="background-color: #141414; color:white">
+            <select style="background-color: #141414; color:white" class="form-select form-select-lg" id="Pegi" name="Pegi" >
+                <option>12</option>
+                <option>16</option>
+                <option>18</option>
+            </select>
 
+        </div>
+
+        <!--
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="number" id="Pegi" name="Pegi" placeholder="Pegi">
             <label for="Pegi">Pegi</label>
-        </div>
-
+        </div>-->
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="CasaProduttrice" name="CasaProduttrice" placeholder="Casa Produttrice">
             <label for="CasaProduttrice">Casa Produttrice</label>
         </div>
 
+        <div style="background-color: #141414; color:white">
+            <select style="background-color: #141414; color:white" class="form-select form-select-lg" id="Piattaforma" name="Piattaforma" >
+                <option>PC</option>
+                <option>PlayStation 4</option>
+                <option>Xbox One</option>
+            </select>
+
+        </div>
+
+
+        <!--
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="Piattaforma" name="Piattaforma" placeholder="Piattaforma">
             <label for="Piattaforma">Piattaforma</label>
-        </div>
+        </div>-->
 
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="Tipologia" name="Tipologia" placeholder="Tipologia">
