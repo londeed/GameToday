@@ -5,7 +5,7 @@
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="Dettaglio videogioco"/>
+        <jsp:param name="title" value="Videogioco"/>
         <jsp:param name="style" value=""/>
         <jsp:param name="script" value="rating,rating2"/>
     </jsp:include>
