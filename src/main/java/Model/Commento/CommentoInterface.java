@@ -16,4 +16,5 @@ public interface CommentoInterface
     Boolean updateTesto(String testo, String comCodice) throws SQLException;
     List<Commento> doRetrieveAllCommentinotVerfied() throws SQLException;
     List<Commento> doRetrieveAll() throws SQLException;
+    String doRetrieveCodiceByMaxCommenti() throws SQLException;
 }

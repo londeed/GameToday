@@ -1,11 +1,10 @@
-<%@ page import="java.util.List" %>
 <%@ page import="Model.Recensione.Recensione" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="Gestione Profilo"/>
-        <jsp:param name="style" value="bootstrap"/>
+        <jsp:param name="title" value="Modifica recensione"/>
+        <jsp:param name="style" value=""/>
         <jsp:param name="script" value=""/>
     </jsp:include>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,10 +24,16 @@
 </header>
 
 <div class="container mt-3">
-    <h2>Recensione <%=recensione.getTitolo()%></h2>
+    <h2>Modifica recensione <%=recensione.getTitolo()%></h2>
+    <h5>La recensione dovrà rispettare le seguenti linee guida:</h5>
+    <h5>1) La recensione dovrà essere imparziale tralasciando le opinione soggettive e concentrandosi sulla valutazione oggettiva del prodotto</h5>
+    <h5>2) La recensione dovrà rispettare gli utenti e gli svilupppatori</h5>
+    <h5>3) La recensione non dovrà contenere espressioni volgari</h5>
+    <h6><b>Gli amministratori elimineranno le recensioni che non rispettano le linee guida</b></h6>
     <br>
     <form action="${pageContext.request.contextPath}/RecensioneServlet" method="post">
-        <textarea id="testoModificato" name="testoModificato"><%=recensione.getTesto()%></textarea>
+        <textarea id="testoModificato" name="testoModificato" rows="5" style="resize: none;width: 80%;height: 40%" minlength="500" maxlength="3000" ><%=recensione.getTesto()%></textarea>
+        <br>
         <button class="btn" style="background-color: turquoise" type="submit" id="salvaModifiche" name="gestioneRecensioni" value="salvaModifiche">Salva</button><input type="hidden" id="codiceModifica" name="codiceModifica" value="<%=recensione.getCodice()%>">
     </form>
 </div>

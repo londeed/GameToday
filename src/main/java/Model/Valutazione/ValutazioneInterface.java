@@ -13,4 +13,5 @@ public interface ValutazioneInterface
     List<Valutazione> doRetrieveValutazioneByTitolo(String titolo) throws SQLException;
     Valutazione insertByUtente(String titolo, String utNickname) throws SQLException;
     Videogioco updateValutazione(String titolo, int value) throws SQLException;
+    Valutazione doRetrieveValutazione(String titolo,String utNickname) throws SQLException;
 }

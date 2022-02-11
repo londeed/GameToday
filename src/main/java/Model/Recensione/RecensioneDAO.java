@@ -113,13 +113,9 @@ public class RecensioneDAO {
 
     public Boolean updateRecensioneTextbis(String recensione, String titolo) throws SQLException{
         try(Connection connection = ConPool.getConnection()){
-            try(PreparedStatement ps = connection.prepareStatement("UPDATE recensione SET RTesto=?, RData=? WHERE Titolo=?")){
-                System.out.println(titolo);
-                System.out.println(recensione);
+            try(PreparedStatement ps = connection.prepareStatement("UPDATE recensione SET RTesto=?, RData=null WHERE Titolo=?")){
                 ps.setString(1, recensione);
-                LocalDate todaysDate = LocalDate.now();
-                ps.setObject(2, todaysDate);
-                ps.setString(3, titolo);
+                ps.setString(2, titolo);
                 int rows = ps.executeUpdate();
                 return rows == 1;
             }
@@ -192,6 +188,44 @@ public class RecensioneDAO {
                 while(rs.next())
                 {
                     recensione.add(recensioneExtraction.mapping(rs));
+                }
+                rs.close();
+                return recensione;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public Recensione doRetrieveByDataUltima() throws SQLException{
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM recensione ORDER BY RData DESC LIMIT 1")){
+                ResultSet rs= ps.executeQuery();
+                Recensione recensione=new Recensione();
+                RecensioneExtraction recensioneExtraction=new RecensioneExtraction();
+                if(rs.next()){
+                    recensione = recensioneExtraction.mapping(rs);
+                }
+                rs.close();
+                return recensione;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public Recensione doRetrieveByDataPrima() throws SQLException{
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM recensione ORDER BY RData ASC LIMIT 1")){
+                ResultSet rs= ps.executeQuery();
+                Recensione recensione=new Recensione();
+                RecensioneExtraction recensioneExtraction=new RecensioneExtraction();
+                if(rs.next()){
+                    recensione = recensioneExtraction.mapping(rs);
                 }
                 rs.close();
                 return recensione;

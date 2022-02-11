@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface InterazioneUtInterface {
 
-    InterazioneAu doRetrieveInterazioneUtByCodice(String comCodice) throws SQLException;
-    List<InterazioneAu> doRetrieveInterazioneUtByNickname(String utNickname) throws SQLException;
+    InterazioneUt doRetrieveInterazioneUtByCodice(String comCodice) throws SQLException;
+    List<InterazioneUt> doRetrieveInterazioneUtByNickname(String utNickname) throws SQLException;
     Commento doRetrieveCommentoUtByCodice(String comCodice) throws SQLException;
     List<Commento> doRetrieveCommentoUtByNickname(String utNickname) throws SQLException;
     Boolean insertByUtente(String comCodice, String utNickname, Boolean utl, Boolean utd) throws SQLException;

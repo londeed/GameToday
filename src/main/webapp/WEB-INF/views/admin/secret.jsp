@@ -117,7 +117,7 @@
 <body Style="background-color: #141414;color: white;" >
 <div class="sidenav" style="background-color: turquoise" >
     <div class="login-main-text">
-        <h2>Login Admin</h2>
+        <h1 style="color: #141414">Login Admin</h1>
     </div>
 </div>
 <div class="main" id="sezioneLogin" Style="background-color: #141414;color: white;">

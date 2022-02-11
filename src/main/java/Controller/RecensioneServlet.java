@@ -202,11 +202,8 @@ public class RecensioneServlet extends HttpServlet {
                     String textRec=request.getParameter("testoInserito");
                     String SAVE_DIR ="img";
                     String appPath = request.getServletContext().getRealPath("");
-                    //String cartella= request.getParameter("Titolo");
                     Path pathX= FileSystems.getDefault().getPath("/");
-                    //String cartella= request.getRealPath("")+ cartellaTitolo;
                     String savePath = appPath + SAVE_DIR + pathX;
-                    System.out.println("LOL " + savePath);
                     File fileSaveDir = new File(savePath + titoloRec);
                     if (!fileSaveDir.exists()) {	//Se la cartella non esiste la si crea
                         fileSaveDir.mkdir();
@@ -223,10 +220,7 @@ public class RecensioneServlet extends HttpServlet {
                         }
                         i++;
                     }
-
                     Autore autore3 = (Autore) request.getSession(false).getAttribute("userAu");
-                    System.out.println(titoloRec);
-                    System.out.println(textRec);
                     Recensione recensione2=new Recensione();
                     RecensioneDAO recensioneDAO7=new RecensioneDAO();
                     recensioneDAO7.updateRecensioneTextbis(textRec, titoloRec);

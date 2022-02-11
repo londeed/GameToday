@@ -1,6 +1,15 @@
 package Controller;
 
+import Model.Commento.CommentoDAO;
+import Model.Recensione.Recensione;
+import Model.Recensione.RecensioneDAO;
+import Model.Videogioco.Videogioco;
+import Model.Videogioco.VideogiocoDAO;
+
 import java.io.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -11,6 +20,32 @@ public class GeneralServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try{
+            List<Videogioco> videogiocoList = new ArrayList<>();
+            Recensione recensioneCommentata = new Recensione();
+            Recensione recensioneUltima = new Recensione();
+            Recensione recensionePrima = new Recensione();
+            RecensioneDAO recensioneDAO = new RecensioneDAO();
+            VideogiocoDAO videogiocoDAO = new VideogiocoDAO();
+            CommentoDAO commentoDAO = new CommentoDAO();
+            videogiocoList = videogiocoDAO.doRetrieveByData();
+            recensioneUltima = recensioneDAO.doRetrieveByDataUltima();
+            recensionePrima = recensioneDAO.doRetrieveByDataPrima();
+            String codice = commentoDAO.doRetrieveCodiceByMaxCommenti();
+            recensioneCommentata = recensioneDAO.doRetrieveByCodice(codice);
+            request.setAttribute("listaVideogiochi",videogiocoList);
+            request.setAttribute("recensioneUltima",recensioneUltima);
+            request.setAttribute("recensionePrima",recensionePrima);
+            request.setAttribute("recensioneCommentata",recensioneCommentata);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("HomePage.jsp");
+            dispatcher.forward(request, response);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String home = request.getParameter("home");
         String features = request.getParameter("features");
         String aboutUs = request.getParameter("aboutus");

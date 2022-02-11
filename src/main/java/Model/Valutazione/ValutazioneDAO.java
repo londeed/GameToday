@@ -92,4 +92,24 @@ public class ValutazioneDAO {
             }
         }
     }
+
+
+    public Valutazione doRetrieveValutazione(String titolo,String utNickname) throws SQLException {
+        try (Connection connection = ConPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM valutazione WHERE Titolo = ? AND UtNickname = ?")) {
+                ps.setString(1, titolo);
+                ps.setString(2, utNickname);
+                ResultSet rs = ps.executeQuery();
+                Valutazione valutazione = new Valutazione();
+                ValutazioneExtraction valutazioneExtraction = new ValutazioneExtraction();
+                if (rs.next()) {
+                    valutazione = valutazioneExtraction.mapping(rs);
+                }
+                rs.close();
+                return valutazione;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

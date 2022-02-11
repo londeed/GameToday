@@ -20,4 +20,6 @@ public interface RecensioneInterface
     List<Recensione> doRetrieveAllByDataPubblicazione() throws SQLException;
     List<Recensione> doRetrieveAllByDataisNull() throws SQLException;
     Boolean updateRecensioneApprovata(String titolo) throws SQLException;
+    Recensione doRetrieveByDataUltima() throws SQLException;
+    Recensione doRetrieveByDataPrima() throws SQLException;
 }

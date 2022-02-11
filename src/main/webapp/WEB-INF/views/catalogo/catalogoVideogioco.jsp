@@ -31,7 +31,7 @@
                     if (generale.getTitolo().contains(":")) {
                         String[] parts = generale.getTitolo().split(Pattern.quote(":"));
             %>
-            <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
+            <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="post">
                 <button style="padding: 0px">
                     <div class="col">
                         <div class="card shadow-sm">
@@ -50,7 +50,7 @@
             </form>
             <%   }else{
             %>
-            <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
+            <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="post">
                 <button style="padding: 0px">
                     <div class="col">
                         <div class="card shadow-sm">

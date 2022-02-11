@@ -159,7 +159,7 @@
       <h3><br><br>Sezione commenti:</h3><br>
         <div class="mb-3" style= "width:50%" >
              <label for="textarea" class="form-label">Scrivi ciò che pensi:</label>
-             <textarea class="form-control" id="textarea" rows="3" maxlength="1500"></textarea><br>
+             <textarea class="form-control" id="textarea" rows="3" minlength="300" maxlength="1500"></textarea><br>
             <%String x = "";
                 System.out.println("prima");
             if(!Objects.isNull(utenteLogin)) {

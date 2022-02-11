@@ -1,12 +1,11 @@
 <%@ page import="java.util.List" %>
-<%@ page import="Model.Recensione.Recensione" %>
 <%@ page import="Model.Commento.Commento" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
         <jsp:param name="title" value="Controllo Commento"/>
-        <jsp:param name="style" value="bootstrap"/>
+        <jsp:param name="style" value=""/>
         <jsp:param name="script" value=""/>
     </jsp:include>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

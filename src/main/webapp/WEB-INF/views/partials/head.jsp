@@ -27,6 +27,8 @@
 <script src="${context}/javascript/aggiungiCommento.js" defer></script>
 <script src="${context}/javascript/login.js" defer></script>
 <script src="${context}/javascript/registrazione.js" defer></script>
+<script src="${context}/javascript/rating.js" defer></script>
+<script src="${context}/javascript/rating2.js" defer></script>
 
 <c:if test="${not empty param.script}">
     <c:forTokens items="${param.script}" delims="," var="script">

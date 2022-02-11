@@ -10,7 +10,7 @@
     </style>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
         <jsp:param name="title" value="Registrazione"/>
-        <jsp:param name="style" value="bootstrap"/>
+        <jsp:param name="style" value=""/>
         <jsp:param name="script" value=""/>
     </jsp:include>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -117,8 +117,7 @@
 <body Style="background-color: #141414;color: white;" >
         <div class="sidenav" style="background-color: turquoise" >
             <div class="login-main-text">
-                <h2>Application<br> Login Page</h2>
-                <p>Login or register from here to access.</p>
+                <h1 style="color: #141414">Pagina login</h1>
             </div>
         </div>
         <div class="main" id="sezioneLogin" Style="background-color: #141414;color: white;">

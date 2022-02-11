@@ -200,4 +200,23 @@ public class CommentoDAO
             }
         }
     }
+
+
+    public String doRetrieveCodiceByMaxCommenti() throws SQLException
+    {
+        try(Connection connection= ConPool.getConnection())
+        {
+            try(PreparedStatement ps= connection.prepareStatement("SELECT `Codice`,COUNT(`Codice`) AS `value_occurrence` FROM `commento` GROUP BY `Codice` ORDER BY `value_occurrence` DESC LIMIT 1")){
+                ResultSet rs= ps.executeQuery();
+                String codice="";
+                if(rs.next()){
+                    codice = rs.getString(1);
+                }
+                rs.close();
+                return codice;
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

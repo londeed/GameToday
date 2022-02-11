@@ -1,11 +1,9 @@
-<%@ page import="java.util.List" %>
-<%@ page import="Model.Recensione.Recensione" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="Gestione Profilo"/>
-        <jsp:param name="style" value="bootstrap"/>
+        <jsp:param name="title" value="Scrivi recensione"/>
+        <jsp:param name="style" value=""/>
         <jsp:param name="script" value=""/>
     </jsp:include>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,21 +24,33 @@
 
 <div class="container mt-3">
     <h2>Recensisci <%=titolo%></h2>
+    <h5>La recensione dovrà rispettare le seguenti linee guida:</h5>
+    <h5>1) La recensione dovrà essere imparziale tralasciando le opinione soggettive e concentrandosi sulla valutazione oggettiva del prodotto</h5>
+    <h5>2) La recensione dovrà rispettare gli utenti e gli svilupppatori</h5>
+    <h5>3) La recensione non dovrà contenere espressioni volgari</h5>
+    <h6><b>Gli amministratori elimineranno le recensioni che non rispettano le linee guida</b></h6>
     <br>
     <form action="${pageContext.request.contextPath}/RecensioneServlet" enctype=multipart/form-data method="post">
         <h5>Inserisci la prima immagine di gameplay</h5>
+        <br>
         <div>
             <input style="background-color: #141414; color:white" class="form-control" type="file" id="Imgone" name="Img" placeholder="Immagine">
         </div>
+        <br>
         <h5>Inserisci la seconda immagine di gameplay</h5>
+        <br>
         <div>
             <input style="background-color: #141414; color:white" class="form-control" type="file" id="Imgtwo" name="Img" placeholder="Immagine">
         </div>
+        <br>
         <h5>Inserisci la terza immagine di gameplay</h5>
+        <br>
         <div>
             <input style="background-color: #141414; color:white" class="form-control" type="file" id="Imgthree" name="Img" placeholder="Immagine">
         </div>
-        <textarea id="testoInserito" name="testoInserito"></textarea>
+        <br>
+        <textarea id="testoInserito" name="testoInserito" rows="5" style="resize: none;width: 100%;height: 40%" minlength="500" maxlength="3000"></textarea>
+        <br>
         <button class="btn" style="background-color: turquoise" type="submit" id="inserisciRec" name="gestioneRecensioni" value="inserisciRec">Inserisci</button><input type="hidden" id="codiceRec" name="codiceRec" value="<%=titolo%>">
     </form>
 </div>
