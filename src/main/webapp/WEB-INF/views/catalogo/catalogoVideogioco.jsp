@@ -22,7 +22,7 @@
 <header>
     <%@include file="../partials/headerCustomer.jsp"%>
 </header>
-
+<%if(!videogioco.isEmpty()){%>
 <div class="album py-5" style="background-color: #141414">
     <div class="container" style="background-color: #141414">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="background-color: #141414">
@@ -73,6 +73,10 @@
         </div>
     </div>
 </div>
+<%}else{%>
+<br>
+<h2 style="text-align: center"><b>Nessun risultato trovato</b></h2>
+<%}%>
 <footer>
     <%@include file="../partials/footerCustomer.jsp"%>
 </footer>
