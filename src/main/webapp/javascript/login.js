@@ -41,8 +41,6 @@ function validateForm(form)
         alert("Dati email errati");
         return false;
     }
-    alert(email)
-    alert(password)
     form.submit();
 }
 

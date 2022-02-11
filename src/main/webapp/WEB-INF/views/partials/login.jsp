@@ -132,8 +132,9 @@
                             <label>Password</label>
                             <input id="password" type="password" name="password" class="form-control" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-black">Login</button>
+                        <button type="submit" class="btn btn-secondary">Login</button>
                     </form>
+                    <br>
                     <form action="${pageContext.request.contextPath}/utenteProfile" method="get">
                         <button id="registrazione" name="gestioneUtente" value="registrazione" type="submit" class="btn btn-secondary">Registrazione</button>
                     </form>
