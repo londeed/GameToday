@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="379.0" y="604.0">Model.Autore.AutoreExtraction</node>
+    <node x="580.9730489417989" y="149.0">Model.Autore.AutoreNull</node>
+    <node x="261.2161044973545" y="807.0">Model.Autore.AutoreDAO</node>
+    <node x="340.39649470899474" y="149.0">Model.Autore.Autore</node>
+    <node x="569.5839947089947" y="0.0">Model.Autore.AutoreAbstract</node>
+    <node x="485.875" y="1109.0">Model.Autore.AutoreFactory</node>
+    <node x="0.0" y="505.0">Model.Autore.AutoreInterface</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Model.Autore.AutoreDAO" target="Model.Autore.AutoreExtraction">
+      <point x="130.125" y="-126.0" />
+      <point x="564.8411044973545" y="782.0" />
+      <point x="523.75" y="782.0" />
+      <point x="48.25" y="27.0" />
+    </edge>
+    <edge source="Model.Autore.AutoreDAO" target="Model.Autore.Autore">
+      <point x="-130.125" y="-126.0" />
+      <point x="304.5911044973545" y="782.0" />
+      <point x="357.5" y="782.0" />
+      <point x="357.5" y="475.0" />
+      <point x="375.9679232804233" y="475.0" />
+      <point x="-47.428571428571445" y="148.0" />
+    </edge>
+    <edge source="Model.Autore.AutoreExtraction" target="Model.Autore.Autore">
+      <point x="48.25" y="-27.0" />
+      <point x="523.75" y="485.0" />
+      <point x="447.1107804232804" y="485.0" />
+      <point x="23.714285714285666" y="148.0" />
+    </edge>
+    <edge source="Model.Autore.AutoreFactory" target="Model.Autore.AutoreNull">
+      <point x="54.75" y="-49.5" />
+      <point x="650.125" y="1089.0" />
+      <point x="663.9730489417989" y="1089.0" />
+      <point x="0.0" y="148.0" />
+    </edge>
+    <edge source="Model.Autore.AutoreInterface" target="Model.Autore.Autore">
+      <point x="0.0" y="-126.0" />
+      <point x="173.5" y="485.0" />
+      <point x="352.2536375661376" y="485.0" />
+      <point x="-71.14285714285711" y="148.0" />
+    </edge>
+    <edge source="Model.Autore.AutoreFactory" target="Model.Autore.AutoreAbstract">
+      <point x="91.25" y="-49.5" />
+      <point x="686.625" y="1089.0" />
+      <point x="757.4730489417989" y="1089.0" />
+      <point x="757.4730489417989" y="124.0" />
+      <point x="702.9173280423281" y="124.0" />
+      <point x="53.33333333333337" y="49.5" />
+    </edge>
+    <edge source="Model.Autore.AutoreFactory" target="Model.Autore.Autore">
+      <point x="-18.25" y="-49.5" />
+      <point x="577.125" y="1079.0" />
+      <point x="625.5286044973544" y="1079.0" />
+      <point x="625.5286044973544" y="475.0" />
+      <point x="470.8250661375662" y="475.0" />
+      <point x="47.428571428571445" y="148.0" />
+    </edge>
+    <edge source="Model.Autore.AutoreFactory" target="Model.Autore.AutoreDAO">
+      <point x="-54.75" y="-49.5" />
+      <point x="540.625" y="1089.0" />
+      <point x="521.4661044973545" y="1089.0" />
+      <point x="86.75" y="126.0" />
+    </edge>
+    <edge source="Model.Autore.Autore" target="Model.Autore.AutoreAbstract">
+      <point x="0.0" y="-148.0" />
+      <point x="423.39649470899474" y="124.0" />
+      <point x="596.2506613756614" y="124.0" />
+      <point x="-53.33333333333337" y="49.5" />
+    </edge>
+    <edge source="Model.Autore.AutoreNull" target="Model.Autore.AutoreAbstract">
+      <point x="0.0" y="-148.0" />
+      <point x="663.9730489417989" y="124.0" />
+      <point x="649.5839947089947" y="124.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="200.5" y="95.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

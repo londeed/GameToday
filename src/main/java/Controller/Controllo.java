@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.Connessione.ErrorHandler;
 import Model.Connessione.InvalidRequestException;
 import Model.Connessione.RequestValidator;
 
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 
-public abstract class Controllo extends HttpServlet implements ErrorHandler {
+public abstract class Controllo extends HttpServlet {
 
     protected String getPath(HttpServletRequest request){
         return request.getPathInfo() != null ? request.getPathInfo() : "/";

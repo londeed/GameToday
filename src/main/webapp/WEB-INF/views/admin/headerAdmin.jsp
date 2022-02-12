@@ -46,16 +46,6 @@
                         </form>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="post">
-                        <button class="nav-link" style="background-color: transparent;border: 0px" id="videogioco" name="videogioco" value="videogioco">Videogiochi</button>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
-                        <button class="nav-link" style="background-color: transparent;border: 0px" id="recensione" name="recensione" value="recensione">Recensioni</button>
-                    </form>
-                </li>
             </ul>
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: turquoise">
