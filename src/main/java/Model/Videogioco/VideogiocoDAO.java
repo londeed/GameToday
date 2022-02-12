@@ -9,7 +9,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *classe che utilizza i metodi di interrogazione del database riguardanti Videogioco
+ */
+
 public class VideogiocoDAO {
+
+    /**
+     * metodo che interroga il database per restituire un oggetto videogioco con un
+     * determinato titolo corrispondente alla stringa passata come parametro
+     * @param titolo
+     * @return Videogioco
+     * @throws SQLException
+     */
 
     public Videogioco doRetrieveByTitolo(String titolo) throws SQLException{
         try(Connection connection= ConPool.getConnection()) {
@@ -29,6 +41,14 @@ public class VideogiocoDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire una lista di videogiochi con una mediaValutazioni
+     * corrispondente al double passato come parametro
+     * @param mediaValutazioni
+     * @return List<Videogioco>
+     * @throws SQLException
+     */
+
     public List<Videogioco> doRetriveBymediaValutazioni(double mediaValutazioni) throws SQLException{
         try(Connection connection= ConPool.getConnection()) {
             try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM videogioco WHERE MediaValutazioni = ?")){
@@ -47,6 +67,12 @@ public class VideogiocoDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire la lista dei videogiochi
+     * @return List<Videogioco>
+     * @throws SQLException
+     */
+
     public List<Videogioco> doRetriveAll() throws SQLException{
         try(Connection connection= ConPool.getConnection()) {
             try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM videogioco")){
@@ -64,6 +90,13 @@ public class VideogiocoDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire una lista di videogiochi con casaProduttrice corrispondente alla
+     * stringa passata come parametro
+     * @param casaProduttrice
+     * @return List<Videogioco>
+     * @throws SQLException
+     */
 
     public List<Videogioco> doRetriveByCasaProduttrice(String casaProduttrice) throws SQLException{
         try(Connection connection= ConPool.getConnection()) {
@@ -83,6 +116,14 @@ public class VideogiocoDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire una lista di videogiochi con piattaforma corrispondente alla
+     * stringa passata come parametro
+     * @param piattaforma
+     * @return
+     * @throws SQLException
+     */
+
     public List<Videogioco> doRetriveByPiattaforma(String piattaforma) throws SQLException{
         try(Connection connection= ConPool.getConnection()) {
             try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM videogioco WHERE Piattaforma = ?")){
@@ -101,6 +142,13 @@ public class VideogiocoDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per inserire un videogioco tramite un oggetto videogioco passato come parametro
+     * @param videogioco
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean insertVideogioco(Videogioco videogioco) throws SQLException{
         try(Connection connection = ConPool.getConnection()){
             try(PreparedStatement ps = connection.prepareStatement("INSERT INTO videogioco(Titolo, Pegi, TotaleVoti, CasaProduttrice, MediaValutazioni, Piattaforma, DataPubblicazione, Tipologia) VALUES (?,?,?,?,?,?,?,?);")){
@@ -117,6 +165,15 @@ public class VideogiocoDAO {
             }
         }
     }
+
+    /**
+     * metodo che interroga il database per aggiornare un videogioco corrispondente alla stringa passata come parametro
+     * con un oggetto videogioco passato come parametro
+     * @param videogioco
+     * @param titolo
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean updateVideogioco(Videogioco videogioco, String titolo) throws SQLException{
         try(Connection connection = ConPool.getConnection()){
@@ -136,6 +193,14 @@ public class VideogiocoDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per eliminare un videogioco con il titolo
+     * corrispondente alla stringa passata come parametro
+     * @param titolo
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean deleteVideogico(String titolo) throws SQLException{
         try(Connection con = ConPool.getConnection()) {
             try(PreparedStatement ps = con.prepareStatement("DELETE FROM videogioco WHERE Titolo = ?")){
@@ -147,6 +212,12 @@ public class VideogiocoDAO {
             }
         }
     }
+
+    /**
+     * metodo che interroga il database per restituire il numero di tutti gli elementi presenti nella tabella videogioco
+     * @return size
+     * @throws SQLException
+     */
 
     public int countAll() throws SQLException{
         try(Connection con = ConPool.getConnection()){
@@ -160,6 +231,12 @@ public class VideogiocoDAO {
             }
         }
     }
+
+    /**
+     * metodo che interroga il database per restituire una lista di videogiochi ordinata tramite titolo
+     * @return List<Videogioco>
+     * @throws SQLException
+     */
 
     public List<Videogioco> doRetrieveAllByTitolo() throws SQLException
     {
@@ -181,6 +258,13 @@ public class VideogiocoDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire una lista di videogiochi con il titolo che completa o corrisponde
+     * alla stringa passata come parametro
+     * @param s
+     * @return List<Videogioco>
+     * @throws SQLException
+     */
 
     public List<Videogioco> doRetrieveAllByTitoloSearch(String s) throws SQLException
     {
@@ -203,6 +287,13 @@ public class VideogiocoDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire una lista di videogiochi con il titolo non presente all'interno
+     * dell'attributo titolo delle recensioni
+     * @return List<Videogioco>
+     * @throws SQLException
+     */
+
     public List<Videogioco> doRetrieveByNull() throws SQLException
     {
         try(Connection connection= ConPool.getConnection())
@@ -223,6 +314,12 @@ public class VideogiocoDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire una lista di tre videogiochi ordinati in modo discendente
+     * tramite dataPubblicazione
+     * @return List<Videogioco>
+     * @throws SQLException
+     */
 
     public List<Videogioco> doRetrieveByData() throws SQLException {
         try (Connection connection = ConPool.getConnection()) {

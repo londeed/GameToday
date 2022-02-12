@@ -3,7 +3,19 @@ package Model.Videogioco;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * classe utilizzata per il mapping del resultset di Videogioco dal database
+ */
+
 public class VideogiocoExtraction {
+
+    /**
+     * metodo che effettua il mapping di videogioco
+     * @param rs
+     * @return Videogioco
+     * @throws SQLException
+     */
+
     public Videogioco mapping(ResultSet rs) throws SQLException {
         Videogioco videogioco = new Videogioco();
         videogioco.setTitolo(rs.getString(1));
@@ -14,7 +26,6 @@ public class VideogiocoExtraction {
         videogioco.setPiattaforma(rs.getString(6));
         videogioco.setDataPubblicazione(rs.getDate(7));
         videogioco.setTipologia(rs.getString(8));
-
         return videogioco;
     }
 }

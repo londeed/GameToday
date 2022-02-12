@@ -9,7 +9,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti Valutazione
+ */
+
 public class ValutazioneDAO {
+
+    /**
+     * metodo che interroga il database per restituire una lista di valutazione con UtNickname corrispondente alla
+     * stringa passata come parametro
+     * @param utNickname
+     * @return List<Valutazione>
+     * @throws SQLException
+     */
 
     public List<Valutazione> doRetrieveValutazioneByUtente(String utNickname) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
@@ -29,6 +41,13 @@ public class ValutazioneDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire una lista di valutazione con Titolo corrispondente alla
+     * stringa passata come parametro
+     * @param titolo
+     * @return List<Valutazione>
+     * @throws SQLException
+     */
 
     public List<Valutazione> doRetrieveValutazioneByTitolo(String titolo) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
@@ -48,6 +67,14 @@ public class ValutazioneDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per inserire un elemento valutazione tramite UtNickname dell'utente
+     * e Titolo del videogioco passati come parametro
+     * @param titolo
+     * @param utNickname
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean insertByUtente(String titolo, String utNickname) throws SQLException{
         int rows = 0;
@@ -63,6 +90,14 @@ public class ValutazioneDAO {
         return rows == 1;
     }
 
+    /**
+     * metodo che interroga il database per aggiornare MediaValutazioni di un elemento valutazione, con Titolo
+     * corrispondente alla stringa passata come parametro, tramite un intero passato come parametro
+     * @param titolo
+     * @param value
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean updateValutazione(String titolo, int value) throws SQLException {
         double d = 0;
@@ -90,6 +125,14 @@ public class ValutazioneDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire un elemento valutazione con Titolo e UtNickname corrispondenti
+     * alle rispettive stringhe passate come parametro
+     * @param titolo
+     * @param utNickname
+     * @return Valutazione
+     * @throws SQLException
+     */
 
     public Valutazione doRetrieveValutazione(String titolo,String utNickname) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {

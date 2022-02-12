@@ -9,7 +9,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti Visione
+ */
+
 public class VisioneDAO {
+
+    /**
+     * metodo che interroga il database per restituire tutti gli elementi visione con un
+     * determinato nickname autore passato come parametro
+     * @param auNickname
+     * @return List<Visione>
+     * @throws SQLException
+     */
 
     public List<Visione> doRetrieveVisioneByAutore(String auNickname) throws SQLException {
         try(Connection connection= ConPool.getConnection())
@@ -30,6 +42,13 @@ public class VisioneDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire tutti gli elementi visione con un
+     * determinato titolo passato come parametro
+     * @param titolo
+     * @return List<Visione>
+     * @throws SQLException
+     */
 
     public List<Visione> doRetrieveVisioneByTitolo(String titolo) throws SQLException {
         try(Connection connection= ConPool.getConnection())
@@ -50,6 +69,14 @@ public class VisioneDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per inserire un elemento visione tramite il nickname dell'autore
+     * e il titolo del videogioco passati come parametro
+     * @param auNickname
+     * @param titolo
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean insertVisione(String auNickname, String titolo) throws SQLException{
         int rows = 0;

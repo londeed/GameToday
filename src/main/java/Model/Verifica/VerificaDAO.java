@@ -10,7 +10,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti Verifica
+ */
+
 public class VerificaDAO {
+
+    /**
+     * metodo che interroga il database per eliminare un elemento verifica con il CommentoCod corrispondente alla
+     * stringa passata come parametro
+     * @param comCodice
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean delete(String comCodice) throws SQLException{
         try(Connection con = ConPool.getConnection()){
             try(PreparedStatement ps = con.prepareStatement("DELETE FROM commento WHERE CommentoCod = ?")){
@@ -23,6 +36,14 @@ public class VerificaDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per aggiornare un elemento commento, con CommentoCod corrispondente alla stringa
+     * passata come parametro, tramite un oggetto commento passato come parametro
+     * @param commento
+     * @param comCodice
+     * @return boolean
+     * @throws SQLException
+     */
 
     public  Boolean update (Commento commento, String comCodice) throws SQLException{
         try(Connection connection = ConPool.getConnection()){
@@ -39,6 +60,13 @@ public class VerificaDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire un elemento verifica con CommentoCod corrispondente alla stringa
+     * passata come parametro
+     * @param comCodice
+     * @return Verifica
+     * @throws SQLException
+     */
 
     public Verifica doRetrieveInterazioneAmByCodice(String comCodice) throws SQLException{
         try(Connection connection= ConPool.getConnection())
@@ -59,6 +87,13 @@ public class VerificaDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire una lista di verifica con AmNickname corrispondente alla
+     * stringa passata come parametro
+     * @param amNickname
+     * @return List<Verifica>
+     * @throws SQLException
+     */
 
     public List<Verifica> doRetrieveInterazioneAmByNickname(String amNickname) throws SQLException{
         try(Connection connection= ConPool.getConnection())
@@ -79,7 +114,14 @@ public class VerificaDAO {
         }
     }
 
-
+    /**
+     * metodo che interroga il database per inserire un elemento verifica tramite amNickname dell'amministratore
+     * e comCodice del commento passati come parametro
+     * @param comCodice
+     * @param amNickname
+     * @return boolean
+     * @throws SQLException
+     */
 
   public  Boolean insertVerifica(String comCodice, String amNickname) throws SQLException{
     int rows = 0;
