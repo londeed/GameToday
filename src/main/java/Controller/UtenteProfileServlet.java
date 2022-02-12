@@ -9,8 +9,21 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Servlet per la gestione del proprio profilo da parte dell'utente
+ */
+
 @WebServlet(name = "UtenteProfileServlet", value = "/utenteProfile/*")
 public class UtenteProfileServlet extends Controllo {
+
+    /**
+     * metodo doGet della Servlet UtenteProfileServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -59,6 +72,14 @@ public class UtenteProfileServlet extends Controllo {
             e.printStackTrace();
         }
     }
+
+    /**
+     * metodo doGet della Servlet UserProfileServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

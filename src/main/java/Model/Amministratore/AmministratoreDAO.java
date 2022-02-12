@@ -8,7 +8,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti l'Amministratore
+ */
+
 public class AmministratoreDAO {
+
+    /**
+     * questo metodo restituisce tutti gli amministratori
+     * @return Lista di amministratori
+     * @throws SQLException
+     */
 
     public List<Amministratore> doRetrieveAllAmministratore() throws SQLException{
         try(Connection connection= ConPool.getConnection())
@@ -28,6 +38,13 @@ public class AmministratoreDAO {
             }
         }
     }
+
+    /**
+     * questo metodo restituisce tutti gli amministratori per email
+     * @param email
+     * @return Amministratore
+     * @throws SQLException
+     */
 
     public Amministratore doRetrieveAmministratoreByEmail(String email) throws SQLException
     {
@@ -49,6 +66,13 @@ public class AmministratoreDAO {
         }
     }
 
+    /**
+     * questo metodo crea un Amministratore
+     * @param amministratore
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean createAmministratore(Amministratore amministratore) throws SQLException {
         try(Connection connection = ConPool.getConnection()){
             try(PreparedStatement ps = connection.prepareStatement("INSERT INTO amministratore(AmNickname, AmNome, AmCognome, AmAvatar, AmEmail, AmPW, VideogiochiInseriti) VALUES (?,?,?,?,?,?,?);")){
@@ -65,6 +89,14 @@ public class AmministratoreDAO {
 
         }
     }
+
+    /**
+     * questo metodo aggiorna un amministratore
+     * @param amministratore
+     * @param amNickname
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean updateAmministratore(Amministratore amministratore, String amNickname) throws SQLException
     {
@@ -84,6 +116,13 @@ public class AmministratoreDAO {
         }
     }
 
+    /**
+     * questo metodo elimina un amministratore
+     * @param amNickname
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean deleteAmministratore(String amNickname) throws SQLException
     {
         try(Connection con = ConPool.getConnection()) {
@@ -96,6 +135,14 @@ public class AmministratoreDAO {
             }
         }
     }
+
+    /**
+     * questo metodo permette all'amministratore di effettuare il login
+     * @param email
+     * @param password
+     * @return amministratore
+     * @throws SQLException
+     */
 
     public Amministratore loginAmministratore(String email, String password) throws SQLException
     {
@@ -113,6 +160,12 @@ public class AmministratoreDAO {
             return null;
         }
     }
+
+    /**
+     * questo metodo restituisce il numero degli amministratori
+     * @return N° Amministratori
+     * @throws SQLException
+     */
 
     int countAll() throws SQLException
     {

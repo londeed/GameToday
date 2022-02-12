@@ -13,10 +13,22 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Servlet per le operazioni base fornite all'amministratore
+ */
+
 @WebServlet(name = "AdminServlet", value = "/admin/*")
 
 public class AdminServlet extends Controllo {
 
+
+    /**
+     * metodo doGet della Servlet AdminServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,12 +47,23 @@ public class AdminServlet extends Controllo {
         }
     }
 
+    /**
+     * metodo doPost della Servlet AdminServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String path = getPath(request);
             switch (path) {
                 case "/login":
+                    /**
+                     * Utilizzo design pattern 'NULL OBJECT'
+                     */
                     AmministratoreAbstract amministratoreAbstract= AmministratoreFactory.getEmail(request.getParameter("email"));
                     if(amministratoreAbstract.isNull()){
                         request.getRequestDispatcher("/WEB-INF/views/errore/errorLoginAdmin.jsp").forward(request, response);

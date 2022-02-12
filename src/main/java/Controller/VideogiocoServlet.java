@@ -20,8 +20,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Servlet utilizzata per la gestione delle operazioni annesse ai videogiochi
+ */
+
 @WebServlet(name = "VideogiocoServlet", value = "/VideogiocoServlet/*")
 public class VideogiocoServlet extends Controllo {
+
+    /**
+     * metodo doGet della Servlet VideogiocoServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -61,6 +74,14 @@ public class VideogiocoServlet extends Controllo {
             throwables.printStackTrace();
         }
     }
+
+    /**
+     * metodo doPost della Servlet VideogiocoServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -14,8 +14,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servlet per la gestione del catalogo suddiviso in categorie (presenti nel database)
+ */
+
+
 @WebServlet(name = "CatalogoServlet", value = "/Catalogo")
 public class CatalogoServlet extends HttpServlet {
+
+    /**
+     * metodo doGet della Servlet CatalogoServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String inputRicerca = request.getParameter("piattaforma");
@@ -53,5 +67,9 @@ public class CatalogoServlet extends HttpServlet {
             throwables.printStackTrace();
         }
     }
+
+    /**
+     * Servlet sprovvista di metodo doPost poichè non si è reso necessario il passaggio di dati sensibili
+     */
 }
 

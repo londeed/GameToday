@@ -3,7 +3,19 @@ package Model.Amministratore;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * classe utlizzata per il mapping del resultset dell'amministratore dal database
+ */
+
 public class AmministratoreExtraction {
+
+    /**
+     * metodo che effettua il mapping dell'amministratore
+     * @param rs
+     * @return amministratore
+     * @throws SQLException
+     */
+
     public Amministratore mapping(ResultSet rs) throws SQLException
     {
         Amministratore amministratore= new Amministratore();

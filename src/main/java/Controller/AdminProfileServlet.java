@@ -9,8 +9,21 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Servlet per la gestione del proprio profilo da parte dell'amministratore
+ */
+
 @WebServlet(name = "AdminProfileServlet", value = "/adminProfile/*")
 public class AdminProfileServlet extends Controllo {
+
+    /**
+     * metodo doGet della Servlet AdminProfileServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -58,6 +71,14 @@ public class AdminProfileServlet extends Controllo {
             e.printStackTrace();
         }
     }
+
+    /**
+     * metodo doPost della Servlet AdminProfileServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

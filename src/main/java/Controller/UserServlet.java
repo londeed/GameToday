@@ -14,8 +14,21 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
+/**
+ * Servlet per le operazioni base fornite all'amministratore
+ */
+
 @WebServlet(name = "UserServlet", value = "/UserServlet/*")
 public class UserServlet extends Controllo {
+
+    /**
+     * metodo doGet della Servlet UserServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -31,12 +44,23 @@ public class UserServlet extends Controllo {
         }
     }
 
+    /**
+     * metodo doPost della Servlet UserServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String path = getPath(request);
             switch (path) {
                 case "/login":
+                    /**
+                     * Utilizzo design pattern 'NULL OBJECT'
+                     */
                     UtenteAbstract utenteAbstract= UtenteFactory.getEmail(request.getParameter("email"));
                     if(utenteAbstract.isNull()){
                         AutoreAbstract autoreAbstract= AutoreFactory.getEmail(request.getParameter("email"));

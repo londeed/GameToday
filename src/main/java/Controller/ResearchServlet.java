@@ -11,8 +11,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servlet per la ricerca dei titoli videoludici presenti nel database
+ */
+
 @WebServlet(name = "ResearchServlet", value = "/ResearchServlet")
 public class ResearchServlet extends HttpServlet {
+
+    /**
+     * metodo doGet della Servlet ResearchServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -30,4 +43,9 @@ public class ResearchServlet extends HttpServlet {
 
         }
     }
+
+
+    /**
+     * Servlet sprovvista di metodo doPost poichè non si è reso necessario il passaggio di dati sensibili
+     */
 }

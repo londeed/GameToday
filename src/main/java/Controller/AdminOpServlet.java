@@ -11,8 +11,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servlet per la gestione degli autori da parte dell'amministratore
+ */
+
 @WebServlet(name = "AdminOpServlet", value = "/adminOp/*")
 public class AdminOpServlet extends Controllo {
+
+
+    /**
+     * metodo doGet della Servlet AdminOpServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -50,6 +64,14 @@ public class AdminOpServlet extends Controllo {
             e.printStackTrace();
         }
     }
+
+    /**
+     * metodo doPost della Servlet AdminOpServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

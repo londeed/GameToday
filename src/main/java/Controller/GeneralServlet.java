@@ -15,8 +15,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+/**
+ * Questa Servlet viene utilizzata per operazioni generali necessarie per l'utilizzo dell'architettura web
+ */
+
 @WebServlet(name = "GeneralServlet", value = "/General")
 public class GeneralServlet extends HttpServlet {
+
+    /**
+     * metodo doGet della Servlet GeneralServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,6 +56,15 @@ public class GeneralServlet extends HttpServlet {
         }
 
     }
+
+
+    /**
+     * metodo doPost della Servlet GeneralServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String home = request.getParameter("home");

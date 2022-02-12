@@ -4,6 +4,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe factory utilizzata per implementare il design pattern NullObject
+ */
+
 public class AmministratoreFactory {
 
     public static final AmministratoreDAO AMMINISTRATORE_DAO=new AmministratoreDAO();
@@ -17,6 +21,12 @@ public class AmministratoreFactory {
             throwables.printStackTrace();
         }
     }
+
+    /**
+     * metodo utilizzato per verificare se l'amministratore che tenta di effettuare il login è presente nel database
+     * @param email
+     * @return
+     */
 
     public static AmministratoreAbstract getEmail(String email){
         for(int i=0; i<AMMINISTRATORE_LIST.size(); i++){

@@ -25,9 +25,22 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+/**
+ * Servlet per le gestione delle recensioni e di tutte le operazioni ad essa connesse
+ */
+
 @WebServlet(name = "RecensioneServlet", value = "/RecensioneServlet")
 @MultipartConfig
 public class RecensioneServlet extends HttpServlet {
+
+    /**
+     * metodo doGet della Servlet RecensioneServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -99,6 +112,14 @@ public class RecensioneServlet extends HttpServlet {
             throwables.printStackTrace();
         }
     }
+
+    /**
+     * metodo doPost della Servlet RecensioneServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -193,9 +214,11 @@ public class RecensioneServlet extends HttpServlet {
                 case "inserisciRec":
                     String titoloRec=request.getParameter("codiceRec");
                     String textRec=request.getParameter("testoInserito");
-
                     String operazione="Recensione";
                     String appPath = request.getServletContext().getRealPath("");
+                    /**
+                     * Utilizzo design pattern 'SINGLETON'
+                     */
                     Singleton singleton=Singleton.getInstance(operazione, appPath, titoloRec, request);
                     Autore autore3 = (Autore) request.getSession(false).getAttribute("userAu");
                     Recensione recensione2=new Recensione();

@@ -16,9 +16,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servlet per la gestione dei videogiochi da parte dell'amministratore
+ */
+
 @WebServlet(name = "AdminGameServlet", value = "/adminGame/*")
 @MultipartConfig
 public class AdminGameServlet extends Controllo {
+
+    /**
+     * metodo doGet della Servlet AdminGameServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -77,6 +90,14 @@ public class AdminGameServlet extends Controllo {
         }
     }
 
+    /**
+     * metodo doPost della Servlet AdminGameServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -97,6 +118,9 @@ public class AdminGameServlet extends Controllo {
 
                     String operazione="Videogioco";
                     String appPath = request.getServletContext().getRealPath("");
+                    /**
+                     * Utilizzo design pattern 'SINGLETON'
+                     */
                     Singleton singleton=Singleton.getInstance(operazione, appPath, request.getParameter("Titolo"), request);
                     request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
                     break;

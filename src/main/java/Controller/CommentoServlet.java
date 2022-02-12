@@ -20,9 +20,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Servlet per la gestione dei commenti e le operazioni ad esse connesse
+ */
+
 @WebServlet(name = "CommentoServlet", value = "/CommentoServlet/*")
 public class CommentoServlet extends Controllo {
     @Override
+
+    /**
+     * metodo doGet della Servlet CommentoServlet
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<String> codComm = new ArrayList<>();
         if(Objects.isNull(request.getSession(false).getAttribute("codiceCommento"))){
@@ -230,5 +243,9 @@ public class CommentoServlet extends Controllo {
             log(ex.getMessage());
         }
     }
+
+    /**
+     * Servlet sprovvista di metodo doPost poichè non si è reso necessario il passaggio di dati sensibili
+     */
 
 }
