@@ -5,7 +5,7 @@
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="HomePage"/>
+        <jsp:param name="title" value="Catalogo"/>
         <jsp:param name="style" value="bootstrap"/>
         <jsp:param name="script" value=""/>
     </jsp:include>
@@ -39,7 +39,7 @@
                             <p class="card-text" style="color: black"><%=generale.getTitolo()%></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
+                                    <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="post">
                                         <button type="submit" class="btn btn-sm btn-outline-dark" style="border-width: medium" id="dettaglioVideogioco" name="dettaglioVideogioco" value="<%=generale.getTitolo()%>">Info</button>
                                     </form>
                                     <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
@@ -61,7 +61,7 @@
                             <p class="card-text" style="color: black"><%=generale.getTitolo()%></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="get">
+                                    <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="post">
                                         <button type="submit" class="btn btn-sm btn-outline-dark" style="border-width: medium">Info
                                             <input type="hidden" id="dettaglioVideogioco1" name="dettaglioVideogioco" value="<%=generale.getTitolo()%>">
                                         </button>
