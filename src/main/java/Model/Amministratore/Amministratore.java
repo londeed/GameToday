@@ -1,6 +1,6 @@
 package Model.Amministratore;
 
-public class Amministratore {
+public class Amministratore extends AmministratoreAbstract {
     private String amNickname;
     private String nome;
     private String cognome;
@@ -9,6 +9,11 @@ public class Amministratore {
     private String password;
     private int videogiochiInseriti;
 
+    public Amministratore(String amNickname) {
+        this.amNickname = amNickname;
+    }
+
+    @Override
     public String getAmNickname() {
         return amNickname;
     }
@@ -64,4 +69,7 @@ public class Amministratore {
     public void setVideogiochiInseriti(int videogiochiInseriti) {
         this.videogiochiInseriti = videogiochiInseriti;
     }
+
+    @Override
+    public boolean isNull() { return false; }
 }

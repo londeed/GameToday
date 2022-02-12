@@ -200,6 +200,11 @@ public class RecensioneServlet extends HttpServlet {
                 case "inserisciRec":
                     String titoloRec=request.getParameter("codiceRec");
                     String textRec=request.getParameter("testoInserito");
+
+                    String operazione="Recensione";
+                    String appPath = request.getServletContext().getRealPath("");
+                    Singleton singleton=Singleton.getInstance(operazione, appPath, titoloRec, request);
+                    /*
                     String SAVE_DIR ="img";
                     String appPath = request.getServletContext().getRealPath("");
                     Path pathX= FileSystems.getDefault().getPath("/");
@@ -219,7 +224,7 @@ public class RecensioneServlet extends HttpServlet {
                             System.out.println(savePath + car +File.separator+ fileName);
                         }
                         i++;
-                    }
+                    }*/
                     Autore autore3 = (Autore) request.getSession(false).getAttribute("userAu");
                     Recensione recensione2=new Recensione();
                     RecensioneDAO recensioneDAO7=new RecensioneDAO();

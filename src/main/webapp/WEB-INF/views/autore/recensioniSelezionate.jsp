@@ -24,10 +24,10 @@
 
 <div class="container mt-3">
     <h2>Recensisci <%=titolo%></h2>
-    <h5>La recensione dovrà rispettare le seguenti linee guida:</h5>
-    <h5>1) La recensione dovrà essere imparziale tralasciando le opinione soggettive e concentrandosi sulla valutazione oggettiva del prodotto</h5>
-    <h5>2) La recensione dovrà rispettare gli utenti e gli svilupppatori</h5>
-    <h5>3) La recensione non dovrà contenere espressioni volgari</h5>
+    <h5>La recensione dovr<span>&#224</span> rispettare le seguenti linee guida:</h5>
+    <h5>1) La recensione dovr<span>&#224</span> essere imparziale tralasciando le opinione soggettive e concentrandosi sulla valutazione oggettiva del prodotto</h5>
+    <h5>2) La recensione dovr<span>&#224</span> rispettare gli utenti e gli svilupppatori</h5>
+    <h5>3) La recensione non dovr<span>&#224</span> contenere espressioni volgari</h5>
     <h6><b>Gli amministratori elimineranno le recensioni che non rispettano le linee guida</b></h6>
     <br>
     <form action="${pageContext.request.contextPath}/RecensioneServlet" enctype=multipart/form-data method="post">

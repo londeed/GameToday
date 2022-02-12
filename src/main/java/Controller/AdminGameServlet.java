@@ -106,6 +106,10 @@ public class AdminGameServlet extends Controllo {
                     videogioco.setTipologia(request.getParameter("Tipologia"));
                     videogiocoDAO.insertVideogioco(videogioco);
 
+                    String operazione="Videogioco";
+                    String appPath = request.getServletContext().getRealPath("");
+                    Singleton singleton=Singleton.getInstance(operazione, appPath, request.getParameter("Titolo"), request);
+                    /*
                     String SAVE_DIR ="img";
                     String appPath = request.getServletContext().getRealPath("");
                     String cartella= request.getParameter("Titolo");
@@ -126,7 +130,7 @@ public class AdminGameServlet extends Controllo {
                             part.write(savePath + car + File.separator + fileName);	//si inserisce la foto nella cartella temporanea
                             System.out.println(savePath + car +File.separator+ fileName);
                         }
-                    }
+                    }*/
                     request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
                     break;
                 case "/elimina":
