@@ -1,22 +1,27 @@
-package Model.Utente;
+package Model.Autore;
 
-public class Utente extends UtenteAbstract {
-    private String utNickname;
+import java.sql.Date;
+
+public class AutoreNull extends AutoreAbstract {
+
+    private String auNickname;
     private String nome;
     private String cognome;
     private int avatar;
     private String email;
     private String password;
-    private int valEffettuate;
+    private int recEffettuate;
+    private String recCommissionate;
+    private Date scadenza;
     private int like;
     private int dislike;
 
-    public String getUtNickname() {
-        return utNickname;
+    public String getAuNickname() {
+        return auNickname;
     }
 
-    public void setUtNickname(String utNickname) {
-        this.utNickname = utNickname;
+    public void setAuNickname(String auNickname) {
+        this.auNickname = auNickname;
     }
 
     public String getNome() {
@@ -60,12 +65,28 @@ public class Utente extends UtenteAbstract {
         this.password = password;
     }
 
-    public int getValEffettuate() {
-        return valEffettuate;
+    public int getRecEffettuate() {
+        return recEffettuate;
     }
 
-    public void setValEffettuate(int valEffettuate) {
-        this.valEffettuate = valEffettuate;
+    public void setRecEffettuate(int recEffettuate) {
+        this.recEffettuate = recEffettuate;
+    }
+
+    public String getRecCommissionate() {
+        return recCommissionate;
+    }
+
+    public void setRecCommissionate(String recCommissionate) {
+        this.recCommissionate = recCommissionate;
+    }
+
+    public Date getScadenza() {
+        return scadenza;
+    }
+
+    public void setScadenza(Date scadenza) {
+        this.scadenza = scadenza;
     }
 
     public int getLike() {
@@ -85,5 +106,5 @@ public class Utente extends UtenteAbstract {
     }
 
     @Override
-    public boolean isNull() { return false; }
+    public boolean isNull() { return true; }
 }

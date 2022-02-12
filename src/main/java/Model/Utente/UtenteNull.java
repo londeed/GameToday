@@ -1,6 +1,7 @@
 package Model.Utente;
 
-public class Utente extends UtenteAbstract {
+public class UtenteNull extends UtenteAbstract{
+
     private String utNickname;
     private String nome;
     private String cognome;
@@ -85,5 +86,5 @@ public class Utente extends UtenteAbstract {
     }
 
     @Override
-    public boolean isNull() { return false; }
+    public boolean isNull() { return true; }
 }

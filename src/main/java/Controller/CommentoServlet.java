@@ -3,6 +3,7 @@ package Controller;
 import Model.Autore.Autore;
 import Model.Commento.Commento;
 import Model.Commento.CommentoDAO;
+import Model.Commento.EspressioneControllo;
 import Model.Connessione.GeneratoreCodici;
 import Model.InterazioneAu.InterazioneAu;
 import Model.InterazioneAu.InterazioneAuDAO;
@@ -33,7 +34,6 @@ public class CommentoServlet extends Controllo {
           String path = getPath(request);
             switch (path) {
                 case "/aggiungi":
-                    System.out.println("numcom");
                     JSONObject jObjecto = new JSONObject(request.getParameter("codici"));
                     Iterator itero = jObjecto.keys(); //gets all the keys
                     ArrayList<String> codici = new ArrayList<>();
@@ -76,7 +76,10 @@ public class CommentoServlet extends Controllo {
                     commento.setLike(0);
                     commento.setDislike(0);
                     commento.setCodice(codici.get(3));
-                    commento.setTesto(codici.get(0));
+                    EspressioneControllo espressioneControllo=new EspressioneControllo();
+                    System.out.println("DDDDDDDD");
+                    commento.setTesto(espressioneControllo.getCommento(codici.get(0)));
+                    System.out.println("");
                     GeneratoreCodici gc = new GeneratoreCodici();
 
                     String s = gc.GeneraCodice(5,true,true,"#");
@@ -230,7 +233,7 @@ public class CommentoServlet extends Controllo {
                     }
                     InterazioneUtDAO interazioneUtDAO = new InterazioneUtDAO();
                     InterazioneAuDAO interazioneAuDAO = new InterazioneAuDAO();
-                    List<String> autoreRec = interazioneAuDAO.doRetrieveNicknameAuByComCodice(eliminazione2.get(1));
+                    List<String> autoreRec = interazioneAuDAO.doRetrieveNicknameAuByComCodice(eliminazione2.get(1)) ;
                     List<String> utenteRec = interazioneUtDAO.doRetrieveNicknameUtByComCodice(eliminazione2.get(1));
                     String nickname2 = eliminazione2.get(0);
                     for(String nick : autoreRec){
@@ -245,44 +248,6 @@ public class CommentoServlet extends Controllo {
                     }
                     CommentoDAO commentoDao4 = new CommentoDAO();
                     commentoDao4.deleteCommento(eliminazione2.get(1));
-                    break;
-                case "/modificaCreati":
-                    JSONObject jObjecto9 = new JSONObject(request.getParameter("code"));
-                    Iterator itero9 = jObjecto9.keys(); //gets all the keys
-                    List<String> modificaCreato = new ArrayList<>();
-                    while (itero9.hasNext()) {
-                        String key = (String) itero9.next(); // get key
-                        Object o = jObjecto9.get(key); // get value
-                        modificaCreato.add((String) o);
-                        System.out.println(key + " : " + o); // print the key and value
-                    }
-                    List<String> modify = (List<String>) request.getSession().getAttribute("codiceCommento");
-                    String codeCommento = "";
-                    for(int i = 0;i<=modify.size();i+=2){
-                        System.out.println(modify.get(i));
-                        System.out.println(modify.get(++i));
-                        String x = modify.get(--i);
-                        String y = modificaCreato.get(0);
-                        if(x.equals(y)){
-                            codeCommento = modify.get(++i);
-                            break;
-                        }
-                    }
-                    CommentoDAO commentoDao5 = new CommentoDAO();
-                    commentoDao5.updateTesto(modificaCreato.get(1),codeCommento);
-                    break;
-                case "/modifica":
-                    JSONObject jObjecto7 = new JSONObject(request.getParameter("modificato"));
-                    Iterator itero7 = jObjecto7.keys(); //gets all the keys
-                    List<String> modifica = new ArrayList<>();
-                    while (itero7.hasNext()) {
-                        String key = (String) itero7.next(); // get key
-                        Object o = jObjecto7.get(key); // get value
-                        modifica.add((String) o);
-                        System.out.println(key + " : " + o); // print the key and value
-                    }
-                    CommentoDAO commentoDAO = new CommentoDAO();
-                    commentoDAO.updateTesto(modifica.get(1),modifica.get(0));
                     break;
             }
         } catch (SQLException ex){

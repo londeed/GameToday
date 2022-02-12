@@ -2,7 +2,7 @@ package Model.Autore;
 
 import java.sql.Date;
 
-public class Autore {
+public class Autore extends AutoreAbstract {
     private String auNickname;
     private String nome;
     private String cognome;
@@ -47,6 +47,7 @@ public class Autore {
         this.avatar = avatar;
     }
 
+    @Override
     public String getEmail() {
         return email;
     }
@@ -102,4 +103,7 @@ public class Autore {
     public void setDislike(int dislike) {
         this.dislike = dislike;
     }
+
+    @Override
+    public boolean isNull() { return false; }
 }

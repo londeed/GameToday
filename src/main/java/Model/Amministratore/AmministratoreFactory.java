@@ -18,10 +18,10 @@ public class AmministratoreFactory {
         }
     }
 
-    public static AmministratoreAbstract getAmNickname(String AmNickname){
+    public static AmministratoreAbstract getEmail(String email){
         for(int i=0; i<AMMINISTRATORE_LIST.size(); i++){
-            if(AMMINISTRATORE_LIST.get(i).getAmNickname().equalsIgnoreCase(AmNickname)){
-                return new Amministratore(AmNickname);
+            if(AMMINISTRATORE_LIST.get(i).getEmail().equals(email)){
+                return new Amministratore();
             }
         }
         return new AmministratoreNull();

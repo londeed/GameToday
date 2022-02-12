@@ -9,11 +9,6 @@ public class Amministratore extends AmministratoreAbstract {
     private String password;
     private int videogiochiInseriti;
 
-    public Amministratore(String amNickname) {
-        this.amNickname = amNickname;
-    }
-
-    @Override
     public String getAmNickname() {
         return amNickname;
     }
@@ -46,6 +41,7 @@ public class Amministratore extends AmministratoreAbstract {
         this.avatar = avatar;
     }
 
+    @Override
     public String getEmail() {
         return email;
     }

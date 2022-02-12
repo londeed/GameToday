@@ -1,9 +1,9 @@
-package Model.Amministratore;
+package Model.Autore;
 
-    public abstract class AmministratoreAbstract {
+    public abstract class AutoreAbstract {
         protected String email;
 
         public abstract boolean isNull();
 
         public abstract String getEmail();
-    }
+}

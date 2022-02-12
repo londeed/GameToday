@@ -41,11 +41,23 @@ var n = 0;
          document.querySelector('#utCommento').setAttribute("id", "utCommento" + numero)
          var commentoNumero = "utCommento" + numero;
          let testo = $("#textarea").val();
-         text[n] = testo;
+         let testoCambiato = testo.replace('merda','*****');
+         testoCambiato = testoCambiato.replace('cazzo','*****');
+         testoCambiato = testoCambiato.replace('fessa','*****');
+         testoCambiato = testoCambiato.replace('pene','*****');
+         testoCambiato = testoCambiato.replace('vagina','*****');
+         testoCambiato = testoCambiato.replace('zoccola','*****');
+         testoCambiato = testoCambiato.replace('puttana','*****');
+         testoCambiato = testoCambiato.replace('cretino','*****');
+         testoCambiato = testoCambiato.replace('mongoloide','*****');
+         testoCambiato = testoCambiato.replace('scemo','*****');
+         testoCambiato = testoCambiato.replace('coglione','*****');
+         alert(testoCambiato);
+         text[n] = testoCambiato;
          n += 1;
          text[n] = commentoNumero;
          n += 1;
-         document.querySelector('#utCommento' + numero).innerHTML = testo;
+         document.querySelector('#utCommento' + numero).innerHTML = testoCambiato;
          var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"padding-top: 10px\;float: left\" id=\"div\" >").appendTo($("#commentoUtente"));
          document.querySelector('#div').setAttribute("id", "div" + numero)
          //var div2 = $("<div class=\"col-12\" id=\"div2\" >").appendTo($('#div' + numero));
@@ -175,6 +187,7 @@ function modificaCreati(numeroCommento){
 
 // When the user clicks the button, open the modal
     //btn.onclick = function() {
+    alert(text[0]);
     var length = text.length;
     var test;
     var v;

@@ -1,7 +1,9 @@
 package Controller;
 
 import Model.Amministratore.Amministratore;
+import Model.Amministratore.AmministratoreAbstract;
 import Model.Amministratore.AmministratoreDAO;
+import Model.Amministratore.AmministratoreFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 @WebServlet(name = "AdminServlet", value = "/admin/*")
 
@@ -39,6 +42,11 @@ public class AdminServlet extends Controllo {
             String path = getPath(request);
             switch (path) {
                 case "/login":
+                    AmministratoreAbstract amministratoreAbstract= AmministratoreFactory.getEmail(request.getParameter("email"));
+                    if(amministratoreAbstract.isNull()){
+                        request.getRequestDispatcher("/WEB-INF/views/errore/errorLoginAdmin.jsp").forward(request, response);
+                        break;
+                    }
                     Amministratore amministratore = new Amministratore();
                     AmministratoreDAO amministratoreDAO = new AmministratoreDAO();
                     amministratore = amministratoreDAO.loginAmministratore(request.getParameter("email"), request.getParameter("password"));
