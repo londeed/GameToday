@@ -15,7 +15,13 @@
 <header>
     <%@include file="/WEB-INF/views/partials/headerCustomer.jsp"%>
 </header>
-Prova dei features
+<br>
+<br>
+<p style="text-align: center">Siamo una testata giornalistica di recensioni videoludiche, concentrata ad offrire recensioni quanto pi<span>&#249</span> oggettive e accurate possibili.</p>
+<p style="text-align: center">Il nostro obiettivo <span>&#232</span> quello di fornirvi un'esperienza piacevole e appagante nella lettura e nel navigare il sito. </p>
+<p style="text-align: center">Quindi divertitevi e iscrivetevi se ancora non lo avete fatto, per usufruire della massima esperienza possibile, e ricordatevi di prestare sempre il massimo rispetto verso gli altri membri della comunity nei commenti.</p>
+<br>
+<br>
 <footer>
     <%@include file="/WEB-INF/views/partials/footerCustomer.jsp"%>
 </footer>

@@ -25,7 +25,7 @@
 </header>
 
 <div class="container mt-3">
-    <h2>Lista Recensioni</h2>
+    <h2>Lista Commenti</h2>
     <br>
     <table class="table table-dark">
         <thead>

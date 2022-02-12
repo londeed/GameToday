@@ -15,7 +15,16 @@
 <header>
     <%@include file="/WEB-INF/views/partials/headerCustomer.jsp"%>
 </header>
-Prova di About Us
+<br>
+<br>
+<p style="text-align: center">Sul nostro sito potrai trovare:</p>
+<p style="text-align: center">Gli ultimi videogiochi per pc,xbox e playstation con annesse recensioni</p>
+<p style="text-align: center">Sotto ogni recensione uno spazio dedicato ai commenti</p>
+<p style="text-align: center">La possibilit<span>&#224</span> di valutare i titoli e visualizzare la valutazione complessiva dello stesso grazie ai voti della nostra comunity</p>
+<p style="text-align: center">Recensioni di qualit<span>&#224</span> scritte dai migliori giornalisti del settore</p>
+<p style="text-align: center">Una grande comunity appassionata di videogiochi</p>
+<br>
+<br>
 <footer>
     <%@include file="/WEB-INF/views/partials/footerCustomer.jsp"%>
 </footer>

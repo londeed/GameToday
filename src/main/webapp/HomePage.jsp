@@ -16,7 +16,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="modals.css" rel="stylesheet">
     <style>
         .bottone {
             width: 100%;
@@ -62,7 +61,7 @@
                 <div class="carousel-item">
                     <%}%>
                     <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="post">
-                        <button class="bottone" style="background-image: url('./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg');"><input type="hidden" id="dettaglioVideogioco" name="dettaglioVideogioco" value="<%=videogioco.getTitolo()%>"></button>
+                        <button class="bottone" style="background-image: url('./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg');"><input type="hidden" id="dettaglioVideogioco" name="dettaglioVideogioco1" value="<%=videogioco.getTitolo()%>"></button>
                     </form>
                     <!--<img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg" alt="Immagine non trovata" class="d-block" style="height: 500px; width:100%">-->
             <div class="carousel-caption">
@@ -77,7 +76,7 @@
                 <div class="carousel-item">
                         <%}%>
                     <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="post">
-                         <button class="bottone" style="background-image: url('./img/<%=videogioco.getTitolo()%>/<%=videogioco.getTitolo()%>-1.jpg');"><input type="hidden" id="dettaglioVideogioco" name="dettaglioVideogioco" value="<%=videogioco.getTitolo()%>"></button>
+                         <button class="bottone" style="background-image: url('./img/<%=videogioco.getTitolo()%>/<%=videogioco.getTitolo()%>-1.jpg');"><input type="hidden" id="dettaglioVideogioco2" name="dettaglioVideogioco" value="<%=videogioco.getTitolo()%>"></button>
                     </form>
             <!--<img src="./img/<%=videogioco.getTitolo()%>/<%=videogioco.getTitolo()%>-1.jpg" alt="Immagine non trovata" class="d-block" style="height: 500px; width:100%">-->
             <div class="carousel-caption">
@@ -100,7 +99,7 @@
 <br>
 <div class="row" style="width: 100%;">
     <div class="col-sm-4" style="text-align: center">
-        <h3>Recensione più commentata</h3>
+        <h3>Recensione pi<span>&#250</span> commentata</h3>
         <%if (recensioneCommentata.getTitolo().contains(":")) {
         String[] parts = recensioneCommentata.getTitolo().split(Pattern.quote(":"));%>
         <div class="container mt-3">

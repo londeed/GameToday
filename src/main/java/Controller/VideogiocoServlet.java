@@ -76,8 +76,9 @@ public class VideogiocoServlet extends Controllo {
                     String s = recuperaVideogiochi.get(count).getTitolo();
                     String dettaglioVideogioco= request.getParameter("dettaglioVideogioco");
                     if (dettaglioVideogioco != null) {
+                        Recensione recensione = new Recensione();
+                        RecensioneDAO recensioneDAO = new RecensioneDAO();
                         Videogioco videogioco1 = new Videogioco();
-                        System.out.println(dettaglioVideogioco);
                         videogioco1 = videogiocoDAO.doRetrieveByTitolo(dettaglioVideogioco);
                         Utente utente1 = (Utente) request.getSession(false).getAttribute("userUt");
                         if(!Objects.isNull(utente1)) {
@@ -99,6 +100,8 @@ public class VideogiocoServlet extends Controllo {
                             valutazione.setUtNickname("");
                             request.setAttribute("valutazione", valutazione);
                         }
+                        recensione = recensioneDAO.doRetrieveByTitolo(videogioco1.getTitolo());
+                        request.setAttribute("recensioneDettaglioVideogioco", recensione);
                         request.setAttribute("dettaglioVideogioco", videogioco1);
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/videogioco/videogioco.jsp");
                         dispatcher.forward(request, response);

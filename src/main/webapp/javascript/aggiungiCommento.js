@@ -16,7 +16,6 @@ var n = 0;
     like = array[2];
     dislike = array[3];
     verifica = array[4];
-    alert(verifica)
     var selettore = array[5];
     avatar = array[6];
     // var a  = codice;
@@ -98,7 +97,6 @@ function salvaInterazione(valore,x){
     if(verifica) {
         var v = valore;
         var n = "utCommento" + numero;
-        alert(n)
         var a;
         var b;
         if (v === "true") {
@@ -128,13 +126,11 @@ function salvaInterazione(valore,x){
 }
 
 function CommentoEsistente(stringa){
-    alert("siamo dentro")
     const array = stringa.split(",")
     var v = array[0];
     var c = array[1];
     var i = array[2];
     var interazione = {interazione: v , cCod: c , cInterazione: i};
-    alert("ci siamo")
     $.ajax({
         type: "get",
         url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
@@ -187,9 +183,7 @@ function modificaCreati(numeroCommento){
         if(text[i] === num){
             test = text[--i]
             v = i;
-            alert(i)
             ++i;
-            alert(i)
         }
         i++;
     }
@@ -246,11 +240,11 @@ function modifica(cod){
     var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-    btn.onclick = function() {
+    //btn.onclick = function() {
         let test = $("#ajax2"+h).html()
         $("#modificatore").val(test);
         modal.style.display = "block";
-    }
+   // }
 
 // When the user clicks on <span> (x), close the modal
     span.onclick = function() {

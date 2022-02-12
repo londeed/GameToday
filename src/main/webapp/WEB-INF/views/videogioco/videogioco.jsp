@@ -1,6 +1,7 @@
 <%@ page import="java.util.regex.Pattern" %>
 <%@ page import="Model.Videogioco.Videogioco" %>
 <%@ page import="Model.Valutazione.Valutazione" %>
+<%@ page import="Model.Recensione.Recensione" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -107,6 +108,7 @@
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic; text-align: center">
 <%
     Videogioco videogioco = (Videogioco) request.getAttribute("dettaglioVideogioco");
+    Recensione recensioneVideogiocDettaglio = (Recensione) request.getAttribute("recensioneDettaglioVideogioco") ;
     Valutazione valutazione = (Valutazione) request.getAttribute("valutazione");
     Utente utenteVal = (Utente) request.getSession(false).getAttribute("userUt");
     Autore autoreVal = (Autore) request.getSession(false).getAttribute("userAu");
@@ -161,14 +163,23 @@
         <%if(videogioco.getMediaValutazioni()==0){%>
             <p><div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div></div></p>
         <%}%>
+        <%if(!Objects.isNull(recensioneVideogiocDettaglio)){%>
+            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
+                <button class="btn btn-link" style="border: 0px">Vai alla recensione
+                    <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=videogioco.getTitolo()%>">
+                </button>
+            </form>
+        <%}else{%>
+            <p>La recensione sar<span>&#224</span> presto disponibile</p>
+        <%}%>
     </ul>
         <%if(Objects.isNull(autoreVal)){
             if(!Objects.isNull(utenteVal)){
                 if(!Objects.isNull(valutazione)){
             %>
                 <div id="valutazione2" style="float: right">
-                    <p>Hai già inserito una valutazione</p>
-                    <p>Inserisci nuova valutazione(sostituirà la precedente)</p>
+                    <p>Hai gi<span>&#224</span> inserito una valutazione</p>
+                    <p>Inserisci nuova valutazione(sostituir<span>&#224</span> la precedente)</p>
                     <h6 class="mb-0">Inserisci valutazione</h6>
                     <div class="rating"><input type="radio" name="rating2" value="5" id="10"><label for="10"><span>&#9734</span></label> <input type="radio" name="rating2" value="4" id="9"><label for="9"><span>&#9734</span></label> <input type="radio" name="rating2" value="3" id="8"><label for="8"><span>&#9734</span></label> <input type="radio" name="rating2" value="2" id="7"><label for="7"><span>&#9734</span></label> <input type="radio" name="rating2" value="1" id="6"><label for="6"><span>&#9734</span></label></div>
                     <div id="bottoneValutazione2" class="buttons px-4 mt-0"><button class="btn btn-block rating-submit" style="background-color: turquoise">Invia valutazione</button></div>
@@ -196,13 +207,7 @@
             <p>Per effettuare una valutazione devi prima loggarti</p>
         </ul>
          <%}}%>
-        <ul>
-            <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
-                <button class="btn btn-link" style="border: 0px">Vai alla recensione
-                    <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=videogioco.getTitolo()%>">
-                </button>
-            </form>
-        </ul>
+
 </div>
 </div>
 <footer>

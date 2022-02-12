@@ -9,7 +9,7 @@
         </a>
 
         <ul class="nav col-md-4 justify-content-end">
-            <form method="get" action="${pageContext.request.contextPath}/General">
+            <form method="post" action="${pageContext.request.contextPath}/General">
                 <li class="nav-item" style="float: right"><button type="submit" id="home" name="home" value="home" class="btn nav-link px-2 text-muted">Home</button></li>
                 <li class="nav-item" style="float: right"><button type="submit" id="features" name="features" value="features" class="btn nav-link px-2 text-muted">Features</button></li>
                 <li class="nav-item" style="float: right"><button type="submit" id="aboutus" value="aboutus" name="aboutus" class="btn nav-link px-2 text-muted">About us</button></li>

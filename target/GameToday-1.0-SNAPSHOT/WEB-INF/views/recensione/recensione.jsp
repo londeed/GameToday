@@ -7,15 +7,12 @@
 <%@ page import="Model.InterazioneAu.InterazioneAu" %>
 <%@ page import="Model.InterazioneUt.InterazioneUt" %>
 <%@ page import="java.util.Objects" %>
-<%@ page import="org.json.JSONObject" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="HomePage"/>
-        <jsp:param name="style" value="bootstrap"/>
+        <jsp:param name="title" value="Recensione"/>
+        <jsp:param name="style" value=""/>
         <jsp:param name="script" value="aggiungiCommento"/>
     </jsp:include>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,12 +62,6 @@
             cursor: pointer;
         }
     </style>
-
-
-
-
-
-
 
 </head>
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
@@ -158,7 +149,7 @@
     <div class="container" style="padding: 30px 50px">
       <h3><br><br>Sezione commenti:</h3><br>
         <div class="mb-3" style= "width:50%" >
-             <label for="textarea" class="form-label">Scrivi ciò che pensi:</label>
+            <label for="textarea" class="form-label">Scrivi ci<span>&#242</span> che pensi:</label>
              <textarea class="form-control" id="textarea" rows="3" minlength="300" maxlength="1500"></textarea><br>
             <%String x = "";
                 System.out.println("prima");
@@ -181,10 +172,11 @@
     </div>
     <div id="myModal" class="modal">
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: #141414">
+            <h4>Modifica il commento</h4>
             <span class="close">&times;</span>
-            <textarea id="modificatore" style="resize: none"></textarea>
-            <button class="btn" id="salvaModifica" type="button">Salva modifica</button>
+            <textarea id="modificatore" style="resize: none" rows="3" minlength="300" maxlength="1500"></textarea>
+            <button class="btn" id="salvaModifica" type="button" style="background-color: turquoise">Salva modifica</button>
         </div>
 
     </div>
@@ -196,9 +188,10 @@
                         for(Utente utenteRecensione: utenteList){
                             if(utenteRecensione.getUtNickname().equals(interazioneUt.getUtNickname())){
                                 %>
-                            <div class="container" style="padding: 30px 50px">
-        <h4><img src="./img/Avatar/avatar<%=utenteRecensione.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=utenteRecensione.getUtNickname()%></h4>
-    <textarea class="form-control" type="text" id="textarea<%=commento.getComCodice()%>" aria-label="Disabled input example" style="resize: none" disabled readonly><%=commento.getTesto()%></textarea>
+    <div id="div<%=commento.getComCodice()%>" class="container" style="padding: 30px 50px">
+    <h4 id="h4<%=commento.getComCodice()%>"><img src="./img/Avatar/avatar<%=utenteRecensione.getAvatar()%>.png" alt="Pic not found" class="d-block"  style="width:5%; height: 5%"> <%=utenteRecensione.getUtNickname()%></h4>
+        <div id="ajax2<%=commento.getComCodice()%>" style="border:solid turquoise;border-radius: 10px;padding: 2%"><%=commento.getTesto()%></div>
+        <!--<textarea class="form-control" type="text" id="textarea<%=commento.getComCodice()%>" aria-label="Disabled input example" style="resize: none" disabled readonly><%=commento.getTesto()%></textarea>-->
     <div class="row row-cols-lg-auto g-3 align-items-center" style="float: right;padding-top: 10px">
         <%if(!Objects.isNull(utenteLogin)){
             if(utenteLogin.getUtNickname().equals(utenteRecensione.getUtNickname())){
@@ -249,18 +242,24 @@
                 var c = array[1];
                 var i = array[2];
                 var interazione = {interazione: v , cCod: c , cInterazione: i};
-                $.ajax({
-                    type: "get",
-                    url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
-                    contentType: "JSON", // NOT dataType!
-                    data:{ interazione: JSON.stringify(interazione)},
-                    success: function(response) {
-                        alert("Like o dislike correttamente aggiunto!");
-                    },
-                    error: function(response) {
-                        alert('Like o dislike non aggiunto!');
-                    }
-                });
+                let ut = "<%=Objects.isNull(utenteLogin)%>";
+                let au = "<%=Objects.isNull(autoreLogin)%>";
+                if(ut === "true" && au === "true") {
+                    alert("Devi loggarti per poter mettere like o dislike!")
+                }else{
+                    $.ajax({
+                        type: "get",
+                        url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
+                        contentType: "JSON", // NOT dataType!
+                        data: {interazione: JSON.stringify(interazione)},
+                        success: function (response) {
+                            alert("Like o dislike correttamente aggiunto!");
+                        },
+                        error: function (response) {
+                            alert('Like o dislike non aggiunto!');
+                        }
+                    });
+                }
             })</script>
         </div>
         <div class="col-12">
@@ -276,6 +275,11 @@
             var c = array[1];
             var i = array[2];
             var interazione = {interazione: v , cCod: c , cInterazione: i};
+            let ut = "<%=Objects.isNull(utenteLogin)%>";
+            let au = "<%=Objects.isNull(autoreLogin)%>";
+            if(ut === "true" && au === "true") {
+                alert("Devi loggarti per poter mettere like o dislike!")
+            }else{
             $.ajax({
                 type: "get",
                 url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
@@ -288,6 +292,7 @@
                     alert('Like o dislike non aggiunto!');
                 }
             });
+            }
         })</script>
     </div>
 </div>
@@ -359,6 +364,11 @@
                     var c = array[1];
                     var i = array[2];
                     var interazione = {interazione: v , cCod: c , cInterazione: i};
+                    let ut = "<%=Objects.isNull(utenteLogin)%>";
+                    let au = "<%=Objects.isNull(autoreLogin)%>";
+                    if(ut === "true" && au === "true") {
+                        alert("Devi loggarti per poter mettere like o dislike!")
+                    }else{
                     $.ajax({
                         type: "get",
                         url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
@@ -371,6 +381,7 @@
                             alert('Like o dislike non aggiunto!');
                         }
                     });
+                    }
                 })</script>
             </div>
             <div class="col-12">
@@ -386,6 +397,11 @@
                 var c = array[1];
                 var i = array[2];
                 var interazione = {interazione: v , cCod: c , cInterazione: i};
+                let ut = "<%=Objects.isNull(utenteLogin)%>";
+                let au = "<%=Objects.isNull(autoreLogin)%>";
+                if(ut === "true" && au === "true") {
+                    alert("Devi loggarti per poter mettere like o dislike!")
+                }else{
                 $.ajax({
                     type: "get",
                     url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
@@ -398,6 +414,7 @@
                         alert('Like o dislike non aggiunto!');
                     }
                 });
+            }
             })</script>
         </div>
     </div>
