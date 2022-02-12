@@ -1,7 +1,5 @@
 package Model.Utente;
 
-import Model.Autore.Autore;
-import Model.Autore.AutoreExtraction;
 import Model.Connessione.ConPool;
 
 import java.sql.*;

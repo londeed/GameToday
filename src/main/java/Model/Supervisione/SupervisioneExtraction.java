@@ -1,7 +1,5 @@
 package Model.Supervisione;
 
-import Model.Recensione.Recensione;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

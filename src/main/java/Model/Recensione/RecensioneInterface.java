@@ -1,9 +1,6 @@
 package Model.Recensione;
 
-import Model.Commento.Commento;
-
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public interface RecensioneInterface

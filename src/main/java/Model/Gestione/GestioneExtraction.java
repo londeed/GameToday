@@ -1,7 +1,5 @@
 package Model.Gestione;
 
-import Model.Commento.Commento;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

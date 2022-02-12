@@ -61,7 +61,7 @@
                 <div class="carousel-item">
                     <%}%>
                     <form action="${pageContext.request.contextPath}/VideogiocoServlet" method="post">
-                        <button class="bottone" style="background-image: url('./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg');"><input type="hidden" id="dettaglioVideogioco" name="dettaglioVideogioco1" value="<%=videogioco.getTitolo()%>"></button>
+                        <button class="bottone" style="background-image: url('./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg');"><input type="hidden" id="dettaglioVideogioco1" name="dettaglioVideogioco" value="<%=videogioco.getTitolo()%>"></button>
                     </form>
                     <!--<img src="./img/<%=parts[0]+parts[1]%>/<%=parts[0]+parts[1]%>-1.jpg" alt="Immagine non trovata" class="d-block" style="height: 500px; width:100%">-->
             <div class="carousel-caption">

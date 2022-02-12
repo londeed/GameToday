@@ -1,9 +1,6 @@
 package Model.Valutazione;
 
 import Model.Connessione.ConPool;
-import Model.Videogioco.Videogioco;
-import Model.Visione.Visione;
-import Model.Visione.VisioneExtraction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

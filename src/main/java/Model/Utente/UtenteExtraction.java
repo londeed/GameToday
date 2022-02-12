@@ -1,7 +1,5 @@
 package Model.Utente;
 
-import Model.Autore.Autore;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

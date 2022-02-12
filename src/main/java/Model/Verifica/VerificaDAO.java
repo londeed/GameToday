@@ -2,8 +2,6 @@ package Model.Verifica;
 
 import Model.Commento.Commento;
 import Model.Connessione.ConPool;
-import Model.InterazioneAu.InterazioneAu;
-import Model.InterazioneAu.InterazioneAuExtraction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,10 +1,7 @@
 package Model.Autore;
 
-import Model.Amministratore.Amministratore;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 public class AutoreExtraction {
     public Autore mapping(ResultSet rs) throws SQLException

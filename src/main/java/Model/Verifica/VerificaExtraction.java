@@ -1,7 +1,5 @@
 package Model.Verifica;
 
-import Model.Valutazione.Valutazione;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

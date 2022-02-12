@@ -1,9 +1,5 @@
 package Model.Utente;
 
-import Model.Amministratore.Amministratore;
-import Model.Autore.Autore;
-import Model.Videogioco.Videogioco;
-
 import java.sql.SQLException;
 import java.util.List;
 

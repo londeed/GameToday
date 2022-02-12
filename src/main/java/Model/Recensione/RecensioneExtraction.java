@@ -1,10 +1,7 @@
 package Model.Recensione;
 
-import Model.InterazioneUt.InterazioneUt;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 public class RecensioneExtraction {
     public Recensione mapping(ResultSet rs) throws SQLException {

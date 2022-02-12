@@ -1,7 +1,5 @@
 package Model.Valutazione;
 
-import Model.Supervisione.Supervisione;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

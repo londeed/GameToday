@@ -1,8 +1,6 @@
 package Model.Verifica;
 
 import Model.Commento.Commento;
-import Model.InterazioneAu.InterazioneAu;
-import Model.Supervisione.Supervisione;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -1,8 +1,6 @@
 package Model.Visione;
 
 import Model.Connessione.ConPool;
-import Model.Verifica.Verifica;
-import Model.Verifica.VerificaExtraction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

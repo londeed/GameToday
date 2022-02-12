@@ -1,10 +1,7 @@
 package Model.Amministratore;
 
-import Model.Utente.Utente;
-
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
 public interface AmministratoreInterface
 {

@@ -1,7 +1,5 @@
 package Model.Autore;
 
-import Model.Amministratore.Amministratore;
-import Model.Amministratore.AmministratoreExtraction;
 import Model.Connessione.ConPool;
 
 import java.sql.*;

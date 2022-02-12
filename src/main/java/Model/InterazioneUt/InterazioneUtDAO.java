@@ -3,8 +3,6 @@ package Model.InterazioneUt;
 import Model.Commento.Commento;
 import Model.Commento.CommentoExtraction;
 import Model.Connessione.ConPool;
-import Model.InterazioneAu.InterazioneAu;
-import Model.InterazioneAu.InterazioneAuExtraction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

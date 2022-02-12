@@ -1,10 +1,6 @@
 package Model.Videogioco;
 
 import Model.Connessione.ConPool;
-import Model.Recensione.Recensione;
-import Model.Recensione.RecensioneExtraction;
-import Model.Utente.Utente;
-import Model.Utente.UtenteExtraction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

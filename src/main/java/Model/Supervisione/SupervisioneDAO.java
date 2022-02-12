@@ -2,8 +2,6 @@ package Model.Supervisione;
 
 import Model.Connessione.ConPool;
 import Model.Recensione.Recensione;
-import Model.Verifica.Verifica;
-import Model.Verifica.VerificaExtraction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

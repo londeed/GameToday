@@ -1,7 +1,5 @@
 package Model.Autore;
 
-import Model.Amministratore.Amministratore;
-
 import java.sql.SQLException;
 import java.util.List;
 

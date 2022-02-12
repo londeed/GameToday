@@ -1,12 +1,7 @@
 package Model.InterazioneAu;
 
 import Model.Commento.Commento;
-import Model.Connessione.ConPool;
-import Model.Gestione.Gestione;
-import Model.InterazioneUt.InterazioneUt;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 

@@ -1,9 +1,6 @@
 package Model.Supervisione;
 
-import Model.Commento.Commento;
-import Model.InterazioneUt.InterazioneUt;
 import Model.Recensione.Recensione;
-import Model.Verifica.Verifica;
 
 import java.sql.SQLException;
 import java.util.List;

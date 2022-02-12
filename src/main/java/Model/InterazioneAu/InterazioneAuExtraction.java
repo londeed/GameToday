@@ -1,7 +1,5 @@
 package Model.InterazioneAu;
 
-import Model.Gestione.Gestione;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

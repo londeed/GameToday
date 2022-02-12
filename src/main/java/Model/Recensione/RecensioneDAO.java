@@ -1,13 +1,10 @@
 package Model.Recensione;
 
 import Model.Connessione.ConPool;
-import Model.Videogioco.Videogioco;
-import Model.Videogioco.VideogiocoExtraction;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class RecensioneDAO {

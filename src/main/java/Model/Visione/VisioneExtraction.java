@@ -1,7 +1,5 @@
 package Model.Visione;
 
-import Model.Verifica.Verifica;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

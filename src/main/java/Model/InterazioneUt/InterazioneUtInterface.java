@@ -1,7 +1,6 @@
 package Model.InterazioneUt;
 
 import Model.Commento.Commento;
-import Model.InterazioneAu.InterazioneAu;
 
 import java.sql.SQLException;
 import java.util.List;
