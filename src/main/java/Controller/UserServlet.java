@@ -1,7 +1,5 @@
 package Controller;
 
-import Model.Amministratore.AmministratoreAbstract;
-import Model.Amministratore.AmministratoreFactory;
 import Model.Autore.Autore;
 import Model.Autore.AutoreAbstract;
 import Model.Autore.AutoreDAO;
@@ -10,14 +8,11 @@ import Model.Utente.Utente;
 import Model.Utente.UtenteAbstract;
 import Model.Utente.UtenteDAO;
 import Model.Utente.UtenteFactory;
-import org.json.JSONObject;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 @WebServlet(name = "UserServlet", value = "/UserServlet/*")
 public class UserServlet extends Controllo {

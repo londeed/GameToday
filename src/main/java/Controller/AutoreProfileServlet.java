@@ -1,7 +1,5 @@
 package Controller;
 
-import Model.Amministratore.Amministratore;
-import Model.Amministratore.AmministratoreDAO;
 import Model.Autore.Autore;
 import Model.Autore.AutoreDAO;
 

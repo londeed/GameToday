@@ -2,14 +2,11 @@ package Controller;
 
 import Model.Autore.Autore;
 import Model.Autore.AutoreDAO;
-import Model.Videogioco.Videogioco;
-import Model.Videogioco.VideogiocoDAO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,11 +49,6 @@ public class AdminOpServlet extends Controllo {
         } catch (ServletException | SQLException e) {
             e.printStackTrace();
         }
-/*catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }*/
-
-
     }
 
     @Override

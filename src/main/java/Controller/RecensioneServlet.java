@@ -19,16 +19,9 @@ import Model.Videogioco.VideogiocoDAO;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -204,27 +197,6 @@ public class RecensioneServlet extends HttpServlet {
                     String operazione="Recensione";
                     String appPath = request.getServletContext().getRealPath("");
                     Singleton singleton=Singleton.getInstance(operazione, appPath, titoloRec, request);
-                    /*
-                    String SAVE_DIR ="img";
-                    String appPath = request.getServletContext().getRealPath("");
-                    Path pathX= FileSystems.getDefault().getPath("/");
-                    String savePath = appPath + SAVE_DIR + pathX;
-                    File fileSaveDir = new File(savePath + titoloRec);
-                    if (!fileSaveDir.exists()) {	//Se la cartella non esiste la si crea
-                        fileSaveDir.mkdir();
-                    }
-                    System.out.println(request.getParts());
-                    int i=2;
-                    for (Part part : request.getParts()) {		//Si prende l'immagine dalla richiesta
-                        String fileName = request.getParameter("codiceRec") + "-"+i+".jpg";	//Si prende il path dell'immagine
-                        String car=request.getParameter("codiceRec");
-                        System.out.println(request.getParameter("codiceRec"));
-                        if (fileName != null && !fileName.equals("")) {
-                            part.write(savePath + car + File.separator + fileName);	//si inserisce la foto nella cartella temporanea
-                            System.out.println(savePath + car +File.separator+ fileName);
-                        }
-                        i++;
-                    }*/
                     Autore autore3 = (Autore) request.getSession(false).getAttribute("userAu");
                     Recensione recensione2=new Recensione();
                     RecensioneDAO recensioneDAO7=new RecensioneDAO();

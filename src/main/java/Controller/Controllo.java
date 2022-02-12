@@ -33,8 +33,7 @@ public abstract class Controllo extends HttpServlet implements ErrorHandler {
     }
 
     protected String getUploadPath(){
-        /*return System.getenv("CATALINA_HOME") + File.separator + "webapps" +
-                File.separator + "Alfa" + File.separator + "uploads" + File.separator;*/
+
         return  System.getenv("CATALINA_HOME")+File.separator + "uploads" + File.separator;
     }
 
@@ -42,13 +41,6 @@ public abstract class Controllo extends HttpServlet implements ErrorHandler {
         return  Integer.parseInt(request.getParameter("page"));
     }
 
-   /* protected UtenteSession getAccountSession(HttpSession session){
-        return (UtenteSession) session.getAttribute("accountSession");
-    }
-
-   protected Cart getSessionCart(HttpSession session){
-        return (Cart) session.getAttribute("accountCart");
-    }*/
 
 
 }

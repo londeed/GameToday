@@ -1,7 +1,5 @@
 package Controller;
 
-import Model.Autore.Autore;
-import Model.Autore.AutoreDAO;
 import Model.Commento.Commento;
 import Model.Commento.CommentoDAO;
 import Model.Recensione.Recensione;
@@ -12,14 +10,10 @@ import Model.Videogioco.VideogiocoDAO;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @WebServlet(name = "AdminGameServlet", value = "/adminGame/*")
@@ -81,11 +75,6 @@ public class AdminGameServlet extends Controllo {
         } catch (ServletException | SQLException e) {
             e.printStackTrace();
         }
-/*catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }*/
-
-
     }
 
     @Override
@@ -109,28 +98,6 @@ public class AdminGameServlet extends Controllo {
                     String operazione="Videogioco";
                     String appPath = request.getServletContext().getRealPath("");
                     Singleton singleton=Singleton.getInstance(operazione, appPath, request.getParameter("Titolo"), request);
-                    /*
-                    String SAVE_DIR ="img";
-                    String appPath = request.getServletContext().getRealPath("");
-                    String cartella= request.getParameter("Titolo");
-                    Path pathX= FileSystems.getDefault().getPath("/");
-                    //String cartella= request.getRealPath("")+ cartellaTitolo;
-                    String savePath = appPath + SAVE_DIR + pathX;
-                    System.out.println("LOL " + savePath);
-                    File fileSaveDir = new File(savePath + videogioco.getTitolo());
-                    if (!fileSaveDir.exists()) {	//Se la cartella non esiste la si crea
-                        fileSaveDir.mkdir();
-                    }
-                    System.out.println(request.getParts());
-                    for (Part part : request.getParts()) {		//Si prende l'immagine dalla richiesta
-                        String fileName = request.getParameter("Titolo") + "-1.jpg";	//Si prende il path dell'immagine
-                        String car=request.getParameter("Titolo");
-                        System.out.println(request.getParameter("Titolo"));
-                        if (fileName != null && !fileName.equals("")) {
-                            part.write(savePath + car + File.separator + fileName);	//si inserisce la foto nella cartella temporanea
-                            System.out.println(savePath + car +File.separator+ fileName);
-                        }
-                    }*/
                     request.getRequestDispatcher("/WEB-INF/views/admin/result.jsp").forward(request, response);
                     break;
                 case "/elimina":
@@ -207,9 +174,7 @@ public class AdminGameServlet extends Controllo {
 
             }
         }
-
         return "";
     }
-
 
 }

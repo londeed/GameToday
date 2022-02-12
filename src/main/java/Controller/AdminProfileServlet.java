@@ -7,10 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(name = "AdminProfileServlet", value = "/adminProfile/*")
 public class AdminProfileServlet extends Controllo {
@@ -52,21 +49,6 @@ public class AdminProfileServlet extends Controllo {
                     session.removeAttribute("amministratore");
                     RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/views/admin/secret.jsp");
                     dispatcher4.forward(request, response);
-
-                    /*HttpSession session = request.getSession(false);
-                    authenticate(session);
-                    UtenteSession utenteSession = (UtenteSession) session.getAttribute("accountSession");
-                    String redirect = utenteSession.isAdmin() ? "/WEB-INF/views/crm/secret.jsp" : "/WEB-INF/views/customer/user.jsp";
-                    session.removeAttribute("accountSession");
-                    session.removeAttribute("preferiti");
-                    session.removeAttribute("carrello");
-                    //session.invalidate();
-                    PreferitiSession preferitiGuests = new PreferitiSession(0,0);
-                    request.getSession(true).setAttribute("preferiti", preferitiGuests);
-                    CarrelloSession carrelloGuests = new CarrelloSession(0,0);
-                    request.getSession(true).setAttribute("carrello", carrelloGuests);
-                    request.getRequestDispatcher(redirect).forward(request, response);
-                    */
                     break;
                 default:
                     break;
@@ -104,8 +86,6 @@ public class AdminProfileServlet extends Controllo {
                 request.setAttribute("amministratore", amministratore1);
                 request.getRequestDispatcher("/WEB-INF/views/admin/gestioneProfilo.jsp").forward(request, response);
 
-                break;
-            case "/logout":
                 break;
             default:
                 break;

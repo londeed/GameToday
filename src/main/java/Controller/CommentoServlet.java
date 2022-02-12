@@ -5,9 +5,7 @@ import Model.Commento.Commento;
 import Model.Commento.CommentoDAO;
 import Model.Commento.EspressioneControllo;
 import Model.Connessione.GeneratoreCodici;
-import Model.InterazioneAu.InterazioneAu;
 import Model.InterazioneAu.InterazioneAuDAO;
-import Model.InterazioneUt.InterazioneUt;
 import Model.InterazioneUt.InterazioneUtDAO;
 import Model.Utente.Utente;
 import org.json.JSONObject;
@@ -43,34 +41,12 @@ public class CommentoServlet extends Controllo {
                         codici.add((String) o);
                         System.out.println(key + " : " + o); // print the key and value
                     }
-                   /* JSONObject jObjecto2 = new JSONObject(request.getParameter("numeroCommento"));
-                    Iterator itero2 = jObjecto2.keys(); //gets all the keys
-                    ArrayList<String> interazione = new ArrayList<>();
-                    System.out.println("non va bene");
-                    while (itero2.hasNext()) {
-                        String key = (String) itero2.next(); // get key
-                        Object o = jObjecto2.get(key); // get value
-                        interazione.add((String) o);
-                        System.out.println(key + " : " + o); // print the key and value
-                    }*/
                     List<String> salvataggio = new ArrayList<>();
                     salvataggio = (List<String>) request.getSession().getAttribute("codiceCommento");
                     salvataggio.add(codici.get(2));
                     for(String prova : salvataggio){
                         System.out.println(prova);
                     }
-                   // request.getSession().setAttribute("codiceCommento", salvataggio);
-                  /*  break;
-                case "/aggiungi":
-                    JSONObject jObjecto = new JSONObject(request.getParameter("codici"));
-                    Iterator itero = jObjecto.keys(); //gets all the keys
-                    ArrayList<String> codici = new ArrayList<>();
-                    while (itero.hasNext()) {
-                        String key = (String) itero.next(); // get key
-                        Object o = jObjecto.get(key); // get value
-                        codici.add((String) o);
-                        System.out.println(key + " : " + o); // print the key and value
-                    }*/
                     Commento commento = new Commento();
                     CommentoDAO commentoDao = new CommentoDAO();
                     commento.setLike(0);
@@ -255,11 +231,4 @@ public class CommentoServlet extends Controllo {
         }
     }
 
-
-
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }
