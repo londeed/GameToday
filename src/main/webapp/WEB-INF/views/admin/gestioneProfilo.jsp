@@ -59,9 +59,6 @@
     <button class="btn" style="background-color: turquoise" type="submit" id="eliminaProfilo" name="gestioneAmministratore" value="eliminaProfilo">Elimina Profilo</button>
 </form>
 
-
-
-
 <footer>
     <%@include file="/WEB-INF/views/admin/footerAdmin.jsp"%>
 </footer>

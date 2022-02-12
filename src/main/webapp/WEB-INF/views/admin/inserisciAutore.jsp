@@ -73,12 +73,6 @@
 
         </div>
 
-        <!--
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="number" id="AuAvatar" name="AuAvatar" placeholder="Avatar">
-            <label for="AuAvatar">Avatar</label>
-        </div>-->
-
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="AuEmail" name="AuEmail" placeholder="Email">
             <label for="AuEmail">Email</label>
@@ -88,17 +82,7 @@
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="AuPW" name="AuPW" placeholder="Password">
             <label for="AuPW">Password</label>
         </div>
-        <!--
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="text" id="RecCommissionate" name="RecCommissionate" placeholder="Recensioni Commissionate">
-            <label for="RecCommissionate">Recensioni Commissionate</label>
-        </div>
 
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="date" name="Scadenza" id="Scadenza" placeholder="Scadenza">
-            <label for="Scadenza">Scadenza</label>
-        </div>
-        -->
         <button class="btn" style="background-color: turquoise">Inserisci</button>
 
     </form>

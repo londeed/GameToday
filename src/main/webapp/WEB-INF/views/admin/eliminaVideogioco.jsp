@@ -36,7 +36,7 @@
     <form action="${pageContext.request.contextPath}/adminGame/elimina" method="post">
 
         <div style="background-color: #141414; color:white">
-            <!-- <h6>Scegli il titolo del videogioco da modificare:</h6> -->
+
             <select style="background-color: #141414; color:white" class="form-select form-select-lg" id="Titolo" name="Titolo">
 
                 <%
@@ -51,10 +51,6 @@
 
         </div>
 
-       <!-- <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="text" id="Titolo" name="Titolo" placeholder="Titolo">
-            <label for="Titolo">Titolo</label>
-        </div> -->
         <br>
         <button class="btn" style="background-color: turquoise">Elimina videogioco</button>
     </form>

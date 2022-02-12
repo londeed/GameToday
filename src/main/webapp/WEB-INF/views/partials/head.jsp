@@ -13,11 +13,7 @@
 <link rel="apple-touch-icon" href="Images/LOGO.jpg">
 <link rel="apple-touch-startup-image" href="Images/LOGO.jpg">
 <meta name="theme-color" content="#808080">
-<!--<link href="${context}/css/reset.css" rel="stylesheet">-->
 <link href="${context}/css_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.css" rel="stylesheet">
-<!--<link href="/css/crm.css" rel="stylesheet">
-<link href="/css/dashboard.css" rel="stylesheet">
-<link href="/css/libraryCustomer.css" rel="stylesheet">-->
 <c:if test="${not empty param.style}">
     <c:forTokens items="${param.styles}" delims="," var="style">
         <link rel="stylesheet" href="${context}/css_bootstrap/bootstrap-5.1.3-dist/css/${style}.css">

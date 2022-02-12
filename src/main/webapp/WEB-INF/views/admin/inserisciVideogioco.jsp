@@ -45,12 +45,6 @@
 
         </div>
 
-        <!--
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="number" id="Pegi" name="Pegi" placeholder="Pegi">
-            <label for="Pegi">Pegi</label>
-        </div>-->
-
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="CasaProduttrice" name="CasaProduttrice" placeholder="CasaProduttrice">
             <label for="CasaProduttrice">Casa Produttrice</label>
@@ -67,13 +61,6 @@
 
         </div>
 
-
-        <!--
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="text" id="Piattaforma" name="Piattaforma" placeholder="Piattaforma">
-            <label for="Piattaforma">Piattaforma</label>
-        </div>-->
-
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="Tipologia" name="Tipologia" placeholder="Tipologia">
             <label for="Tipologia">Tipologia</label>
@@ -89,41 +76,10 @@
             <input style="background-color: #141414; color:white" class="form-control" type="file" id="Img" name="Img" placeholder="Immagine">
         </div>
         <br>
-        <!--
-        <label for="upImg">
-            <input type="file" name="upImg" id="upImg">
-        </label>
-        -->
         <button class="btn" style="background-color: turquoise">Inserisci</button>
 
     </form>
 </div>
-
-<!-- <section class="field">
-    <form action="${pageContext.request.contextPath}/adminGame/create" method="post">
-        <label for="Titolo">
-            <input type="text" name="Titolo" id="Titolo" placeholder="Titolo">
-        </label>
-        <label for="Pegi">
-            <input type="number" name="Pegi" id="Pegi" placeholder="Pegi">
-        </label>
-        <label for="CasaProduttrice">
-            <input type="text" name="CasaProduttrice" id="CasaProduttrice" placeholder="Casa Produttrice">
-        </label>
-
-        <label for="Piattaforma">
-            <input type="text" name="Piattaforma" id="Piattaforma" placeholder="Piattaforma">
-        </label>
-        <label for="DataPubblicazione">
-            <input type="date" name="DataPubblicazione" id="DataPubblicazione" placeholder="Data Pubblicazione">
-        </label>
-        <label for="Tipologia">
-            <input type="text" name="Tipologia" id="Tipologia" placeholder="Tipologia">
-        </label>
-        <button class="premi">Inserisci</button>
-    </form>
-</section> -->
-
 
 <footer>
     <%@include file="/WEB-INF/views/admin/footerAdmin.jsp"%>

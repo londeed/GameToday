@@ -37,7 +37,6 @@
     <form action="${pageContext.request.contextPath}/adminGame/modifica" method="post">
 
         <div style="background-color: #141414; color:white">
-            <!-- <h6>Scegli il titolo del videogioco da modificare:</h6> -->
             <select style="background-color: #141414; color:white" class="form-select form-select-lg" id="Titolo" name="Titolo">
 
                 <%
@@ -52,11 +51,6 @@
 
         </div>
 
-        <!--
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="text" id="Titolo" name="Titolo" placeholder="Titolo">
-            <label for="Titolo">Titolo</label>
-        </div> -->
         <br>
         <div style="background-color: #141414; color:white">
             <select style="background-color: #141414; color:white" class="form-select form-select-lg" id="Pegi" name="Pegi" >
@@ -67,11 +61,6 @@
 
         </div>
 
-        <!--
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="number" id="Pegi" name="Pegi" placeholder="Pegi">
-            <label for="Pegi">Pegi</label>
-        </div>-->
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="CasaProduttrice" name="CasaProduttrice" placeholder="Casa Produttrice">
             <label for="CasaProduttrice">Casa Produttrice</label>
@@ -86,13 +75,6 @@
 
         </div>
 
-
-        <!--
-        <div class="form-floating mb-3 mt-3">
-            <input style="background-color: #141414; color:white" class="form-control" type="text" id="Piattaforma" name="Piattaforma" placeholder="Piattaforma">
-            <label for="Piattaforma">Piattaforma</label>
-        </div>-->
-
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="Tipologia" name="Tipologia" placeholder="Tipologia">
             <label for="Tipologia">Tipologia</label>
@@ -102,37 +84,6 @@
 
     </form>
 </div>
-
-<!-- <section class="field">
-    <form action="${pageContext.request.contextPath}/adminGame/modifica" method="post">
-        <label for="Titolo">
-            <input type="text" name="Titolo" id="Titolo" placeholder="Titolo">
-        </label>
-        <label for="Pegi">
-            <input type="number" name="Pegi" id="Pegi" placeholder="Pegi">
-        </label>
-        <label for="TotaleVoti">
-            <input type="number" name="TotaleVoti" id="TotaleVoti" placeholder="Totale Voti">
-        </label>
-        <label for="CasaProduttrice">
-            <input type="text" name="CasaProduttrice" id="CasaProduttrice" placeholder="Casa Produttrice">
-        </label>
-        <label for="MediaValutazioni">
-            <input type="number" name="MediaValutazioni" id="MediaValutazioni" placeholder="Media Valutazioni">
-        </label>
-        <label for="Piattaforma">
-            <input type="text" name="Piattaforma" id="Piattaforma" placeholder="Piattaforma">
-        </label>
-        <label for="DataPubblicazione">
-            <input type="date" name="DataPubblicazione" id="DataPubblicazione" placeholder="Data Pubblicazione">
-        </label>
-        <label for="Tipologia">
-            <input type="text" name="Tipologia" id="Tipologia" placeholder="Tipologia">
-        </label>
-        <button class="premi">Modifica</button>
-    </form>
-</section> -->
-
 
 <footer>
     <%@include file="/WEB-INF/views/admin/footerAdmin.jsp"%>
