@@ -1,4 +1,3 @@
-
 var nome ;
 var like ;
 var dislike;
@@ -8,7 +7,6 @@ var text = [];
 var n = 0;
 
  function aggiungiCommento(x){
-//codice,nome,like,dislike
 
     const array = x.split(",")
 
@@ -18,9 +16,7 @@ var n = 0;
     verifica = array[4];
     var selettore = array[5];
     avatar = array[6];
-    // var a  = codice;
     var c = $("#textarea").val();
-    //const array=s.split(",")
      if(verifica === "true") {
          var numero = uniqid();
          var nom = nome;
@@ -60,8 +56,6 @@ var n = 0;
          document.querySelector('#utCommento' + numero).innerHTML = testoCambiato;
          var div = $("<div class=\"row row-cols-lg-auto g-3 align-items-center\" style=\"padding-top: 10px\;float: left\" id=\"div\" >").appendTo($("#commentoUtente"));
          document.querySelector('#div').setAttribute("id", "div" + numero)
-         //var div2 = $("<div class=\"col-12\" id=\"div2\" >").appendTo($('#div' + numero));
-         //document.querySelector('#div2').setAttribute("id", "div2" + numero)
          var modifica = $("<button id=\"ModificaBottone\" type='button' onclick='modificaCreati()'>").appendTo($("#div"+numero));
          document.querySelector("#ModificaBottone").setAttribute("onclick", 'modificaCreati("'+"utCommento"+numero+'")')
          document.querySelector("#ModificaBottone").setAttribute("id", "ModificaBottone" + numero)
@@ -70,9 +64,7 @@ var n = 0;
          document.querySelector("#eliminaBottone").setAttribute("onclick", 'elimina("'+"utCommento"+numero+'")')
          document.querySelector("#eliminaBottone").setAttribute("id", "eliminaBottone" + numero)
          document.querySelector("#eliminaBottone"+numero).innerHTML = "Elimina"
-         //var numeroCommento = {numeroCom: commentoNumero};
         var codici = {numeroCom: commentoNumero, codiceRecensione: array[0], commentoRecensione: c, user: nome, tipologia: selettore};
-    // if(verifica === "true"){
          $.ajax({
              type: "get",
              url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungi",
@@ -176,17 +168,10 @@ function elimina(numeroCommento){
 
 function modificaCreati(numeroCommento){
     var num = numeroCommento
-    // Get the modal
     var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
     var btn = document.getElementById("ModificaBottone"+num);
-
-// Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
-    //btn.onclick = function() {
     alert(text[0]);
     var length = text.length;
     var test;
@@ -200,12 +185,10 @@ function modificaCreati(numeroCommento){
         }
         i++;
     }
-        //let test = $("#utCommento"+num).html()
+
         $("#modificatore").val(test);
         modal.style.display = "block";
-    //}
 
-// When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     }
@@ -232,7 +215,6 @@ function modificaCreati(numeroCommento){
         modal.style.display = "none";
     }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
@@ -243,23 +225,17 @@ window.onclick = function(event) {
 
 function modifica(cod){
     var h = cod
-    // Get the modal
+
     var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
     var btn = document.getElementById("ModificaBottone2"+h);
 
-// Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
-    //btn.onclick = function() {
         let test = $("#ajax2"+h).html()
         $("#modificatore").val(test);
         modal.style.display = "block";
-   // }
 
-// When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     }
@@ -286,7 +262,6 @@ function modifica(cod){
         modal.style.display = "none";
     }
 
-// When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -298,20 +273,6 @@ function confermaModifica(cod){
         var q = cod
         document.getElementById("textarea"+q).disabled = true;
         document.getElementById("textarea"+q).readonly = true;
-        //document.getElementById("textarea<%=commento.getComCodice()%>").setAttribute("disabled","disabled");
-        //document.getElementById("textarea<%=commento.getComCodice()%>").setAttribute("readonly","readonly");
         document.getElementById("ConfermaModifica2"+q).innerHTML = "Modifica";
         document.getElementById("ConfermaModifica2"+q).setAttribute("id", "ModificaBottone2"+q)
-    /*$.ajax({
-        type: "get",
-        url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazioneEsistente",
-        contentType: "JSON", // NOT dataType!
-        data:{ interazione: JSON.stringify(interazione)},
-        success: function(response) {
-            alert("Like o dislike correttamente aggiunto!");
-        },
-        error: function(response) {
-            alert('Like o dislike non aggiunto!');
-        }
-    });*/
 }

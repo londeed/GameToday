@@ -1,26 +1,3 @@
-/*
-function login(){
-    var x = document.getElementById("appareLogin");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        $("#appareLogin").show();
-        var y = document.getElementById("main");
-        y.style.height = "100%";
-        y.style.width = "100%";
-        y.style.position = "fixed";
-        y.style.zIndex = "3"
-        y.style.backgroundcolor = "333333";
-        y.style.filter = "alpha(opacity=50)";
-        y.style.opacity = "0.50";
-        y.style.mozopacity = "0.50";
-        $("#oscura").show();
-    } else {
-        x.style.display = "none";
-        $("#oscura").hide();
-    }
-}*/
-
-
 function validateForm(form)
 {
     //let email = document.getElementById('email').value;
@@ -43,23 +20,3 @@ function validateForm(form)
     }
     form.submit();
 }
-
-/*function invia(){
-    /*var email = $("#floatingInput").val();
-    var password = $("#floatingPassword").val();
-    var credenziali = {Email: email, Password: password};
-    alert(credenziali)
-    $.ajax({
-        type: "get",
-        url: "http://localhost:8080/GameToday_war/UserServlet/login",
-        contentType: "JSON", // NOT dataType!
-        data: {credenziali: JSON.stringify(credenziali)},
-        success: function (response) {
-            //location.reload();
-            alert("Loggato con successo!");
-        },
-        error: function (response) {
-            alert('Errore in fase di login!');
-        }
-    });
-}*/
