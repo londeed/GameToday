@@ -25,7 +25,7 @@ public class AmministratoreFactory {
     /**
      * metodo utilizzato per verificare se l'amministratore che tenta di effettuare il login è presente nel database
      * @param email
-     * @return
+     * @return amministratore
      */
 
     public static AmministratoreAbstract getEmail(String email){

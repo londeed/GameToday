@@ -8,6 +8,12 @@ import java.util.List;
 
 public class AutoreDAO
 {
+    /**
+     * questo metodo restituisce tutti gli autori
+     * @return Lista di auotri
+     * @throws SQLException
+     */
+
     public List<Autore> doRetrieveAutoreAll() throws SQLException
     {
         try(Connection connection= ConPool.getConnection())
@@ -27,6 +33,13 @@ public class AutoreDAO
             }
         }
     }
+
+    /**
+     * questo metodo crea un autore nel database
+     * @param autore
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean createAutore(Autore autore) throws SQLException
     {
@@ -49,6 +62,14 @@ public class AutoreDAO
 
         }
     }
+
+    /**
+     * questo metodo aggiorna l'autore nel database
+     * @param autore
+     * @param auNickname
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean updateAutore(Autore autore,String auNickname) throws SQLException
     {
@@ -73,6 +94,13 @@ public class AutoreDAO
         }
     }
 
+    /**
+     * questo metodo elimina un autore presente nel database
+     * @param auNickname
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean deleteAutore(String auNickname) throws SQLException
     {
         try(Connection con = ConPool.getConnection()) {
@@ -85,6 +113,14 @@ public class AutoreDAO
             }
         }
     }
+
+    /**
+     * questo metodo permette all'autore di effettuare il login
+     * @param email
+     * @param password
+     * @return autore
+     * @throws SQLException
+     */
 
     public Autore loginAutore(String email, String password) throws SQLException
     {
@@ -103,6 +139,12 @@ public class AutoreDAO
         }
     }
 
+    /**
+     * questo metodo restituisce il numero di autori presenti nel database
+     * @return N° di autori presenti nel database
+     * @throws SQLException
+     */
+
     public int countAll() throws SQLException
     {
         try(Connection con = ConPool.getConnection()){
@@ -116,6 +158,13 @@ public class AutoreDAO
             }
         }
     }
+
+    /**
+     * questo metodo restituisce un autore tramite l'email
+     * @param email
+     * @return Autore
+     * @throws SQLException
+     */
 
     public Autore doRetrieveAutoreByEmail(String email) throws SQLException
     {
@@ -136,6 +185,13 @@ public class AutoreDAO
             }
         }
     }
+
+    /**
+     * questo metodo restituisce un autore tramite il nickname
+     * @param auNickname
+     * @return autore
+     * @throws SQLException
+     */
 
 
     public Autore doRetrieveAutoreByNickname(String auNickname) throws SQLException{
@@ -158,6 +214,14 @@ public class AutoreDAO
         }
     }
 
+    /**
+     * questo metodo aggiorna le recensioni prese in carico dall'autore
+     * @param auNickname
+     * @param titolo
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean updateAutoreRecCommissionate(String auNickname, String titolo)throws SQLException{
         try(Connection connection = ConPool.getConnection()){
             try(PreparedStatement ps = connection.prepareStatement("UPDATE autore SET RCommissionate=? WHERE AuNickname=?")){
@@ -168,6 +232,13 @@ public class AutoreDAO
             }
         }
     }
+
+    /**
+     * questo metodo aggiorna le recensioni prese in carico dall'autore
+     * @param auNickname
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean updateAutoreRecCommissionateBis(String auNickname)throws SQLException{
         try(Connection connection = ConPool.getConnection()){

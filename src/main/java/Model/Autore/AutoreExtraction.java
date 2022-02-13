@@ -3,7 +3,19 @@ package Model.Autore;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * classe utlizzata per il mapping del resultset dell'autore dal database
+ */
+
 public class AutoreExtraction {
+
+    /**
+     * metodo che effettua il mapping dell'autore
+     * @param rs
+     * @return Autore
+     * @throws SQLException
+     */
+
     public Autore mapping(ResultSet rs) throws SQLException
     {
         Autore autore= new Autore();
