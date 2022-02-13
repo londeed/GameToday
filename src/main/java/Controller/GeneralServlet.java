@@ -49,14 +49,13 @@ public class GeneralServlet extends HttpServlet {
             request.setAttribute("recensioneUltima",recensioneUltima);
             request.setAttribute("recensionePrima",recensionePrima);
             request.setAttribute("recensioneCommentata",recensioneCommentata);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("HomePage.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/partials/HomePage.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
     }
-
 
     /**
      * metodo doPost della Servlet GeneralServlet
@@ -71,15 +70,15 @@ public class GeneralServlet extends HttpServlet {
         String features = request.getParameter("features");
         String aboutUs = request.getParameter("aboutus");
         if (home != null) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp");
             dispatcher.forward(request, response);
         }
         if (features != null) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/features.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/partials/features.jsp");
             dispatcher.forward(request, response);
         }
         if (aboutUs != null) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/aboutUs.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/partials/aboutUs.jsp");
             dispatcher.forward(request, response);
         }
     }

@@ -37,7 +37,7 @@
 %>
 
 <header>
-    <%@include file="WEB-INF/views/partials/headerCustomer.jsp"%>
+    <%@include file="headerCustomer.jsp"%>
 </header>
 
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -152,7 +152,7 @@
 </div>
 
 <footer>
-    <%@include file="WEB-INF/views/partials/footerCustomer.jsp"%>
+    <%@include file="footerCustomer.jsp"%>
 </footer>
 </body>
 </html>
