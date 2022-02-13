@@ -16,7 +16,11 @@
     }
 
 
-
+    div > .erroremailnull {
+        border: solid red;
+        background-color: red;
+        color: #141414;
+    }
 
 
     .main-head{
@@ -126,7 +130,10 @@
                     <form action="${pageContext.request.contextPath}/UserServlet/login" onsubmit="event.preventDefault();validateForm(this)" method="post">
                         <div class="form-group">
                             <label>Email</label>
-                            <input id="email" type="email" name="email" class="form-control" placeholder="nome@esempio.it">
+
+                            <div id="mammt" class="erroremailnull" style="display: none;">nessuna email inserita</div>
+
+                            <input id="email" type="text" name="email" class="form-control" placeholder="nome@esempio.it">
                         </div>
                         <div class="form-group">
                             <label>Password</label>

@@ -2,6 +2,11 @@ function validateForm(form)
 {
     //let email = document.getElementById('email').value;
     let email = $("#email").val();
+    alert(email)
+    if(email=="c"){
+        alert("chri")
+        var el = document.getElementById("mammt").style.display = "block";
+    }
     console.log(email);
     let password = $("#password").val();
     console.log(password)
