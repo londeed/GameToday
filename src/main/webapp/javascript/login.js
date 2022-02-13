@@ -4,7 +4,6 @@ function validateForm(form)
     let email = $("#email").val();
     alert(email)
     if(email=="c"){
-        alert("chri")
         var el = document.getElementById("mammt").style.display = "block";
     }
     console.log(email);

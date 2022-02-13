@@ -121,7 +121,7 @@ public class UtenteProfileServlet extends Controllo {
                     UtenteDAO utenteDAO1 = new UtenteDAO();
                     utenteDAO1.createUtente(utenteRegistrazione);
                     request.getSession(true).setAttribute("userUt",utenteRegistrazione);
-                    request.getRequestDispatcher("/WEB-INF/redirect.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp").forward(request, response);
                     break;
                 default:
                     break;
