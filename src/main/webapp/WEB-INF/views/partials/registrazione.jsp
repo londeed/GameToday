@@ -40,6 +40,12 @@
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="UtNickname" name="UtNickname" placeholder="Nickname">
             <label for="UtNickname">Nickname</label>
+
+
+            <div id="nickname" class="errorename" style="display: none;">Valore nickname troppo corto</div><br id="nbr" style="display: none;">
+            <div id="nicknamelungo" class="errorename" style="display: none;">Valore nickname troppo lungo</div><br id="nbrlungo" style="display: none;">
+            <div id="nicknamesbagliato" class="errorename" style="display: none;">Valore nickname non corretto</div><br id="nbrsbagliato" style="display: none;">
+
         </div>
 
         <div class="form-floating mb-3 mt-3">
@@ -64,16 +70,29 @@
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="number" id="UtAvatar" name="UtAvatar" placeholder="Avatar">
             <label for="UtAvatar">Avatar</label>
+
+            <div id="avatarsbagliato" class="errorename" style="display: none;">Valore avatar non scelto</div><br id="abrsbagliato" style="display: none;">
+
         </div>
 
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="UtEmail" name="UtEmail" placeholder="Email">
             <label for="UtEmail">Email</label>
+
+            <div id="email" class="errorename" style="display: none;">Valore email troppo corto</div><br id="ebr" style="display: none;">
+            <div id="emailsbagliato" class="errorename" style="display: none;">Valore email non corretto</div><br id="ebrsbagliato" style="display: none;">
+
+
         </div>
 
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="UtPW" name="UtPW" placeholder="Password">
             <label for="UtPW">Password</label>
+
+            <div id="pw" class="errorename" style="display: none;">Valore password troppo corto</div><br id="pbr" style="display: none;">
+            <div id="pwlungo" class="errorename" style="display: none;">Valore password troppo lungo</div><br id="pbrlungo" style="display: none;">
+            <div id="pwsbagliato" class="errorename" style="display: none;">Valore password non corretto</div><br id="pbrsbagliato" style="display: none;">
+
         </div>
 
         <button class="btn" style="background-color: turquoise">Registrati</button>

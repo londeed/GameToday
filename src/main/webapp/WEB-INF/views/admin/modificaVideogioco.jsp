@@ -8,11 +8,17 @@
             background-color: #1abc9c; /* Green */
             color: #ffffff;
         }
+
+        div > .errorename {
+            border: solid red;
+            background-color: red;
+            color: #141414;
+        }
     </style>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
         <jsp:param name="title" value="Modifica Videogioco"/>
         <jsp:param name="style" value="bootstrap"/>
-        <jsp:param name="script" value=""/>
+        <jsp:param name="script" value="controlloModifica"/>
     </jsp:include>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8"/>
@@ -34,7 +40,7 @@
     <br>
     <h2>Modifica le informazioni</h2>
     <br>
-    <form action="${pageContext.request.contextPath}/adminGame/modifica" method="post">
+    <form action="${pageContext.request.contextPath}/adminGame/modifica" onsubmit="event.preventDefault();validateForm(this)" method="post">
 
         <div style="background-color: #141414; color:white">
             <select style="background-color: #141414; color:white" class="form-select form-select-lg" id="Titolo" name="Titolo">
@@ -64,6 +70,11 @@
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="CasaProduttrice" name="CasaProduttrice" placeholder="Casa Produttrice">
             <label for="CasaProduttrice">Casa Produttrice</label>
+
+
+            <div id="casanullo" class="errorename" style="display: none;">Valore casa produttrice nullo</div><br id="cbr" style="display: none;">
+            <div id="casalungo" class="errorename" style="display: none;">Valore casa produttrice troppo lungo</div><br id="cbrsbagliato" style="display: none;">
+
         </div>
 
         <div style="background-color: #141414; color:white">
@@ -78,6 +89,10 @@
         <div class="form-floating mb-3 mt-3">
             <input style="background-color: #141414; color:white" class="form-control" type="text" id="Tipologia" name="Tipologia" placeholder="Tipologia">
             <label for="Tipologia">Tipologia</label>
+
+            <div id="tipologianullo" class="errorename" style="display: none;">Valore tipologia nullo</div><br id="tibr" style="display: none;">
+            <div id="tipologialungo" class="errorename" style="display: none;">Valore tipologia troppo lungo</div><br id="tibrsbagliato" style="display: none;">
+
         </div>
 
         <button class="btn" style="background-color: turquoise">Modifica videogioco</button>

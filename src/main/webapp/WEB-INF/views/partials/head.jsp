@@ -26,6 +26,10 @@
 <script src="${context}/javascript/rating.js" defer></script>
 <script src="${context}/javascript/rating2.js" defer></script>
 <script src="${context}/javascript/controlloRegistrazione.js" defer></script>
+<script src="${context}/javascript/controlloVideogioco.js" defer></script>
+<script src="${context}/javascript/controlloModifica.js" defer></script>
+<script src="${context}/javascript/inserisciRecensione.js" defer></script>
+<script src="${context}/javascript/modificaRecensione.js" defer></script>
 
 <c:if test="${not empty param.script}">
     <c:forTokens items="${param.script}" delims="," var="script">

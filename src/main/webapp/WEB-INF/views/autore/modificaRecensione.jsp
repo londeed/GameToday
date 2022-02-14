@@ -5,14 +5,24 @@
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
         <jsp:param name="title" value="Modifica recensione"/>
         <jsp:param name="style" value=""/>
-        <jsp:param name="script" value=""/>
+        <jsp:param name="script" value="modificaRecensione"/>
     </jsp:include>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
+
+<style>
+    form > .errorename {
+        border: solid red;
+        background-color: red;
+        color: #141414;
+    }
+</style>
+
 <body style="background-color: #141414; color: white; font-family: AlumniSans-Italic">
 
 <%
@@ -31,9 +41,11 @@
     <h5>3) La recensione non dovr<span>&#224</span> contenere espressioni volgari</h5>
     <h6><b>Gli amministratori elimineranno le recensioni che non rispettano le linee guida</b></h6>
     <br>
-    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="post">
+    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="post" onsubmit="event.preventDefault();validateForm(this)">
         <textarea id="testoModificato" name="testoModificato" rows="5" style="resize: none;width: 80%;height: 40%" minlength="500" maxlength="3000" ><%=recensione.getTesto()%></textarea>
         <br>
+        <div id="inserito" class="errorename" style="display: none;">Valore testo nullo</div><br id="tbr" style="display: none;">
+
         <button class="btn" style="background-color: turquoise" type="submit" id="salvaModifiche" name="gestioneRecensioni" value="salvaModifiche">Salva</button><input type="hidden" id="codiceModifica" name="codiceModifica" value="<%=recensione.getCodice()%>">
     </form>
 </div>
