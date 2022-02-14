@@ -167,7 +167,7 @@ public class AmministratoreDAO {
      * @throws SQLException
      */
 
-    int countAll() throws SQLException
+    public int countAll() throws SQLException
     {
         try(Connection con = ConPool.getConnection()){
             try(PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM amministratore")){

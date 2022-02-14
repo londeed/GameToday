@@ -10,7 +10,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti Supervisione
+ */
+
 public class SupervisioneDAO {
+
+    /**
+     * metodo che interroga il database per restituire un oggetto supervisione con il Codice corrispondente alla
+     * stringa passata come parametro
+     * @param codice
+     * @return Supervisione
+     * @throws SQLException
+     */
 
     public Supervisione doRetrieveSupervisioneByCodice(String codice) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
@@ -30,6 +42,13 @@ public class SupervisioneDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per restituire una lista di Supervisione con AmNickname corrispondente alla
+     * stringa passata come parametro
+     * @param amNickname
+     * @return List<Supervisione>
+     * @throws SQLException
+     */
 
     public List<Supervisione> doRetrieveSupervisioneByNickname(String amNickname) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
@@ -49,6 +68,14 @@ public class SupervisioneDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per aggiornare un elemento recensione, con Codice corrispondente alla stringa
+     * passata come parametro, tramite l'oggetto recensione anch'esso passato come parametro
+     * @param recensione
+     * @param codice
+     * @return Boolean
+     * @throws SQLException
+     */
 
     public Boolean update(Recensione recensione, String codice) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
@@ -66,6 +93,14 @@ public class SupervisioneDAO {
         }
     }
 
+    /**
+     * metodo che interroga il database per inserire un oggetto supervisione tramite una stringa Codice e una
+     * stringa AmNickname passate come parametri
+     * @param codice
+     * @param amNickname
+     * @return Boolean
+     * @throws SQLException
+     */
 
     public Boolean insertByAmministratore(String codice, String amNickname) throws SQLException {
         int rows = 0;

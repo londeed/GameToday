@@ -144,7 +144,7 @@ public class InterazioneUtDAO {
     }
 
 
-    public InterazioneUt doRetrieveInterazioneCreazioneCommento(String comCodice)throws SQLException{
+    public InterazioneUt doRetrieveInterazioneCreazioneCommento(String comCodice) throws SQLException{
         try(Connection connection = ConPool.getConnection()){
             try(PreparedStatement ps = connection.prepareStatement("SELECT * FROM interazioneUtente WHERE CommentoCod = ? AND UTL = 'false' AND UTD = 'false'")){
                 ps.setString(1,comCodice);
@@ -163,7 +163,7 @@ public class InterazioneUtDAO {
     }
 
 
-    public Boolean delete(String comCodice,String nickname,boolean like,boolean dislike)throws SQLException{
+    public Boolean delete(String comCodice,String nickname,boolean like,boolean dislike) throws SQLException{
         try(Connection con = ConPool.getConnection()) {
             try(PreparedStatement ps = con.prepareStatement("DELETE FROM interazioneUtente WHERE CommentoCod = ? AND UtNickname = ? AND UTL = ? AND UTD = ?")){
                 ps.setString(1, comCodice);
