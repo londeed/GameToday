@@ -77,12 +77,12 @@ public class UserServlet extends Controllo {
                     Autore autore = autoreDAO.loginAutore(email,password);
                     if(utente != null && utente.getUtNickname()!=null) {
                         request.getSession(true).setAttribute("userUt",utente);
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp");
                         dispatcher.forward(request, response);
                     }
                     if(autore != null && autore.getAuNickname()!=null) {
                         request.getSession(true).setAttribute("userAu",autore);
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp");
                         dispatcher.forward(request, response);
                     }
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/errore/errorLogin.jsp");
