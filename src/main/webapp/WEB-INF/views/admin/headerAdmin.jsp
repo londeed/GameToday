@@ -10,7 +10,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <form action="${pageContext.request.contextPath}/General" method="get">
-            <button class="btn navbar-brand" id="home" name="home" value="home">Logo</button>
+            <button class="btn navbar-brand" id="home" name="home" value="home"><img src="${pageContext.request.contextPath}/img/Logo/Grande.png" alt="Logo" width="96px" height="64px" ></button>
         </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
