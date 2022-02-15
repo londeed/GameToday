@@ -19,7 +19,7 @@ public class VisioneDAO {
      * metodo che interroga il database per restituire tutti gli elementi visione con un
      * determinato nickname autore passato come parametro
      * @param auNickname
-     * @return List<Visione>
+     * @return Lista di visione
      * @throws SQLException
      */
 
@@ -46,7 +46,7 @@ public class VisioneDAO {
      * metodo che interroga il database per restituire tutti gli elementi visione con un
      * determinato titolo passato come parametro
      * @param titolo
-     * @return List<Visione>
+     * @return Lista di visione
      * @throws SQLException
      */
 

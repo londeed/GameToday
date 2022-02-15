@@ -19,7 +19,7 @@ public class ValutazioneDAO {
      * metodo che interroga il database per restituire una lista di valutazione con UtNickname corrispondente alla
      * stringa passata come parametro
      * @param utNickname
-     * @return List<Valutazione>
+     * @return Lista di valutazione
      * @throws SQLException
      */
 
@@ -45,7 +45,7 @@ public class ValutazioneDAO {
      * metodo che interroga il database per restituire una lista di valutazione con Titolo corrispondente alla
      * stringa passata come parametro
      * @param titolo
-     * @return List<Valutazione>
+     * @return Lista di valutazione
      * @throws SQLException
      */
 

@@ -11,7 +11,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti l'InterazioneUt
+ */
+
 public class InterazioneUtDAO {
+
+    /**
+     * questo metodo resituisce l'interazione tramite il codice del commento
+     * @param comCodice
+     * @return interazioneUt
+     * @throws SQLException
+     */
+
     public InterazioneUt doRetrieveInterazioneUtByCodice(String comCodice) throws SQLException{
         try(Connection connection= ConPool.getConnection())
         {
@@ -31,6 +43,12 @@ public class InterazioneUtDAO {
         }
     }
 
+    /**
+     * questo metodo resituisce una lista di interazioni tramite il nickname dell'utente
+     * @param utNickname
+     * @return lista di interazioni
+     * @throws SQLException
+     */
 
     public  List<InterazioneUt> doRetrieveInterazioneUtByNickname(String utNickname) throws SQLException{
         try(Connection connection= ConPool.getConnection())
@@ -51,8 +69,14 @@ public class InterazioneUtDAO {
         }
     }
 
+    /**
+     * restituisce un commento tramite il suo codice
+     * @param comCodice
+     * @return commento
+     * @throws SQLException
+     */
 
-    public  Commento doRetrieveCommentoUtByCodice(String comCodice) throws SQLException{
+    public Commento doRetrieveCommentoUtByCodice(String comCodice) throws SQLException{
         try(Connection connection= ConPool.getConnection())
         {
             try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM commento WHERE CommentoCod = ?")){
@@ -71,6 +95,12 @@ public class InterazioneUtDAO {
         }
     }
 
+    /**
+     * questo metodo restituisce una lista di commenti tramite il loro codice unito al nickname dell'utente
+     * @param utNickname
+     * @return lista di commenti
+     * @throws SQLException
+     */
 
     public List<Commento> doRetrieveCommentoUtByNickname(String utNickname) throws SQLException{
         try(Connection connection= ConPool.getConnection())
@@ -91,6 +121,15 @@ public class InterazioneUtDAO {
         }
     }
 
+    /**
+     * questo metodo permette all'utente di inserire un commento
+     * @param comCodice
+     * @param utNickname
+     * @param utl
+     * @param utd
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean insertByUtente(String comCodice, String utNickname, Boolean utl, Boolean utd) throws SQLException {
         int rows = 0;
@@ -106,6 +145,12 @@ public class InterazioneUtDAO {
         return rows == 1;
     }
 
+    /**
+     * questo metoddo restituisce i nickname tramite i codici del commento
+     * @param comCodice
+     * @return lista di stringhe
+     * @throws SQLException
+     */
 
     public List<String> doRetrieveNicknameUtByComCodice(String comCodice) throws SQLException{
         try (Connection connection = ConPool.getConnection()) {
@@ -124,6 +169,12 @@ public class InterazioneUtDAO {
         }
     }
 
+    /**
+     * questo metodo restituisce il nickname dell'utente tramite le sue interazioni(like e dislike)
+     * @param comCodice
+     * @return stringa
+     * @throws SQLException
+     */
 
     public String doRetrieveByCreazioneCommento(String comCodice) throws SQLException{
         try(Connection connection = ConPool.getConnection()){
@@ -142,6 +193,13 @@ public class InterazioneUtDAO {
             }
         }
     }
+
+    /**
+     * questo metodo restituisce un interazione tramite il codice del commento unito a like e dislike
+     * @param comCodice
+     * @return interazioneUt
+     * @throws SQLException
+     */
 
 
     public InterazioneUt doRetrieveInterazioneCreazioneCommento(String comCodice) throws SQLException{
@@ -162,6 +220,16 @@ public class InterazioneUtDAO {
         }
     }
 
+    /**
+     * questo metodo permette di eliminare un interazioneUt tramite il codice del commento unito al nickname dell'utente
+     * ed ai sui like e dislike
+     * @param comCodice
+     * @param nickname
+     * @param like
+     * @param dislike
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean delete(String comCodice,String nickname,boolean like,boolean dislike) throws SQLException{
         try(Connection con = ConPool.getConnection()) {

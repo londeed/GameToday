@@ -45,7 +45,7 @@ public class VideogiocoDAO {
      * metodo che interroga il database per restituire una lista di videogiochi con una mediaValutazioni
      * corrispondente al double passato come parametro
      * @param mediaValutazioni
-     * @return List<Videogioco>
+     * @return Lista di videogiochi
      * @throws SQLException
      */
 
@@ -69,7 +69,7 @@ public class VideogiocoDAO {
 
     /**
      * metodo che interroga il database per restituire la lista dei videogiochi
-     * @return List<Videogioco>
+     * @return Lista di videogiochi
      * @throws SQLException
      */
 
@@ -94,7 +94,7 @@ public class VideogiocoDAO {
      * metodo che interroga il database per restituire una lista di videogiochi con casaProduttrice corrispondente alla
      * stringa passata come parametro
      * @param casaProduttrice
-     * @return List<Videogioco>
+     * @return Lista di videogiochi
      * @throws SQLException
      */
 
@@ -234,7 +234,7 @@ public class VideogiocoDAO {
 
     /**
      * metodo che interroga il database per restituire una lista di videogiochi ordinata tramite titolo
-     * @return List<Videogioco>
+     * @return Lista di videogiochi
      * @throws SQLException
      */
 
@@ -262,7 +262,7 @@ public class VideogiocoDAO {
      * metodo che interroga il database per restituire una lista di videogiochi con il titolo che completa o corrisponde
      * alla stringa passata come parametro
      * @param s
-     * @return List<Videogioco>
+     * @return Lista di videogiochi
      * @throws SQLException
      */
 
@@ -290,7 +290,7 @@ public class VideogiocoDAO {
     /**
      * metodo che interroga il database per restituire una lista di videogiochi con il titolo non presente all'interno
      * dell'attributo titolo delle recensioni
-     * @return List<Videogioco>
+     * @return Lista di videogiochi
      * @throws SQLException
      */
 
@@ -317,7 +317,7 @@ public class VideogiocoDAO {
     /**
      * metodo che interroga il database per restituire una lista di tre videogiochi ordinati in modo discendente
      * tramite dataPubblicazione
-     * @return List<Videogioco>
+     * @return Lista di videogiochi
      * @throws SQLException
      */
 

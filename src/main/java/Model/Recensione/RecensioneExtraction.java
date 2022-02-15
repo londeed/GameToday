@@ -3,7 +3,19 @@ package Model.Recensione;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * classe utlizzata per il mapping del resultset della recensione dal database
+ */
+
 public class RecensioneExtraction {
+
+    /**
+     * metodo che effettua il mapping della recensione
+     * @param rs
+     * @return recensione
+     * @throws SQLException
+     */
+
     public Recensione mapping(ResultSet rs) throws SQLException {
         Recensione recensione = new Recensione();
         recensione.setCodice(rs.getString(1));

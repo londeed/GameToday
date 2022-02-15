@@ -11,7 +11,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti l'InterazioneAu
+ */
+
 public class InterazioneAuDAO {
+
+    /**
+     * questo metodo restituisce un interazione tramite il commento del codice
+     * @param comCodice
+     * @return interazioneAu
+     * @throws SQLException
+     */
 
     public InterazioneAu doRetrieveInterazioneAuByCodice(String comCodice) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
@@ -30,6 +41,13 @@ public class InterazioneAuDAO {
             }
         }
     }
+
+    /**
+     * questo metodo restituisce una lista di interazioni tramite il nickname dell'autore
+     * @param auNickname
+     * @return lista di interazioni
+     * @throws SQLException
+     */
 
 
     public List<InterazioneAu> doRetrieveInterazioneAuByNickname(String auNickname) throws SQLException {
@@ -50,6 +68,12 @@ public class InterazioneAuDAO {
         }
     }
 
+    /**
+     * questo metodo restituisce una lista di commenti tramite il codice
+     * @param comCodice
+     * @return commento
+     * @throws SQLException
+     */
 
     public Commento doRetrieveCommentoAuByCodice(String comCodice) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
@@ -69,6 +93,12 @@ public class InterazioneAuDAO {
         }
     }
 
+    /**
+     * questo metodo restituisce una lista di commenti tramite l'interazione
+     * @param auNickname
+     * @return lista di commenti
+     * @throws SQLException
+     */
 
     public List<Commento> doRetrieveCommentoAuByNickname(String auNickname) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
@@ -88,6 +118,15 @@ public class InterazioneAuDAO {
         }
     }
 
+    /**
+     * questo metodo inserisce un interazione
+     * @param comCodice
+     * @param auNickname
+     * @param aul
+     * @param aud
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean insertByAutore(String comCodice, String auNickname, Boolean aul, Boolean aud) throws SQLException {
         int rows = 0;
@@ -103,6 +142,12 @@ public class InterazioneAuDAO {
         return rows == 1;
     }
 
+    /**
+     * questo metodo restituics una lista di nickname tramite il commento del codice
+     * @param comCodice
+     * @return lista di stringhe
+     * @throws SQLException
+     */
 
     public List<String> doRetrieveNicknameAuByComCodice(String comCodice) throws SQLException{
         try (Connection connection = ConPool.getConnection()) {
@@ -121,6 +166,12 @@ public class InterazioneAuDAO {
         }
     }
 
+    /**
+     * restituisce il nickname dell'autore che ha scritto il commento
+     * @param comCodice
+     * @return stringa
+     * @throws SQLException
+     */
 
     public String doRetrieveByCreazioneCommento(String comCodice) throws SQLException{
         try(Connection connection = ConPool.getConnection()){
@@ -138,6 +189,13 @@ public class InterazioneAuDAO {
             }
         }
     }
+
+    /**
+     * restituisce interazioneAu
+     * @param comCodice
+     * @return interazioneAu
+     * @throws SQLException
+     */
 
 
     public InterazioneAu doRetrieveInterazioneCreazioneCommento(String comCodice)throws SQLException{
@@ -158,6 +216,15 @@ public class InterazioneAuDAO {
         }
     }
 
+    /**
+     * questo metodo permette di eliminare un interazione
+     * @param comCodice
+     * @param nickname
+     * @param like
+     * @param dislike
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean delete(String comCodice,String nickname,boolean like,boolean dislike)throws SQLException{
         try(Connection con = ConPool.getConnection()) {

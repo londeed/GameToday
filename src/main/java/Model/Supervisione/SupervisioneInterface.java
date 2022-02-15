@@ -26,7 +26,7 @@ public interface SupervisioneInterface
      * metodo che interroga il database per restituire una lista di Supervisione con AmNickname corrispondente alla
      * stringa passata come parametro
      * @param amNickname
-     * @return List<Supervisione>
+     * @return Lista di supervisione
      * @throws SQLException
      */
 

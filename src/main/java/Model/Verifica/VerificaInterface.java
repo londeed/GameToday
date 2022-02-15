@@ -46,7 +46,7 @@ public interface VerificaInterface
       * metodo che interroga il database per restituire una lista di verifica con AmNickname corrispondente alla
       * stringa passata come parametro
       * @param amNickname
-      * @return List<Verifica>
+      * @return Lista di verifica
       * @throws SQLException
       */
 
