@@ -1,13 +1,17 @@
+package DAOTest;
+
 import Model.Commento.Commento;
 import Model.Commento.CommentoDAO;
 import Model.Recensione.Recensione;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class CommentoDAOTest {
     private CommentoDAO commentoDAO;
@@ -21,7 +25,7 @@ public class CommentoDAOTest {
     public void doRetrieveByCodiceTest() throws SQLException {
         Commento commento = new Commento();
         String codice = "192GZvGC";
-        assertEquals(commento,commentoDAO.doRetrieveByCodice(codice));
+        assertNotNull(commentoDAO.doRetrieveByCodice(codice));
     }
 
     @Test
@@ -49,10 +53,11 @@ public class CommentoDAOTest {
     @Test
     public void insertCommentoTestRuntimeException() throws SQLException {
         Commento commento = new Commento();
+        commento.setComCodice("");
         try {
             commentoDAO.insertCommento(commento);
         } catch (RuntimeException | SQLException e) {
-            assertEquals("E' necessario inserire tutti i campi", e.getMessage().split(":")[1]);
+            assertEquals("E' necessario inserire tutti i campi", e.getMessage().split(":")[0]);
         }
     }
 
@@ -180,6 +185,6 @@ public class CommentoDAOTest {
     @Test
     public void doRetrieveCodiceByMaxCommenti() throws SQLException {
         String s = "";
-        assertEquals(s,commentoDAO.doRetrieveCodiceByMaxCommenti());
+        assertNotNull(commentoDAO.doRetrieveCodiceByMaxCommenti());
     }
 }

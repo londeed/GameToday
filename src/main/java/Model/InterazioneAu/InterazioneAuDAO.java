@@ -26,7 +26,7 @@ public class InterazioneAuDAO {
 
     public InterazioneAu doRetrieveInterazioneAuByCodice(String comCodice) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM interezioneAutore WHERE CommentoCod = ?")) {
+            try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM interazioneAutore WHERE CommentoCod = ?")) {
                 ps.setString(1, comCodice);
                 ResultSet rs = ps.executeQuery();
                 InterazioneAu interazioneAu = new InterazioneAu();
@@ -52,7 +52,7 @@ public class InterazioneAuDAO {
 
     public List<InterazioneAu> doRetrieveInterazioneAuByNickname(String auNickname) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM interezioneAutore WHERE AuNickname = ?")) {
+            try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM interazioneAutore WHERE AuNickname = ?")) {
                 ps.setString(1, auNickname);
                 ResultSet rs = ps.executeQuery();
                 List<InterazioneAu> interazioneAu = new ArrayList<>();

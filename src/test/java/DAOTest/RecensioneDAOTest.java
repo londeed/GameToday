@@ -1,3 +1,5 @@
+package DAOTest;
+
 import Model.Recensione.Recensione;
 import Model.Recensione.RecensioneDAO;
 import org.junit.Before;
@@ -10,6 +12,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class RecensioneDAOTest {
     private RecensioneDAO recensioneDAO;
@@ -23,7 +26,7 @@ public class RecensioneDAOTest {
     public void doRetrieveByCodiceTest() throws SQLException {
         String codice = "192GZvGC";
         Recensione recensione = new Recensione();
-        assertEquals(recensione, recensioneDAO.doRetrieveByCodice(codice));
+        assertNotNull(recensioneDAO.doRetrieveByCodice(codice));
     }
 
     @Test
@@ -40,7 +43,7 @@ public class RecensioneDAOTest {
     public void doRetrieveByTitoloTest() throws SQLException {
         String titolo = "Bloodborne";
         Recensione recensione = new Recensione();
-        assertEquals(recensione, recensioneDAO.doRetrieveByTitolo(titolo));
+        assertNotNull(recensioneDAO.doRetrieveByTitolo(titolo));
     }
 
     @Test
@@ -75,41 +78,36 @@ public class RecensioneDAOTest {
     @Test
     public void insertRecensioneTest() throws SQLException {
         Recensione recensione = new Recensione();
-        Calendar calendar = new GregorianCalendar();
-        Date date = new Date();
-        calendar.set(2022, Calendar.FEBRUARY,13);
-        date = calendar.getTime();
+        java.sql.Date date = new java.sql.Date(2022-01-28);
         recensione.setAuNome("Ezio");
         recensione.setAuNickname("CoPlaNet");
-        recensione.setData((java.sql.Date) date);
+        recensione.setData(date);
         recensione.setTesto("proseguo del primo");
-        recensione.setCodice("u7G8QfPA");
-        recensione.setTitolo("Plague tale 2");
+        recensione.setCodice("ir67uiv");
+        recensione.setTitolo("Bloodborne");
         assertEquals(true, recensioneDAO.insertRecensione(recensione));
     }
 
     @Test
     public void insertRecensioneTestRuntimeException() throws SQLException {
         Recensione recensione = new Recensione();
+        recensione.setCodice("");
         try {
             recensioneDAO.insertRecensione(recensione);
         } catch (RuntimeException | SQLException e) {
-            assertEquals("E' necessario inserire tutti i campi", e.getMessage().split(":")[1]);
+            assertEquals("E' necessario inserire tutti i campi", e.getMessage().split(":")[0]);
         }
     }
 
     @Test
     public void updateRecensioneTest() throws SQLException {
         Recensione recensione = new Recensione();
-        Calendar calendar = new GregorianCalendar();
-        Date date = new Date();
-        calendar.set(2020, Calendar.JANUARY,16);
-        date = calendar.getTime();
+        java.sql.Date date = new java.sql.Date(2022-03-11);
         String codice = "NpZLUBgL";
         recensione.setTitolo("Dragon Ball Z: Kakarot");
         recensione.setTesto("dragon ball come ve lo ricordavate");
         recensione.setCodice("NpZLUBgL");
-        recensione.setData((java.sql.Date) date);
+        recensione.setData(date);
         recensione.setAuNickname("CoPlaNet");
         recensione.setAuNome("Ezio");
         assertEquals(true, recensioneDAO.updateRecensione(recensione, codice));
@@ -147,7 +145,7 @@ public class RecensioneDAOTest {
         */
     @Test
     public void updateRecensioneTextbisTest() throws SQLException {
-        String titolo = "Bloodborne";
+        String titolo = "Sekiro: Shadows Die Twice";
         String recensione = "va bene cosi";
         assertEquals(true, recensioneDAO.updateRecensioneTextbis(recensione, titolo));
     }
@@ -220,12 +218,12 @@ public class RecensioneDAOTest {
     @Test
     public void doRetrieveByDataUltimaTest() throws SQLException {
         Recensione recensione = new Recensione();
-        assertEquals(recensione,recensioneDAO.doRetrieveByDataUltima());
+        assertNotNull(recensioneDAO.doRetrieveByDataUltima());
     }
 
     @Test
     public void doRetrieveByDataPrimaTest() throws SQLException {
         Recensione recensione = new Recensione();
-        assertEquals(recensione,recensioneDAO.doRetrieveByDataPrima());
+        assertNotNull(recensioneDAO.doRetrieveByDataPrima());
     }
 }

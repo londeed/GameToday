@@ -1,16 +1,18 @@
+package DAOTest;
+
 import Model.Autore.Autore;
 import Model.Autore.AutoreDAO;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.Test;
 
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class AutoreDAOTest {
     private AutoreDAO autoreDAO;
@@ -29,10 +31,7 @@ public class AutoreDAOTest {
 
     @Test
     public void createAutoreTest() throws SQLException {
-        Calendar calendar = new GregorianCalendar();
-        Date date = new Date();
-        calendar.set(2022, Calendar.FEBRUARY,26);
-        date = calendar.getTime();
+        java.sql.Date date = new java.sql.Date(2022-02-25);
         Autore autore = new Autore();
         autore.setNome("Alberico");
         autore.setCognome("Informato");
@@ -41,7 +40,7 @@ public class AutoreDAOTest {
         autore.setEmail("alberico@gmail.com");
         autore.setLike(0);
         autore.setDislike(0);
-        autore.setScadenza((java.sql.Date) date);
+        autore.setScadenza(date);
         autore.setRecCommissionate("Bloodborne 2");
         autore.setRecEffettuate(0);
         autore.setAvatar(7);
@@ -51,32 +50,30 @@ public class AutoreDAOTest {
     @Test
     public void createAutoreTestRuntimeException() throws SQLException {
         Autore autore = new Autore();
+        autore.setAuNickname("");
         try {
             autoreDAO.createAutore(autore);
         } catch (RuntimeException | SQLException e) {
-            assertEquals("E' necessario inserire tutti i campi", e.getMessage().split(":")[1]);
+            assertEquals("E' necessario inserire tutti i campi", e.getMessage().split(":")[0]);
         }
     }
 
     @Test
     public void updateAutoreTest() throws SQLException {
-        Calendar calendar = new GregorianCalendar();
-        Date date = new Date();
-        calendar.set(2020, Calendar.JANUARY,16);
-        date = calendar.getTime();
+        java.sql.Date date = new java.sql.Date(2022-02-28);
         Autore autore = new Autore();
         autore.setNome("Fabio");
         autore.setCognome("Marcolini");
-        autore.setAuNickname("IGN_Italia");
-        autore.setPassword("IgnIta00*");
-        autore.setEmail("autore1@yahoo.it");
+        autore.setAuNickname("CoPlaNet");
+        autore.setPassword("Coplan&3t1999");
+        autore.setEmail("autore2@gmail.com");
         autore.setLike(0);
         autore.setDislike(0);
-        autore.setScadenza((java.sql.Date) date);
+        autore.setScadenza(date);
         autore.setRecCommissionate("");
         autore.setRecEffettuate(0);
         autore.setAvatar(0);
-        String auNickname  = "IGN_Italia";
+        String auNickname  = "CoPlaNet";
         assertEquals(true,autoreDAO.updateAutore(autore,auNickname));
     }
 
@@ -112,7 +109,7 @@ public class AutoreDAOTest {
         Autore autore = new Autore();
         String email = "autore2@gmail.com";
         String password = "Coplan&3t1999";
-        assertEquals(autore,autoreDAO.loginAutore(email,password));
+        assertNotNull(autoreDAO.loginAutore(email,password));
     }
 
     @Test
@@ -137,7 +134,7 @@ public class AutoreDAOTest {
     public void doRetrieveAutoreByEmailTest() throws SQLException {
         Autore autore = new Autore();
         String email = "autore2@gmail.com";
-        assertEquals(autore,autoreDAO.doRetrieveAutoreByEmail(email));
+        assertNotNull(autoreDAO.doRetrieveAutoreByEmail(email));
     }
 
     @Test
@@ -154,7 +151,7 @@ public class AutoreDAOTest {
     public void doRetrieveAutoreByNicknameTest() throws SQLException {
         Autore autore = new Autore();
         String auNickname= "CoPlaNet";
-        assertEquals(autore,autoreDAO.doRetrieveAutoreByNickname(auNickname));
+        assertNotNull(autoreDAO.doRetrieveAutoreByNickname(auNickname));
     }
 
     @Test

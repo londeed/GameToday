@@ -1,3 +1,5 @@
+package DAOTest;
+
 import Model.Recensione.Recensione;
 import Model.Supervisione.Supervisione;
 import Model.Supervisione.SupervisioneDAO;
@@ -11,6 +13,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class SupervisioneDAOTest {
     private SupervisioneDAO supervisioneDAO;
@@ -24,7 +27,7 @@ public class SupervisioneDAOTest {
     public void doRetrieveSupervisioneByCodiceTest() throws SQLException {
         String codice = "192GZvGC";
         Supervisione supervisione = new Supervisione();
-        assertEquals(supervisione,supervisioneDAO.doRetrieveSupervisioneByCodice(codice));
+        assertNotNull(supervisioneDAO.doRetrieveSupervisioneByCodice(codice));
     }
 
     @Test
@@ -32,7 +35,7 @@ public class SupervisioneDAOTest {
         String codice = "";
         Supervisione supervisione = new Supervisione();
         try{
-            assertEquals(supervisione,supervisioneDAO.doRetrieveSupervisioneByCodice(codice));
+            supervisioneDAO.doRetrieveSupervisioneByCodice(codice);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
         }
@@ -62,14 +65,11 @@ public class SupervisioneDAOTest {
     public void updateTest() throws SQLException {
          String codice = "ViuklQ0G";
          Recensione recensione = new Recensione();
-         Calendar calendar = new GregorianCalendar();
-         Date date = new Date();
-         calendar.set(2018, Calendar.APRIL,20);
-         date = calendar.getTime();
+         java.sql.Date date = new java.sql.Date(2022-01-10);
          recensione.setTesto("buona recensione");
          recensione.setTitolo("God of War IV");
          recensione.setCodice("ViuklQ0G");
-         recensione.setData((java.sql.Date) date);
+         recensione.setData(date);
          recensione.setAuNickname("IGN_Italia");
          recensione.setAuNome("Fabio");
          assertEquals(true,supervisioneDAO.update(recensione,codice));
@@ -79,16 +79,9 @@ public class SupervisioneDAOTest {
     public void updateTestRuntimeException() throws SQLException {
         String codice = "";
         Recensione recensione = new Recensione();
-        Calendar calendar = new GregorianCalendar();
-        Date date = new Date();
-        recensione.setTesto("");
-        recensione.setTitolo("");
         recensione.setCodice("");
-        recensione.setData((java.sql.Date) date);
-        recensione.setAuNickname("");
-        recensione.setAuNome("");
         try{
-            assertEquals(true,supervisioneDAO.update(recensione,codice));
+            supervisioneDAO.update(recensione,codice);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
         }

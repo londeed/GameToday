@@ -53,7 +53,7 @@ public class InterazioneUtDAO {
     public  List<InterazioneUt> doRetrieveInterazioneUtByNickname(String utNickname) throws SQLException{
         try(Connection connection= ConPool.getConnection())
         {
-            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM interezioneUtente WHERE UtNickname = ?")){
+            try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM interazioneUtente WHERE UtNickname = ?")){
                 ps.setString(1, utNickname);
                 ResultSet rs= ps.executeQuery();
                 List <InterazioneUt> interazioneUt=new ArrayList<>();
@@ -105,7 +105,7 @@ public class InterazioneUtDAO {
     public List<Commento> doRetrieveCommentoUtByNickname(String utNickname) throws SQLException{
         try(Connection connection= ConPool.getConnection())
         {
-            try(PreparedStatement ps= connection.prepareStatement("SELECT commento.CommentoCod,  commento.Codice,  commento.CLike,  commento.CDislike,  commento.CTesto \n" + "FROM interazioneUtente, commento\n" + "WHERE  interazioneUtente.CommentoCod = commento.CommentoCod AND interazioneAutore.UtNickname = ?")){
+            try(PreparedStatement ps= connection.prepareStatement("SELECT commento.CommentoCod,  commento.Codice,  commento.CLike,  commento.CDislike,  commento.CTesto \n" + "FROM interazioneUtente, commento\n" + "WHERE  interazioneUtente.CommentoCod = commento.CommentoCod AND interazioneUtente.UtNickname = ?")){
                 ps.setString(1, utNickname);
                 ResultSet rs= ps.executeQuery();
                 List <Commento> commento=new ArrayList();

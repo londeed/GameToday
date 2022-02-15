@@ -25,12 +25,12 @@ public class AutoreProfileServlet extends Controllo {
      */
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String inputRicerca = request.getParameter("gestioneAutore");
             switch (inputRicerca) {
                 case "gestioneProfiloAutore":
-                    String id = request.getSession(false).getId();
+                    //String id = request.getSession(false).getId();
                     Autore autore = new Autore();
                     autore = (Autore) request.getSession().getAttribute("userAu");
                     AutoreDAO autoreDAO = new AutoreDAO();
@@ -77,12 +77,12 @@ public class AutoreProfileServlet extends Controllo {
      */
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String path = getPath(request);
             switch (path) {
                 case "/modifica":
-                    String id = request.getSession(false).getId();
+                    //String id = request.getSession(false).getId();
                     Autore autoreSessione = new Autore();
                     autoreSessione = (Autore) request.getSession().getAttribute("userAu");
                     AutoreDAO autoreDAO = new AutoreDAO();

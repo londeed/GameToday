@@ -1,3 +1,5 @@
+package DAOTest;
+
 import Model.Valutazione.Valutazione;
 import Model.Valutazione.ValutazioneDAO;
 import Model.Verifica.Verifica;
@@ -8,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ValutazioneDAOTest {
     private ValutazioneDAO valutazioneDAO;
@@ -83,7 +86,7 @@ public class ValutazioneDAOTest {
         String titolo = "";
         int value = 0;
         try{
-            assertEquals(true,valutazioneDAO.updateValutazione(titolo,value));
+            valutazioneDAO.updateValutazione(titolo,value);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
         }
@@ -94,7 +97,7 @@ public class ValutazioneDAOTest {
         String titolo = "God of War IV";
         String utNickname = "Thor";
         Valutazione valutazione = new Valutazione();
-        assertEquals(valutazione,valutazioneDAO.doRetrieveValutazione(titolo,utNickname));
+        assertNotNull(valutazioneDAO.doRetrieveValutazione(titolo,utNickname));
     }
 
     @Test
@@ -103,7 +106,7 @@ public class ValutazioneDAOTest {
         String utNickname = "";
         Valutazione valutazione = new Valutazione();
         try{
-            assertEquals(valutazione,valutazioneDAO.doRetrieveValutazione(titolo,utNickname));
+            valutazioneDAO.doRetrieveValutazione(titolo,utNickname);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
         }

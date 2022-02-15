@@ -30,7 +30,7 @@ public class CatalogoServlet extends HttpServlet {
      * @throws IOException
      */
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String inputRicerca = request.getParameter("piattaforma");
             switch (inputRicerca) {

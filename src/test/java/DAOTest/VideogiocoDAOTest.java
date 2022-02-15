@@ -1,3 +1,5 @@
+package DAOTest;
+
 import Model.Videogioco.Videogioco;
 import Model.Videogioco.VideogiocoDAO;
 import org.junit.Before;
@@ -10,6 +12,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class VideogiocoDAOTest {
     private VideogiocoDAO videogiocoDAO;
@@ -23,7 +26,7 @@ public class VideogiocoDAOTest {
     public void doRetrieveByTitoloTest() throws SQLException {
         String titolo = "The Last of Us Parte II";
         Videogioco videogioco = new Videogioco();
-        assertEquals(videogioco,videogiocoDAO.doRetrieveByTitolo(titolo));
+        assertNotNull(videogiocoDAO.doRetrieveByTitolo(titolo));
     }
 
     @Test
@@ -101,15 +104,13 @@ public class VideogiocoDAOTest {
     public void insertVideogiocoTest() throws SQLException {
         Videogioco videogioco = new Videogioco();
         Calendar calendar = new GregorianCalendar();
-        Date date = new Date();
-        calendar.set(2022, Calendar.MARCH,13);
-        date = calendar.getTime();
+        java.sql.Date date = new java.sql.Date(2022-03-28);
         videogioco.setTitolo("Dark Souls IV");
         videogioco.setPegi(16);
         videogioco.setMediaValutazioni(0);
         videogioco.setTotaleVoti(0);
         videogioco.setPiattaforma("PlayStation 4");
-        videogioco.setDataPubblicazione((java.sql.Date) date);
+        videogioco.setDataPubblicazione(date);
         videogioco.setCasaProduttrice("FromSoftware");
         videogioco.setTipologia("Azione");
         assertEquals(true,videogiocoDAO.insertVideogioco(videogioco));
@@ -118,10 +119,11 @@ public class VideogiocoDAOTest {
     @Test
     public void insertVideogiocoTestRuntimeException(){
         Videogioco videogioco = new Videogioco();
+        videogioco.setTitolo("");
         try{
             videogiocoDAO.insertVideogioco(videogioco);
         }catch(RuntimeException | SQLException e){
-            assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
+            assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[0]);
         }
     }
 
@@ -129,16 +131,13 @@ public class VideogiocoDAOTest {
     public void updateVideogiocoTest() throws SQLException {
         String titolo = "The Last of Us Parte II";
         Videogioco videogioco = new Videogioco();
-        Calendar calendar = new GregorianCalendar();
-        Date date = new Date();
-        calendar.set(2022, Calendar.MARCH,13);
-        date = calendar.getTime();
+        java.sql.Date date = new java.sql.Date(2022-02-28);
         videogioco.setTitolo("The Last of Us Parte II");
         videogioco.setPegi(18);
         videogioco.setMediaValutazioni(0);
         videogioco.setTotaleVoti(0);
         videogioco.setPiattaforma("PlayStation 4");
-        videogioco.setDataPubblicazione((java.sql.Date) date);
+        videogioco.setDataPubblicazione(date);
         videogioco.setCasaProduttrice("FromSoftware");
         videogioco.setTipologia("Horror");
         assertEquals(true,videogiocoDAO.updateVideogioco(videogioco,titolo));

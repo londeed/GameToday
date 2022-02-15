@@ -1,3 +1,5 @@
+package DAOTest;
+
 import Model.Commento.Commento;
 import Model.InterazioneUt.InterazioneUt;
 import Model.InterazioneUt.InterazioneUtDAO;
@@ -8,7 +10,7 @@ import org.junit.Test;
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class InterazioneUtDAOTest {
     private InterazioneUtDAO interazioneUtDAO;
@@ -22,7 +24,7 @@ public class InterazioneUtDAOTest {
     public void doRetrieveInterazioneUtByCodiceTest() throws SQLException {
         String comCodice = "l9K6WDk9";
         InterazioneUt interazioneUt = new InterazioneUt();
-        assertEquals(interazioneUt,interazioneUtDAO.doRetrieveInterazioneUtByCodice(comCodice));
+        assertNotNull(interazioneUtDAO.doRetrieveInterazioneUtByCodice(comCodice));
     }
 
     @Test
@@ -30,7 +32,7 @@ public class InterazioneUtDAOTest {
         String comCodice = "";
         InterazioneUt interazioneUt = new InterazioneUt();
         try{
-            assertEquals(interazioneUt,interazioneUtDAO.doRetrieveInterazioneUtByCodice(comCodice));
+            interazioneUtDAO.doRetrieveInterazioneUtByCodice(comCodice);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
         }
@@ -60,7 +62,7 @@ public class InterazioneUtDAOTest {
     public void doRetrieveCommentoUtByCodiceTest() throws SQLException {
         String comCodice = "fUAgawJ4";
         Commento commento = new Commento();
-        assertEquals(commento,interazioneUtDAO.doRetrieveCommentoUtByCodice(comCodice));
+        assertNotNull(interazioneUtDAO.doRetrieveCommentoUtByCodice(comCodice));
     }
 
     @Test
@@ -68,7 +70,7 @@ public class InterazioneUtDAOTest {
         String comCodice = "";
         Commento commento = new Commento();
         try{
-            assertEquals(commento,interazioneUtDAO.doRetrieveCommentoUtByCodice(comCodice));
+            interazioneUtDAO.doRetrieveCommentoUtByCodice(comCodice);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
         }
@@ -138,7 +140,7 @@ public class InterazioneUtDAOTest {
         String comCodice = "fUAgawJ4";
         //forse inserire stringa uguale a quella ritornata
         String s = "";
-        assertEquals(s,interazioneUtDAO.doRetrieveByCreazioneCommento(comCodice));
+        assertNotNull(interazioneUtDAO.doRetrieveByCreazioneCommento(comCodice));
     }
     //verificare se va bene
     @Test
@@ -156,7 +158,7 @@ public class InterazioneUtDAOTest {
     public void doRetrieveInterazioneCreazioneCommentoTest() throws SQLException {
         String comCodice = "l9K6WDk9";
         InterazioneUt interazioneUt = new InterazioneUt();
-        assertEquals(interazioneUt,interazioneUtDAO.doRetrieveInterazioneCreazioneCommento(comCodice));
+        assertNotNull(interazioneUtDAO.doRetrieveInterazioneCreazioneCommento(comCodice));
     }
     //verificare se va bene
     @Test
@@ -164,7 +166,7 @@ public class InterazioneUtDAOTest {
         String comCodice = "";
         InterazioneUt interazioneUt = new InterazioneUt();
         try{
-            assertEquals(interazioneUt,interazioneUtDAO.doRetrieveInterazioneCreazioneCommento(comCodice));
+            interazioneUtDAO.doRetrieveInterazioneCreazioneCommento(comCodice);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire il codice",e.getMessage().split(":")[1]);
         }
@@ -186,7 +188,7 @@ public class InterazioneUtDAOTest {
         boolean like = false;
         boolean dislike = false;
         try{
-            assertEquals(true,interazioneUtDAO.delete(comCodice,nickname,like,dislike));
+            interazioneUtDAO.delete(comCodice,nickname,like,dislike);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
         }

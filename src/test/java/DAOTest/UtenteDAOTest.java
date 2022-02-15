@@ -1,3 +1,5 @@
+package DAOTest;
+
 import Model.Utente.Utente;
 import Model.Utente.UtenteDAO;
 import Model.Utente.UtenteExtraction;
@@ -33,7 +35,7 @@ private UtenteExtraction utenteExtraction;
     @Test
     public void createUtenteTest() throws SQLException {
         Utente utente = new Utente();
-        utente.setUtNickname("Mago Oscuro");
+        utente.setUtNickname("Mago Osc");
         utente.setNome("Marco");
         utente.setCognome("Veneto");
         utente.setEmail("marco@gmail.com");
@@ -48,10 +50,11 @@ private UtenteExtraction utenteExtraction;
     @Test
     public void createUtenteTestRuntimeException(){
         Utente utente = new Utente();
+        utente.setUtNickname("");
         try{
             utenteDAO.createUtente(utente);
         }catch(RuntimeException | SQLException e){
-            assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
+            assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[0]);
         }
     }
 
@@ -127,7 +130,7 @@ private UtenteExtraction utenteExtraction;
     public void doRetrieveUtenteByEmailTest() throws SQLException {
         String email = "emi1995@gmail.com";
         Utente utente = utenteDAO.doRetrieveUtenteByEmail(email);
-        assertEquals(utente,utenteDAO.doRetrieveUtenteByEmail(email));
+        assertNotNull(utenteDAO.doRetrieveUtenteByEmail(email));
     }
 
     @Test

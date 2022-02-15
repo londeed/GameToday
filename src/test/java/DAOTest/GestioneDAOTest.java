@@ -1,3 +1,5 @@
+package DAOTest;
+
 import Model.Gestione.Gestione;
 import Model.Gestione.GestioneDAO;
 import org.junit.Before;
@@ -7,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class GestioneDAOTest {
     private GestioneDAO gestioneDAO;
@@ -38,7 +41,7 @@ public class GestioneDAOTest {
     public void doRetrieveGameAsTitleTest() throws SQLException {
         String titolo = "The Last of Us Parte II";
         Gestione gestione = new Gestione();
-        assertEquals(gestione,gestioneDAO.doRetrieveGameAsTitle(titolo));
+        assertNotNull(gestioneDAO.doRetrieveGameAsTitle(titolo));
     }
 
     @Test
@@ -46,7 +49,7 @@ public class GestioneDAOTest {
         String titolo = "";
         Gestione gestione = new Gestione();
         try{
-            assertEquals(gestione,gestioneDAO.doRetrieveGameAsTitle(titolo));
+            gestioneDAO.doRetrieveGameAsTitle(titolo);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
         }

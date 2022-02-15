@@ -28,7 +28,7 @@ public class AdminOpServlet extends Controllo {
      */
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String inputRicerca = request.getParameter("gestioneAutori");
             switch (inputRicerca) {
@@ -74,7 +74,7 @@ public class AdminOpServlet extends Controllo {
      */
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String path = getPath(request);
             switch (path) {

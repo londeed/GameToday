@@ -1,3 +1,5 @@
+package DAOTest;
+
 import Model.Commento.Commento;
 import Model.Verifica.Verifica;
 import Model.Verifica.VerificaDAO;
@@ -9,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class VerificaDAOTest {
     private VerificaDAO verificaDAO;
@@ -20,7 +23,7 @@ public class VerificaDAOTest {
 
     @Test
     public void deleteTest() throws SQLException {
-        String comCodice = "6JcfBWD8";
+        String comCodice = "6hJcgfBaWD8";
         assertEquals(true,verificaDAO.delete(comCodice));
     }
 
@@ -61,7 +64,7 @@ public class VerificaDAOTest {
     public void doRetrieveInterazioneAmByCodiceTest() throws SQLException {
         String comCodice = "6sdJcfBaWD8";
         Verifica verifica = new Verifica();
-        assertEquals(verifica,verificaDAO.doRetrieveInterazioneAmByCodice(comCodice));
+        assertNotNull(verificaDAO.doRetrieveInterazioneAmByCodice(comCodice));
     }
 
     @Test
@@ -69,7 +72,7 @@ public class VerificaDAOTest {
         String comCodice = "";
         Verifica verifica = new Verifica();
         try{
-            assertEquals(verifica,verificaDAO.doRetrieveInterazioneAmByCodice(comCodice));
+            verificaDAO.doRetrieveInterazioneAmByCodice(comCodice);
         }catch(RuntimeException | SQLException e){
             assertEquals("E' necessario inserire tutti i campi",e.getMessage().split(":")[1]);
         }

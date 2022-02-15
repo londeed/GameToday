@@ -1,6 +1,9 @@
+package DAOTest;
+
 import Model.Amministratore.Amministratore;
 import Model.Amministratore.AmministratoreDAO;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import org.junit.jupiter.api.TestInstance;
@@ -8,7 +11,7 @@ import org.junit.jupiter.api.TestInstance;
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 
 public class AmministratoreDAOTest {
@@ -31,7 +34,7 @@ public class AmministratoreDAOTest {
     public void doRetrieveAmministratoreByEmailTest() throws SQLException {
         Amministratore amministratore = new Amministratore();
         String email = "Vadmin1@gmail.com";
-        assertEquals(amministratore,amministratoreDAO.doRetrieveAmministratoreByEmail(email));
+        assertNotNull(amministratoreDAO.doRetrieveAmministratoreByEmail(email));
     }
 
     @Test
@@ -57,13 +60,15 @@ public class AmministratoreDAOTest {
         assertEquals(true,amministratoreDAO.createAmministratore(amministratore));
     }
 
+
     @Test
     public void createAmministratoreTestRuntimeException() throws SQLException {
         Amministratore amministratore = new Amministratore();
+        amministratore.setAmNickname("");
         try {
             amministratoreDAO.createAmministratore(amministratore);
         } catch (RuntimeException | SQLException e) {
-            assertEquals("E' necessario inserire tutti i campi", e.getMessage().split(":")[1]);
+            assertEquals("E' necessario inserire tutti i campi", e.getMessage().split(":")[0]);
         }
     }
 
@@ -113,7 +118,7 @@ public class AmministratoreDAOTest {
         Amministratore amministratore = new Amministratore();
         String email = "Dadmin1@gmail.com";
         String password = "DCAdmin4!";
-        assertEquals(amministratore,amministratoreDAO.loginAmministratore(email,password));
+        assertNotNull(amministratoreDAO.loginAmministratore(email,password));
     }
 
     @Test

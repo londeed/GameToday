@@ -25,12 +25,12 @@ public class AdminProfileServlet extends Controllo {
      */
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String inputRicerca = request.getParameter("gestioneAmministratore");
             switch (inputRicerca) {
                 case "gestioneProfilo":
-                    String id = request.getSession(false).getId();
+                   // String id = request.getSession(false).getId();
                     Amministratore amministratore = new Amministratore();
                     amministratore = (Amministratore) request.getSession().getAttribute("amministratore");
                     AmministratoreDAO amministratoreDAO = new AmministratoreDAO();
@@ -58,7 +58,7 @@ public class AdminProfileServlet extends Controllo {
                     break;
                 case "logout":
                     HttpSession session = request.getSession(false);
-                    Amministratore amministratore4 = (Amministratore) session.getAttribute("amministratore");
+                    //Amministratore amministratore4 = (Amministratore) session.getAttribute("amministratore");
                     session.removeAttribute("amministratore");
                     RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/views/admin/secret.jsp");
                     dispatcher4.forward(request, response);
@@ -81,12 +81,12 @@ public class AdminProfileServlet extends Controllo {
      */
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
         String path = getPath(request);
         switch (path) {
             case "/modifica":
-                String id = request.getSession(false).getId();
+                //String id = request.getSession(false).getId();
                 Amministratore amministratoreSessione = new Amministratore();
                 amministratoreSessione = (Amministratore) request.getSession().getAttribute("amministratore");
                 AmministratoreDAO amministratoreDAO = new AmministratoreDAO();

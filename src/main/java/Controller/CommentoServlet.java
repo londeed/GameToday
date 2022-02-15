@@ -34,9 +34,7 @@ public class CommentoServlet extends Controllo {
      * @param response
      * @throws ServletException
      * @throws IOException
-     */
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+     */ public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<String> codComm = new ArrayList<>();
         if(Objects.isNull(request.getSession(false).getAttribute("codiceCommento"))){
             request.getSession().setAttribute("codiceCommento", codComm);

@@ -106,7 +106,7 @@ public class ValutazioneDAO {
                 ps.setString(1, titolo);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    d = rs.getInt(0);
+                    d = rs.getInt(1);
                 }
                 rs.close();
             }

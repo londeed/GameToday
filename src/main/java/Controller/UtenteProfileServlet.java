@@ -25,12 +25,12 @@ public class UtenteProfileServlet extends Controllo {
      */
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String inputRicerca = request.getParameter("gestioneUtente");
             switch (inputRicerca) {
                 case "gestioneProfiloUtente":
-                    String id = request.getSession(false).getId();
+                    //String id = request.getSession(false).getId();
                     Utente utente = new Utente();
                     utente = (Utente) request.getSession().getAttribute("userUt");
                     UtenteDAO utenteDAO = new UtenteDAO();
@@ -82,7 +82,7 @@ public class UtenteProfileServlet extends Controllo {
      */
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String path = getPath(request);
             switch (path) {
