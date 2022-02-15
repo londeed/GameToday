@@ -3,6 +3,10 @@ package Model.Autore;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * interfaccia che implementa i metodi presenti in AutoreDAO
+ */
+
 public interface AutoreInterface
 {
 

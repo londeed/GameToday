@@ -1,7 +1,7 @@
 package Controller;
-
+/*
 import Model.Connessione.InvalidRequestException;
-import Model.Connessione.RequestValidator;
+import Model.Connessione.RequestValidator;*/
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,18 +45,19 @@ public abstract class Controllo extends HttpServlet {
     protected String back(HttpServletRequest request){
         return request.getServletPath() + request.getPathInfo();
     }
-
+/*
     /**
      * Questo metodo serve per la gestione degli errori
      * @param validator
      * @throws InvalidRequestException
      */
 
+    /*
     protected void validate(RequestValidator validator) throws InvalidRequestException {
         if(validator.hasErrors()){
             throw  new InvalidRequestException("Validation Error",validator.getErrors(), HttpServletResponse.SC_BAD_REQUEST);
         }
-    }
+    }*/
 
     /**
      * Questo metodo fornisce la path con la radice del Server Tomcat

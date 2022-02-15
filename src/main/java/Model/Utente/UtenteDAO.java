@@ -15,7 +15,7 @@ public class UtenteDAO
 
     /**
      * questo metodo restituisce tutti gli utenti
-     * @return
+     * @return lista di utenti
      * @throws SQLException
      */
 
@@ -39,6 +39,13 @@ public class UtenteDAO
         }
     }
 
+    /**
+     * questo metodo crea un nuovo utente
+     * @param utente
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean createUtente(Utente utente) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
@@ -58,6 +65,14 @@ public class UtenteDAO
 
         }
     }
+
+    /**
+     * questo metodo aggiorna l'utente tramite il nickname
+     * @param utente
+     * @param utNickname
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean updateUtente(Utente utente, String utNickname) throws SQLException
     {
@@ -80,6 +95,13 @@ public class UtenteDAO
         }
     }
 
+    /**
+     * questo metodo elimina un utente tramite il nickname
+     * @param utNickname
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean deleteUtente(String utNickname) throws SQLException
     {
         try(Connection con = ConPool.getConnection()) {
@@ -92,6 +114,14 @@ public class UtenteDAO
             }
         }
     }
+
+    /**
+     * questo metodo permette all'utente di effettuare il login
+     * @param email
+     * @param password
+     * @return utente
+     * @throws SQLException
+     */
 
     public Utente loginUtente(String email, String password) throws SQLException
     {
@@ -110,6 +140,12 @@ public class UtenteDAO
         }
     }
 
+    /**
+     * questo metodo conta il numero di utenti
+     * @return N° di utenti
+     * @throws SQLException
+     */
+
     public int countAll() throws SQLException
     {
         try(Connection con = ConPool.getConnection()){
@@ -123,6 +159,13 @@ public class UtenteDAO
             }
         }
     }
+
+    /**
+     * questo metodo restituisce un utente tramite l'email
+     * @param email
+     * @return utente
+     * @throws SQLException
+     */
 
     public Utente doRetrieveUtenteByEmail(String email) throws SQLException
     {
@@ -144,6 +187,12 @@ public class UtenteDAO
         }
     }
 
+    /**
+     * questo metodo restituisce un utente tramite il nickname
+     * @param utNickname
+     * @return utente
+     * @throws SQLException
+     */
 
     public Utente doRetrieveUtenteByNickname(String utNickname) throws SQLException{
         try(Connection connection= ConPool.getConnection())

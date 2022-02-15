@@ -8,8 +8,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti la gestione
+ */
 
 public class GestioneDAO {
+
+    /**
+     * questo metodo restituisce tutti i videogiochi inseriti da un amministratore identificato tramite il nickname
+     * @param amNickname
+     * @return lista gestione
+     * @throws SQLException
+     */
+
     public List<Gestione> doRetrieveGamebyAdmin(String amNickname) throws SQLException{
         try(Connection connection= ConPool.getConnection()) {
             try(PreparedStatement ps= connection.prepareStatement("SELECT * FROM gestione WHERE AmNickname = ? ")){
@@ -29,7 +40,12 @@ public class GestioneDAO {
         }
     }
 
-
+    /**
+     * questo metodo restituisce tutti i videogiochi inseriti da un amministratore identificato tramite il loro titolo
+     * @param titolo
+     * @return lista gestione
+     * @throws SQLException
+     */
 
     public Gestione doRetrieveGameAsTitle(String titolo) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
@@ -48,6 +64,15 @@ public class GestioneDAO {
             }
         }
     }
+
+    /**
+     * questo metodo inserisce nel database un videogioco collegandolo all'autore tramite i loro nickname e titolo
+     * @param amNickname
+     * @param titolo
+     * @return lista gestione
+     * @throws SQLException
+     */
+
     public  Boolean insertGestione(String amNickname, String titolo) throws SQLException{
     int rows = 0;
         try (Connection connection = ConPool.getConnection()) {
@@ -55,8 +80,8 @@ public class GestioneDAO {
             ps.setString(1, amNickname);
             ps.setString(2, titolo);
             rows = ps.executeUpdate();
+            }
         }
-    }
         return rows == 1;
-}
+    }
 }
