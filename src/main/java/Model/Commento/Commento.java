@@ -1,5 +1,9 @@
 package Model.Commento;
 
+/**
+ * classe commento, rappresenta un'entità
+ */
+
 public class Commento {
     private String comCodice;
     private String codice;

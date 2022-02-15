@@ -3,7 +3,19 @@ package Model.Utente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * classe utlizzata per il mapping del resultset dell'autore dal database
+ */
+
 public class UtenteExtraction {
+
+    /**
+     * metodo che effettua il mapping dell'autore
+     * @param rs
+     * @return Autore
+     * @throws SQLException
+     */
+
     public Utente mapping(ResultSet rs) throws SQLException
     {
         Utente utente= new Utente();

@@ -1,6 +1,16 @@
 package Model.Commento;
 
+/**
+ * classe per l'implementazione del design pattern Template Method
+ */
+
 public class EspressioneControllo {
+
+    /**
+     * metodo per confrontare se la stringa contiene parole volgari
+     * @param commento
+     * @return stringa || stringa modificata
+     */
 
     public String getCommento(String commento){
         String newText;
@@ -28,6 +38,12 @@ public class EspressioneControllo {
         newText=isNoWord.interpreta("coglione");
         return newText;
     }
+
+    /**
+     * metodo utilizzato per testare i commenti
+     * @param text
+     * @return
+     */
 
     public static EspressioneInterface getTestoCommento(String text){
         EspressioneInterface word = new EspressioneTerminale(text);

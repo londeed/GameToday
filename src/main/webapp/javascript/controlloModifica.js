@@ -1,3 +1,9 @@
+/**
+ * questa funzione ci permette di controllare i parametri inseriti durante la modifica dei videogiochi
+ * @param form
+ * @returns {boolean}
+ */
+
 function validateForm(form)
 {
     let CasaProduttrice = $("#CasaProduttrice").val();

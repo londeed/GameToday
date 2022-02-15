@@ -1,3 +1,7 @@
+/**
+ * Javascript utilizzato per l'aggiunta di commenti
+ */
+
 var nome ;
 var like ;
 var dislike;
@@ -5,6 +9,11 @@ var verifica;
 var avatar;
 var text = [];
 var n = 0;
+
+/**
+ * questa funzione permette di aggiungere un commento alle recensioni
+ * @param x
+ */
 
  function aggiungiCommento(x){
 
@@ -85,16 +94,34 @@ var n = 0;
 
 }
 
+/**
+ * questa funzione permette di creare un codice numerico per l'id dei commenti creati
+ * @param min
+ * @param max
+ * @returns {number}
+ */
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+/**
+ * questa funzione restituisce codice numerico (id dei commenti)
+ * @returns {number}
+ */
+
 function uniqid() {
     var id = getRandomInt(0, Date.now());
     return id;
 }
+
+/**
+ * questa funzione permette il salvataggio dei like e dei dislike dei commenti appena creati
+ * @param valore
+ * @param x
+ */
 
 function salvaInterazione(valore,x){
     var verifica = x;
@@ -129,6 +156,12 @@ function salvaInterazione(valore,x){
     }
 }
 
+/**
+ * questa funzione permette il salvataggio dei like e dei dislike per i commenti già presenti nel database
+ * @param stringa
+ * @constructor
+ */
+
 function CommentoEsistente(stringa){
     const array = stringa.split(",")
     var v = array[0];
@@ -149,6 +182,11 @@ function CommentoEsistente(stringa){
     });
 }
 
+/**
+ * questa funzione permette di eliminare un commento
+ * @param numeroCommento
+ */
+
 function elimina(numeroCommento){
     var num = numeroCommento
     var code = {numCom: num};
@@ -165,6 +203,11 @@ function elimina(numeroCommento){
         }
     });
 }
+
+/**
+ * questa funzione permette di modificare un commento appena creato
+ * @param numeroCommento
+ */
 
 function modificaCreati(numeroCommento){
     var num = numeroCommento
@@ -223,6 +266,11 @@ window.onclick = function(event) {
 
 }
 
+/**
+ * questa funzione permette di modificare un commento
+ * @param cod
+ */
+
 function modifica(cod){
     var h = cod
 
@@ -268,6 +316,11 @@ function modifica(cod){
         }
     }
 }
+
+/**
+ * questa funzione permette di confermare la modfica di un commento
+ * @param cod
+ */
 
 function confermaModifica(cod){
         var q = cod

@@ -10,8 +10,20 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti i commenti
+ */
+
 public class CommentoDAO
 {
+
+    /**
+     * questo metodo restituisce un commento in base al codice
+     * @param codice
+     * @return commento
+     * @throws SQLException
+     */
+
     public Commento doRetrieveByCodice(String codice) throws SQLException
     {
         try(Connection connection= ConPool.getConnection())
@@ -32,6 +44,13 @@ public class CommentoDAO
         }
     }
 
+    /**
+     * questo metodo permette di inseerire un commento
+     * @param commento
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean insertCommento(Commento commento) throws SQLException
     {
         try(Connection connection = ConPool.getConnection()){
@@ -46,6 +65,14 @@ public class CommentoDAO
             }
         }
     }
+
+    /**
+     * questo metodo permette di aggiornare un commento in base al codice
+     * @param commento
+     * @param comCodice
+     * @return boolean
+     * @throws SQLException
+     */
 
     public Boolean updateCommento(Commento commento, String comCodice) throws SQLException
     {
@@ -63,6 +90,13 @@ public class CommentoDAO
         }
     }
 
+    /**
+     * questo metodo permette di eliminare un commento in base al codice
+     * @param comCodice
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean deleteCommento(String comCodice) throws SQLException
     {
         try(Connection con = ConPool.getConnection()) {
@@ -75,6 +109,12 @@ public class CommentoDAO
             }
         }
     }
+
+    /**
+     * questo metodo permette di contare il numero di commenti presenti nel database
+     * @return N° di commenti
+     * @throws SQLException
+     */
 
     public int countAll() throws SQLException
     {
@@ -89,6 +129,12 @@ public class CommentoDAO
             }
         }
     }
+
+    /**
+     * questo metodo permette di ritornare la lista dei codici dei commenti
+     * @return lista dei codici
+     * @throws SQLException
+     */
 
     public List<String> doRetrieveAllCodiciCommenti() throws SQLException
     {
@@ -108,6 +154,13 @@ public class CommentoDAO
             }
         }
     }
+
+    /**
+     * questo metodo permette di ritornare un commenti in base ai codici
+     * @param codice
+     * @return lista di commenti
+     * @throws SQLException
+     */
 
     public List<Commento> doRetrieveAllCommentiByCodice(String codice) throws SQLException
     {
@@ -130,6 +183,14 @@ public class CommentoDAO
         }
     }
 
+    /**
+     * questo metodo permette di aggiornare le interazioni
+     * @param comCodice
+     * @param interazione
+     * @return boolean
+     * @throws SQLException
+     */
+
     public Boolean updateInterazione(String comCodice, String interazione) throws SQLException {
         try (Connection connection = ConPool.getConnection()) {
             if (interazione.equals("0")) {
@@ -148,6 +209,14 @@ public class CommentoDAO
         }
     }
 
+    /**
+     * questo metodo permette di aggiornare il testo dei commenti
+     * @param testo
+     * @param comCodice
+     * @return boolean
+     * @throws SQLException
+     */
+
 
     public Boolean updateTesto(String testo, String comCodice) throws SQLException{
         try (Connection connection = ConPool.getConnection()) {
@@ -160,6 +229,11 @@ public class CommentoDAO
         }
     }
 
+    /**
+     * query innestata per il ritorno per i commenti non verificati
+     * @return lista di commenti
+     * @throws SQLException
+     */
 
     public List<Commento> doRetrieveAllCommentinotVerfied() throws SQLException
     {
@@ -181,6 +255,12 @@ public class CommentoDAO
         }
     }
 
+    /**
+     * questo metodo restituisce tutti i commenti
+     * @return lista commenti
+     * @throws SQLException
+     */
+
     public List<Commento> doRetrieveAll() throws SQLException
     {
         try(Connection connection= ConPool.getConnection())
@@ -201,6 +281,11 @@ public class CommentoDAO
         }
     }
 
+    /**
+     * query innestata
+     * @return stringa
+     * @throws SQLException
+     */
 
     public String doRetrieveCodiceByMaxCommenti() throws SQLException
     {

@@ -1,3 +1,9 @@
+/**
+ * questa funzione ci permette di controllare i parametri inseriti per effettuare il login
+ * @param form
+ * @returns {boolean}
+ */
+
 function validateForm(form)
 {
     //let email = document.getElementById('email').value;

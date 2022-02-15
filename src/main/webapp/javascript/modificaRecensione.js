@@ -1,3 +1,9 @@
+/**
+ * questa funzione ci permette di controllare i parametri inseriti per effettuare la modifica della recensione
+ * @param form
+ * @returns {boolean}
+ */
+
 function validateForm(form)
 {
     let testoModificato = $("#testoModificato").val();

@@ -6,8 +6,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che utilizza i metodi di interrogazione del database riguardanti l'utente
+ */
+
 public class UtenteDAO
 {
+
+    /**
+     * questo metodo restituisce tutti gli utenti
+     * @return
+     * @throws SQLException
+     */
 
     public List<Utente> doRetrieveAll() throws SQLException
     {

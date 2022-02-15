@@ -1,3 +1,8 @@
+/**
+ * questa funzione ci permette di gestire le valutazioni
+ * @param titolo
+ */
+
 function rating2(titolo){
     let valutazione2 = $('input[name="rating2"]:checked').val();
     let val = {valutazione: valutazione2,titolo: titolo}

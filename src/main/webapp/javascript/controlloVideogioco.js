@@ -1,3 +1,9 @@
+/**
+ * questa funzione ci permette di controllare i parametri inseriti durante l'inserimento dei videogiochi
+ * @param form
+ * @returns {boolean}
+ */
+
 function validateForm(form)
 {
     let Titolo = $("#Titolo").val();

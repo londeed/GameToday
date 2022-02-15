@@ -3,7 +3,19 @@ package Model.Commento;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * classe utlizzata per il mapping del resultset dei commenti dal database
+ */
+
 public class CommentoExtraction {
+
+    /**
+     * metodo per effettuare il mapping del commento
+     * @param rs
+     * @return
+     * @throws SQLException
+     */
+
     public Commento mapping(ResultSet rs) throws SQLException
     {
         Commento commento= new Commento();

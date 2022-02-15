@@ -9,14 +9,14 @@ package Model.Autore;
 
     /**
      * metodo utilizzato per verificare se l'autore è null
-     * @return
+     * @return boolean
      */
 
     public abstract boolean isNull();
 
     /**
      * metodo utilizzato per controllare l'email
-     * @return
+     * @return email
      */
 
         public abstract String getEmail();

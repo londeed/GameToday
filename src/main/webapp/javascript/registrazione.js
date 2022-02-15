@@ -1,3 +1,7 @@
+/**
+ * questa funzione ci permette di controllare i parametri inseriti durante la registrazione
+ */
+
 function registrazione(){
     $.ajax({
         type: "get",
