@@ -42,7 +42,7 @@ public class RecensioneServlet extends HttpServlet {
      */
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String recensione = request.getParameter("recensione");
             RecensioneDAO recensioneDAO = new RecensioneDAO();
@@ -122,7 +122,7 @@ public class RecensioneServlet extends HttpServlet {
      */
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String inputRicerca = request.getParameter("gestioneRecensioni");
             switch (inputRicerca) {

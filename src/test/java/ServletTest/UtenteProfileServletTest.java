@@ -78,4 +78,107 @@ public class UtenteProfileServletTest {
         uPS.doGet(request,response);
         verify(requestDispatcher,atLeastOnce()).forward(request,response);
     }
+
+    @Test
+    public void DoGetregistrazioneTest() throws ServletException, IOException {
+        when(request.getParameter("gestioneUtente")).thenReturn("registrazione");
+        when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
+        uPS.doGet(request,response);
+        verify(requestDispatcher,atLeastOnce()).forward(request,response);
+    }
+
+    @Test
+    public void DoGeteliminaProfiloTest() throws ServletException, IOException {
+        Utente utente = new Utente();
+        utente.setUtNickname("Hope");
+        utente.setNome("Erika");
+        utente.setCognome("Schiavone");
+        utente.setEmail("EriSki@gmail.com");
+        utente.setPassword("Speranz@24");
+        utente.setValEffettuate(7);
+        utente.setAvatar(17);
+        utente.setLike(1);
+        utente.setDislike(1);
+        when(request.getParameter("gestioneUtente")).thenReturn("eliminaProfilo");
+        when(request.getSession(false)).thenReturn(session);
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("userUt")).thenReturn(utente);
+        when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
+        uPS.doGet(request,response);
+        verify(requestDispatcher,atLeastOnce()).forward(request,response);
+    }
+
+    @Test
+    public void DoGetlogoutUtenteTest() throws ServletException, IOException {
+        Utente utente = new Utente();
+        utente.setUtNickname("Shadow_1995");
+        utente.setNome("Emiliano");
+        utente.setCognome("Rossi");
+        utente.setEmail("emi1995@gmail.com");
+        utente.setPassword("BigShadow1995*");
+        utente.setValEffettuate(6);
+        utente.setAvatar(18);
+        utente.setLike(15);
+        utente.setDislike(30);
+        when(request.getParameter("gestioneUtente")).thenReturn("logoutUtente");
+        when(request.getSession(false)).thenReturn(session);
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("userUt")).thenReturn(utente);
+        when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
+        uPS.doGet(request,response);
+        verify(requestDispatcher,atLeastOnce()).forward(request,response);
+    }
+
+    @Test
+    public void DoPostmodificaeTest() throws ServletException, IOException {
+        Utente utente = new Utente();
+        utente.setUtNickname("Shadow_1995");
+        utente.setNome("Emiliano");
+        utente.setCognome("Rossi");
+        utente.setEmail("emi1995@gmail.com");
+        utente.setPassword("BigShadow1995*");
+        utente.setValEffettuate(6);
+        utente.setAvatar(18);
+        utente.setLike(15);
+        utente.setDislike(30);
+        when(request.getPathInfo()).thenReturn("/modifica");
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("userUt")).thenReturn(utente);
+        when(request.getParameter("UtNickname")).thenReturn(utente.getUtNickname());
+        when(request.getParameter("UtNome")).thenReturn(utente.getNome());
+        when(request.getParameter("UtCognome")).thenReturn(utente.getCognome());
+        when(request.getParameter("UtAvatar")).thenReturn("18");
+        when(request.getParameter("UtEmail")).thenReturn(utente.getEmail());
+        when(request.getParameter("UtPW")).thenReturn(utente.getPassword());
+        when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
+        uPS.doPost(request,response);
+        verify(requestDispatcher,atLeastOnce()).forward(request,response);
+    }
+
+    @Test
+    public void DoPostregistrazioneTest() throws ServletException, IOException {
+        Utente utente = new Utente();
+        utente.setUtNickname("Shad_1995");
+        utente.setNome("Emilio");
+        utente.setCognome("Roi");
+        utente.setEmail("em995@gmail.com");
+        utente.setPassword("BigShadodrcg995*");
+        utente.setValEffettuate(6);
+        utente.setAvatar(18);
+        utente.setLike(15);
+        utente.setDislike(30);
+        when(request.getPathInfo()).thenReturn("/registrazione");
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("userUt")).thenReturn(utente);
+        when(request.getParameter("UtNickname")).thenReturn(utente.getUtNickname());
+        when(request.getParameter("UtNome")).thenReturn(utente.getNome());
+        when(request.getParameter("UtCognome")).thenReturn(utente.getCognome());
+        when(request.getParameter("UtAvatar")).thenReturn("18");
+        when(request.getParameter("UtEmail")).thenReturn(utente.getEmail());
+        when(request.getParameter("UtPW")).thenReturn(utente.getPassword());
+        when(request.getSession(true)).thenReturn(session);
+        when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
+        uPS.doPost(request,response);
+        verify(requestDispatcher,atLeastOnce()).forward(request,response);
+    }
 }

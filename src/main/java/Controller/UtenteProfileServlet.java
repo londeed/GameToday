@@ -87,7 +87,7 @@ public class UtenteProfileServlet extends Controllo {
             String path = getPath(request);
             switch (path) {
                 case "/modifica":
-                    String id = request.getSession(false).getId();
+                    //String id = request.getSession(false).getId();
                     Utente utenteSessione = new Utente();
                     utenteSessione = (Utente) request.getSession().getAttribute("userUt");
                     UtenteDAO utenteDAO = new UtenteDAO();

@@ -37,7 +37,7 @@ public class VideogiocoServlet extends Controllo {
      */
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String path = getPath(request);
             switch (path) {
@@ -85,7 +85,7 @@ public class VideogiocoServlet extends Controllo {
      */
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String videogioco = request.getParameter("videogioco");
             List<Videogioco> videogiocoList = new ArrayList<>();
