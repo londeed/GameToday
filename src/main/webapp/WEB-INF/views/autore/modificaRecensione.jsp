@@ -41,10 +41,9 @@
     <h5>3) La recensione non dovr<span>&#224</span> contenere espressioni volgari</h5>
     <h6><b>Gli amministratori elimineranno le recensioni che non rispettano le linee guida</b></h6>
     <br>
-    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="post" onsubmit="event.preventDefault();validateForm(this)">
+    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="post" >
         <textarea id="testoModificato" name="testoModificato" rows="5" style="resize: none;width: 80%;height: 40%" minlength="500" maxlength="3000" ><%=recensione.getTesto()%></textarea>
         <br>
-        <div id="inserito" class="errorename" style="display: none;">Valore testo nullo</div><br id="tbr" style="display: none;">
 
         <button class="btn" style="background-color: turquoise" type="submit" id="salvaModifiche" name="gestioneRecensioni" value="salvaModifiche">Salva</button><input type="hidden" id="codiceModifica" name="codiceModifica" value="<%=recensione.getCodice()%>">
     </form>

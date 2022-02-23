@@ -152,17 +152,13 @@
             <label for="textarea" class="form-label">Scrivi ci<span>&#242</span> che pensi:</label>
              <textarea class="form-control" id="textarea" rows="3" minlength="300" maxlength="1500"></textarea><br>
             <%String x = "";
-                System.out.println("prima");
             if(!Objects.isNull(utenteLogin)) {
                 x = "" + recensione.getCodice() + "," + utenteLogin.getUtNickname() + ",0,0,true,utente,"+utenteLogin.getAvatar();
-                System.out.println("utente");
             }
             if(!Objects.isNull(autoreLogin)){
                 x = "" + recensione.getCodice() + "," + autoreLogin.getAuNickname() + ",0,0,true,autore,"+autoreLogin.getAvatar();
-                System.out.println("autore");
             }
             if(Objects.isNull(utenteLogin) && Objects.isNull(autoreLogin)){
-                System.out.println("nessuno");
                 x = "n,n,0,0,false,niente,0";
             }%>
              <button type="button" onclick="aggiungiCommento('<%=x%>')" id="bottoneCommento">Inserisci il commento</button>

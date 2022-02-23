@@ -27,7 +27,7 @@
     <div class="container" style="background-color: #141414">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="background-color: #141414">
             <% for(Recensione generale: recensione){
-                if (generale != null ){
+                if (generale != null && generale.getData() != null){
                     if (generale.getTitolo().contains(":")) {
                         String[] parts = generale.getTitolo().split(Pattern.quote(":"));
             %>

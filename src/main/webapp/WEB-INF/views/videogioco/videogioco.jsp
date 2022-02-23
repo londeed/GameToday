@@ -163,7 +163,8 @@
         <%if(videogioco.getMediaValutazioni()==0){%>
             <p><div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div></div></p>
         <%}%>
-        <%if(!Objects.isNull(recensioneVideogiocDettaglio)){%>
+    </ul>
+        <%if(!Objects.isNull(recensioneVideogiocDettaglio) && recensioneVideogiocDettaglio.getData() != null){%>
             <form action="${pageContext.request.contextPath}/RecensioneServlet" method="get">
                 <button class="btn btn-link" style="border: 0px">Vai alla recensione
                     <input type="hidden" id="dettaglioRecensione" name="dettaglioRecensione" value="<%=videogioco.getTitolo()%>">
@@ -172,7 +173,6 @@
         <%}else{%>
             <p>La recensione sar<span>&#224</span> presto disponibile</p>
         <%}%>
-    </ul>
         <%if(Objects.isNull(autoreVal)){
             if(!Objects.isNull(utenteVal)){
                 if(!Objects.isNull(valutazione)){

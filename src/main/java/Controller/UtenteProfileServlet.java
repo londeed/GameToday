@@ -54,14 +54,14 @@ public class UtenteProfileServlet extends Controllo {
                     UtenteDAO utenteDAO1 = new UtenteDAO();
                     utenteDAO1.deleteUtente(utente1.getUtNickname());
                     session2.removeAttribute("userUt");
-                    RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
+                    RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp");
                     dispatcher3.forward(request, response);
                     break;
                 case "logoutUtente":
                     HttpSession session = request.getSession(false);
                     Utente utente2 = (Utente) session.getAttribute("userUt");
                     session.removeAttribute("userUt");
-                    RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
+                    RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp");
                     dispatcher4.forward(request, response);
                     break;
                 default:

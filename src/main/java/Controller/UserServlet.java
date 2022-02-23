@@ -79,15 +79,14 @@ public class UserServlet extends Controllo {
                         request.getSession(true).setAttribute("userUt",utente);
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp");
                         dispatcher.forward(request, response);
+                        break;
                     }
                     if(autore != null && autore.getAuNickname()!=null) {
                         request.getSession(true).setAttribute("userAu",autore);
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp");
                         dispatcher.forward(request, response);
+                        break;
                     }
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/errore/errorLogin.jsp");
-                    dispatcher.forward(request, response);
-                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();

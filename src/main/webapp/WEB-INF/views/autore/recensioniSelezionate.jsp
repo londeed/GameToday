@@ -40,7 +40,7 @@
     <h5>3) La recensione non dovr<span>&#224</span> contenere espressioni volgari</h5>
     <h6><b>Gli amministratori elimineranno le recensioni che non rispettano le linee guida</b></h6>
     <br>
-    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="post" onsubmit="event.preventDefault();validateForm(this)" enctype=multipart/form-data>
+    <form action="${pageContext.request.contextPath}/RecensioneServlet" method="post"  enctype=multipart/form-data>
         <h5>Inserisci la prima immagine di gameplay</h5>
         <br>
         <div>
@@ -62,7 +62,6 @@
         <textarea id="testoInserito" name="testoInserito" rows="5" style="resize: none;width: 100%;height: 40%" minlength="500" maxlength="3000"></textarea>
         <br>
 
-        <div id="inserito" class="errorename" style="display: none;">Valore testo nullo</div><br id="tbr" style="display: none;">
 
         <button class="btn" style="background-color: turquoise" type="submit" id="inserisciRec" name="gestioneRecensioni" value="inserisciRec">Inserisci</button><input type="hidden" id="codiceRec" name="codiceRec" value="<%=titolo%>">
     </form>

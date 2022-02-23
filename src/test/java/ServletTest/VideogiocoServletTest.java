@@ -4,6 +4,9 @@ import Controller.UtenteProfileServlet;
 import Controller.VideogiocoServlet;
 import Model.Amministratore.Amministratore;
 import Model.Utente.Utente;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -45,6 +48,31 @@ public class VideogiocoServletTest {
         }catch(RuntimeException | ServletException | IOException e){
             assertTrue(e.getMessage().contains("Unexpected value: /"));
         }
+    }
+
+    @Test
+    public void DoGetValutazioneTest() throws ServletException, IOException {
+        Utente utente = new Utente();
+        utente.setUtNickname("Shadow_1995");
+        utente.setNome("Emiliano");
+        utente.setCognome("Rossi");
+        utente.setEmail("emi1995@gmail.com");
+        utente.setPassword("BigShadow1995*");
+        utente.setValEffettuate(6);
+        utente.setAvatar(18);
+        utente.setLike(15);
+        utente.setDislike(30);
+        String json_str = "{\"valutazione\":\"4\",\"titolo\":\"Bloodborne\"}";
+        Gson gson = new Gson(); // Creates new instance of Gson
+        JsonElement element = gson.fromJson (json_str, JsonElement.class); //Converts the json string to JsonElement without POJO
+        JsonObject jsonObj = element.getAsJsonObject();
+        String json = gson.toJson(jsonObj);
+        when(request.getPathInfo()).thenReturn("/valutazione");
+        when(request.getParameter("val")).thenReturn(json);
+        when(request.getSession(false)).thenReturn(session);
+        when(session.getAttribute("userUt")).thenReturn(utente);
+        when(request.getSession()).thenReturn(session);
+        vS.doGet(request,response);
     }
 
     @Test

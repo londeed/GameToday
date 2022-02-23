@@ -48,16 +48,15 @@ var n = 0;
          let testo = $("#textarea").val();
          let testoCambiato = testo.replace('merda','*****');
          testoCambiato = testoCambiato.replace('cazzo','*****');
-         testoCambiato = testoCambiato.replace('fessa','*****');
-         testoCambiato = testoCambiato.replace('pene','*****');
-         testoCambiato = testoCambiato.replace('vagina','*****');
-         testoCambiato = testoCambiato.replace('zoccola','*****');
+         testoCambiato = testoCambiato.replace('negro','*****');
+         testoCambiato = testoCambiato.replace('vaffanculo','*****');
+         testoCambiato = testoCambiato.replace('fanculo','*****');
+         testoCambiato = testoCambiato.replace('imbecille','*****');
          testoCambiato = testoCambiato.replace('puttana','*****');
-         testoCambiato = testoCambiato.replace('cretino','*****');
+         testoCambiato = testoCambiato.replace('stronzo','*****');
          testoCambiato = testoCambiato.replace('mongoloide','*****');
-         testoCambiato = testoCambiato.replace('scemo','*****');
+         testoCambiato = testoCambiato.replace('idiota','*****');
          testoCambiato = testoCambiato.replace('coglione','*****');
-         alert(testoCambiato);
          text[n] = testoCambiato;
          n += 1;
          text[n] = commentoNumero;
@@ -138,7 +137,6 @@ function salvaInterazione(valore,x){
             b = "1";
         }
         var interazione = {likes: a, dislikes: b, num: n};
-        alert("i topi non avevano nipoti")
         $.ajax({
             type: "get",
             url: "http://localhost:8080/GameToday_war/CommentoServlet/aggiungiInterazione",

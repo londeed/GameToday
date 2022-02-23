@@ -108,7 +108,7 @@ public class UserServletTest {
         uS.doPost(request,response);
         verify(requestDispatcher,atLeastOnce()).forward(request,response);
     }
-@Ignore
+
     @Test
     public void DoPostLoginAuObj1NullTest() throws ServletException, IOException {
         String email = "autore1@yahoo.it";
@@ -136,7 +136,66 @@ public class UserServletTest {
         /*when(request.getSession()).thenReturn(session);
         when(session.getAttribute("amministratore")).thenReturn(amministratore);*/
         when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
-        uS.doGet(request,response);
+        uS.doPost(request,response);
+        verify(requestDispatcher,atLeastOnce()).forward(request,response);
+    }
+
+    @Test
+    public void DoPostLoginAuNullTest() throws ServletException, IOException {
+        String email = "autore1@yahoo.it";
+        String password ="IGNn_141DA*3";
+        java.sql.Date date = new java.sql.Date(2023-05-12);
+        Autore autore = new Autore();
+        autore.setNome("Fabio");
+        autore.setCognome("Marcolini");
+        autore.setAuNickname("IGN_Italia");
+        autore.setPassword("IGNn_141DA*3");
+        autore.setEmail("utore1@yahoo.it");
+        autore.setLike(2);
+        autore.setDislike(3);
+        autore.setScadenza(date);
+        autore.setRecCommissionate("Far Cry 6");
+        autore.setRecEffettuate(2);
+        autore.setAvatar(20);
+        when(request.getPathInfo()).thenReturn("/login");
+        when(request.getParameter("email")).thenReturn(null);
+        when(request.getParameter("email")).thenReturn(email);
+        when(request.getParameter("email")).thenReturn(null);
+        when(request.getParameter("password")).thenReturn(null);
+
+
+        /*when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("amministratore")).thenReturn(amministratore);*/
+        when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
+        uS.doPost(request,response);
+        verify(requestDispatcher,atLeastOnce()).forward(request,response);
+    }
+
+    @Test
+    public void DoPostLoginUtNullTest() throws ServletException, IOException {
+        String email = "emi1995@gmail.com";
+        String password ="BigShadow1995*";
+        Utente utente = new Utente();
+        utente.setUtNickname("Shadow_1995");
+        utente.setNome("Emiliano");
+        utente.setCognome("Rossi");
+        utente.setEmail("emi1995@gmail.com");
+        utente.setPassword("BigShadow1995*");
+        utente.setValEffettuate(6);
+        utente.setAvatar(18);
+        utente.setLike(15);
+        utente.setDislike(30);
+        when(request.getPathInfo()).thenReturn("/login");
+        when(request.getParameter("email")).thenReturn(email);
+        //when(request.getParameter("email")).thenReturn(null);
+        when(request.getParameter("email")).thenReturn(null);
+        when(request.getParameter("password")).thenReturn(null);
+
+
+        /*when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("amministratore")).thenReturn(amministratore);*/
+        when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
+        uS.doPost(request,response);
         verify(requestDispatcher,atLeastOnce()).forward(request,response);
     }
 }

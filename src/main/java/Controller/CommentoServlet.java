@@ -125,8 +125,8 @@ public class CommentoServlet extends Controllo {
                         int count2 = 1;
                         System.out.println(al.size());
                         while(al.size()>=count2){
-                            System.out.println(al.get(1));
-                            System.out.println(interazione2.get(2));
+                            //System.out.println(al.get(1));
+                            //System.out.println(interazione2.get(2));
                             if(al.get(count2).equals(interazione2.get(0))){
                                 commentoDao2.updateInterazione(al.get(count2-1), "1");
                                 break;

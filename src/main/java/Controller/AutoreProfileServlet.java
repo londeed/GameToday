@@ -49,14 +49,14 @@ public class AutoreProfileServlet extends Controllo {
                     AutoreDAO autoreDAO1 = new AutoreDAO();
                     autoreDAO1.deleteAutore(autore1.getAuNickname());
                     session2.removeAttribute("userAu");
-                    RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
+                    RequestDispatcher dispatcher3 = request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp");
                     dispatcher3.forward(request, response);
                     break;
                 case "logoutAutore":
                     HttpSession session = request.getSession(false);
                     Autore autore2 = (Autore) session.getAttribute("userAu");
                     session.removeAttribute("userAu");
-                    RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/redirect.jsp");
+                    RequestDispatcher dispatcher4 = request.getRequestDispatcher("/WEB-INF/views/partials/redirect.jsp");
                     dispatcher4.forward(request, response);
                     break;
                 default:
@@ -102,6 +102,7 @@ public class AutoreProfileServlet extends Controllo {
                     autoreDAO.updateAutore(autore, autoreSessione.getAuNickname());
                     Autore autore1 = new Autore();
                     autore1 = autoreDAO.doRetrieveAutoreByEmail(autore.getEmail());
+                    request.getSession().setAttribute("userAu",autore);
                     request.setAttribute("autore", autore1);
                     request.getRequestDispatcher("/WEB-INF/views/autore/gestioneProfilo.jsp").forward(request, response);
                     break;

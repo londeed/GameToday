@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,17 +63,6 @@ public class RecensioneServletTest {
     public void DoGetRecNullTest() throws ServletException, IOException {
         String recensione = null;
         String titolo = "Bloodborne";
-        when(request.getParameter("recensione")).thenReturn(recensione);
-        when(request.getParameter("dettaglioRecensione")).thenReturn(titolo);
-        when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
-        rS.doGet(request,response);
-        verify(requestDispatcher,atLeastOnce()).forward(request,response);
-    }
-@Ignore
-    @Test
-    public void DoGetRecNullIfNullTest() throws ServletException, IOException {
-        String recensione = null;
-        String titolo = null;
         when(request.getParameter("recensione")).thenReturn(recensione);
         when(request.getParameter("dettaglioRecensione")).thenReturn(titolo);
         when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
@@ -217,9 +207,17 @@ public class RecensioneServletTest {
         rS.doPost(request,response);
         verify(requestDispatcher,atLeastOnce()).forward(request,response);
     }
-@Ignore
+
     @Test
     public void DoPostInserisciRecTest() throws ServletException, IOException {
+        final ServletContext servletContext = Mockito.mock(ServletContext.class);
+        rS = new RecensioneServlet() {
+            public ServletContext getServletContext() {
+                return servletContext; // return the mock
+            }
+        };
+        Mockito.doReturn("hello").when(servletContext).getRealPath("");
+
         java.sql.Date date = new java.sql.Date(2023-05-12);
         Autore autore = new Autore();
         autore.setNome("Fabio");
@@ -236,6 +234,9 @@ public class RecensioneServletTest {
         when(request.getParameter("gestioneRecensioni")).thenReturn("inserisciRec");
         when(request.getParameter("codiceRec")).thenReturn("O4pNHEEY");
         when(request.getParameter("testoInserito")).thenReturn("Hok va bene");
+        when(request.getServletContext()).thenReturn(servletContext);
+        when(servletContext.getRealPath("")).thenReturn("");
+       // when(request.getServletContext().getRealPath(""));
         when(request.getSession(false)).thenReturn(session);
         when(session.getAttribute("userAu")).thenReturn(autore);
         when(request.getSession()).thenReturn(session);
